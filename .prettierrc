@@ -1,0 +1,14 @@
+{
+  "semi": false,
+  "tabWidth": 2,
+  "printWidth": 120,
+  "importOrder": [
+    "^(@store)/(.*)$",
+    "^(@modals|@pages)/(.*)$",
+    "^(@hocs|@hooks)/(.*)$",
+    "^(@components|@icons)/(.*)$",
+    "^(@utils|@styles|@constants)/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true
+}
