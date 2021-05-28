@@ -1,8 +1,15 @@
 import type { AppProps } from "next/app"
 
+import DefaultHead from "@components/Head/Default"
+
 import "../styles/globals.css"
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <DefaultHead />
+      <Component {...pageProps} />
+    </>
+  )
 }
-export default MyApp
+export default App
