@@ -13,25 +13,15 @@ export const Header = styled.header<{ hide?: boolean }>`
   justify-content: space-between;
   width: 100%;
   height: var(--height);
-  max-width: 1200px;
   margin: 0 auto;
+  background: hsl(220, 60%, 50%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s;
-  ::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: block;
-    height: var(--height);
-    background: hsl(220, 60%, 50%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
   ${({ hide }) => hide && hidden}
 `
 
 export const NavGroup = styled.nav`
-  height: 100%;
+  font-size: 0;
 `
 
 export const NavLink = styled.span<{ match: boolean }>`
@@ -41,6 +31,7 @@ export const NavLink = styled.span<{ match: boolean }>`
   padding: 0 16px;
   margin: 0 4px;
   line-height: var(--height);
+  font-size: 16px;
   color: hsl(220, 60%, 95%);
   cursor: pointer;
   overflow: hidden;

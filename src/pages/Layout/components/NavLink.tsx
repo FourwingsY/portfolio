@@ -8,21 +8,15 @@ interface Props {
   href: string
   activeOnly?: boolean
   includeChildPath?: boolean
-  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
 }
-const NavLink: React.FC<Props> = ({ href, includeChildPath = false, activeOnly = false, onClick, children }) => {
+const NavLink: React.FC<Props> = ({ href, includeChildPath = false, activeOnly = false, children }) => {
   const router = useRouter()
   const matchFn = match(href, { end: !includeChildPath })
   const matched = Boolean(matchFn(router.pathname))
 
-  // just want to style active status,
-  // not as a hyperlink
+  // just want to use styling, not using as a hyperlink
   if (activeOnly) {
-    return (
-      <S.NavLink match={matched} onClick={onClick}>
-        {children}
-      </S.NavLink>
-    )
+    return <S.NavLink match={matched}>{children}</S.NavLink>
   }
   return (
     <Link href={href}>
