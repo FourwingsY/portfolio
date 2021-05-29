@@ -25,7 +25,7 @@ export const ContentsWidth = styled.div`
   ${({ theme }) =>
     theme.mobile &&
     css`
-      width: 100%;
-      padding: 0 6.25%;
+      width: 100vw;
+      padding: 0 6.25vw;
     `};
 `

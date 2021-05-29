@@ -39,13 +39,3 @@ SSG를 버리고 SSR로 전향, userAgent를 확인해서 적절하게 내려주
 
 4가지 적응형 모델로 구현을 하다보니, mobile / tabletP 와, tabletL / desktop 에서 비슷한 스타일을 사용하게 되는 일이 잦았다. 그래서 small / large 라는 그룹도 하나 더 두기로 했다.
 결론적으로 아래와 같은 모델이 나왔다.
-
-```
-                small                 |           large
-         mobile         |   tabletP   |   tabletL   |   desktop
- tooSmall  |            |             |             |
------------|------------|-------------|-------------|------------->>>>
-         (360)        (600)         (900)         (1200)
-        MINIMUM     MOBILE_MAX    TABLETP_MAX   TABLETL_MAX
-
-```

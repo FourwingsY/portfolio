@@ -8,6 +8,8 @@ import Layout from "@pages/Layout"
 
 import { ContentsWidth } from "@styles/adaptive"
 
+import ScreenMonitor from "./ScreenMonitor"
+
 const Adaptive = () => {
   const [post, setPost] = useState("")
   useEffect(() => {
@@ -22,7 +24,7 @@ const Adaptive = () => {
         <StyledMarkdown className="markdown-body" plugins={[gfm]}>
           {post}
         </StyledMarkdown>
-        {/* 지금 이 스크린은 어디에 해당되는지 보여주기 */}
+        <ScreenMonitor />
       </ContentsWidth>
     </Layout>
   )
@@ -31,7 +33,7 @@ const Adaptive = () => {
 export default Adaptive
 
 const StyledMarkdown = styled(Markdown)`
-  margin-top: 32px;
+  margin: 32px 0 16px;
   code {
     color: hsl(220, 70%, 35%);
   }
