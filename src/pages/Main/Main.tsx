@@ -12,10 +12,10 @@ const Main: React.FC = () => {
   const screenType = DLPM("Desktop", "Tablet-Landscape", "Tablet-Portrait", "Mobile")
 
   useEffect(() => {
-    setScreenWidth(window.innerWidth)
     function handleResize() {
       setScreenWidth(window.innerWidth)
     }
+    handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
