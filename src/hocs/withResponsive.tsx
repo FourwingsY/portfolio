@@ -39,8 +39,8 @@ const HideAndLoad = styled.div<{ isInitialRender: boolean }>`
  *          mobile         |   tabletP   |   tabletL   |   desktop
  *  tooSmall  |            |             |             |
  * -----------|------------|-------------|-------------|------------->>>>
- *         MINIMUM     MOBILE_MAX    TABLETP_MAX   TABLETL_MAX
  *          (360)        (600)         (900)         (1200)
+ *         MINIMUM     MOBILE_MAX    TABLETP_MAX   TABLETL_MAX
  */
 function useResponsive() {
   const [isMounted, setMounted] = useState(false)

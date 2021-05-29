@@ -1,6 +1,7 @@
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { match } from "path-to-regexp"
+
+import Link from "@components/Link"
 
 import * as S from "./Header.style"
 

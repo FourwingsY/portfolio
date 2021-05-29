@@ -1,6 +1,6 @@
-import Link from "next/link"
-
 import Layout from "@pages/Layout"
+
+import Link from "@components/Link"
 
 import * as S from "./Showcase.style"
 
@@ -9,11 +9,9 @@ const Showcase = () => {
     <Layout>
       <S.Showcase>
         <Link href="/showcase/adaptive">
-          <a>
-            <S.Card>
-              <S.CardTitle>Adaptive Design</S.CardTitle>
-            </S.Card>
-          </a>
+          <S.Card>
+            <S.CardTitle>Adaptive Design</S.CardTitle>
+          </S.Card>
         </Link>
       </S.Showcase>
     </Layout>
