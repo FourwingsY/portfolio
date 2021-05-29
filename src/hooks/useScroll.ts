@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { throttle } from "@utils/event"
 
@@ -10,7 +10,7 @@ export function useScrollTop(): number {
   }, 100)
 
   // Scroll detect
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener("scroll", updateScroll)
     return () => {
       window.removeEventListener("scroll", updateScroll)
@@ -28,7 +28,7 @@ export function useHideOnScrollDown({ minimumScroll = 200 }: UseHideOnScroolDown
   const scrollTop = useScrollTop()
 
   // Set Hide or not
-  useLayoutEffect(() => {
+  useEffect(() => {
     // decide hide or show
     if (scrollTop < minimumScroll) return setHide(false)
     // show when user scroll upward
