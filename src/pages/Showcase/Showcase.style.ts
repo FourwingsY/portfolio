@@ -6,6 +6,7 @@ export const Showcase = styled(ContentsWidth)`
   margin-top: 32px;
 `
 export const Card = styled.div`
+  margin: 16px 0;
   border: 1px solid hsl(220, 60%, 80%);
   border-radius: 16px;
   overflow: hidden;

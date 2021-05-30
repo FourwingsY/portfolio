@@ -11,6 +11,11 @@ export default createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 
   * {
     box-sizing: border-box;

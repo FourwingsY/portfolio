@@ -20,6 +20,16 @@ const Showcase = () => {
             </S.CardBody>
           </S.Card>
         </Link>
+        <Link href="/showcase/modal">
+          <S.Card>
+            {/* <S.CardThumbnail>
+              <Image src="/images/posts/adaptive.png" width="1134" height="386" />
+            </S.CardThumbnail> */}
+            <S.CardBody>
+              <S.CardTitle>Modal system</S.CardTitle>
+            </S.CardBody>
+          </S.Card>
+        </Link>
       </S.Showcase>
     </Layout>
   )
