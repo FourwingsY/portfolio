@@ -3,6 +3,8 @@ import { Provider as StoreProvider } from "react-redux"
 
 import store from "@store/index"
 
+import ModalContainer from "@modals/Container"
+
 import withResponsive from "@hocs/withResponsive"
 
 import DefaultHead from "@components/Head/Default"
@@ -15,6 +17,7 @@ function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <DefaultHead />
       <Component {...pageProps} />
+      <ModalContainer />
     </StoreProvider>
   )
 }

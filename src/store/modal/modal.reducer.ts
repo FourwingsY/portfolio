@@ -9,7 +9,10 @@ export type ModalState = OpenModalPayload<ModalType>[]
 const initialState: ModalState = []
 
 export default createReducer(initialState, (builder) =>
-  builder.addCase(actions._openModal, (state, action) => {
-    state.push(action.payload)
-  })
+  builder
+    .addCase(actions._openModal, (state, action) => {
+      state.push(action.payload)
+    })
+    .addCase(actions.closeModal, (state, action) => state.filter((modal) => modal.id !== action.payload.id))
+    .addCase(actions.closeAll, () => initialState)
 )

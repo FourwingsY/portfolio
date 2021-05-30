@@ -1,12 +1,15 @@
 import { BasicModalProps } from "@modals/types"
 
 import * as CS from "../common.style"
+import * as S from "./Confirm.style"
 
 interface Props extends BasicModalProps {
   title?: string
   message: string
+  confirmText?: string
+  cancelText?: string
 }
-const Alert: React.FC<Props> = ({ title, message, close }) => {
+const Confirm: React.FC<Props> = ({ title, message, confirmText = "확인", cancelText = "취소", close }) => {
   return (
     <CS.Modal>
       {title && <CS.Title>{title}</CS.Title>}
@@ -14,10 +17,11 @@ const Alert: React.FC<Props> = ({ title, message, close }) => {
         <CS.Message noTitle={!title}>{message}</CS.Message>
       </CS.Body>
       <CS.Buttons>
-        <CS.ModalButton onClick={close}>확인</CS.ModalButton>
+        <S.ConfirmButton onClick={close}>{confirmText}</S.ConfirmButton>
+        <S.CancelButton onClick={close}>{cancelText}</S.CancelButton>
       </CS.Buttons>
     </CS.Modal>
   )
 }
 
-export default Alert
+export default Confirm
