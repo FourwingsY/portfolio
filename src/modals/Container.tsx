@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { useEffect, useState, cloneElement } from "react"
 
 import modalActions from "@store/modal/modal.actions"
-import { OpenModalPayload, OverlayOptions } from "@store/modal/modal.types"
+import { EnhancedModalPayload, OverlayOptions } from "@store/modal/modal.types"
 import { useDispatch, useSelector } from "@store/useStore"
 
 import * as S from "./overlay.style"
@@ -33,8 +33,7 @@ const ModalContainer = () => {
 interface ImportedModule {
   default: React.ComponentType
 }
-const OpenedModal: React.FC<OpenModalPayload<ModalType>> = ({ type, id, props, overlayOptions }) => {
-  console.log(id)
+const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, props, overlayOptions }) => {
   const dispatch = useDispatch()
   const [Component, setComponent] = useState<React.ComponentType>()
 
