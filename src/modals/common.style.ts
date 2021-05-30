@@ -61,4 +61,5 @@ export const Modal = styled.div`
   background: white;
   overflow: hidden;
   font-size: 16px;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
 `

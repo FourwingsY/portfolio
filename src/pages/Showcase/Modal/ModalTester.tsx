@@ -1,4 +1,4 @@
-import { openModal } from "@store/modal/modal.actions"
+import modalActions from "@store/modal/modal.actions"
 import { useDispatch } from "@store/useStore"
 
 import * as S from "./ModalTester.style"
@@ -7,12 +7,13 @@ const ModalTester = () => {
   const dispatch = useDispatch()
 
   function openAlert() {
-    dispatch(openModal("Alert")({ props: { title: "You need to know", message: "This is Alert" } }))
+    dispatch(modalActions.openModal({ type: "Alert", props: { title: "You need to know", message: "This is Alert" } }))
   }
 
   function openConfirm() {
     dispatch(
-      openModal("Confirm")({
+      modalActions.openModal({
+        type: "Confirm",
         props: { message: "Do you wanna close this?", confirmText: "YES", cancelText: "close it!" },
       })
     )
@@ -20,7 +21,8 @@ const ModalTester = () => {
 
   function openPreventDimClick() {
     dispatch(
-      openModal("Alert")({
+      modalActions.openModal({
+        type: "Alert",
         props: { title: "Should Click Button", message: "Background click doesn't close this modal" },
         overlayOptions: { closeOnOverlayClick: false },
       })
@@ -29,7 +31,8 @@ const ModalTester = () => {
 
   function openSlideup() {
     dispatch(
-      openModal("Slideup")({
+      modalActions.openModal({
+        type: "Slideup",
         props: { message: "Ta da!" },
         overlayOptions: { dim: false, closeOnOverlayClick: false, closeDelay: 500 },
       })
@@ -38,8 +41,9 @@ const ModalTester = () => {
 
   function openSmallInfo() {
     dispatch(
-      openModal("Information")({
-        props: { message: "tiny small info. scroll to dismiss" },
+      modalActions.openModal({
+        type: "Information",
+        props: { text: "tiny small info. scroll to dismiss" },
         overlayOptions: { dim: false, closeOnOverlayClick: false, preventScroll: false, closeDelay: 300 },
       })
     )

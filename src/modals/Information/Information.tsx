@@ -8,9 +8,9 @@ import * as CS from "../common.style"
 import * as S from "./Information.style"
 
 interface Props extends BasicModalProps {
-  message: string
+  text: string
 }
-const Information: React.FC<Props> = ({ visible, message, close }) => {
+const Information: React.FC<Props> = ({ visible, text, close }) => {
   const scrollTop = useScrollTop()
   const initialScrollTop = useRef(scrollTop)
   useEffect(() => {
@@ -20,7 +20,7 @@ const Information: React.FC<Props> = ({ visible, message, close }) => {
   return (
     <S.Information visible={visible}>
       <CS.Body>
-        <CS.Message>{message}</CS.Message>
+        <CS.Message>{text}</CS.Message>
       </CS.Body>
     </S.Information>
   )
