@@ -37,7 +37,7 @@ openModal('Alert', { message: 'Hello' })
 
 일단 첫 구상은 이런 것에서 시작했다.
 
-```js
+```ts
 import Alert from "./Alert"
 import Confirm from "./Confirm"
 
