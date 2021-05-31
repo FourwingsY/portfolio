@@ -73,8 +73,119 @@ openM
 openModal({ type: "Alert", props: { onConfirm: () => {} } }) or, OK
 ```
 
-깔끔하다!
+깔끔하다! 여기까지 진행된 코드는 [여기](https://www.typescriptlang.org/play?strict=true#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgcilQ3wChRJY4BvONIlGJAQQ2AgDs4BfObXOACIAAkQAmAVwAeAKwDOAehgQIAGwDWwGINLkOTKJnRI4AIRRzgaALIQxKVQAUcYOTVJw6qiHKQAKAEoALjgANwhgMVJuXWB9JENjOGZVBJhnCFc4JCkmDjE3c0sbOwcMrNoQJDk5FABzJBC5GCg4up5SNE5m5NTYEOR0GAA6ADEAYQAeFLTyuQA+OABeOEDlxeoPOCIYCSguDglVVWjY+MS0E3HOTGAoEDns3KR8wosrW3snFzdaTmuOLd7oEQuFIh0uhwegCgSABsQRhNJjC7g8fosVmslhstjs9gcjicYqQFAo4CAUOoTBSwHAIJg6LhIBwXjA5J1uvAQKVVG4VrQZrAADRwFH3Doksk5FpDOByXAmCS+TBHOAwACeYGqpA1WrgnwcfLVmqQ9PJPPZupMBtUABUTcs4FT1WabZaHTa5pNbU88gV9Tz7VqMYgEcNruBOKyvW6ANq2gC6810VrgtuqMAAjI7PT9JvhBTB8ItSct+eTqrUGk0Wm0Oqn080AEw5nle-BikDFuClpbl-43VEgsIRMQS1MAeS1HE9KHV3hQYm9vpe-ptQaQIdoVpCtoA3HAwD8QrnMnJvfMRRBQglVHOpzB2FCAPwhahiUCvuAAIxUqRQHC8MSkI9JkLw2o69CoEwrCPpwkxTuBbZzguS7ria8zzH4Ijcl8CgTo4ACiAByAD61gTgAIswAAyggBLoYEzjyfjUDuBCFvgIpHmeb5oN4vghFiGzcCKVQ1PUjQEEwzT4Nw3AMUxNqsexHaDvcXGHseND8T4UnCTQokVhJ1bSRmckKUAA)에서 모아서 볼 수 있다.
 
 ## 난관 봉착
 
-TBD... 아 이걸 어떻게 설명하지
+난관은 이 타이핑을 더 개선시키려다가 마주했다. 그러니까, 이런 걸 하고 싶었다.
+
+```ts
+interface BasicModalProps {
+  close(): void
+}
+
+interface AlertProps extends BasicModalProps {
+  message: string
+}
+interface ConfirmProps extends BasicModalProps {
+  onConfirm(): void
+}
+```
+
+그리고 close는 모든 모달에게 공통적으로 주입해주고 싶었기 때문에, `ModalContainer`가 렌더링 할 때 넣어준다. 이런 방식으로.
+
+```tsx
+// ModalContainer.tsx
+const ModalContainer = () => {
+  const openedModals: OpenModalPayload<ModalType>[] = [{ type: "Alert", props: { message: "test" } }] // got from store
+
+  return (
+    <>
+      {openedModals.map(({ type, props }) => {
+        const Component = modals[type]
+        function closeSelf() {
+          /* dispatch close action */
+        }
+        return <Component {...(props as any)} close={closeSelf} />
+      })}
+    </>
+  )
+}
+```
+
+그런데, 이제 이런 문제가 생겼다.
+
+```ts
+openModal({ type: "Alert", props: { message: "test" } })
+//                         ^^^^^ Property 'close' is missing in type ...
+```
+
+아 그렇지. `openModal`의 payload 에서까지 close 함수를 알 필요는 없지.
+
+```ts
+type ModalOwnProps<T extends ModalType> = Omit<ModalProps<T>, keyof BasicModalProps>
+type OpenModalPayload<T extends ModalType> = { type: T; props: ModalOwnProps<T> }
+```
+
+아니 그랬더니 이번엔 이런 문제가 생기는게 아닌가
+
+```ts
+openModal({ type: "Alert", props: { message: "test" } })
+//                                  ^^^^^^^^^^^^^^^
+// Type '{ message: string; }' is not assignable to type 'Omit<(AlertProps & { children?: ReactNode; }) | (ConfirmProps & { children?: ReactNode; }), "close">'.
+//  Object literal may only specify known properties, and 'message' does not exist in type 'Omit<(AlertProps & { children?: ReactNode; }) | (ConfirmProps & { children?: ReactNode; }), "close">'.(2322)
+```
+
+그러니까... 이 메시지를 아주 잘 풀어 해석하자면... (이 뜻을 깨닫는데 1년 가까이 걸렸던 것 같다)
+원래 `AlertProps | ConfirmProps` 라는 union 타입이던 `ModalOwnProps`가 Omit을 통과하면서, 다시 추론이 되었는데
+`Omit<(AlertProps | ConfirmProps), "close">`를 어찌 저찌 뽑아보니, `Object literal`, 즉 `{}`로 계산되었다는 말이다.
+
+이게 무슨 일인지 간단한 버전으로 테스트를 해보자.
+
+```ts
+type Test = Omit<{ a: number } | { b: number }, "c"> // === {}
+```
+
+대체 무슨 일이 일어난건지, `Omit`의 정의를 확인한 뒤 이걸 풀어 써 보자.
+
+```ts
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
+// 니까
+type OriginalObject = { a: number } | { b: number }
+type Test1 = Pick<OriginalObject, Exclude<keyof OriginalObject, "c">>
+
+// 그런데 여기에서
+type Keys = keyof OriginalObject // === never
+
+// 그래서
+type Test2 = Pick<OriginalObject, never> // === {}
+```
+
+## 대책
+
+이걸 조금 더 고민해보면: 이 난관을 해결할 방법은, Omit에 들어가는 첫 번째 타입 인자가 union 타입이어서는 안 된다는 결론에 도달한다.
+이 문제를 해결할 힌트는 [Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)에서 찾을 수 있었다.
+
+```ts
+type ModalOwnProps<T> = T extends ModalType ? Omit<ModalProps<T>, keyof BasicModalProps> : never
+```
+
+이게 어떻게 동작하게 되었는지 내가 이해한 대로 설명해보자면,
+
+```ts
+// 타입스크립트는
+type ModalOwnProps<T extends ModalType> = Omit<ModalProps<T>, keyof BasicModalProps>
+// 를 해석하면서, `T extends ModalType` 부분을 `T = ModalType`으로 가정하고 뒤의 타입을 추론한다. 그러니까,
+type ModalOwnProps<T> = Omit<AlertProps | ConfirmProps, keyof BasicModalProps> // = {}
+// 가 되었던 것이다.
+
+// 그러나 conditional type은 input, 그러니까 T의 타입이 먼저 추론이 될 때 까지 타입을 계산하지 않는다.
+type ModalOwnProps<T> = ???
+// 상태로 존재하다가, T 가 'Alert'인게 확인된 순간에서야,
+Omit<AlertProps, keyof BasicModalProps>
+// 를 계산하게 되는 것이다.
+```
+
+## 결론
+
+타입이 강력하게 잡힌 시스템을 얻기 위해서, 타입스크립트를 이해하기 위한 험난한 과정을 거쳤다. 특히나 union 타입은 굉장히 격한 혼돈의 도가니인 것 같다. 아직까지도 내가 제대로 이해하고 풀어쓴게 맞는지 좀 햇갈릴 정도이긴 하지만, 그래도 하나의 문제를 풀었다는 것에 성취감을 느낀다.
