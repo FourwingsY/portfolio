@@ -189,3 +189,9 @@ Omit<AlertProps, keyof BasicModalProps>
 ## 결론
 
 타입이 강력하게 잡힌 시스템을 얻기 위해서, 타입스크립트를 이해하기 위한 험난한 과정을 거쳤다. 특히나 union 타입은 굉장히 격한 혼돈의 도가니인 것 같다. 아직까지도 내가 제대로 이해하고 풀어쓴게 맞는지 좀 햇갈릴 정도이긴 하지만, 그래도 하나의 문제를 풀었다는 것에 성취감을 느낀다.
+
+### 실제로 사용된 코드를 보고 싶다면
+
+- 이 페이지 상단에 있는 예시 [모달들에 대한 코드](https://github.com/FourwingsY/portfolio/tree/main/src/modals)
+- 그리고 모달을 열기 위한 [액션 호출 코드](https://github.com/FourwingsY/portfolio/blob/main/src/pages/Showcase/Modal/ModalTester.tsx)에서
+- 이 모달들을 열고 닫기 위한 [스토어](https://github.com/FourwingsY/portfolio/tree/main/src/store/modal)와 모달을 렌더링하는 [컨테이너](https://github.com/FourwingsY/portfolio/blob/main/src/modals/Container.tsx)

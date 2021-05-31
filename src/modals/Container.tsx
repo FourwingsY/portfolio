@@ -37,7 +37,8 @@ const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, prop
   const dispatch = useDispatch()
   const [Component, setComponent] = useState<React.ComponentType>()
 
-  // asynchronously import modal file: for reduce bundle size
+  // asynchronously import modal file: for reduce bundle size.
+  // this may trigger initial openModal could be delayed.
   useEffect(() => {
     void import(`./${type}`).then((modal: ImportedModule) => {
       setComponent(() => modal.default)
