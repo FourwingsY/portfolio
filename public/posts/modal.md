@@ -20,13 +20,13 @@
 
 ```tsx
 // this action creator will return
-openModal('Alert', { message: 'Hello' })
+openModal({ type: 'Alert', props: { message: 'Hello' } })
 
 // this action
-{ type: '@modal/OPEN_MODAL', payload: { type: 'Alert', props: { message: 'Hello' } } }
+const action = { type: '@modal/OPEN_MODAL', payload: { type: 'Alert', props: { message: 'Hello' } } }
 
 // and trigger rendering this Component
-<Alert message="Hello" />
+return <Alert message="Hello" />
 ```
 
 `<Alert />` 이라는 컴포넌트가 정의되어 있을 것이다. 여기에서 이 컴포넌트의 이름과 props 정도는 알아낼 수 있다. Alert의 props는 `interface AlertProps { message: string }`를 받는다고 하자.
@@ -37,6 +37,7 @@ openModal('Alert', { message: 'Hello' })
 
 일단 첫 구상은 이런 것에서 시작했다.
 
+<!-- prettier-ignore -->
 ```ts
 import Alert from "./Alert"
 import Confirm from "./Confirm"
@@ -65,12 +66,12 @@ type OpenModalPayload<T extends ModalType> = { type: T; props: ModalProps<T> }
 `@reduxjs/toolkit` 혹은 `typesafe-actions`. 요즘엔 리덕스툴킷이 "공식"의 이름을 업고 승기를 이미 잡아가는 듯 하다.
 한번 `@reduxjs/toolkit`의 createAction에 이 Payload 타입을 적용해보자!
 
+<!-- prettier-ignore -->
 ```ts
 import { createAction } from "@reduxjs/toolkit"
 const openModal = createAction<OpenModalPayload<ModalType>>("@modal/OPEN_MODAL")
-openModal({ type: "Alert", props: { message: "test" } }) Error, OK
-openM
-openModal({ type: "Alert", props: { onConfirm: () => {} } }) or, OK
+openModal({ type: "Alert", props: { message: "test" } }) // No Error, OK
+openModal({ type: "Alert", props: { onConfirm: () => {} } }) // Error, OK
 ```
 
 깔끔하다! 여기까지 진행된 코드는 [여기](https://www.typescriptlang.org/play?strict=true#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgcilQ3wChRJY4BvONIlGJAQQ2AgDs4BfObXOACIAAkQAmAVwAeAKwDOAehgQIAGwDWwGINLkOTKJnRI4AIRRzgaALIQxKVQAUcYOTVJw6qiHKQAKAEoALjgANwhgMVJuXWB9JENjOGZVBJhnCFc4JCkmDjE3c0sbOwcMrNoQJDk5FABzJBC5GCg4up5SNE5m5NTYEOR0GAA6ADEAYQAeFLTyuQA+OABeOEDlxeoPOCIYCSguDglVVWjY+MS0E3HOTGAoEDns3KR8wosrW3snFzdaTmuOLd7oEQuFIh0uhwegCgSABsQRhNJjC7g8fosVmslhstjs9gcjicYqQFAo4CAUOoTBSwHAIJg6LhIBwXjA5J1uvAQKVVG4VrQZrAADRwFH3Doksk5FpDOByXAmCS+TBHOAwACeYGqpA1WrgnwcfLVmqQ9PJPPZupMBtUABUTcs4FT1WabZaHTa5pNbU88gV9Tz7VqMYgEcNruBOKyvW6ANq2gC6810VrgtuqMAAjI7PT9JvhBTB8ItSct+eTqrUGk0Wm0Oqn080AEw5nle-BikDFuClpbl-43VEgsIRMQS1MAeS1HE9KHV3hQYm9vpe-ptQaQIdoVpCtoA3HAwD8QrnMnJvfMRRBQglVHOpzB2FCAPwhahiUCvuAAIxUqRQHC8MSkI9JkLw2o69CoEwrCPpwkxTuBbZzguS7ria8zzH4Ijcl8CgTo4ACiAByAD61gTgAIswAAyggBLoYEzjyfjUDuBCFvgIpHmeb5oN4vghFiGzcCKVQ1PUjQEEwzT4Nw3AMUxNqsexHaDvcXGHseND8T4UnCTQokVhJ1bSRmckKUAA)에서 모아서 볼 수 있다.
@@ -149,13 +150,18 @@ type Test = Omit<{ a: number } | { b: number }, "c"> // === {}
 대체 무슨 일이 일어난건지, `Omit`의 정의를 확인한 뒤 이걸 풀어 써 보자.
 
 ```ts
-type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
-// 니까
+type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>> // 라는 정의를 가지고 있다.
+
+// Test를 풀어써보자면
 type OriginalObject = { a: number } | { b: number }
 type Test1 = Pick<OriginalObject, Exclude<keyof OriginalObject, "c">>
 
-// 그런데 여기에서
+// 그런데 여기에서 union 타입의 키를 뽑아오려고 하면, 공통된 키만 뽑게 된다.
+// https://github.com/Microsoft/TypeScript/issues/12948 여기를 참고!
 type Keys = keyof OriginalObject // === never
+
+// 그렇기에 당연히
+type KeysWithoutC = Exclude<never, "c"> // === never
 
 // 그래서
 type Test2 = Pick<OriginalObject, never> // === {}
@@ -163,7 +169,7 @@ type Test2 = Pick<OriginalObject, never> // === {}
 
 ## 대책
 
-이걸 조금 더 고민해보면: 이 난관을 해결할 방법은, Omit에 들어가는 첫 번째 타입 인자가 union 타입이어서는 안 된다는 결론에 도달한다.
+이걸 조금 더 고민해보다가: 이 난관을 해결할 방법은, Omit에 들어가는 첫 번째 타입 인자가 union 타입이어서는 안 된다는 결론에 도달했다.
 이 문제를 해결할 힌트는 [Conditional Types](https://www.typescriptlang.org/docs/handbook/2/conditional-types.html)에서 찾을 수 있었다.
 
 ```ts
