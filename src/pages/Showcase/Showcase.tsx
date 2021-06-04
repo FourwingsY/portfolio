@@ -13,7 +13,7 @@ const Showcase = () => {
         <Link href="/showcase/adaptive">
           <S.Card>
             <S.CardThumbnail>
-              <Image src="/images/posts/adaptive.png" width="1134" height="386" />
+              <Image src="/images/posts/adaptive.png" width="720" height="405" objectFit="cover" />
             </S.CardThumbnail>
             <S.CardBody>
               <S.CardTitle>Adaptive Design</S.CardTitle>
@@ -22,9 +22,9 @@ const Showcase = () => {
         </Link>
         <Link href="/showcase/modal">
           <S.Card>
-            {/* <S.CardThumbnail>
-              <Image src="/images/posts/adaptive.png" width="1134" height="386" />
-            </S.CardThumbnail> */}
+            <S.CardThumbnail>
+              <Image src="/images/posts/modal.jpg" width="720" height="405" objectFit="cover" />
+            </S.CardThumbnail>
             <S.CardBody>
               <S.CardTitle>Modal system</S.CardTitle>
             </S.CardBody>
