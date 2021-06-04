@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components"
 
+import { POSITION } from "@styles/zIndex"
+
 const hidden = css`
   transform: translateY(-100%);
 `
@@ -17,6 +19,7 @@ export const Header = styled.header<{ hide?: boolean }>`
   background: hsl(220, 60%, 50%);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s;
+  z-index: ${POSITION};
   ${({ hide }) => hide && hidden}
 `
 

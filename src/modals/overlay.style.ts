@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components"
 
+import { OVERLAY } from "@styles/zIndex"
+
 const dimmedBackground = css`
   background: rgba(0, 0, 0, 0.6);
 `
@@ -13,7 +15,7 @@ export const Overlay = styled.div<{ dim: boolean; visible: boolean }>`
   left: 0;
   width: 100vw;
   height: 100%;
-  z-index: 1000;
+  z-index: ${OVERLAY};
   ${({ dim }) => dim && dimmedBackground}
 
   // animation
