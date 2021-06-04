@@ -4,7 +4,7 @@ import { ModalButton } from "@modals/common.style"
 
 export const ConfirmButton = styled(ModalButton)`
   width: 50%;
-  border-left: 1px solid #bbb;
+  border-right: 1px solid #fff;
 `
 export const CancelButton = styled(ModalButton)`
   width: 50%;

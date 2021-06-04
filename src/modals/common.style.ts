@@ -42,9 +42,6 @@ export const ModalButton = styled.button`
   background-color: #ccc;
   color: #000;
 
-  // border-radius + overflow:hidden safari 버그로 추가(모서리 영역에서 clipping이 되지 않음)
-  transform: translateZ(0);
-
   :hover {
     background-color: #ddd;
   }
@@ -62,4 +59,7 @@ export const Modal = styled.div`
   overflow: hidden;
   font-size: 16px;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+
+  // border-radius + overflow:hidden safari 버그로 추가(모서리 영역에서 clipping이 되지 않음)
+  transform: translateZ(0);
 `
