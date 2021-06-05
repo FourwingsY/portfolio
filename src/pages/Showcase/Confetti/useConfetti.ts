@@ -22,7 +22,7 @@ interface InitialParticleOptions {
   initialAngle: number // 0-360
 }
 
-interface Sprite {
+interface Particle {
   id: number
   position: Vector
   velocity: Vector
@@ -34,8 +34,8 @@ interface Sprite {
 }
 
 export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOptions: ConfettiOptions) {
-  const sprites = useRef<{ [id: number]: Sprite }>({})
-  const spriteIds = useRef<number[]>([])
+  const particles = useRef<{ [id: number]: Particle }>({})
+  const particleIds = useRef<number[]>([])
   const nextId = useRef<number>(0)
   const prevFrame = useRef<number>(0)
   const drawHandle = useRef<number>(0)
@@ -76,26 +76,26 @@ export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOp
 
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    spriteIds.current.map((id) => {
-      const sprite = sprites.current[id]
-      addMovement(sprite, dt, confettiOptions.gravity, confettiOptions.friction)
-      addRotation(sprite)
-      addSwingMovement(sprite, canvas)
-      drawParticle(ctx, sprite)
+    particleIds.current.map((id) => {
+      const particle = particles.current[id]
+      addMovement(particle, dt, confettiOptions.gravity, confettiOptions.friction)
+      addRotation(particle)
+      addSwingMovement(particle, canvas)
+      drawParticle(ctx, particle)
     })
 
     // remove invisible falling
-    const invisibleFalling = spriteIds.current.filter((id) => {
-      const sprite = sprites.current[id]
-      const invisible = sprite.position.y > canvas.height * 1.2
-      const falling = sprite.velocity.y > 0
+    const invisibleFalling = particleIds.current.filter((id) => {
+      const particle = particles.current[id]
+      const invisible = particle.position.y > canvas.height * 1.2
+      const falling = particle.velocity.y > 0
       return invisible && falling
     })
-    invisibleFalling.map((id) => delete sprites.current[id])
-    spriteIds.current = spriteIds.current.filter((id) => !invisibleFalling.includes(id))
+    invisibleFalling.map((id) => delete particles.current[id])
+    particleIds.current = particleIds.current.filter((id) => !invisibleFalling.includes(id))
 
-    // if sprites are all gone, inactivate canvas
-    if (spriteIds.current.length === 0) {
+    // if particles are all gone, inactivate canvas
+    if (particleIds.current.length === 0) {
       return setActive(false)
     }
 
@@ -105,11 +105,11 @@ export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOp
   function addParticle(particleOptions: InitialParticleOptions) {
     if (!canvas) return
 
-    // sprite
+    // particle
     const { initialPosition, initialSpeed, initialAngle } = particleOptions
     const { x, y } = initialPosition
 
-    const sprite: Sprite = {
+    const particle: Particle = {
       id: ++nextId.current,
       position: { x: canvas.width * x, y: canvas.height * y },
       velocity: {
@@ -127,8 +127,8 @@ export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOp
       color: getRandomColor(confettiOptions.colorSet),
     }
 
-    spriteIds.current.push(sprite.id)
-    sprites.current[sprite.id] = sprite
+    particleIds.current.push(particle.id)
+    particles.current[particle.id] = particle
     setActive(true)
   }
 
@@ -143,48 +143,48 @@ function deg2Rad(degree: number) {
   return (degree / 180) * Math.PI
 }
 
-function addMovement(sprite: Sprite, dt: number, gravity: number, friction = 0) {
-  const { position, velocity } = sprite
+function addMovement(particle: Particle, dt: number, gravity: number, friction = 0) {
+  const { position, velocity } = particle
 
   const { x, y } = position
   const { x: vx, y: vy } = velocity
 
-  sprite.velocity = { x: (1 - friction) * vx, y: (1 - friction) * (vy + gravity * (dt / 1000)) }
-  sprite.position = { x: x + vx * (dt / 1000), y: y + vy * (dt / 1000) }
+  particle.velocity = { x: (1 - friction) * vx, y: (1 - friction) * (vy + gravity * (dt / 1000)) }
+  particle.position = { x: x + vx * (dt / 1000), y: y + vy * (dt / 1000) }
 }
 
-function addRotation(sprite: Sprite) {
-  const [p, y, r] = sprite.rotation
-  const [dp, dy, dr] = sprite.angularSpeed
+function addRotation(particle: Particle) {
+  const [p, y, r] = particle.rotation
+  const [dp, dy, dr] = particle.angularSpeed
 
-  sprite.rotation = [p + dp, y + dy, r + dr]
+  particle.rotation = [p + dp, y + dy, r + dr]
 }
 
-function addSwingMovement(sprite: Sprite, canvasSize: Size) {
-  const { x, y } = sprite.position
-  const { y: vy } = sprite.velocity
+function addSwingMovement(particle: Particle, canvasSize: Size) {
+  const { x, y } = particle.position
+  const { y: vy } = particle.velocity
 
   // do not swing during going up
   if (vy < 0) return
   const swingX = 0.4 * (vy / canvasSize.height)
   const swingY = 0.4
 
-  sprite.swing += 0.1
-  sprite.position = { x: x + Math.cos(sprite.swing) * swingX, y: y + Math.sin(sprite.swing) * swingY }
+  particle.swing += 0.1
+  particle.position = { x: x + Math.cos(particle.swing) * swingX, y: y + Math.sin(particle.swing) * swingY }
 }
 
-function drawParticle(ctx: CanvasRenderingContext2D, sprite: Sprite) {
-  const [pitch, yaw, roll] = sprite.rotation
-  const width = Math.max(0.2 * sprite.size.width, Math.abs(sprite.size.width * Math.sin(pitch)))
-  const height = sprite.size.height * Math.cos(yaw)
+function drawParticle(ctx: CanvasRenderingContext2D, particle: Particle) {
+  const [pitch, yaw, roll] = particle.rotation
+  const width = Math.max(0.2 * particle.size.width, Math.abs(particle.size.width * Math.sin(pitch)))
+  const height = particle.size.height * Math.cos(yaw)
 
   ctx.beginPath()
   ctx.lineWidth = width
-  ctx.strokeStyle = sprite.color
+  ctx.strokeStyle = particle.color
   const dx = height * Math.cos(roll)
   const dy = height * Math.sin(roll)
-  ctx.moveTo(sprite.position.x - dx, sprite.position.y - dy)
-  ctx.lineTo(sprite.position.x + dx, sprite.position.y + dy)
+  ctx.moveTo(particle.position.x - dx, particle.position.y - dy)
+  ctx.lineTo(particle.position.x + dx, particle.position.y + dy)
   ctx.stroke()
 }
 
