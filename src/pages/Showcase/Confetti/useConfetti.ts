@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useEffect, useRef, useState } from "react"
 
+import { getRandomInRange, getRandomColor } from "@utils/random"
+
 interface Size {
   width: number
   height: number
@@ -22,6 +24,11 @@ interface InitialParticleOptions {
   initialAngle: number // 0-360
 }
 
+interface Callbacks {
+  onStart?(): void
+  onStop?(): void
+}
+
 interface Particle {
   id: number
   position: Vector
@@ -33,7 +40,11 @@ interface Particle {
   color: string
 }
 
-export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOptions: ConfettiOptions) {
+export default function useConfetti(
+  canvas: HTMLCanvasElement | null,
+  confettiOptions: ConfettiOptions,
+  callbacks?: Callbacks
+) {
   const particles = useRef<{ [id: number]: Particle }>({})
   const particleIds = useRef<number[]>([])
   const nextId = useRef<number>(0)
@@ -44,12 +55,12 @@ export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOp
   // start draw when active
   useEffect(() => {
     if (active) {
-      console.log("start")
       window.requestAnimationFrame((t) => (prevFrame.current = t))
       drawHandle.current = window.requestAnimationFrame(draw)
+      callbacks?.onStart?.()
     } else {
-      console.log("stop")
       window.cancelAnimationFrame(drawHandle.current)
+      callbacks?.onStop?.()
     }
   }, [active])
 
@@ -105,28 +116,8 @@ export default function useConfetti(canvas: HTMLCanvasElement | null, confettiOp
   function addParticle(particleOptions: InitialParticleOptions) {
     if (!canvas) return
 
-    // particle
-    const { initialPosition, initialSpeed, initialAngle } = particleOptions
-    const { x, y } = initialPosition
-
-    const particle: Particle = {
-      id: ++nextId.current,
-      position: { x: canvas.width * x, y: canvas.height * y },
-      velocity: {
-        x: initialSpeed * Math.cos(deg2Rad(initialAngle)),
-        y: initialSpeed * Math.sin(deg2Rad(initialAngle)),
-      },
-      size: confettiOptions.particleSize,
-      rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
-      angularSpeed: [
-        getRandomAngularSpeed(0.02, 0.05),
-        getRandomAngularSpeed(0.02, 0.05),
-        getRandomAngularSpeed(0.04, 0.09),
-      ],
-      swing: Math.random() * 2 * Math.PI,
-      color: getRandomColor(confettiOptions.colorSet),
-    }
-
+    const particleId = ++nextId.current
+    const particle = createParticle(particleId, canvas, particleOptions, confettiOptions)
     particleIds.current.push(particle.id)
     particles.current[particle.id] = particle
     setActive(true)
@@ -173,6 +164,34 @@ function addSwingMovement(particle: Particle, canvasSize: Size) {
   particle.position = { x: x + Math.cos(particle.swing) * swingX, y: y + Math.sin(particle.swing) * swingY }
 }
 
+function createParticle(
+  id: number,
+  canvas: HTMLCanvasElement,
+  particleOptions: InitialParticleOptions,
+  confettiOptions: ConfettiOptions
+) {
+  const { initialPosition, initialSpeed, initialAngle } = particleOptions
+
+  const particle: Particle = {
+    id,
+    position: { x: initialPosition.x * canvas.width, y: initialPosition.y * canvas.height },
+    velocity: {
+      x: initialSpeed * Math.cos(deg2Rad(initialAngle)),
+      y: initialSpeed * Math.sin(deg2Rad(initialAngle)),
+    },
+    size: confettiOptions.particleSize,
+    rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
+    angularSpeed: [
+      getRandomAngularSpeed(0.02, 0.05),
+      getRandomAngularSpeed(0.02, 0.05),
+      getRandomAngularSpeed(0.04, 0.09),
+    ],
+    swing: Math.random() * 2 * Math.PI,
+    color: getRandomColor(confettiOptions.colorSet),
+  }
+  return particle
+}
+
 function drawParticle(ctx: CanvasRenderingContext2D, particle: Particle) {
   const [pitch, yaw, roll] = particle.rotation
   const width = Math.max(0.2 * particle.size.width, Math.abs(particle.size.width * Math.sin(pitch)))
@@ -186,26 +205,6 @@ function drawParticle(ctx: CanvasRenderingContext2D, particle: Particle) {
   ctx.moveTo(particle.position.x - dx, particle.position.y - dy)
   ctx.lineTo(particle.position.x + dx, particle.position.y + dy)
   ctx.stroke()
-}
-
-function getRandomInRange(min: number, max: number) {
-  return min + Math.random() * (max - min)
-}
-
-function getRandomInt(min: number, max: number) {
-  const r = getRandomInRange(min, max)
-  return Math.floor(r)
-}
-
-function getRandomColor(colorSet?: string[]) {
-  if (colorSet) {
-    const index = getRandomInt(0, colorSet.length)
-    return colorSet[index]
-  }
-  const hue = getRandomInt(0, 360)
-  const sat = 100
-  const light = getRandomInt(45, 55)
-  return `hsl(${hue}, ${sat}%, ${light}%)`
 }
 
 function getRandomAngularSpeed(min: number, max: number) {
