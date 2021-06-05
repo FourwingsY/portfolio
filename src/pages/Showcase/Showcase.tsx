@@ -10,6 +10,16 @@ const Showcase = () => {
   return (
     <Layout>
       <S.Showcase>
+        <Link href="/showcase/confetti">
+          <S.Card>
+            <S.CardThumbnail>
+              <Image src="/images/posts/confetti.png" width="720" height="405" objectFit="cover" />
+            </S.CardThumbnail>
+            <S.CardBody>
+              <S.CardTitle>Coding Confetti on Canvas</S.CardTitle>
+            </S.CardBody>
+          </S.Card>
+        </Link>
         <Link href="/showcase/adaptive">
           <S.Card>
             <S.CardThumbnail>
