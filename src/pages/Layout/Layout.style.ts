@@ -7,4 +7,6 @@ export const Layout = styled.div`
   width: 100vw;
   min-height: 100vh;
 `
-export const Main = styled.main``
+export const Main = styled.main`
+  margin: 32px 0;
+`

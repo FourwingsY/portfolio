@@ -4,6 +4,8 @@ import Layout from "@pages/Layout"
 
 import Link from "@components/Link"
 
+import ScreenMonitor from "./Adaptive/ScreenMonitor"
+import FireworksCanvas from "./Confetti/FireworksCanvas"
 import * as S from "./Showcase.style"
 
 const Showcase = () => {
@@ -12,9 +14,11 @@ const Showcase = () => {
       <S.Showcase>
         <S.Card>
           <Link href="/showcase/confetti">
-            <S.CardThumbnail>
-              <Image src="/images/posts/confetti.png" width="720" height="405" objectFit="cover" />
-            </S.CardThumbnail>
+            <S.FixedRate169>
+              <S.CardThumbnail>
+                <FireworksCanvas />
+              </S.CardThumbnail>
+            </S.FixedRate169>
             <S.CardBody>
               <S.CardTitle>Coding Confetti on Canvas</S.CardTitle>
             </S.CardBody>
@@ -22,9 +26,11 @@ const Showcase = () => {
         </S.Card>
         <S.Card>
           <Link href="/showcase/adaptive">
-            <S.CardThumbnail>
-              <Image src="/images/posts/adaptive.png" width="720" height="405" objectFit="cover" />
-            </S.CardThumbnail>
+            <S.FixedRate169>
+              <S.CardThumbnail>
+                <ScreenMonitor />
+              </S.CardThumbnail>
+            </S.FixedRate169>
             <S.CardBody>
               <S.CardTitle>Adaptive Design</S.CardTitle>
             </S.CardBody>
@@ -32,9 +38,11 @@ const Showcase = () => {
         </S.Card>
         <S.Card>
           <Link href="/showcase/modal">
-            <S.CardThumbnail>
-              <Image src="/images/posts/modal.jpg" width="720" height="405" objectFit="cover" />
-            </S.CardThumbnail>
+            <S.FixedRate169>
+              <S.CardThumbnail>
+                <Image src="/images/posts/modal.jpg" layout="fill" objectFit="cover" />
+              </S.CardThumbnail>
+            </S.FixedRate169>
             <S.CardBody>
               <S.CardTitle>Modal system</S.CardTitle>
             </S.CardBody>

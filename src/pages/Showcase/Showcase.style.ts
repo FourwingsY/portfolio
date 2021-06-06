@@ -5,7 +5,6 @@ import { ContentsWidth } from "@styles/adaptive"
 export const Showcase = styled(ContentsWidth)`
   display: flex;
   flex-flow: column;
-  margin-top: 32px;
   ${({ theme }) =>
     theme.large &&
     css`
@@ -25,10 +24,22 @@ export const Card = styled.div`
       width: 48%;
     `}
 `
-export const CardThumbnail = styled.div`
+export const FixedRate169 = styled.div`
   position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+`
+export const CardThumbnail = styled.div`
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
   border-bottom: 1px solid hsl(220, 60%, 80%);
   font-size: 0;
+  overflow: hidden;
 `
 export const CardBody = styled.div`
   padding: 16px;

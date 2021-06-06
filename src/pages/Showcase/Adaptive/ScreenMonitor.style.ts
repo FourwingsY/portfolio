@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components"
 
-export const ScreenMonitor = styled.div``
+export const ScreenMonitor = styled.div`
+  width: 100%;
+`
 export const ScreenWidth = styled.p``
 export const ScreenType = styled.p``
 

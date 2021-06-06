@@ -82,7 +82,6 @@ const highlightjs_github = css`
 `
 
 export const Markdown = styled(ReactMarkdown)`
-  margin: 32px 0 16px;
   code {
     color: hsl(220, 70%, 35%);
   }
