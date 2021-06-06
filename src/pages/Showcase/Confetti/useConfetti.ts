@@ -12,13 +12,13 @@ interface Vector {
   y: number
 }
 interface ConfettiOptions {
-  particleSize: Size
   gravity: number
   friction?: number
   colorSet?: string[]
 }
 
 interface InitialParticleOptions {
+  size: Size
   initialPosition: Vector // in 0-1, relative position on canvas [x, y]
   initialSpeed: number
   initialAngle: number // 0-360
@@ -76,7 +76,7 @@ export default function useConfetti(
     return () => window.removeEventListener("resize", resizeCanvas)
   }, [canvas])
 
-  // draw next frame
+  // draw frame
   const draw = (time: number) => {
     if (!canvas) return
     const ctx = canvas.getContext("2d")!
@@ -89,13 +89,13 @@ export default function useConfetti(
 
     particleIds.current.map((id) => {
       const particle = particles.current[id]
-      addMovement(particle, dt, confettiOptions.gravity, confettiOptions.friction)
+      addMovement(particle, dt, confettiOptions)
       addRotation(particle)
-      addSwingMovement(particle, canvas)
+      addSwingMovement(particle, confettiOptions.friction)
       drawParticle(ctx, particle)
     })
 
-    // remove invisible falling
+    // remove invisible falling particles
     const invisibleFalling = particleIds.current.filter((id) => {
       const particle = particles.current[id]
       const invisible = particle.position.y > canvas.height * 1.2
@@ -105,7 +105,7 @@ export default function useConfetti(
     invisibleFalling.map((id) => delete particles.current[id])
     particleIds.current = particleIds.current.filter((id) => !invisibleFalling.includes(id))
 
-    // if particles are all gone, inactivate canvas
+    // if particles are all gone, inactivate animation
     if (particleIds.current.length === 0) {
       return setActive(false)
     }
@@ -134,8 +134,9 @@ function deg2Rad(degree: number) {
   return (degree / 180) * Math.PI
 }
 
-function addMovement(particle: Particle, dt: number, gravity: number, friction = 0) {
+function addMovement(particle: Particle, dt: number, confettiOptions: ConfettiOptions) {
   const { position, velocity } = particle
+  const { gravity, friction = 0 } = confettiOptions
 
   const { x, y } = position
   const { x: vx, y: vy } = velocity
@@ -151,17 +152,16 @@ function addRotation(particle: Particle) {
   particle.rotation = [p + dp, y + dy, r + dr]
 }
 
-function addSwingMovement(particle: Particle, canvasSize: Size) {
+function addSwingMovement(particle: Particle, friction = 0) {
   const { x, y } = particle.position
   const { y: vy } = particle.velocity
 
   // do not swing during going up
   if (vy < 0) return
-  const swingX = 0.4 * (vy / canvasSize.height)
-  const swingY = 0.4
+  const swingX = 0.05 * vy * friction
 
-  particle.swing += 0.1
-  particle.position = { x: x + Math.cos(particle.swing) * swingX, y: y + Math.sin(particle.swing) * swingY }
+  particle.swing += 0.2
+  particle.position = { x: x + Math.cos(particle.swing) * swingX, y }
 }
 
 function createParticle(
@@ -170,7 +170,7 @@ function createParticle(
   particleOptions: InitialParticleOptions,
   confettiOptions: ConfettiOptions
 ) {
-  const { initialPosition, initialSpeed, initialAngle } = particleOptions
+  const { size, initialPosition, initialSpeed, initialAngle } = particleOptions
 
   const particle: Particle = {
     id,
@@ -179,13 +179,13 @@ function createParticle(
       x: initialSpeed * Math.cos(deg2Rad(initialAngle)),
       y: initialSpeed * Math.sin(deg2Rad(initialAngle)),
     },
-    size: confettiOptions.particleSize,
     rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
     angularSpeed: [
-      getRandomAngularSpeed(0.25, 0.4),
-      getRandomAngularSpeed(0, 0), // no rotation for yaw
+      getRandomAngularSpeed(0.2, 0.25),
+      getRandomAngularSpeed(0.02, 0.04),
       getRandomAngularSpeed(0.1, 0.2),
     ],
+    size,
     swing: Math.random() * 2 * Math.PI,
     color: getRandomColor(confettiOptions.colorSet),
   }
@@ -193,16 +193,14 @@ function createParticle(
 }
 
 function drawParticle(ctx: CanvasRenderingContext2D, particle: Particle) {
-  const [pitch, _yaw, roll] = particle.rotation
-  const width = particle.size.width
-  const height = particle.size.height
+  const [pitch, yaw, roll] = particle.rotation
+  const { width, height } = particle.size
 
   // https://observablehq.com/@kelleyvanevert/projection-of-3d-models-using-javascript-and-html5-canvas
   ctx.transform(1, 0, 0, 1, particle.position.x, particle.position.y)
   ctx.transform(1, 0, 0, Math.cos(pitch), 0, 0)
-  ctx.transform(Math.cos(0), 0, 0, 1, 0, 0) // do not use yaw
+  ctx.transform(Math.cos(yaw), 0, 0, 1, 0, 0)
   ctx.transform(Math.cos(roll), -Math.sin(roll), Math.sin(roll), Math.cos(roll), 0, 0)
-  ctx.beginPath()
   ctx.fillStyle = particle.color
   ctx.fillRect(-width / 2, -height / 2, width, height)
   ctx.resetTransform()
