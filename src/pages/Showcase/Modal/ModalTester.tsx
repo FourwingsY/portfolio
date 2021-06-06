@@ -1,10 +1,16 @@
 import modalActions from "@store/modal/modal.actions"
 import { useDispatch } from "@store/useStore"
 
+import usePreloadModal from "@modals/usePreload"
+
 import * as S from "./ModalTester.style"
 
 const ModalTester = () => {
   const dispatch = useDispatch()
+
+  // preload some modal which has mounting animation
+  usePreloadModal("Slideup")
+  usePreloadModal("Information")
 
   function openAlert() {
     dispatch(modalActions.openModal({ type: "Alert", props: { title: "You need to know", message: "This is Alert" } }))
@@ -34,7 +40,7 @@ const ModalTester = () => {
       modalActions.openModal({
         type: "Slideup",
         props: { message: "Ta da!" },
-        overlayOptions: { dim: false, closeOnOverlayClick: false, closeDelay: 500 },
+        overlayOptions: { dim: false, closeOnOverlayClick: false, preventScroll: false, closeDelay: 500 },
       })
     )
   }

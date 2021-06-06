@@ -39,6 +39,7 @@ const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, prop
 
   // asynchronously import modal file: for reduce bundle size.
   // this may trigger initial openModal could be delayed.
+  // if you don't want to be delayed, use usePreloadModal hook
   useEffect(() => {
     void import(`./${type}`).then((modal: ImportedModule) => {
       setComponent(() => modal.default)
@@ -50,8 +51,7 @@ const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, prop
   if (!Component) return null
   return (
     <ModalOverlay {...overlayOptions} closeSelf={close}>
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-      <Component {...(props as any)} />
+      <Component {...props} />
     </ModalOverlay>
   )
 }
