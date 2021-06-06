@@ -62,6 +62,7 @@ export default function useConfetti(
       window.cancelAnimationFrame(drawHandle.current)
       callbacks?.onStop?.()
     }
+    return () => window.cancelAnimationFrame(drawHandle.current)
   }, [active])
 
   useEffect(() => {

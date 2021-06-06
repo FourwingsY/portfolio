@@ -270,28 +270,25 @@ const draw = (time: number) => {
 이 페이지 상단에 있는 예제는 아래와 같은 코드를 통해 파티클이 쏘아진다.
 
 ```ts
-const { addParticle, stop, resume } = useConfetti(
-  canvas.current,
-  {
-    gravity: 1000,
-    friction: 0.04,
-    colorSet: ["red", "aqua", "orange", "deeppink", "greenyellow", "magenta", "yellow", "dodgerblue"],
-  },
-  { onStart: () => setPlaying(true), onStop: () => setPlaying(false) }
-)
+const confettiOptions = {
+  gravity: 1000,
+  friction: 0.04,
+  colorSet: ["red", "aqua", "orange", "deeppink", "greenyellow", "magenta", "yellow", "dodgerblue"],
+}
+
+const { addParticle, stop, resume } = useConfetti(canvas, confettiOptions, { 
+  onStart: () => setPlaying(true), 
+  onStop: () => setPlaying(false),
+})
 
 function handleClick() {
   for (let i = 0; i < 30; i += 1) {
-    const angle = randomRange(-75, -105)
-    const speed = randomRange(1300, 1600)
     addParticle({
       size: { width: 10, height: 10 },
       initialPosition: { x: 0.5, y: 1 },
-      initialSpeed: speed,
-      initialAngle: angle,
+      initialSpeed: randomRange(1300, 1600),
+      initialAngle: randomRange(-75, -105),
     })
   }
 }
 ```
-
-그러니까, 이 옵션들을 잘 조정하면 아래와 같은 이펙트도 가능하다.

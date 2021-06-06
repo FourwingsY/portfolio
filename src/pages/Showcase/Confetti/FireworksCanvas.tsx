@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 
 import { getRandomInRange } from "@utils/random"
@@ -6,20 +6,19 @@ import { getRandomInRange } from "@utils/random"
 import useConfetti from "./useConfetti"
 
 const FireworksCanvas = () => {
-  const canvas = useRef<HTMLCanvasElement>(null)
-  useEffect(() => {
-    shoot()
-  }, [canvas.current])
+  const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
 
-  const { addParticle } = useConfetti(
-    canvas.current,
-    {
-      gravity: 500,
-      friction: 0.03,
-      colorSet: ["hsl(0, 70%, 50%)", "hsl(0, 70%, 70%)", "hsl(0, 90%, 50%)", "hsl(0, 90%, 70%)", "hsl(0, 90%, 80%)"],
-    },
-    { onStop: shoot }
-  )
+  // shoot on mount
+  useEffect(() => {
+    if (canvas) shoot()
+  }, [canvas])
+
+  const confettiOptions = {
+    gravity: 500,
+    friction: 0.03,
+    colorSet: ["hsl(0, 70%, 50%)", "hsl(0, 70%, 70%)", "hsl(0, 90%, 50%)", "hsl(0, 90%, 70%)", "hsl(0, 90%, 80%)"],
+  }
+  const { addParticle } = useConfetti(canvas, confettiOptions, { onStop: shoot })
 
   function shoot() {
     for (let i = 0; i < 70; i += 1) {
@@ -36,7 +35,7 @@ const FireworksCanvas = () => {
 
   return (
     <>
-      <Canvas ref={canvas} />
+      <Canvas ref={setCanvas} />
       <p>Auto-playing!</p>
     </>
   )
