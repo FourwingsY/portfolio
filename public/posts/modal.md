@@ -37,7 +37,6 @@ return <Alert message="Hello" />
 
 일단 첫 구상은 이런 것에서 시작했다.
 
-<!-- prettier-ignore -->
 ```ts
 import Alert from "./Alert"
 import Confirm from "./Confirm"
@@ -66,7 +65,6 @@ type OpenModalPayload<T extends ModalType> = { type: T; props: ModalProps<T> }
 `@reduxjs/toolkit` 혹은 `typesafe-actions`. 요즘엔 리덕스툴킷이 "공식"의 이름을 업고 승기를 이미 잡아가는 듯 하다.
 한번 `@reduxjs/toolkit`의 createAction에 이 Payload 타입을 적용해보자!
 
-<!-- prettier-ignore -->
 ```ts
 import { createAction } from "@reduxjs/toolkit"
 const openModal = createAction<OpenModalPayload<ModalType>>("@modal/OPEN_MODAL")
