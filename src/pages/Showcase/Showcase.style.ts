@@ -1,9 +1,17 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
 
 export const Showcase = styled(ContentsWidth)`
+  display: flex;
+  flex-flow: column;
   margin-top: 32px;
+  ${({ theme }) =>
+    theme.large &&
+    css`
+      flex-flow: row wrap;
+      justify-content: space-between;
+    `}
 `
 export const Card = styled.div`
   margin: 16px 0;
@@ -11,6 +19,11 @@ export const Card = styled.div`
   border-radius: 16px;
   overflow: hidden;
   transform: translateZ(0);
+  ${({ theme }) =>
+    theme.large &&
+    css`
+      width: 48%;
+    `}
 `
 export const CardThumbnail = styled.div`
   position: relative;

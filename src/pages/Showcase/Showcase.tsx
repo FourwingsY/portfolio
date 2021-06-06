@@ -10,36 +10,36 @@ const Showcase = () => {
   return (
     <Layout>
       <S.Showcase>
-        <Link href="/showcase/confetti">
-          <S.Card>
+        <S.Card>
+          <Link href="/showcase/confetti">
             <S.CardThumbnail>
               <Image src="/images/posts/confetti.png" width="720" height="405" objectFit="cover" />
             </S.CardThumbnail>
             <S.CardBody>
               <S.CardTitle>Coding Confetti on Canvas</S.CardTitle>
             </S.CardBody>
-          </S.Card>
-        </Link>
-        <Link href="/showcase/adaptive">
-          <S.Card>
+          </Link>
+        </S.Card>
+        <S.Card>
+          <Link href="/showcase/adaptive">
             <S.CardThumbnail>
               <Image src="/images/posts/adaptive.png" width="720" height="405" objectFit="cover" />
             </S.CardThumbnail>
             <S.CardBody>
               <S.CardTitle>Adaptive Design</S.CardTitle>
             </S.CardBody>
-          </S.Card>
-        </Link>
-        <Link href="/showcase/modal">
-          <S.Card>
+          </Link>
+        </S.Card>
+        <S.Card>
+          <Link href="/showcase/modal">
             <S.CardThumbnail>
               <Image src="/images/posts/modal.jpg" width="720" height="405" objectFit="cover" />
             </S.CardThumbnail>
             <S.CardBody>
               <S.CardTitle>Modal system</S.CardTitle>
             </S.CardBody>
-          </S.Card>
-        </Link>
+          </Link>
+        </S.Card>
       </S.Showcase>
     </Layout>
   )
