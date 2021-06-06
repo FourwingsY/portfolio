@@ -10,9 +10,9 @@ const ConfettiCanvas = () => {
   const { addParticle, stop, resume } = useConfetti(
     canvas.current,
     {
-      particleSize: { width: 6, height: 16 },
+      particleSize: { width: 10, height: 10 },
       gravity: 1000,
-      friction: 0.02,
+      friction: 0.04,
       colorSet: ["red", "aqua", "orange", "deeppink", "greenyellow", "magenta", "yellow", "dodgerblue"],
     },
     { onStart: () => setPlaying(true), onStop: () => setPlaying(false) }
@@ -21,7 +21,7 @@ const ConfettiCanvas = () => {
   function handleClick() {
     for (let i = 0; i < 30; i += 1) {
       const angle = randomRange(-75, -105)
-      const speed = randomRange(1000, 1200)
+      const speed = randomRange(1300, 1600)
       addParticle({ initialPosition: { x: 0.5, y: 1 }, initialSpeed: speed, initialAngle: angle })
     }
   }

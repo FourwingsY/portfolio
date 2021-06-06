@@ -182,9 +182,9 @@ function createParticle(
     size: confettiOptions.particleSize,
     rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI],
     angularSpeed: [
-      getRandomAngularSpeed(0.02, 0.05),
-      getRandomAngularSpeed(0.02, 0.05),
-      getRandomAngularSpeed(0.04, 0.09),
+      getRandomAngularSpeed(0.25, 0.4),
+      getRandomAngularSpeed(0, 0), // no rotation for yaw
+      getRandomAngularSpeed(0.1, 0.2),
     ],
     swing: Math.random() * 2 * Math.PI,
     color: getRandomColor(confettiOptions.colorSet),
@@ -193,18 +193,19 @@ function createParticle(
 }
 
 function drawParticle(ctx: CanvasRenderingContext2D, particle: Particle) {
-  const [pitch, yaw, roll] = particle.rotation
-  const width = Math.max(0.2 * particle.size.width, Math.abs(particle.size.width * Math.sin(pitch)))
-  const height = particle.size.height * Math.cos(yaw)
+  const [pitch, _yaw, roll] = particle.rotation
+  const width = particle.size.width
+  const height = particle.size.height
 
+  // https://observablehq.com/@kelleyvanevert/projection-of-3d-models-using-javascript-and-html5-canvas
+  ctx.transform(1, 0, 0, 1, particle.position.x, particle.position.y)
+  ctx.transform(1, 0, 0, Math.cos(pitch), 0, 0)
+  ctx.transform(Math.cos(0), 0, 0, 1, 0, 0) // do not use yaw
+  ctx.transform(Math.cos(roll), -Math.sin(roll), Math.sin(roll), Math.cos(roll), 0, 0)
   ctx.beginPath()
-  ctx.lineWidth = width
-  ctx.strokeStyle = particle.color
-  const dx = height * Math.cos(roll)
-  const dy = height * Math.sin(roll)
-  ctx.moveTo(particle.position.x - dx, particle.position.y - dy)
-  ctx.lineTo(particle.position.x + dx, particle.position.y + dy)
-  ctx.stroke()
+  ctx.fillStyle = particle.color
+  ctx.fillRect(-width / 2, -height / 2, width, height)
+  ctx.resetTransform()
 }
 
 function getRandomAngularSpeed(min: number, max: number) {
