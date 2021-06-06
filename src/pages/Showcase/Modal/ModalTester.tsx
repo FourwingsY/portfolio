@@ -9,8 +9,7 @@ const ModalTester = () => {
   const dispatch = useDispatch()
 
   // preload some modal which has mounting animation
-  usePreloadModal("Slideup")
-  usePreloadModal("Information")
+  usePreloadModal("Slideup", "Information")
 
   function openAlert() {
     dispatch(modalActions.openModal({ type: "Alert", props: { title: "You need to know", message: "This is Alert" } }))

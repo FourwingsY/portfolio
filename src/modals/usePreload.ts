@@ -6,6 +6,6 @@ import { ModalType } from "./types"
  * but not useful when modal is big and rarely opened
  * @param modalName
  */
-export default function usePreloadModal(modalName: ModalType): void {
-  import(`./${modalName}`)
+export default function usePreloadModal(...modalNames: ModalType[]): void {
+  modalNames.map((modalName) => import(`./${modalName}`))
 }

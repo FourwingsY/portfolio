@@ -1,4 +1,7 @@
-import Image from "next/image"
+import { useRouter } from "next/router"
+
+import modalActions from "@store/modal/modal.actions"
+import { useDispatch } from "@store/useStore"
 
 import Layout from "@pages/Layout"
 
@@ -9,6 +12,22 @@ import FireworksCanvas from "./Confetti/FireworksCanvas"
 import * as S from "./Showcase.style"
 
 const Showcase = () => {
+  const dispatch = useDispatch()
+  const router = useRouter()
+  function openModal(e: React.MouseEvent) {
+    e.preventDefault()
+    dispatch(
+      modalActions.openModal({
+        type: "Alert",
+        props: {
+          message: "Wanna read my post?",
+          confirmText: "Sure",
+          onConfirm: () => router.push("/showcase/modal"),
+        },
+      })
+    )
+  }
+
   return (
     <Layout>
       <S.Showcase>
@@ -40,11 +59,11 @@ const Showcase = () => {
           <Link href="/showcase/modal">
             <S.FixedRate169>
               <S.CardThumbnail>
-                <Image src="/images/posts/modal.jpg" layout="fill" objectFit="cover" />
+                <S.Button onClick={openModal}>Open Modal</S.Button>
               </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>
-              <S.CardTitle>Modal system</S.CardTitle>
+              <S.CardTitle>Typed Modal system</S.CardTitle>
             </S.CardBody>
           </Link>
         </S.Card>

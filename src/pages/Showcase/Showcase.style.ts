@@ -35,6 +35,7 @@ export const CardThumbnail = styled.div`
   top: 0;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   border-bottom: 1px solid hsl(220, 60%, 80%);
@@ -46,4 +47,13 @@ export const CardBody = styled.div`
 `
 export const CardTitle = styled.p`
   font-weight: bold;
+`
+
+export const Button = styled.button`
+  position: relative;
+  background: hsl(220, 60%, 50%);
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  z-index: 1;
 `

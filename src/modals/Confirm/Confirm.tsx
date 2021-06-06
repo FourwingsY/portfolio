@@ -8,8 +8,26 @@ interface Props extends BasicModalProps {
   message: string
   confirmText?: string
   cancelText?: string
+  onConfirm?(): void
+  onCancel?(): void
 }
-const Confirm: React.FC<Props> = ({ title, message, confirmText = "확인", cancelText = "취소", close }) => {
+const Confirm: React.FC<Props> = ({
+  title,
+  message,
+  confirmText = "확인",
+  cancelText = "취소",
+  onConfirm,
+  onCancel,
+  close,
+}) => {
+  function handleConfirm() {
+    onConfirm?.()
+    close()
+  }
+  function handleCancel() {
+    onCancel?.()
+    close()
+  }
   return (
     <CS.Modal>
       {title && <CS.Title>{title}</CS.Title>}
@@ -17,8 +35,8 @@ const Confirm: React.FC<Props> = ({ title, message, confirmText = "확인", canc
         <CS.Message noTitle={!title}>{message}</CS.Message>
       </CS.Body>
       <CS.Buttons>
-        <S.ConfirmButton onClick={close}>{confirmText}</S.ConfirmButton>
-        <S.CancelButton onClick={close}>{cancelText}</S.CancelButton>
+        <S.ConfirmButton onClick={handleConfirm}>{confirmText}</S.ConfirmButton>
+        <S.CancelButton onClick={handleCancel}>{cancelText}</S.CancelButton>
       </CS.Buttons>
     </CS.Modal>
   )
