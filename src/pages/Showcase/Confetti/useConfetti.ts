@@ -126,7 +126,7 @@ export default function useConfetti(
 
   return {
     addParticle,
-    stop: () => setActive(false),
+    pause: () => setActive(false),
     resume: () => setActive(true),
   }
 }
