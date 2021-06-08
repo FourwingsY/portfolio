@@ -11,13 +11,13 @@ interface Vector {
   x: number
   y: number
 }
-interface ConfettiOptions {
+export interface ConfettiOptions {
   gravity: number
   friction?: number
   colorSet?: string[]
 }
 
-interface InitialParticleOptions {
+export interface ParticleOptions {
   size: Size
   initialPosition: Vector // in 0-1, relative position on canvas [x, y]
   initialSpeed: number
@@ -114,7 +114,7 @@ export default function useConfetti(
     drawHandle.current = window.requestAnimationFrame(draw)
   }
 
-  function addParticle(particleOptions: InitialParticleOptions) {
+  function addParticle(particleOptions: ParticleOptions) {
     if (!canvas) return
 
     const particleId = ++nextId.current
@@ -168,7 +168,7 @@ function addSwingMovement(particle: Particle, friction = 0) {
 function createParticle(
   id: number,
   canvas: HTMLCanvasElement,
-  particleOptions: InitialParticleOptions,
+  particleOptions: ParticleOptions,
   confettiOptions: ConfettiOptions
 ) {
   const { size, initialPosition, initialSpeed, initialAngle } = particleOptions
