@@ -19,8 +19,8 @@ const FireworksCanvas = () => {
 
   // shoot on mount
   useEffect(() => {
-    if (canvas) shoot()
-  }, [canvas])
+    if (initialized) shoot()
+  }, [initialized])
 
   function shoot() {
     for (let i = 0; i < 70; i += 1) {
@@ -28,7 +28,7 @@ const FireworksCanvas = () => {
       const speed = getRandomInRange(100, 600)
       addParticle({
         size: { width: 10, height: 10 },
-        initialPosition: { x: 0.5, y: 0.3 },
+        initialPosition: { x: 0.5, y: 0.4 },
         initialSpeed: speed,
         initialAngle: angle,
       })

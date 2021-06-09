@@ -45,15 +45,33 @@ export default function useConfetti(
   confettiOptions: ConfettiOptions,
   callbacks?: Callbacks
 ) {
+  const [initialized, setInitialized] = useState(false)
+  const [active, setActive] = useState(false)
   const particles = useRef<{ [id: number]: Particle }>({})
   const particleIds = useRef<number[]>([])
   const nextId = useRef<number>(0)
   const prevFrame = useRef<number>(0)
   const drawHandle = useRef<number>(0)
-  const [active, setActive] = useState(false)
+
+  // initialize canvas size
+  useEffect(() => {
+    function resizeCanvas() {
+      if (!canvas) return
+      canvas.width = canvas.clientWidth
+      canvas.height = canvas.clientHeight
+    }
+    resizeCanvas()
+    if (canvas) {
+      setInitialized(true)
+    }
+
+    window.addEventListener("resize", resizeCanvas)
+    return () => window.removeEventListener("resize", resizeCanvas)
+  }, [canvas])
 
   // start draw when active
   useEffect(() => {
+    if (!initialized) return
     if (active) {
       window.requestAnimationFrame((t) => (prevFrame.current = t))
       drawHandle.current = window.requestAnimationFrame(draw)
@@ -63,7 +81,7 @@ export default function useConfetti(
       callbacks?.onStop?.()
     }
     return () => window.cancelAnimationFrame(drawHandle.current)
-  }, [active])
+  }, [initialized, active])
 
   // reset on confettiOptions are changed
   useEffect(() => reset(), [confettiOptions])
@@ -125,6 +143,7 @@ export default function useConfetti(
   }
 
   return {
+    initialized,
     addParticle,
     pause: () => setActive(false),
     resume: () => setActive(true),
