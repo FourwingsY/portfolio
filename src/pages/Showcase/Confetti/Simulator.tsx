@@ -8,6 +8,7 @@ import useConfetti from "./useConfetti"
 interface ConfettiOptionsInput {
   gravity: number
   friction: number
+  colorSet?: string[]
 }
 interface ParticleOptionsInput {
   width: number
@@ -24,8 +25,11 @@ const Simulator = () => {
   const canvasRect = useRef<DOMRect>()
   const [playing, setPlaying] = useState(false)
   const [coord, setCoord] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
-  const [confettiOptions, setConfettiOptions] = useState<ConfettiOptionsInput>({ gravity: 1000, friction: 0.02 })
-  const [colorSet, setColorSet] = useState<string>("green #dddd00 hsl(240,100%,50%) red")
+  const [confettiOptions, setConfettiOptions] = useState<ConfettiOptionsInput>({
+    gravity: 1000,
+    friction: 0.02,
+    colorSet: ["green", "#dddd00", "hsl(240,100%,50%)", "red"],
+  })
   const [particleOptions, setParticleOptions] = useState<ParticleOptionsInput>({
     width: 10,
     height: 10,
@@ -36,11 +40,10 @@ const Simulator = () => {
     count: 5,
   })
 
-  const { addParticle, pause, resume } = useConfetti(
-    canvas,
-    { ...confettiOptions, colorSet: colorSet.split(" ") },
-    { onStart: () => setPlaying(true), onStop: () => setPlaying(false) }
-  )
+  const { addParticle, pause, resume } = useConfetti(canvas, confettiOptions, {
+    onStart: () => setPlaying(true),
+    onStop: () => setPlaying(false),
+  })
 
   function handleClick(e: React.MouseEvent<HTMLCanvasElement>) {
     const rect = canvasRect.current
@@ -67,7 +70,10 @@ const Simulator = () => {
 
   function handleColorSet(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.currentTarget.value
-    setColorSet(value.replace(/\s\s/g, " ").replace(/,\s/g, ","))
+    setConfettiOptions({
+      ...confettiOptions,
+      colorSet: value.trim().replace(/\s\s/g, " ").replace(/,\s/g, ",").split(" "),
+    })
   }
 
   function handleConfettiOption(name: string) {
@@ -137,8 +143,8 @@ const Simulator = () => {
         </S.Row>
         <S.Row>
           <S.LabelText>파티클 색상</S.LabelText>
-          <S.InputText value={colorSet} onChange={handleColorSet} />
-          <S.Value>{colorSet.trim().split(" ").length}색</S.Value>
+          <S.InputText defaultValue={confettiOptions.colorSet?.join(" ")} onChange={handleColorSet} />
+          <S.Value>{confettiOptions.colorSet?.length}색</S.Value>
         </S.Row>
         <S.Row>
           <S.LabelText>파티클 width</S.LabelText>

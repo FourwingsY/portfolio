@@ -65,17 +65,8 @@ export default function useConfetti(
     return () => window.cancelAnimationFrame(drawHandle.current)
   }, [active])
 
-  useEffect(() => {
-    function resizeCanvas() {
-      if (!canvas) return
-      canvas.width = canvas.clientWidth
-      canvas.height = canvas.clientHeight
-    }
-    resizeCanvas()
-
-    window.addEventListener("resize", resizeCanvas)
-    return () => window.removeEventListener("resize", resizeCanvas)
-  }, [canvas])
+  // reset on confettiOptions are changed
+  useEffect(() => reset(), [confettiOptions])
 
   // draw frame
   const draw = (time: number) => {
@@ -122,6 +113,15 @@ export default function useConfetti(
     particleIds.current.push(particle.id)
     particles.current[particle.id] = particle
     setActive(true)
+  }
+
+  function reset() {
+    setActive(false)
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")!
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    particleIds.current = []
+    particles.current = {}
   }
 
   return {
