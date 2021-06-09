@@ -14,6 +14,7 @@ interface Vector {
 export interface ConfettiOptions {
   gravity: number
   friction?: number
+  margin?: number // remove particles that's going too far from canvas. default: 0.2
   colorSet?: string[]
 }
 
@@ -105,15 +106,18 @@ export default function useConfetti(
       drawParticle(ctx, particle)
     })
 
-    // remove invisible falling particles
-    const invisibleFalling = particleIds.current.filter((id) => {
+    // remove invisible particles
+    const margin = confettiOptions.margin || 0.2
+    const invisible = particleIds.current.filter((id) => {
       const particle = particles.current[id]
-      const invisible = particle.position.y > canvas.height * 1.2
-      const falling = particle.velocity.y > 0
-      return invisible && falling
+      const invisibleTop = particle.position.y < -canvas.height * margin && particle.velocity.y < 0
+      const invisibleBottom = particle.position.y > canvas.height * (1 + margin) && particle.velocity.y > 0
+      const invisibleLeft = particle.position.x < -canvas.width * margin && particle.velocity.x < 0
+      const invisibleRight = particle.position.x > canvas.width * (1 + margin) && particle.velocity.x > 0
+      return invisibleTop || invisibleBottom || invisibleLeft || invisibleRight
     })
-    invisibleFalling.map((id) => delete particles.current[id])
-    particleIds.current = particleIds.current.filter((id) => !invisibleFalling.includes(id))
+    invisible.map((id) => delete particles.current[id])
+    particleIds.current = particleIds.current.filter((id) => !invisible.includes(id))
 
     // if particles are all gone, inactivate animation
     if (particleIds.current.length === 0) {
