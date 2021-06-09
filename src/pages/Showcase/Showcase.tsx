@@ -59,7 +59,7 @@ const Showcase = () => {
           <Link href="/showcase/modal">
             <S.FixedRate169>
               <S.CardThumbnail>
-                <S.Button onClick={openModal}>Open Modal</S.Button>
+                <S.Button onClick={openModal}>Read This</S.Button>
               </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>

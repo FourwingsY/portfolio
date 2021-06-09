@@ -56,4 +56,16 @@ export const Button = styled.button`
   font-size: 16px;
   color: white;
   z-index: 1;
+  box-shadow: 0 3px 1px #333;
+  transition: all 0.2s;
+  &:hover {
+    background: hsl(220, 60%, 60%);
+    box-shadow: 0 2px 1px black;
+    transform: translateY(1px);
+  }
+  &:active {
+    background: hsl(220, 60%, 70%);
+    box-shadow: 0 1px 1px black;
+    transform: translateY(2px);
+  }
 `
