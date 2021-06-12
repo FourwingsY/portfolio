@@ -8,7 +8,7 @@ const ScreenMonitor: React.FC = () => {
   const screenWidth = useScreenWidth()
   const { mobile, tabletP, tabletL, desktop, large, small, tooSmall } = useResponsiveContext()
 
-  const pseudoScreenWidth = Math.min(screenWidth, 1450)
+  const pseudoScreenWidth = Math.min(screenWidth, 1420)
   return (
     <S.ScreenMonitor>
       <S.ScreenMeter viewBox="0 -250 1500 600">
@@ -48,12 +48,12 @@ const ScreenMonitor: React.FC = () => {
           <path className="1200" d="M1200 0 V220" />
         </g>
         <path className="number-line" d="M0 0 H1500" stroke="black" strokeWidth="2" />
-        <g className="yours">
-          <path d={`M${pseudoScreenWidth} -100 V 350`} stroke="red" strokeWidth="3" />
-          <S.SmallText x={pseudoScreenWidth} y="-170">
+        <g className="yours" transform={`translate(${pseudoScreenWidth} 0)`}>
+          <path d={`M0 -100 V 350`} stroke="red" strokeWidth="3" />
+          <S.SmallText x="0" y="-170">
             Your screen
           </S.SmallText>
-          <S.Text x={pseudoScreenWidth} y="-120" active>
+          <S.Text x="0" y="-120" active>
             {screenWidth}
           </S.Text>
         </g>

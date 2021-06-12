@@ -6,7 +6,11 @@ export const ScreenMonitor = styled.div`
 export const ScreenWidth = styled.p``
 export const ScreenType = styled.p``
 
-export const ScreenMeter = styled.svg``
+export const ScreenMeter = styled.svg`
+  .yours {
+    transition: transform 1s;
+  }
+`
 
 const fontSize = css`
   ${({ theme }) => (theme.desktop ? 30 : theme.tabletL ? 40 : theme.tabletP ? 50 : 60)}
