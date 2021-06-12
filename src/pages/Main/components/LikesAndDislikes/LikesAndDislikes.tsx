@@ -1,5 +1,5 @@
 import ReactIcon from "@icons/ReactIcon"
-import TypeScript from "@icons/Typescript"
+import TypeScript from "@icons/TypeScript"
 
 import * as S from "./LikesAndDislikes.style"
 
