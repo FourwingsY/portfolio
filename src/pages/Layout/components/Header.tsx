@@ -1,6 +1,7 @@
 import { useHideOnScrollDown } from "@hooks/useScroll"
 
-import { ContentsWidth } from "@styles/adaptive"
+import Github from "@icons/Github"
+import LinkedIn from "@icons/LinkedIn"
 
 import * as S from "./Header.style"
 import NavLink from "./NavLink"
@@ -9,14 +10,22 @@ const Header = () => {
   const hide = useHideOnScrollDown({ minimumScroll: 200 })
   return (
     <S.Header hide={hide}>
-      <ContentsWidth>
+      <S.Wrapper>
         <S.NavGroup>
-          <NavLink href="/">Home</NavLink>
+          <NavLink href="/">YG</NavLink>
           <NavLink href="/showcase" includeChildPath>
             Showcase
           </NavLink>
         </S.NavGroup>
-      </ContentsWidth>
+        <S.NavGroup>
+          <S.ExternalLink href="https://www.linkedin.com/in/fourwingsy/">
+            <LinkedIn width={24} height={24} color="white" />
+          </S.ExternalLink>
+          <S.ExternalLink href="https://github.com/fourwingsy">
+            <Github width={26} height={26} color="white" />
+          </S.ExternalLink>
+        </S.NavGroup>
+      </S.Wrapper>
     </S.Header>
   )
 }

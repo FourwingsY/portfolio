@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components"
 
+import { ContentsWidth } from "@styles/adaptive"
 import { POSITION } from "@styles/zIndex"
 
 const hidden = css`
@@ -21,6 +22,12 @@ export const Header = styled.header<{ hide?: boolean }>`
   transition: transform 0.5s;
   z-index: ${POSITION};
   ${({ hide }) => hide && hidden}
+`
+
+export const Wrapper = styled(ContentsWidth)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 export const NavGroup = styled.nav`
@@ -67,4 +74,12 @@ export const NavLink = styled.span<{ match: boolean }>`
         transform: translateY(0);
       }
     `}
+`
+
+export const ExternalLink = styled.a`
+  margin-left: 1rem;
+  transition: transform 0.3s;
+  &:hover {
+    opacity: 0.8;
+  }
 `
