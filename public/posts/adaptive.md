@@ -1,4 +1,9 @@
-# Adaptive Design
+---
+title: Adaptive Design 구현하기
+author: HS Yang
+written: 2021.05.29
+---
+# Adaptive Design 구현하기
 
 적응형 디자인을 위한 코딩
 

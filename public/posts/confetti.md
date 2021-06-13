@@ -1,3 +1,8 @@
+---
+title: Coding Confetti on Canvas
+author: HS Yang
+written: 2021.06.08
+---
 # Coding Confetti on Canvas
 
 캔버스에 폭죽 효과 렌더링하기: [TSParticles](https://particles.js.org)의 [confetti demo](https://codepen.io/matteobruni/pen/NWdKwXG) 같은 것을 만들어보자.

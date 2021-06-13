@@ -1,3 +1,8 @@
+---
+title: Typed Modal system
+author: HS Yang
+written: 2021.05.31
+---
 # Typed Modal system
 
 타입 검증을 보장하는 모달 시스템을 위한 구조 설계
