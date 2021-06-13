@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 
-import { getRandomInRange } from "@utils/random"
+import useConfetti from "@hooks/useConfetti"
 
-import useConfetti from "./useConfetti"
+import { getRandomInRange } from "@utils/random"
 
 // if confettiOptions is object created in component => useConfetti will notice it has been changed. and reset everytime.
 const confettiOptions = {

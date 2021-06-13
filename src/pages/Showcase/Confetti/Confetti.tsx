@@ -2,14 +2,14 @@ import Layout from "@pages/Layout"
 
 import { ContentsWidth } from "@styles/adaptive"
 
+import LiveExample from "../components/LiveExample"
 import Post from "../components/Post"
-import Simulator from "./Simulator"
 
 const Confetti = () => {
   return (
     <Layout>
       <ContentsWidth>
-        <Simulator />
+        <LiveExample post="confetti" />
         <Post markdownPath="/posts/confetti.md" />
       </ContentsWidth>
     </Layout>

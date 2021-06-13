@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react"
 
+import useConfetti from "@hooks/useConfetti"
+
 import { getRandomInRange, getRandomInt } from "@utils/random"
 
 import * as S from "./Simulator.style"
-import useConfetti from "./useConfetti"
 
 interface ConfettiOptionsInput {
   gravity: number

@@ -6,11 +6,11 @@ import { useDispatch } from "@store/useStore"
 import Layout from "@pages/Layout"
 
 import Link from "@components/Link"
+import ScreenMonitor from "@examples/adaptive/ScreenMonitor"
+import FireworksCanvas from "@examples/confetti/FireworksCanvas"
 import External from "@icons/External"
 import Medium from "@icons/Medium"
 
-import ScreenMonitor from "./Adaptive/ScreenMonitor"
-import FireworksCanvas from "./Confetti/FireworksCanvas"
 import * as S from "./Showcase.style"
 
 const mediumPosts = [

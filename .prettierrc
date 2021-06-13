@@ -6,7 +6,7 @@
     "^(@store)/(.*)$",
     "^(@modals|@pages)/(.*)$",
     "^(@hocs|@hooks)/(.*)$",
-    "^(@components|@icons)/(.*)$",
+    "^(@components|@examples|@icons)/(.*)$",
     "^(@utils|@styles|@constants)/(.*)$",
     "^[./]"
   ],

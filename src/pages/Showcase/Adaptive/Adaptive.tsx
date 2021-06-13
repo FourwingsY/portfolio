@@ -2,15 +2,15 @@ import Layout from "@pages/Layout"
 
 import { ContentsWidth } from "@styles/adaptive"
 
+import LiveExample from "../components/LiveExample"
 import Post from "../components/Post"
-import ScreenMonitor from "./ScreenMonitor"
 
 const Adaptive = () => {
   return (
     <Layout>
       <ContentsWidth>
+        <LiveExample post="adaptive" />
         <Post markdownPath="/posts/adaptive.md" />
-        <ScreenMonitor />
       </ContentsWidth>
     </Layout>
   )
