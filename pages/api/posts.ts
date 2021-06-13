@@ -3,21 +3,15 @@ import metadataParser from "markdown-yaml-metadata-parser"
 import { NextApiHandler } from "next"
 import path from "path"
 
-interface PostMetadata {
-  key: string
-  title: string
-  author: string
-  written: string
-}
 const POSTS_DIR = "./public/posts"
 const handler: NextApiHandler = async (req, res) => {
   const markdowns = await fs.readdir(POSTS_DIR)
   const metadatas = await Promise.all(
     markdowns.map(async (md) => {
-      const key = md.replace(/\.md/, "")
-      const text = await (await fs.readFile(path.join(POSTS_DIR, md))).toString()
+      const id = md.replace(/\.md/, "")
+      const text = await fs.readFile(path.join(POSTS_DIR, md)).then((f) => f.toString())
       const parsed = metadataParser(text)
-      return { key, ...parsed.metadata } as PostMetadata
+      return { id, ...parsed.metadata } as Post.Metadata
     })
   )
   // sort by recent first

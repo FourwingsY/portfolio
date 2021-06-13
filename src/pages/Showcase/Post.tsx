@@ -6,14 +6,14 @@ import LiveExample from "./components/LiveExample"
 import Post from "./components/Post"
 
 interface SSGProps {
-  post?: string
+  post: Post.Parsed
 }
 const ShowcasePost: React.FC<SSGProps> = ({ post }) => {
   return (
     <Layout>
       <ContentsWidth>
-        {post && <LiveExample post={post} />}
-        <Post markdownPath={`/posts/${post}.md`} />
+        <LiveExample postId={post.metadata.id} />
+        <Post content={post.content} />
       </ContentsWidth>
     </Layout>
   )

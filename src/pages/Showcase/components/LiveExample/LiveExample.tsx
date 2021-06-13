@@ -5,16 +5,16 @@ interface ImportedModule {
 }
 
 interface Props {
-  post: string
+  postId: string
 }
-const LiveExample: React.FC<Props> = ({ post }) => {
+const LiveExample: React.FC<Props> = ({ postId }) => {
   const [Component, setComponent] = useState<React.ComponentType>()
 
   useEffect(() => {
-    void import(`@examples/${post}`).then((module: ImportedModule) => {
+    void import(`@examples/${postId}`).then((module: ImportedModule) => {
       setComponent(() => module.default)
     })
-  }, [post])
+  }, [postId])
 
   if (!Component) return null
   return <Component />
