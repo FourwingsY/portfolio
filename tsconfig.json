@@ -11,16 +11,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@constants/*": ["src/constants/*"],
-      "@hocs/*": ["src/hocs/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@icons/*": ["src/icons/*"],
-      "@modals/*": ["src/modals/*"],
-      "@pages/*": ["src/pages/*"],
-      "@store/*": ["src/store/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"]
+      "@*": ["src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

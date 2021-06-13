@@ -1,4 +1,4 @@
-import { Modals } from "./register"
+import { Modals } from "./_register"
 
 export type ModalType = keyof Modals
 export type ModalProps<T extends ModalType> = React.ComponentProps<Modals[T]>
