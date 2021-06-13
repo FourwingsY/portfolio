@@ -15,6 +15,10 @@ export default createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  ul, ol {
+    padding: 0;
+    margin: 0;
+  }
   button {
     border: none;
     outline: none;
