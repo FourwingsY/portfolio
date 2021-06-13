@@ -13,6 +13,8 @@ export const Showcase = styled(ContentsWidth)`
     `}
 `
 export const Card = styled.div`
+  display: flex;
+  flex-flow: column;
   margin: 16px 0;
   border: 1px solid hsl(220, 60%, 80%);
   border-radius: 16px;
@@ -42,15 +44,17 @@ export const CardThumbnail = styled.div`
   overflow: hidden;
 `
 export const CardBody = styled.div`
+  flex: 1;
   padding: 16px;
   border-top: 1px solid hsl(220, 60%, 80%);
+  background: hsl(220, 60%, 96%);
 `
 export const CardTitle = styled.p`
   line-height: 1.5;
   font-weight: bold;
   #medium-logo {
-    vertical-align: baseline;
-    margin-left: 0.5rem;
+    vertical-align: bottom;
+    margin-left: 0.4rem;
   }
 `
 
@@ -60,6 +64,7 @@ export const PostList = styled.ul`
   bottom: 0;
   width: 100%;
   padding: 1rem 2rem;
+  overflow-y: scroll;
   list-style: none;
 `
 
