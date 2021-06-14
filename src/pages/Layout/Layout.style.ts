@@ -6,7 +6,9 @@ export const Layout = styled.div`
   flex-flow: wrap column;
   width: 100vw;
   min-height: 100vh;
+  --headerHeight: 3rem;
+  --mainPadding: 2rem;
 `
 export const Main = styled.main`
-  margin: 32px 0;
+  padding: var(--mainPadding) 0;
 `

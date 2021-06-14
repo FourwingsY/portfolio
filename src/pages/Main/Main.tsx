@@ -1,19 +1,15 @@
 import Layout from "@pages/Layout"
 
-import { ContentsWidth } from "@styles/adaptive"
-
-import * as S from "./Main.style"
+import Intro from "./components/Intro"
 import LikesAndDislikes from "./components/LikesAndDislikes"
 
 const Main: React.FC = () => {
   return (
     <Layout>
-      <ContentsWidth>
-        <S.Title>Frontend Developer YG</S.Title>
-        <LikesAndDislikes />
-        {/* <ExperiencedTools /> */}
-        {/* <History /> */}
-      </ContentsWidth>
+      <Intro />
+      <LikesAndDislikes />
+      {/* <ExperiencedTools /> */}
+      {/* <History /> */}
     </Layout>
   )
 }
