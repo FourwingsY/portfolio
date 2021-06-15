@@ -20,6 +20,7 @@ export const Body = styled.div`
   position: relative;
   padding: 20px 30px;
   text-align: center;
+  white-space: pre-line;
   overflow-y: auto;
 `
 
@@ -52,7 +53,8 @@ export const ModalButton = styled.button`
 
 export const Modal = styled.div`
   position: relative;
-  width: 360px;
+  width: 100%;
+  max-width: 24rem;
   max-height: 70vh;
   border-radius: 16px;
   background: white;
