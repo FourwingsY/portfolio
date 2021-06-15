@@ -1,6 +1,7 @@
 import Alert from "./Alert"
 import Confirm from "./Confirm"
 import Information from "./Information"
+import MoleInformation from "./MoleInformation"
 import Slideup from "./Slideup"
 
 // this file is just used for types only.
@@ -10,6 +11,7 @@ const modals = {
   Alert,
   Confirm,
   Information,
+  MoleInformation,
   Slideup,
 }
 

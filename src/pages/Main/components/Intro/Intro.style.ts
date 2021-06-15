@@ -10,8 +10,8 @@ export const Intro = styled.section`
 export const Background = styled.div`
   position: absolute;
   top: 0;
-  left: -1rem;
-  width: calc(100% + 2rem);
+  left: 0;
+  width: 100%;
   height: 100vh;
   background: url("/images/intro.jpg") no-repeat;
   background-size: cover;
