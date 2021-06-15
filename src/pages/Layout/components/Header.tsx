@@ -7,7 +7,7 @@ import * as S from "./Header.style"
 import NavLink from "./NavLink"
 
 const Header = () => {
-  const hide = useHideOnScrollDown({ minimumScroll: 200 })
+  const hide = useHideOnScrollDown({ minimumScroll: 200, threshold: 30 })
   return (
     <S.Header hide={hide}>
       <S.Wrapper>
