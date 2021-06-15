@@ -29,41 +29,7 @@ export const MoleGame = styled.div`
       --moleSize: 4rem;
     `}
 `
-const shaking = keyframes`
-  0% {
-    transform: rotate(-10deg)
-  } 
-  10% {
-    transform: rotate(10deg)
-  } 
-  20% {
-    transform: rotate(-10deg)
-  } 
-  30% {
-    transform: rotate(10deg)
-  } 
-  40% {
-    transform: rotate(-10deg)
-  } 
-  50% {
-    transform: rotate(10deg)
-  } 
-  60% {
-    transform: rotate(-10deg)
-  } 
-  70% {
-    transform: rotate(10deg)
-  }
-  80% {
-    transform: rotate(-10deg)
-  }
-  90% {
-    transform: rotate(10deg)
-  }
-  100% {
-    transform: rotate(-10deg)
-  } 
-`
+
 export const Mole = styled.div<{ show: boolean }>`
   position: absolute;
   transform: translate(-50%, -50%);
@@ -89,6 +55,14 @@ export const Mole = styled.div<{ show: boolean }>`
     `}
 `
 
+const shaking = keyframes`
+  from {
+    transform: rotate(-10deg)
+  } 
+  to {
+    transform: rotate(10deg)
+  }
+`
 export const Animate = styled.div`
-  animation: ${shaking} 12s ease-in-out infinite;
+  animation: ${shaking} 1s ease-in-out alternate infinite;
 `

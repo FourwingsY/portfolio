@@ -89,20 +89,25 @@ const _Mole: React.FC<MoleProps> = ({ taste }) => {
   const canvasSize = { width: window.innerWidth, height: window.innerHeight * 0.7 }
 
   const getPosition = createPositionFactory(canvasSize.width, canvasSize.height, size)
-  const [position, setPosition] = useState<{ x: number; y: number }>(getPosition(taste.name))
+  const [position, setPosition] = useState<{ x: number; y: number }>(() => getPosition(taste.name))
   const [delay, setDelay] = useState(Math.random() * 10000)
   const [show, setShow] = useState(true)
 
   // blinking
   useEffect(() => {
     // disappear
-    window.setTimeout(() => setShow(false), delay)
-    // and reappear for 10s
-    window.setTimeout(() => {
+    const disappearTimer = window.setTimeout(() => setShow(false), delay)
+    // and reappear
+    const reappearTimer = window.setTimeout(() => {
       setPosition(getPosition(taste.name))
       setShow(true)
       setDelay((delay) => 10000 + (delay % 2 ? 0 : 1))
     }, delay + 1000)
+
+    return () => {
+      window.clearTimeout(disappearTimer)
+      window.clearTimeout(reappearTimer)
+    }
   }, [delay])
 
   const relativePosition = {

@@ -6,6 +6,7 @@ interface TastePosition {
   key: string
   position: Position
 }
+
 let tastePositions: TastePosition[] = []
 
 function getRandomPosition(width: number, height: number) {
