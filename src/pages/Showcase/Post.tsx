@@ -2,8 +2,8 @@ import Layout from "@pages/Layout"
 
 import { ContentsWidth } from "@styles/adaptive"
 
-import LiveExample from "./components/LiveExample"
-import Post from "./components/Post"
+import LiveExample from "./sections/LiveExample"
+import Post from "./sections/Post"
 
 interface SSGProps {
   post: Post.Parsed

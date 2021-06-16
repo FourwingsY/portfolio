@@ -1,7 +1,7 @@
 import Layout from "@pages/Layout"
 
-import AboutMe from "./components/AboutMe"
-import Intro from "./components/Intro"
+import AboutMe from "./sections/AboutMe"
+import Intro from "./sections/Intro"
 
 const Main: React.FC = () => {
   return (
