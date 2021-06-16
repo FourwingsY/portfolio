@@ -9,7 +9,7 @@ import { useResponsiveContext } from "@hocs/withResponsive"
 import ReactIcon from "@icons/ReactIcon"
 import TypeScript from "@icons/TypeScript"
 
-import * as S from "./LikesAndDislikes.style"
+import * as S from "./AboutMe.style"
 import { createPositionFactory } from "./utils"
 
 export interface Taste {
@@ -64,20 +64,20 @@ const TASTES: Taste[] = [
   { icon: <i>🤿</i>, name: "스쿠버다이빙", content: "스쿠버다이빙 어드밴스드\n자격증이 있습니다." },
 ]
 
-const LikesAndDislikes = () => {
+const AboutMe = () => {
   return (
-    <S.LikesAndDislikes>
+    <S.AboutMe>
       <S.Title>Who am I?</S.Title>
       <S.MoleGame>
         {TASTES.map((taste) => (
           <Mole key={taste.name} taste={taste} />
         ))}
       </S.MoleGame>
-    </S.LikesAndDislikes>
+    </S.AboutMe>
   )
 }
 
-export default LikesAndDislikes
+export default AboutMe
 
 // TODO: handle when screen size changes
 interface MoleProps {

@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components"
 
-export const LikesAndDislikes = styled.section`
+export const AboutMe = styled.section`
   width: 100%;
   height: 100vh;
 `

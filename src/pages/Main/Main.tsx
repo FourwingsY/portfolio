@@ -1,13 +1,13 @@
 import Layout from "@pages/Layout"
 
+import AboutMe from "./components/AboutMe"
 import Intro from "./components/Intro"
-import LikesAndDislikes from "./components/LikesAndDislikes"
 
 const Main: React.FC = () => {
   return (
     <Layout>
       <Intro />
-      <LikesAndDislikes />
+      <AboutMe />
       {/* <ExperiencedTools /> */}
       {/* <History /> */}
     </Layout>

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 import { BasicModalProps } from "@modals/types"
-import { Taste } from "@pages/Main/components/LikesAndDislikes"
+import { Taste } from "@pages/Main/components/AboutMe"
 
 import * as CS from "../common.style"
 import * as S from "./MoleInformation.style"
