@@ -1,9 +1,7 @@
 # YG's Portfolio
 
-## About directory structures
+[yanggoon.dev](yanggoon.dev)를 구성하는 코드입니다.
+[Vercel](vercel.com)을 통해 배포되고 있습니다.
 
-- pages: 라우터 용도로 사용합니다.
-- src/pages: 실제 페이지를 구현합니다.
-- src/pages/${PAGE}/sections: 페이지를 구성하는 섹션입니다. 페이지 컴포넌트는 단순해지고, 읽기 쉬워집니다.
-- src/pages/${PAGE}/components: 해당 페이지에서만 사용되는 컴포넌트입니다.
-- src/components: 공용 컴포넌트입니다. 일반적으로 두 개 이상의 페이지에서 사용됩니다.
+코딩 관련된 포스팅을 하면서, 포스트에 "동작하는 예제"가 같이 포함되면 좋겠다고 생각했습니다.
+이 요구사항을 해결하기 위해 직접 블로그를 만들었습니다.
