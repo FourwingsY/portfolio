@@ -33,19 +33,6 @@ export const MoleGame = styled.div`
 export const Mole = styled.div<{ show: boolean }>`
   position: absolute;
   transform: translate(-50%, -50%);
-  font-family: sans-serif;
-  font-size: 0;
-  cursor: pointer;
-
-  i {
-    line-height: 1;
-    font-size: var(--moleSize);
-  }
-  svg {
-    width: var(--moleSize);
-    height: var(--moleSize);
-  }
-
   opacity: 1;
   transition: opacity 1s;
   ${({ show }) =>
@@ -63,6 +50,17 @@ const shaking = keyframes`
     transform: rotate(10deg)
   }
 `
-export const Animate = styled.div`
+export const TasteIcon = styled.div`
   animation: ${shaking} 1s ease-in-out alternate infinite;
+  font-family: sans-serif;
+  font-size: 0;
+  cursor: pointer;
+  i {
+    line-height: 1;
+    font-size: var(--moleSize);
+  }
+  svg {
+    width: var(--moleSize);
+    height: var(--moleSize);
+  }
 `
