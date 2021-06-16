@@ -1,10 +1,8 @@
 import { createDispatchHook, createSelectorHook } from "react-redux"
 
-import actions from "./actions"
+import { DefinedActions } from "./actions"
 import store from "./index"
 
-type ActionKeys = keyof typeof actions
-type Actions = ReturnType<typeof actions[ActionKeys]>
 type RootState = ReturnType<typeof store.getState>
-export const useDispatch = createDispatchHook<RootState, Actions>()
+export const useDispatch = createDispatchHook<RootState, DefinedActions>()
 export const useSelector = createSelectorHook<RootState>()

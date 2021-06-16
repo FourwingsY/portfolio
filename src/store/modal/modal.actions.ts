@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { createAction } from "@reduxjs/toolkit"
 
 import { ModalType } from "@modals/types"
