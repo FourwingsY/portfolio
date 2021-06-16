@@ -1,7 +1,8 @@
+import { TASTES } from "@constants/tastes"
+
 import * as S from "./AboutMe.style"
 import Mole from "./components/Mole"
 import TasteIcon from "./components/TasteIcon"
-import { TASTES } from "./data"
 
 const AboutMe = () => {
   return (

@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from "react"
 import withCSR from "@hocs/withCSR"
 import { useResponsiveContext } from "@hocs/withResponsive"
 
+import { Taste } from "@constants/tastes"
+
 import * as S from "../AboutMe.style"
-import { Taste } from "../data"
 import { createPositionFactory } from "../utils"
 
 interface Props {

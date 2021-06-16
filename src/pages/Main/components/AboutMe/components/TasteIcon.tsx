@@ -1,8 +1,9 @@
 import modalActions from "@store/modal/modal.actions"
 import { useDispatch } from "@store/useStore"
 
+import { Taste } from "@constants/tastes"
+
 import * as S from "../AboutMe.style"
-import { Taste } from "../data"
 
 interface Props {
   taste: Taste
