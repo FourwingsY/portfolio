@@ -11,7 +11,7 @@
     "@reduxjs/toolkit": "^1.5.1",
     "github-markdown-css": "^4.0.0",
     "markdown-yaml-metadata-parser": "^3.0.0",
-    "next": "10.2.3",
+    "next": "^11",
     "path-to-regexp": "^6.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
