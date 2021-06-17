@@ -30,6 +30,18 @@ export const MoleGame = styled.div`
     `}
 `
 
+export const Mole = styled.div<{ show: boolean }>`
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 1s;
+  ${({ show }) =>
+    !show &&
+    css`
+      opacity: 0;
+    `}
+`
+
 const jumping = keyframes`
   from {
     transform: scale(1);
@@ -38,18 +50,9 @@ const jumping = keyframes`
     transform: scale(1.1);
   }
 `
-export const Mole = styled.div<{ show: boolean }>`
-  position: absolute;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: opacity 1s;
+export const Jumping = styled.div`
   animation: ${jumping} 1.3s ease-in-out alternate infinite;
   transform-origin: center;
-  ${({ show }) =>
-    !show &&
-    css`
-      opacity: 0;
-    `}
 `
 
 const shaking = keyframes`
@@ -60,13 +63,18 @@ const shaking = keyframes`
     transform: rotate(10deg)
   }
 `
-export const TasteIcon = styled.div`
+export const Shaking = styled.div`
   animation: ${shaking} 1s ease-in-out alternate infinite;
+`
+
+export const TasteIcon = styled.div`
   font-family: sans-serif;
   font-size: 0;
   cursor: pointer;
-  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+  /* this filter makes browser devourer GPUs */
+  /* filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4)); */
   i {
+    font-style: normal;
     line-height: 1;
     font-size: var(--moleSize);
   }
