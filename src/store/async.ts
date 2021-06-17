@@ -1,4 +1,4 @@
-import { createAction, ActionCreator } from "@reduxjs/toolkit"
+import { createAction, PayloadActionCreator } from "@reduxjs/toolkit"
 
 interface Callbacks<Result> {
   onSuccess?: (result: Result) => void
@@ -9,15 +9,21 @@ type WithCallback<Result, RequestPayload = undefined> = RequestPayload extends u
   ? Callbacks<Result>
   : RequestPayload & Callbacks<Result>
 
-export interface AsyncAction {
-  request: ActionCreator<any>
-  success: ActionCreator<any>
-  failure: ActionCreator<any>
+export interface AsyncAction<
+  Payload,
+  Response,
+  R extends string = string,
+  S extends string = string,
+  F extends string = string
+> {
+  request: PayloadActionCreator<WithCallback<Response, Payload>, R>
+  success: PayloadActionCreator<{ request: Payload; response: Response }, S>
+  failure: PayloadActionCreator<{ request: Payload; error: unknown }, F>
 }
 
 export const createAsyncAction =
   <R extends string, S extends string, F extends string>(request: R, success: S, failure: F) =>
-  <Response, Payload>(): AsyncAction => ({
+  <Response, Payload>(): AsyncAction<Payload, Response, R, S, F> => ({
     request: createAction<WithCallback<Response, Payload>, R>(request),
     success: createAction<{ request: Payload; response: Response }, S>(success),
     failure: createAction<{ request: Payload; error: unknown }, F>(failure),
