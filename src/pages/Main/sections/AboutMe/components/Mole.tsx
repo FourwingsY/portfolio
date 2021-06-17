@@ -44,9 +44,10 @@ const Mole: React.FC<Props> = ({ children, taste }) => {
     left: ((position.x / canvasSize.width) * 100).toFixed(1) + "%",
     top: ((position.y / canvasSize.height) * 100).toFixed(1) + "%",
   }
+  const jumpingAnimation = { animationDelay: `${Math.random().toFixed(2)}s` }
 
   return (
-    <S.Mole show={show} style={relativePosition}>
+    <S.Mole show={show} style={{ ...relativePosition, ...jumpingAnimation }}>
       {children}
     </S.Mole>
   )
