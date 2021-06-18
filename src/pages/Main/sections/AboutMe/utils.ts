@@ -1,6 +1,6 @@
 import { getRandomInRange } from "@utils/random"
 
-interface Position {
+export interface Position {
   x: number
   y: number
 }
@@ -24,7 +24,7 @@ function collisionCheck(pos: Position, others: TastePosition[], size: number) {
 }
 
 export function createPositionFactory(width: number, height: number, size: number) {
-  return function getPosition(key: string): Position {
+  return function getPosition(key: string): Position | null {
     const others = tastePositions.filter((p) => p.key !== key)
 
     // try 10 times and giveup
@@ -33,7 +33,7 @@ export function createPositionFactory(width: number, height: number, size: numbe
     while (collisionCheck(pos, others, size)) {
       pos = getRandomPosition(width, height, size)
       tryCount += 1
-      if (tryCount > 10) return { x: -999, y: -999 }
+      if (tryCount > 10) return null
     }
     tastePositions = [...others, { key, position: pos }]
     return pos
