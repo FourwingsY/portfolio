@@ -1,6 +1,7 @@
 import Layout from "@pages/Layout"
 
 import AboutMe from "./sections/AboutMe"
+import History from "./sections/History"
 import Intro from "./sections/Intro"
 
 const Main: React.FC = () => {
@@ -9,7 +10,7 @@ const Main: React.FC = () => {
       <Intro />
       <AboutMe />
       {/* <ExperiencedTools /> */}
-      {/* <History /> */}
+      <History />
     </Layout>
   )
 }
