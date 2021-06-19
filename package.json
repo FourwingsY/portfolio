@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
+    "classnames": "^2.3.1",
+    "date-fns": "^2.22.1",
     "github-markdown-css": "^4.0.0",
     "markdown-yaml-metadata-parser": "^3.0.0",
     "next": "^11",

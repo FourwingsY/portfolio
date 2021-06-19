@@ -9,7 +9,6 @@ const Main: React.FC = () => {
     <Layout>
       <Intro />
       <AboutMe />
-      {/* <ExperiencedTools /> */}
       <History />
     </Layout>
   )
