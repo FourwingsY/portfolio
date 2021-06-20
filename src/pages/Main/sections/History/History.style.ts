@@ -10,8 +10,3 @@ export const Title = styled.div`
   text-align: center;
   margin: 2rem 0;
 `
-
-export const TBD = styled.p`
-  text-align: center;
-  font-size: 6rem;
-`

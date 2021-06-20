@@ -3,68 +3,82 @@ import styled, { css } from "styled-components"
 import { ContentsWidth } from "@styles/adaptive"
 
 export const ShortDescription = styled.div`
-  width: 280px;
-  text-align: right;
-  ${({ theme }) =>
-    theme.mobile &&
-    css`
-      width: 40%;
-    `}
+  position: relative;
+  padding: 2rem 0 0.5rem;
+  padding-left: 2rem;
+  text-align: left;
+  border-left: 2px solid black;
+`
+
+export const ProjectName = styled.p`
+  font-size: 1.8rem;
+  margin: 0.5rem 0;
+`
+export const Company = styled.p`
+  font-size: 1rem;
+  ::before {
+    content: "@";
+  }
 `
 
 export const DisplayZone = styled.div`
-  position: absolute;
-  top: 40px;
-  width: 0;
-  height: 460px;
-  border-radius: 12px;
-  transition: all 0.5s;
-  background: hsl(220, 60%, 95%);
+  position: relative;
+  padding: calc(1rem - 2px);
+  ::before,
+  ::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    transition: 0.5s;
+  }
+  ::before {
+    top: 0;
+    border-bottom-color: black;
+    transform: translateY(-1rem) rotate(45deg);
+  }
+  ::after {
+    bottom: 0;
+    border-top-color: black;
+    transform: translateY(1rem) rotate(-45deg);
+  }
 `
 
-const mobile = css`
-  ${ShortDescription} {
-    left: 50%;
-    transform: translateX(calc(-100% - 20px));
-  }
-  ${DisplayZone} {
-    left: 50%;
-    transform: translateX(20px);
-  }
-  &.active {
-    ${ShortDescription} {
-      left: 10%;
-    }
-    ${DisplayZone} {
-      transform: translateX(-33vw);
-      width: calc(77vw);
-    }
-  }
+export const BorderBox = styled.div<{ active: boolean }>`
+  width: 6rem;
+  height: 2rem;
+  border: 2px solid black;
+  border-color: black black black transparent;
+  border-radius: 0 1rem 1rem 0;
+  transition: 0.5s;
+  box-sizing: content-box;
+  overflow: hidden;
+  ${({ active }) =>
+    active &&
+    css`
+      width: 100%;
+      height: 200px;
+      border: 2px solid;
+      border-color: black black black transparent;
+    `}
+`
+export const More = styled.span`
+  font-size: 1rem;
+  line-height: 2;
+`
+
+export const LongDescription = styled.div`
+  width: 100%;
+  height: 200px;
+  padding: 1rem;
+  font-size: 2rem;
 `
 
 export const TimelineItem = styled(ContentsWidth)`
   position: relative;
   font-size: 0;
-  ${ShortDescription} {
-    position: absolute;
-    top: 2rem;
-    left: 280px;
-    transform: translateX(-100%);
-    transition: left 0.5s;
-  }
-  ${DisplayZone} {
-    left: 300px;
-    transform: translateX(20px);
-  }
-
-  &.active {
-    ${ShortDescription} {
-      left: 40px;
-    }
-    ${DisplayZone} {
-      transform: translateX(-220px);
-      width: calc(100% - 100px);
-    }
-  }
-  ${({ theme }) => theme.mobile && mobile}
 `

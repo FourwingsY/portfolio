@@ -1,15 +1,10 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 export const Duration = styled.span`
   display: inline-block;
 
   font-weight: bold;
   color: hsl(220, 60%, 50%);
-  ${({ theme }) =>
-    !theme.mobile &&
-    css`
-      width: 250px;
-    `}
 `
 export const Year = styled.span`
   font-size: ${({ theme }) => (theme.small ? "2rem" : "3rem")};
