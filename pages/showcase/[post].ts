@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps<{ post?: Post.Parsed }, { post: stri
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  await Promise.resolve()
-  const posts = ["adaptive", "modal", "confetti"]
+  const markdowns = await fs.readdir(path.join(POSTS_DIR))
+  const posts = markdowns.map((filename) => filename.replace(/\.md/, ""))
   return { paths: posts.map((post) => `/showcase/${post}`), fallback: false }
 }

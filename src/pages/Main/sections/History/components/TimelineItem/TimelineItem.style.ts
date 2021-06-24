@@ -49,7 +49,7 @@ export const DisplayZone = styled.div`
 `
 
 export const BorderBox = styled.div<{ active: boolean }>`
-  width: 6rem;
+  width: 12rem;
   height: 2rem;
   border: 2px solid black;
   border-color: black black black transparent;
@@ -61,24 +61,37 @@ export const BorderBox = styled.div<{ active: boolean }>`
     active &&
     css`
       width: 100%;
-      height: 200px;
+      height: 20rem;
       border: 2px solid;
       border-color: black black black transparent;
     `}
 `
 export const More = styled.span`
+  padding-left: 1rem;
   font-size: 1rem;
   line-height: 2;
+  text-decoration: underline;
 `
 
 export const LongDescription = styled.div`
   width: 100%;
-  height: 200px;
+  height: 20rem;
+  overflow-y: scroll;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  white-space: pre-line;
+  p {
+    margin-bottom: 1rem;
+  }
 `
 
 export const TimelineItem = styled(ContentsWidth)`
   position: relative;
   font-size: 0;
+  cursor: pointer;
+  &:hover {
+    ${More} {
+      color: hsl(220, 80%, 40%);
+    }
+  }
 `
