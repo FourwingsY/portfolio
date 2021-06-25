@@ -9,12 +9,13 @@ import withResponsive from "@hocs/withResponsive"
 
 import DefaultHead from "@components/Head/Default"
 
-import GlobalStyle from "@styles/global"
+import GlobalStyle, { FontStyle } from "@styles/global"
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <StoreProvider store={store}>
       <GlobalStyle />
+      <FontStyle />
       <DefaultHead />
       <Component {...pageProps} />
       <ModalContainer />
