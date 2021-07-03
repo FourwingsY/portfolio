@@ -16,6 +16,9 @@ const Header = () => {
           <NavLink href="/showcase" includeChildPath>
             Showcase
           </NavLink>
+          <NavLink href="/activity" includeChildPath>
+            Activity
+          </NavLink>
         </S.NavGroup>
         <S.NavGroup>
           <S.ExternalLink href="https://www.linkedin.com/in/fourwingsy/">
