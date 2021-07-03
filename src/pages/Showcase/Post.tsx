@@ -1,3 +1,5 @@
+import Head from "next/head"
+
 import Layout from "@pages/Layout"
 
 import { ContentsWidth } from "@styles/adaptive"
@@ -11,6 +13,9 @@ interface SSGProps {
 const ShowcasePost: React.FC<SSGProps> = ({ post }) => {
   return (
     <Layout>
+      <Head>
+        <title>{post.metadata.title}</title>
+      </Head>
       <ContentsWidth>
         <LiveExample postId={post.metadata.id} />
         <Post content={post.content} />

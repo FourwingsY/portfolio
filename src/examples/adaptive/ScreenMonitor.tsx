@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 
 import { useResponsiveContext } from "@hocs/withResponsive"
 
+import { throttle } from "@utils/event"
+
 import * as S from "./ScreenMonitor.style"
 
 const ScreenMonitor: React.FC = () => {
@@ -67,9 +69,9 @@ export default ScreenMonitor
 function useScreenWidth() {
   const [screenWidth, setScreenWidth] = useState(0)
   useEffect(() => {
-    function handleResize() {
+    const handleResize = throttle(() => {
       setScreenWidth(window.innerWidth)
-    }
+    }, 200)
     handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
