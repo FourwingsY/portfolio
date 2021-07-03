@@ -1,4 +1,4 @@
-import { format, isSameYear } from "date-fns"
+import { parseISO, format, isSameYear } from "date-fns"
 import { useEffect, useRef, useState } from "react"
 
 import { useOnceVisible } from "@hooks/useIntersectionObserver"
@@ -6,14 +6,15 @@ import { useOnceVisible } from "@hooks/useIntersectionObserver"
 import * as S from "./Duration.style"
 
 interface Props {
-  duration: [Date, Date | null]
+  duration: [string, string | null]
 }
 const Duration: React.FC<Props> = ({ duration }) => {
-  const [from, nullableTo] = duration
-  const to = nullableTo ?? new Date()
+  const [stringFrom, nullableTo] = duration
+  const from = parseISO(stringFrom)
+  const to = nullableTo ? parseISO(nullableTo) : new Date()
   const element = useRef(null)
-  const animatingFrom = useIncreasingDate(element, from, new Date(2013, 1, 15))
-  const animatingTo = useIncreasingDate(element, to, new Date(2015, 0, 3))
+  const animatingFrom = useIncreasingDate(element, from, parseISO("2013-02-15"))
+  const animatingTo = useIncreasingDate(element, to, parseISO("2015-01-03"))
 
   return (
     <S.Duration ref={element}>
@@ -34,7 +35,6 @@ function useIncreasingDate(element: React.RefObject<Element>, end: Date, start: 
   const aMonth = 30 * 86400 * 1000
   const [date, setDate] = useState(start)
   const visible = useOnceVisible(element)
-
   function increase() {
     setDate((date) => {
       const increased = date.valueOf() + aMonth

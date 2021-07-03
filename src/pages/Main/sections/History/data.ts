@@ -5,7 +5,7 @@ export enum ProductStatus {
 }
 
 export interface Product {
-  duration: [Date, Date | null]
+  duration: [string, string | null]
   productName: string
   experienced: string
   company: string
@@ -14,7 +14,7 @@ export interface Product {
 }
 
 export const realclass: Product = {
-  duration: [new Date(2020, 7, 18), null],
+  duration: ["2020-08-18", null],
   productName: "Realclass v2.0",
   experienced: `\
     기존에 알던 지식과 경험을 총동원해 새로운 프로젝트를 진행했습니다. 
@@ -28,7 +28,7 @@ export const realclass: Product = {
   link: "https://realclass.co.kr/new",
 }
 export const crm: Product = {
-  duration: [new Date(2020, 10, 1), new Date(2020, 3, 20)],
+  duration: ["2020-11-01", "2020-04-20"],
   productName: "Customer Relation Management",
   experienced: `\
     통칭 백오피스. 리얼클래스의 고객 관리, 판매 및 상품 관리용 페이지를 만들었습니다.
@@ -42,7 +42,7 @@ export const crm: Product = {
   status: ProductStatus.PRIVATE,
 }
 export const junior: Product = {
-  duration: [new Date(2020, 5, 1), new Date(2020, 9, 30)],
+  duration: ["2020-06-01", "2020-10-30"],
   productName: "English for junior",
   experienced: `\
     비디오와 애니메이션이 가득한 판매용 메인페이지를 만드는 것은 즐거운 경험이었습니다.
@@ -55,7 +55,7 @@ export const junior: Product = {
   link: "https://e21.co.kr",
 }
 export const muzy: Product = {
-  duration: [new Date(2020, 1, 25), new Date(2020, 8, 30)],
+  duration: ["2020-02-25", "2020-09-30"],
   productName: "Okay Doctor",
   experienced: `\
     팝송으로 영어를 배운다-는 오케이닥터의 사이트 유지보수를 진행했습니다.
@@ -72,7 +72,7 @@ export const muzy: Product = {
   link: "https://okaydoctor.co.kr",
 }
 export const qgis: Product = {
-  duration: [new Date(2018, 4, 14), new Date(2020, 0, 8)],
+  duration: ["2018-05-14", "2020-01-08"],
   productName: "QGIS Plugin for ROKA",
   experienced: `\
     기존에 부대 내에서 사용하던 지형분석 도구들을 QGIS에서도 동작 가능하면서 훨씬 더 깔끔한 인터페이스를 가지도록 PyQt를 사용하여 플러그인으로 재개발했습니다.
@@ -82,7 +82,7 @@ export const qgis: Product = {
   status: ProductStatus.PRIVATE,
 }
 export const uploadingo: Product = {
-  duration: [new Date(2016, 9, 30), new Date(2018, 4, 14)],
+  duration: ["2016-10-30", "2018-05-13"],
   productName: "Uploadingo",
   experienced: `\
     사내 업무용 콘텐츠 매니지먼트 플랫폼인 업로딩고를 개발했습니다. 
@@ -96,7 +96,7 @@ export const uploadingo: Product = {
   link: "https://www.facebook.com/uploadingo1/",
 }
 export const dingo: Product = {
-  duration: [new Date(2015, 5, 1), new Date(2016, 9, 30)],
+  duration: ["2015-06-01", "2016-10-30"],
   productName: "Dingo.tv",
   experienced: `\
     React와 순수한 Flux를 사용해 몬캐스트의 리뉴얼 버전이나 다름없는 dingo.tv를 개발했습니다. 
@@ -107,7 +107,7 @@ export const dingo: Product = {
   link: "https://apkpure.com/kr/com.makeus.dingo.kr",
 }
 export const moncast: Product = {
-  duration: [new Date(2015, 1, 9), new Date(2015, 6, 31)],
+  duration: ["2015-02-09", "2015-07-31"],
   productName: "moncast.com",
   experienced: `\
     첫 회사의 첫 프로젝트입니다. Angular.js로 작성된 몬캐스트라는 콘텐츠 플랫폼을 유지보수하며, 멀티 이미지 콘텐츠를 추가하는 등의 작업을 진행했습니다.
