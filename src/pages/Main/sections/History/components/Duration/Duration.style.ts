@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Duration = styled.span`
-  display: inline-block;
+  display: block;
   font-family: monospace;
   font-weight: bold;
   color: hsl(220, 60%, 50%);

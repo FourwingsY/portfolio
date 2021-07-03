@@ -10,11 +10,18 @@ interface Props {
 }
 const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
   const [active, setActive] = useState(defaultActive)
+
+  function openLink() {
+    if (item.link) {
+      window.open(item.link)
+    }
+  }
+
   return (
     <S.TimelineItem onClick={() => setActive(!active)}>
       <S.ShortDescription>
         <Duration duration={item.duration} />
-        <S.ProductName hasLink={!!item.link}>
+        <S.ProductName hasLink={!!item.link} onClick={openLink}>
           {item.productName}
           <S.ProductStatusBadge status={item.status} />
         </S.ProductName>

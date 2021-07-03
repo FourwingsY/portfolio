@@ -12,7 +12,7 @@ export const ShortDescription = styled.div`
   border-left: 2px solid black;
 `
 
-export const ProductName = styled.p<{ hasLink?: boolean }>`
+export const ProductName = styled.span<{ hasLink?: boolean }>`
   font-size: 1.8rem;
   margin: 0.5rem 0;
   ${({ hasLink }) =>
