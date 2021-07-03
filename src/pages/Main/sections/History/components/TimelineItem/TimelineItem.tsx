@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-import { Work } from "../../data"
+import { Product } from "../../data"
 import Duration from "../Duration"
 import * as S from "./TimelineItem.style"
 
 interface Props {
-  item: Work
+  item: Product
   defaultActive?: boolean
 }
 const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
@@ -14,7 +14,10 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
     <S.TimelineItem onClick={() => setActive(!active)}>
       <S.ShortDescription>
         <Duration duration={item.duration} />
-        <S.ProjectName>{item.projectName}</S.ProjectName>
+        <S.ProductName hasLink={!!item.link}>
+          {item.productName}
+          <S.ProductStatusBadge status={item.status} />
+        </S.ProductName>
         <S.Company>{item.company}</S.Company>
       </S.ShortDescription>
       <S.DisplayZone>

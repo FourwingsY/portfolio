@@ -1,13 +1,21 @@
-export interface Work {
-  duration: [Date, Date | null]
-  projectName: string
-  experienced: string
-  company: string
+export enum ProductStatus {
+  LIVE = "LIVE",
+  PRIVATE = "PRIVATE",
+  DEAD = "DEAD",
 }
 
-export const realclass: Work = {
+export interface Product {
+  duration: [Date, Date | null]
+  productName: string
+  experienced: string
+  company: string
+  status: ProductStatus
+  link?: string
+}
+
+export const realclass: Product = {
   duration: [new Date(2020, 7, 18), null],
-  projectName: "Realclass v2.0",
+  productName: "Realclass v2.0",
   experienced: `\
     기존에 알던 지식과 경험을 총동원해 새로운 프로젝트를 진행했습니다. 
     Typescript, Next.js, redux, redux-saga... Showcase에 적은 글의 대부분은 이 프로젝트를 하면서 얻은 경험 중 일부를 적어내려간 것입니다.
@@ -16,32 +24,39 @@ export const realclass: Work = {
     Next.js를 좀더 깊게 사용하며 SSR / SSG에 대해서도 이해하기 시작했습니다.
   `,
   company: "Qualson",
+  status: ProductStatus.LIVE,
+  link: "https://realclass.co.kr/new",
 }
-export const crm: Work = {
-  duration: [new Date(2020, 10, 1), null],
-  projectName: "Customer Relation Management",
+export const crm: Product = {
+  duration: [new Date(2020, 10, 1), new Date(2020, 3, 20)],
+  productName: "Customer Relation Management",
   experienced: `\
     통칭 백오피스. 리얼클래스의 고객 관리, 판매 및 상품 관리용 페이지를 만들었습니다.
     백오피스를 개발하며 굉장히 복잡한 모델을 다루기도 했습니다. 특히 환불 관련된 부분은 혀를 내두를 정도였습니다.
-    그래도 그나마 기존에 했던 업로딩고가 나름 백오피스에 가까운 서비스였기 때문에 쉽게 적응할 수 있었습니다. 수많은 CRUD
+    그래도 그나마 기존에 했던 업로딩고가 나름 백오피스에 가까운 서비스였기 때문에 쉽게 적응할 수 있었습니다. 
+    수많은 CRUD 폼을 작성해봤던 경험을 다시 한번 활용해볼 수 있는 기회였습니다.
     빠른 개발을 위해 컴포넌트를 일일이 만드는 대신 ant.design 컴포넌트를 활용했습니다.
     컴포넌트를 가져다 쓰는 것의 장점과 단점을 동시에 느낄 수 있었습니다.
   `,
   company: "Qualson",
+  status: ProductStatus.PRIVATE,
 }
-export const junior: Work = {
+export const junior: Product = {
   duration: [new Date(2020, 5, 1), new Date(2020, 9, 30)],
-  projectName: "English for junior",
+  productName: "English for junior",
   experienced: `\
     비디오와 애니메이션이 가득한 판매용 메인페이지를 만드는 것은 즐거운 경험이었습니다.
-    어떤 기능은 라이브러리와 구현해야 할 기능 사이에서 한참을 고민하다 그냥 새로 구현하기도 했습니다.
+    특히 슬라이더의 active 슬라이드가 더 커지게 보이도록 구현하는 과정이 일반적인 슬라이더 라이브러리로는 구현되지 않아서, 
+    한참을 고민하다 그냥 새로 구현했던 것이 기억에 남습니다.
     기술적으로는 Next.js를 처음으로 경험했습니다.
   `,
   company: "Qualson",
+  status: ProductStatus.LIVE,
+  link: "https://e21.co.kr",
 }
-export const muzy: Work = {
+export const muzy: Product = {
   duration: [new Date(2020, 1, 25), new Date(2020, 8, 30)],
-  projectName: "Okay Doctor",
+  productName: "Okay Doctor",
   experienced: `\
     팝송으로 영어를 배운다-는 오케이닥터의 사이트 유지보수를 진행했습니다.
     쿠폰 시스템을 새로 적용하는 것과, 환급 챌린지를 변경하는 업무도 진행했습니다.
@@ -50,21 +65,25 @@ export const muzy: Work = {
     HOC를 잘못 사용하면 코드가 복잡해지고 이해하기 힘들어진다는 사실을 꽤 깊이 깨달았습니다.
     Rxjs를 살짝 맛볼 수 있었습니다. 취향은 아니었습니다.
     (회사 일이 아닌) 개인적으로 이 사이트를 통째로 새로 만들어보면서 굉장히 많은 성장을 할 수 있었던 것 같습니다.
+    현재 사이트는 살아있지만 판매는 중지된 상태입니다.
   `,
   company: "Qualson",
+  status: ProductStatus.LIVE,
+  link: "https://okaydoctor.co.kr",
 }
-export const qgis: Work = {
+export const qgis: Product = {
   duration: [new Date(2018, 4, 14), new Date(2020, 0, 8)],
-  projectName: "QGIS Plugin for ROKA",
+  productName: "QGIS Plugin for ROKA",
   experienced: `\
     기존에 부대 내에서 사용하던 지형분석 도구들을 QGIS에서도 동작 가능하면서 훨씬 더 깔끔한 인터페이스를 가지도록 PyQt를 사용하여 플러그인으로 재개발했습니다.
     Python에 익숙하지 않았지만, 가지고 있던 기본 지식과 기본 도큐먼트만을 사용해 인터넷 없는 환경에서 프로그래밍하는 것은 색다른 경험이었습니다.
   `,
   company: "ROKA",
+  status: ProductStatus.PRIVATE,
 }
-export const uploadingo: Work = {
+export const uploadingo: Product = {
   duration: [new Date(2016, 9, 30), new Date(2018, 4, 14)],
-  projectName: "Uploadingo",
+  productName: "Uploadingo",
   experienced: `\
     사내 업무용 콘텐츠 매니지먼트 플랫폼인 업로딩고를 개발했습니다. 
     복잡한 폼의 CRUD를 다뤄보았고, 다양한 그래프를 그려보았습니다.
@@ -73,21 +92,27 @@ export const uploadingo: Work = {
     또한 redux와 Typescript를 일부 적용하면서 새로운 기술에 적응해나가는 경험을 할 수 있었습니다.
   `,
   company: "Makeus mobile",
+  status: ProductStatus.DEAD,
+  link: "https://www.facebook.com/uploadingo1/",
 }
-export const dingo: Work = {
+export const dingo: Product = {
   duration: [new Date(2015, 5, 1), new Date(2016, 9, 30)],
-  projectName: "Dingo.tv",
+  productName: "Dingo.tv",
   experienced: `\
     React와 순수한 Flux를 사용해 몬캐스트의 리뉴얼 버전이나 다름없는 dingo.tv를 개발했습니다. 
     앞서 기 개발된 코드 베이스를 경험했다면, 이 때엔 하나의 레포지토리를 처음부터 만들어보는 경험을 했습니다. 
   `,
   company: "Makeus mobile",
+  status: ProductStatus.DEAD,
+  link: "https://apkpure.com/kr/com.makeus.dingo.kr",
 }
-export const moncast: Work = {
+export const moncast: Product = {
   duration: [new Date(2015, 1, 9), new Date(2015, 6, 31)],
-  projectName: "moncast.com",
+  productName: "moncast.com",
   experienced: `\
     첫 회사의 첫 프로젝트입니다. Angular.js로 작성된 몬캐스트라는 콘텐츠 플랫폼을 유지보수하며, 멀티 이미지 콘텐츠를 추가하는 등의 작업을 진행했습니다.
   `,
   company: "Makeus mobile",
+  status: ProductStatus.DEAD,
+  link: "https://www.148apps.com/app/955367690/",
 }

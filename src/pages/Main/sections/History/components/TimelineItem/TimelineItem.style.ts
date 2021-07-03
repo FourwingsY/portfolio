@@ -2,6 +2,8 @@ import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
 
+import { ProductStatus } from "../../data"
+
 export const ShortDescription = styled.div`
   position: relative;
   padding: 2rem 0 0.5rem;
@@ -10,10 +12,41 @@ export const ShortDescription = styled.div`
   border-left: 2px solid black;
 `
 
-export const ProjectName = styled.p`
+export const ProductName = styled.p<{ hasLink?: boolean }>`
   font-size: 1.8rem;
   margin: 0.5rem 0;
+  ${({ hasLink }) =>
+    hasLink &&
+    css`
+      cursor: pointer;
+      :hover {
+        color: hsl(220, 100%, 50%);
+      }
+    `};
 `
+
+export const ProductStatusBadge = styled.span<{ status: ProductStatus }>`
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.8rem;
+  color: white;
+  background: ${({ status }) => {
+    switch (status) {
+      case ProductStatus.LIVE:
+        return "hsl(220, 100%, 50%)"
+      case ProductStatus.PRIVATE:
+        return "hsl(40, 80%, 50%)"
+      case ProductStatus.DEAD:
+        return "grey"
+    }
+  }};
+  &::before {
+    /* content: "2"; */
+    content: ${({ status }) => `"${status}"`};
+  }
+`
+
 export const Company = styled.p`
   font-size: 1rem;
   ::before {
@@ -71,6 +104,7 @@ export const More = styled.span`
   font-size: 1rem;
   line-height: 2;
   text-decoration: underline;
+  cursor: pointer;
 `
 
 export const LongDescription = styled.div`
@@ -88,7 +122,6 @@ export const LongDescription = styled.div`
 export const TimelineItem = styled(ContentsWidth)`
   position: relative;
   font-size: 0;
-  cursor: pointer;
   &:hover {
     ${More} {
       color: hsl(220, 80%, 40%);
