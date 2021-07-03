@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "update-commits": "./scripts/parseCommits.sh"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.1",
