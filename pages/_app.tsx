@@ -7,7 +7,8 @@ import ModalContainer from "@modals/Container"
 
 import withResponsive from "@hocs/withResponsive"
 
-import DefaultHead from "@components/Head/Default"
+import DefaultHead from "@components/Meta/Default"
+import ThirdParties from "@components/Meta/ThirdParties"
 
 import GlobalStyle, { FontStyle } from "@styles/global"
 
@@ -19,6 +20,7 @@ function App({ Component, pageProps }: AppProps) {
       <DefaultHead />
       <Component {...pageProps} />
       <ModalContainer />
+      <ThirdParties />
     </StoreProvider>
   )
 }
