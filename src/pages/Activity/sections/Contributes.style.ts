@@ -14,7 +14,13 @@ export const Item = styled.li`
 export const Repository = styled.span``
 export const PullRequest = styled.span`
   margin-left: 0.4rem;
+  color: hsl(220, 50%, 50%);
   ::before {
     content: "#";
   }
+`
+export const MergedDate = styled.span`
+  margin-left: 1rem;
+  font-size: 1rem;
+  opacity: 0.5;
 `
