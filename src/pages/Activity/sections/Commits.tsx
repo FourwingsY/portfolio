@@ -3,17 +3,20 @@ import { useEffect, useState } from "react"
 import Calendar, { CalendarTileProperties } from "react-calendar"
 import "react-calendar/dist/Calendar.css"
 
+import type { Result, CommitLog } from "@api/commits"
+
 import * as S from "./Commits.style"
 
-interface CommitCountByProduct {
-  [product: string]: number
-}
 const Commits = () => {
-  const [commits, setCommits] = useState<{ [date: string]: CommitCountByProduct }>({})
+  const [updated, setUpdated] = useState<number>(0)
+  const [commits, setCommits] = useState<CommitLog>({})
   useEffect(() => {
     fetch("/api/commits")
       .then((response) => response.json())
-      .then(setCommits)
+      .then(({ updated, data }: Result) => {
+        setCommits(data)
+        setUpdated(updated)
+      })
   }, [])
 
   function tileContent({ date, view }: CalendarTileProperties) {
@@ -25,10 +28,14 @@ const Commits = () => {
     return <DailyCommits data={data} />
   }
 
+  if (!updated) return null
+
   return (
     <S.Commits>
-      <S.Title>Commits Calendar</S.Title>
-      <Calendar tileContent={tileContent} locale="ko-KR" />
+      <S.Title>
+        Commits Calendar <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>
+      </S.Title>
+      <Calendar defaultActiveStartDate={new Date(updated)} tileContent={tileContent} locale="ko-KR" />
     </S.Commits>
   )
 }
@@ -36,7 +43,7 @@ const Commits = () => {
 export default Commits
 
 interface DailyCommitsProps {
-  data?: CommitCountByProduct
+  data?: { [repo: string]: number }
 }
 const DailyCommits = ({ data }: DailyCommitsProps) => {
   if (!data) return <S.DailyCommits />

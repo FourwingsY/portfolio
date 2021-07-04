@@ -3,6 +3,7 @@
   "tabWidth": 2,
   "printWidth": 120,
   "importOrder": [
+    "^(@api)/(.*)$",
     "^(@store)/(.*)$",
     "^(@modals|@pages)/(.*)$",
     "^(@hocs|@hooks)/(.*)$",

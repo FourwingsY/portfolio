@@ -22,6 +22,10 @@ export const Commits = styled.section`
 export const Title = styled.h2`
   font-size: 2rem;
 `
+export const Updated = styled.span`
+  font-size: 1rem;
+  opacity: 0.5;
+`
 
 export const DailyCommits = styled.ul`
   height: 1.5rem;

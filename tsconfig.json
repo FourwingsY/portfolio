@@ -11,7 +11,8 @@
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "@*": ["src/*"]
+      "@*": ["src/*"],
+      "@api/*": ["pages/api/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
