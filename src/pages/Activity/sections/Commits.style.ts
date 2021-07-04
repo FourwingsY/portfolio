@@ -52,7 +52,7 @@ export const Commit = styled.li<{ product: string }>`
     }
   }};
   font-size: 0.6rem;
-  line-height: 1rem;
+  line-height: 1.1rem;
   text-align: center;
   color: ${({ product }) => {
     switch (product) {
