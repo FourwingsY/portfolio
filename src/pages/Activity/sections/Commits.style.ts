@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Commits = styled.section`
   margin-top: 4rem;
@@ -18,11 +18,19 @@ export const Commits = styled.section`
   .react-calendar__tile--active {
     background: hsl(220, 90%, 50%);
   }
+  ${({ theme }) =>
+    theme.mobile &&
+    css`
+      .react-calendar__tile {
+        padding: 0;
+      }
+    `}
 `
 export const Title = styled.h2`
   font-size: 2rem;
 `
 export const Updated = styled.span`
+  display: inline-block;
   font-size: 1rem;
   opacity: 0.5;
 `
@@ -52,7 +60,7 @@ export const Commit = styled.li<{ product: string }>`
     }
   }};
   font-size: 0.6rem;
-  line-height: 1.1rem;
+  line-height: 1rem;
   text-align: center;
   color: ${({ product }) => {
     switch (product) {
@@ -61,7 +69,12 @@ export const Commit = styled.li<{ product: string }>`
       default:
         return "white"
     }
-  }}; ;
+  }};
+  ${({ theme }) =>
+    theme.mobile &&
+    css`
+      margin: 0 1px;
+    `}
 `
 
 export const Details = styled.div`

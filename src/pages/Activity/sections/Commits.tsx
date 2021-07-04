@@ -48,9 +48,10 @@ const Commits = () => {
       />
       {commitsOfDay && (
         <S.Details>
-          {Object.keys(commitsOfDay).map((key) => (
+          <S.Summary>{format(date, "yyyy-MM-dd")}</S.Summary>
+          {Object.keys(commitsOfDay).map((repo) => (
             <S.Summary>
-              {commitsOfDay[key]} Commit{commitsOfDay[key] > 1 ? "s" : ""} on {key}
+              {commitsOfDay[repo]} Commit{commitsOfDay[repo] > 1 ? "s" : ""} on {repo}
             </S.Summary>
           ))}
         </S.Details>
