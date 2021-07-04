@@ -13,7 +13,7 @@ export const Commits = styled.section`
     height: 60px;
   }
   .react-calendar__tile--now {
-    background: hsl(220, 80%, 90%);
+    background: inherit;
   }
   .react-calendar__tile--active {
     background: hsl(220, 90%, 50%);
@@ -62,4 +62,14 @@ export const Commit = styled.li<{ product: string }>`
         return "white"
     }
   }}; ;
+`
+
+export const Details = styled.div`
+  padding: 1rem;
+  margin-top: 2rem;
+  background: hsl(220, 50%, 95%);
+`
+
+export const Summary = styled.p`
+  font-family: monospace;
 `

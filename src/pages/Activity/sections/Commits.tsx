@@ -8,6 +8,7 @@ import type { Result, CommitLog } from "@api/commits"
 import * as S from "./Commits.style"
 
 const Commits = () => {
+  const [date, setDate] = useState<Date>(new Date())
   const [updated, setUpdated] = useState<number>(0)
   const [commits, setCommits] = useState<CommitLog>({})
   useEffect(() => {
@@ -16,6 +17,7 @@ const Commits = () => {
       .then(({ updated, data }: Result) => {
         setCommits(data)
         setUpdated(updated)
+        setDate(new Date(updated))
       })
   }, [])
 
@@ -30,12 +32,29 @@ const Commits = () => {
 
   if (!updated) return null
 
+  const commitsOfDay = commits[format(date, "yyyy-MM-dd")]
+
   return (
     <S.Commits>
       <S.Title>
         Commits Calendar <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>
       </S.Title>
-      <Calendar defaultActiveStartDate={new Date(updated)} tileContent={tileContent} locale="ko-KR" />
+      <Calendar
+        value={date}
+        onChange={setDate}
+        defaultActiveStartDate={new Date(updated)}
+        tileContent={tileContent}
+        locale="ko-KR"
+      />
+      {commitsOfDay && (
+        <S.Details>
+          {Object.keys(commitsOfDay).map((key) => (
+            <S.Summary>
+              {commitsOfDay[key]} Commit{commitsOfDay[key] > 1 ? "s" : ""} on {key}
+            </S.Summary>
+          ))}
+        </S.Details>
+      )}
     </S.Commits>
   )
 }
