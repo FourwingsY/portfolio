@@ -1,5 +1,3 @@
-import { ContentsWidth } from "@styles/adaptive"
-
 import * as S from "./Contributes.style"
 
 export function removeNulls<S>(value: S | undefined | null): value is S {
@@ -25,20 +23,18 @@ const Contributes = () => {
 
   return (
     <S.Contributes>
-      <ContentsWidth>
-        <S.Title>Contributes to Open source community</S.Title>
-        <S.List>
-          {parsedContributes.map((pr) => (
-            <a href={pr.link} target="_blank">
-              <S.Item>
-                <S.Repository>{pr.repository}</S.Repository>
-                <S.PullRequest>{pr.prNumber}</S.PullRequest>
-                <S.MergedDate>{pr.date}</S.MergedDate>
-              </S.Item>
-            </a>
-          ))}
-        </S.List>
-      </ContentsWidth>
+      <S.Title>Contributes to Open source community</S.Title>
+      <S.List>
+        {parsedContributes.map((pr) => (
+          <a key={pr.repository + pr.prNumber} href={pr.link} target="_blank">
+            <S.Item>
+              <S.Repository>{pr.repository}</S.Repository>
+              <S.PullRequest>{pr.prNumber}</S.PullRequest>
+              <S.MergedDate>{pr.date}</S.MergedDate>
+            </S.Item>
+          </a>
+        ))}
+      </S.List>
     </S.Contributes>
   )
 }

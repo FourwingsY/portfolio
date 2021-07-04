@@ -37,8 +37,12 @@ export default createGlobalStyle`
     outline: none;
     cursor: pointer;
   }
+  abbr[title] {
+    text-decoration: none;
+  }
 
   * {
     box-sizing: border-box;
   }
+
 `

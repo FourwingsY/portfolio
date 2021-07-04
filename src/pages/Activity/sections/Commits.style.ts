@@ -1,0 +1,61 @@
+import styled from "styled-components"
+
+export const Commits = styled.section`
+  margin-top: 4rem;
+  .react-calendar {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .react-calendar__month-view__weekdays__weekday {
+    font-size: 1rem;
+  }
+  .react-calendar__tile {
+    height: 60px;
+  }
+  .react-calendar__tile--now {
+    background: hsl(220, 80%, 90%);
+  }
+  .react-calendar__tile--active {
+    background: hsl(220, 90%, 50%);
+  }
+`
+export const Title = styled.h2`
+  font-size: 2rem;
+`
+
+export const DailyCommits = styled.ul`
+  height: 1.5rem;
+`
+
+export const Commit = styled.li<{ product: string }>`
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin: 3px;
+  background: ${({ product }) => {
+    switch (product) {
+      case "drmuzy-front":
+        return "#312a75"
+      case "junior-front":
+        return "#2959ff"
+      case "qualson-crm-web":
+        return "#f20d33"
+      case "realclass2-web":
+        return "#2bde73"
+      default:
+        return "grey"
+    }
+  }};
+  font-size: 0.6rem;
+  line-height: 1rem;
+  text-align: center;
+  color: ${({ product }) => {
+    switch (product) {
+      case "realclass2-web":
+        return "#13141a"
+      default:
+        return "white"
+    }
+  }}; ;
+`
