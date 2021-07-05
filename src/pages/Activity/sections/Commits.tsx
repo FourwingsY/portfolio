@@ -33,11 +33,11 @@ const Commits = () => {
 
   const commitsOfDay = commits[format(date, "yyyy-MM-dd")]
 
+  if (!updated) return null
   return (
     <S.Commits>
       <S.Title>
-        Commits Calendar
-        {updated && <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>}
+        Commits Calendar <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>
       </S.Title>
       <Calendar
         value={date}
