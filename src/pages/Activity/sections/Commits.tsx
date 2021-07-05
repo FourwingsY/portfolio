@@ -7,9 +7,10 @@ import type { Result, CommitLog } from "@api/commits"
 
 import * as S from "./Commits.style"
 
+type Timestamp = number
 const Commits = () => {
   const [date, setDate] = useState<Date>(new Date())
-  const [updated, setUpdated] = useState<number>(0)
+  const [updated, setUpdated] = useState<Timestamp>(0)
   const [commits, setCommits] = useState<CommitLog>({})
   useEffect(() => {
     fetch("/api/commits")
@@ -30,14 +31,13 @@ const Commits = () => {
     return <DailyCommits data={data} />
   }
 
-  if (!updated) return null
-
   const commitsOfDay = commits[format(date, "yyyy-MM-dd")]
 
   return (
     <S.Commits>
       <S.Title>
-        Commits Calendar <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>
+        Commits Calendar
+        {updated && <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>}
       </S.Title>
       <Calendar
         value={date}

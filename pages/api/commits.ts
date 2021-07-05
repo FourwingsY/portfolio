@@ -3,7 +3,7 @@ import fs from "fs/promises"
 import { NextApiHandler } from "next"
 import path from "path"
 
-const COMMITS_DIR = "./public/internal-commits"
+const COMMITS_DIR = path.resolve("./public", "internal-commits")
 
 export interface CommitLog {
   [date: string]: { [repo: string]: number }
