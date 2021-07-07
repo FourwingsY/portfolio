@@ -134,7 +134,7 @@ export const Menu = styled.button<{ opened: boolean }>`
 export const Drawer = styled.div<{ opened: boolean }>`
   position: fixed;
   top: 0;
-  left: 100%;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,12 +142,14 @@ export const Drawer = styled.div<{ opened: boolean }>`
   width: 100vw;
   height: 100vh;
   background: hsla(220, 60%, 50%);
-  transition: left 0.3s;
+  transform: translateX(100%);
+  transition: transform 0.3s;
   ${({ opened }) =>
     opened &&
     css`
-      left: 0;
+      transform: translateX(0);
     `};
+
   a {
     margin: 0.75rem;
   }
