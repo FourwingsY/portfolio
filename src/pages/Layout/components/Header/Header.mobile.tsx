@@ -13,9 +13,12 @@ const Header = () => {
   const hide = useHideOnScrollDown({ minimumScroll: 200, threshold: 30 })
 
   useEffect(() => {
+    const lockScroll = (e: TouchEvent) => e.preventDefault()
     if (opened) {
+      document.body.addEventListener("touchmove", lockScroll, { passive: false })
       document.body.style.overflow = "hidden"
       return () => {
+        document.body.removeEventListener("touchmove", lockScroll)
         document.body.style.overflow = "initial"
       }
     }
