@@ -16,9 +16,12 @@ export const FontStyle = createGlobalStyle`
 `
 
 export default createGlobalStyle`
-  html,
+  html {
+    padding: 0;
+    margin: 0;
+  }
   body {
-    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     margin: 0;
   }
   h1, h2, h3, h4, h5, h6, p {

@@ -8,15 +8,15 @@ import Mole from "./components/Mole"
 import TasteIcon from "./components/TasteIcon"
 
 const AboutMe = () => {
-  const [key, setKey] = useState(Date.now())
+  const [width, setWidth] = useState(0)
 
   function resetMoleGame() {
-    setKey(Date.now())
+    setWidth(window.innerWidth)
   }
 
   // restart mole game when screen resizes
   useEffect(() => {
-    const reset = throttle(resetMoleGame, 200)
+    const reset = throttle(resetMoleGame, 500)
     window.addEventListener("resize", reset)
     return () => window.removeEventListener("resize", reset)
   }, [])
@@ -24,7 +24,7 @@ const AboutMe = () => {
   return (
     <S.AboutMe>
       <S.Title>Who am I?</S.Title>
-      <S.MoleGame key={key}>
+      <S.MoleGame key={width}>
         {TASTES.map((taste) => (
           <Mole key={taste.name} taste={taste}>
             <TasteIcon taste={taste} />
