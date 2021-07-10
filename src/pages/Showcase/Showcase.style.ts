@@ -5,6 +5,8 @@ import { ContentsWidth } from "@styles/adaptive"
 export const Showcase = styled(ContentsWidth)`
   display: flex;
   flex-flow: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   ${({ theme }) =>
     theme.large &&
     css`

@@ -1,3 +1,5 @@
+import { ContentsWidth } from "@styles/adaptive"
+
 import * as S from "./History.style"
 import TimelineItem from "./components/TimelineItem"
 import { realclass, crm, junior, muzy, qgis, uploadingo, dingo, moncast } from "./data"
@@ -14,6 +16,11 @@ const History = () => {
       <TimelineItem item={uploadingo} />
       <TimelineItem item={dingo} />
       <TimelineItem item={moncast} />
+      <S.NotDeveloper>
+        <ContentsWidth>
+          <S.TimelineFadeout />
+        </ContentsWidth>
+      </S.NotDeveloper>
     </S.History>
   )
 }

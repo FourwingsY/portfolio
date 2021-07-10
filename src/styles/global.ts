@@ -19,6 +19,7 @@ export default createGlobalStyle`
   html {
     padding: 0;
     margin: 0;
+    background-color: hsl(220, 60%, 50%);
   }
   body {
     padding: 0 0 env(safe-area-inset-bottom);

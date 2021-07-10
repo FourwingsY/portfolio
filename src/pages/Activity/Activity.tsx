@@ -8,7 +8,7 @@ import Contributes from "./sections/Contributes"
 const Activity = () => {
   return (
     <Layout>
-      <ContentsWidth>
+      <ContentsWidth style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
         <Contributes />
         <Commits />
       </ContentsWidth>

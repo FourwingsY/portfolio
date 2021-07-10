@@ -10,5 +10,5 @@ export const Layout = styled.div`
   --mainPadding: 2rem;
 `
 export const Main = styled.main`
-  padding: var(--mainPadding) 0;
+  background: white;
 `

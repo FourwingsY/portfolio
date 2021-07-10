@@ -1,10 +1,11 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
 
 export const Intro = styled.section`
   overflow: hidden;
-  height: calc(100vh - var(--headerHeight) - var(--mainPadding));
+  height: calc(100vh - var(--headerHeight));
+  background: linear-gradient(hsl(220, 60%, 50%), white);
 `
 
 export const Background = styled.div`
@@ -17,7 +18,12 @@ export const Background = styled.div`
   background-size: cover;
   background-position: center;
   filter: blur(8px);
-  z-index: -1;
+  ${({ theme }) =>
+    theme.mobile &&
+    css`
+      height: 0;
+      padding-bottom: 200%;
+    `}
 `
 
 export const Contents = styled(ContentsWidth)`
