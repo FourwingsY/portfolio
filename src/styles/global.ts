@@ -21,7 +21,7 @@ export default createGlobalStyle`
     margin: 0;
   }
   body {
-    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+    padding: 0 0 env(safe-area-inset-bottom);
     margin: 0;
   }
   h1, h2, h3, h4, h5, h6, p {
