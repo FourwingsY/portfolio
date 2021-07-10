@@ -4,7 +4,7 @@ import { ContentsWidth } from "@styles/adaptive"
 import { POSITION } from "@styles/zIndex"
 
 const hidden = css`
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - env(safe-area-inset-top)));
 `
 
 export const Header = styled.header<{ hide?: boolean }>`
