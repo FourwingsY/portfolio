@@ -141,6 +141,7 @@ export const Drawer = styled.div<{ opened: boolean }>`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
   background: hsla(220, 60%, 50%);
   transform: translateX(100%);
   transition: transform 0.3s;

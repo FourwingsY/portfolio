@@ -18,7 +18,7 @@ export const FontStyle = createGlobalStyle`
 export default createGlobalStyle`
   html,
   body {
-    padding: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     margin: 0;
   }
   h1, h2, h3, h4, h5, h6, p {
