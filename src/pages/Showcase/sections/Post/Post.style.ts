@@ -1,6 +1,8 @@
 import ReactMarkdown from "react-markdown"
 import styled, { css } from "styled-components"
 
+import { palette } from "@styles/theme"
+
 const highlightjs_github = css`
   .hljs {
     display: block;
@@ -83,7 +85,7 @@ const highlightjs_github = css`
 
 export const Markdown = styled(ReactMarkdown)`
   code {
-    color: hsl(220, 70%, 35%);
+    color: ${palette.highlight};
   }
   ${highlightjs_github};
 `

@@ -16,7 +16,7 @@ const ShowcasePost: React.FC<SSGProps> = ({ post }) => {
       <Head>
         <title>{post.metadata.title}</title>
       </Head>
-      <ContentsWidth>
+      <ContentsWidth style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
         <LiveExample postId={post.metadata.id} />
         <Post content={post.content} />
       </ContentsWidth>

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
+import { palette } from "@styles/theme"
 import { POSITION } from "@styles/zIndex"
 
 const hidden = css`
@@ -17,7 +18,7 @@ export const Header = styled.header<{ hide?: boolean }>`
   height: fit-content;
   padding-top: env(safe-area-inset-top);
   margin: 0 auto;
-  background: hsl(220, 60%, 50%);
+  background: ${palette.primary};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   transition: transform 0.5s;
   overflow-x: hidden;
@@ -43,7 +44,7 @@ export const NavLink = styled.span<{ match: boolean }>`
   margin: 0 0.25rem;
   line-height: var(--headerHeight);
   font-size: 1rem;
-  color: hsl(220, 60%, 95%);
+  color: ${palette.primary95};
   cursor: pointer;
   overflow: hidden;
   ::after {
@@ -54,7 +55,7 @@ export const NavLink = styled.span<{ match: boolean }>`
     display: block;
     width: 100%;
     height: 0.25rem;
-    background: hsl(220, 60%, 95%);
+    background: ${palette.primary95};
     transition: transform 0.3s;
     transform: translateY(100%);
   }
@@ -142,7 +143,7 @@ export const Drawer = styled.div<{ opened: boolean }>`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  background: hsla(220, 60%, 50%);
+  background: ${palette.primary};
   transform: translateX(100%);
   transition: transform 0.3s;
   ${({ opened }) =>

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
+import { palette } from "@styles/theme"
 
 import { ProductStatus } from "../../data"
 
@@ -20,7 +21,7 @@ export const ProductName = styled.span<{ hasLink?: boolean }>`
     css`
       cursor: pointer;
       :hover {
-        color: hsl(220, 100%, 50%);
+        color: ${palette.highlight};
       }
     `};
 `
@@ -34,7 +35,7 @@ export const ProductStatusBadge = styled.span<{ status: ProductStatus }>`
   background: ${({ status }) => {
     switch (status) {
       case ProductStatus.LIVE:
-        return "hsl(220, 100%, 50%)"
+        return palette.highlight
       case ProductStatus.PRIVATE:
         return "hsl(40, 80%, 50%)"
       case ProductStatus.DEAD:
@@ -124,7 +125,7 @@ export const TimelineItem = styled(ContentsWidth)`
   font-size: 0;
   &:hover {
     ${More} {
-      color: hsl(220, 80%, 40%);
+      color: ${palette.highlight};
     }
   }
 `

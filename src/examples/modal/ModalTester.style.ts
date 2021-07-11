@@ -1,14 +1,16 @@
 import styled from "styled-components"
 
+import { palette } from "@styles/theme"
+
 export const ModalTester = styled.div`
   margin-bottom: 32px;
 `
 export const OpenModalButton = styled.button`
   padding: 8px;
   margin-right: 4px;
-  background: hsl(220, 60%, 50%);
+  background: ${palette.primary};
   color: white;
   :hover {
-    background: hsl(220, 60%, 60%);
+    background: ${palette.primary60};
   }
 `

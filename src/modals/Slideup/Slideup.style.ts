@@ -1,12 +1,14 @@
 import styled, { css } from "styled-components"
 
+import { palette } from "@styles/theme"
+
 import * as CS from "../common.style"
 
 export const Slideup = styled(CS.Modal)<{ visible: boolean }>`
   position: absolute;
   bottom: 0;
   border-radius: 10px 10px 0 0;
-  background-color: hsl(220, 80%, 90%);
+  background-color: ${palette.primary95};
   ${({ visible }) =>
     css`
       transition: transform 500ms;

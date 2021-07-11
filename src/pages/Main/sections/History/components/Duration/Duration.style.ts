@@ -1,10 +1,12 @@
 import styled from "styled-components"
 
+import { palette } from "@styles/theme"
+
 export const Duration = styled.span`
   display: block;
   font-family: monospace;
   font-weight: bold;
-  color: hsl(220, 60%, 50%);
+  color: ${palette.primary};
 `
 export const Year = styled.span`
   font-size: ${({ theme }) => (theme.small ? "2rem" : "3rem")};

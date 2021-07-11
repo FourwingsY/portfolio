@@ -1,11 +1,12 @@
 import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
+import { palette } from "@styles/theme"
 
 export const Intro = styled.section`
   overflow: hidden;
   height: calc(100vh - var(--headerHeight));
-  background: linear-gradient(hsl(220, 60%, 50%), white);
+  background: linear-gradient(${palette.primary}, white);
 `
 
 export const Background = styled.div`

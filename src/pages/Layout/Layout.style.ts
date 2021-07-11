@@ -7,8 +7,8 @@ export const Layout = styled.div`
   width: 100vw;
   min-height: 100vh;
   --headerHeight: 3rem;
-  --mainPadding: 2rem;
 `
 export const Main = styled.main`
+  flex: 1;
   background: white;
 `

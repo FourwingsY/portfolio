@@ -1,11 +1,13 @@
 import styled, { css } from "styled-components"
 
+import { palette } from "@styles/theme"
+
 import * as CS from "../common.style"
 
 export const MoleInformation = styled(CS.Modal)<{ visible: boolean }>`
   width: 100%;
   max-width: 24rem;
-  background: hsl(220, 80%, 98%);
+  background: ${palette.primary98};
   font-size: 1.5rem;
 
   a {

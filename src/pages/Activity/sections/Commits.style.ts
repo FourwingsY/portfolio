@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components"
 
+import { palette } from "@styles/theme"
+
 export const Commits = styled.section`
   margin-top: 4rem;
   .react-calendar {
@@ -16,7 +18,7 @@ export const Commits = styled.section`
     background: inherit;
   }
   .react-calendar__tile--active {
-    background: hsl(220, 90%, 50%);
+    background: ${palette.highlight};
   }
   ${({ theme }) =>
     theme.mobile &&
@@ -80,7 +82,7 @@ export const Commit = styled.li<{ product: string }>`
 export const Details = styled.div`
   padding: 1rem;
   margin-top: 2rem;
-  background: hsl(220, 50%, 95%);
+  background: ${palette.primary95};
 `
 
 export const Summary = styled.p`

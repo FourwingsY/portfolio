@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 
+import { palette } from "./theme"
+
 const DEFAULT_FONT_SIZE = 16
 const MINIMUM = 360
 
@@ -19,7 +21,7 @@ export default createGlobalStyle`
   html {
     padding: 0;
     margin: 0;
-    background-color: hsl(220, 60%, 50%);
+    background-color: ${palette.primary};
   }
   body {
     padding: 0 0 env(safe-area-inset-bottom);

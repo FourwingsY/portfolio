@@ -1,5 +1,7 @@
 import styled, { css, keyframes } from "styled-components"
 
+import { palette } from "@styles/theme"
+
 export const Simulator = styled.section`
   margin-bottom: 2rem;
   ${({ theme }) =>
@@ -85,9 +87,9 @@ export const Value = styled.span`
 
 export const PauseButton = styled.button`
   padding: 0.5rem 1rem;
-  background-color: hsl(220, 70%, 50%);
+  background-color: ${palette.primary};
   color: white;
   :hover {
-    background-color: hsl(220, 70%, 60%);
+    background-color: ${palette.primary60};
   }
 `

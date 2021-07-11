@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
+import { palette } from "@styles/theme"
 
 export const Showcase = styled(ContentsWidth)`
   display: flex;
@@ -18,7 +19,7 @@ export const Card = styled.div`
   display: flex;
   flex-flow: column;
   margin: 16px 0;
-  border: 1px solid hsl(220, 60%, 80%);
+  border: 1px solid ${palette.primary80};
   border-radius: 16px;
   overflow: hidden;
   transform: translateZ(0);
@@ -48,8 +49,8 @@ export const CardThumbnail = styled.div`
 export const CardBody = styled.div`
   flex: 1;
   padding: 16px;
-  border-top: 1px solid hsl(220, 60%, 80%);
-  background: hsl(220, 60%, 96%);
+  border-top: 1px solid ${palette.primary80};
+  background: ${palette.primary95};
 `
 export const CardTitle = styled.p`
   line-height: 1.5;
@@ -74,7 +75,7 @@ export const Post = styled.li`
   display: flex;
   justify-content: space-between;
   padding: 0.8rem 0;
-  border-bottom: 1px solid hsl(220, 60%, 90%);
+  border-bottom: 1px solid ${palette.primary80};
   :last-child {
     border-bottom: 0;
   }
@@ -92,7 +93,7 @@ export const ExternalLink = styled.a``
 
 export const Button = styled.button`
   position: relative;
-  background: hsl(220, 60%, 50%);
+  background: ${palette.primary};
   padding: 12px;
   font-size: 16px;
   color: white;
@@ -100,12 +101,12 @@ export const Button = styled.button`
   box-shadow: 0 3px 1px #333;
   transition: all 0.2s;
   &:hover {
-    background: hsl(220, 60%, 60%);
+    background: ${palette.primary60};
     box-shadow: 0 2px 1px black;
     transform: translateY(1px);
   }
   &:active {
-    background: hsl(220, 60%, 70%);
+    background: ${palette.primary70};
     box-shadow: 0 1px 1px black;
     transform: translateY(2px);
   }

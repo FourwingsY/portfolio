@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import { palette } from "@styles/theme"
+
 export const Contributes = styled.section``
 export const Title = styled.h2`
   font-size: 2rem;
@@ -14,7 +16,8 @@ export const Item = styled.li`
 export const Repository = styled.span``
 export const PullRequest = styled.span`
   margin-left: 0.4rem;
-  color: hsl(220, 50%, 50%);
+  font-size: 1.2rem;
+  color: ${palette.primary60};
   ::before {
     content: "#";
   }
