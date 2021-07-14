@@ -15,9 +15,9 @@ function enhanceModalPayload<T extends ModalType>(payload: OpenModalPayload<T>):
 
 // openModal 함수 자체가 generic function이어야
 // modalType: T 에 대한 props의 타입 추론이 가능하다
-type OpenModal = <T extends ModalType>(
+export type OpenModal = <T extends ModalType>(
   payload: OpenModalPayload<T>
-) => PayloadAction<OpenModalPayload<T>, "@modal/OPEN_MODAL">
+) => PayloadAction<EnhancedModalPayload<T>, "@modal/OPEN_MODAL">
 
 const openModal = createAction("@modal/OPEN_MODAL", enhanceModalPayload) as OpenModal
 const closeModal = createAction<{ id: string }, "@modal/CLOSE_MODAL">("@modal/CLOSE_MODAL")
