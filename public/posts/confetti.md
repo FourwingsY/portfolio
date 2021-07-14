@@ -7,7 +7,8 @@ written: 2021.06.08
 
 캔버스에 폭죽 효과 렌더링하기: [TSParticles](https://particles.js.org)의 [confetti demo](https://codepen.io/matteobruni/pen/NWdKwXG) 같은 것을 만들어보자.
 
-이 글에서는 디테일한 코드는 생략하고 요구사항과 대략적인 구조만 설명한다. 각 코드셋은 설명에 필요한 부분만 따 왔으므로, 전체 코드는 [여기](https://github.com/FourwingsY/portfolio/blob/main/src/pages/Showcase/Confetti/useConfetti.ts)를 참고!
+이 글에서는 디테일한 코드는 생략하고 요구사항과 대략적인 구조만 설명한다. 각 코드셋은 설명에 필요한 부분만 따 왔으므로, 전체 코드는 [여기](https://github.com/FourwingsY/portfolio/blob/main/src/hooks/useConfetti.ts
+)를 참고!
 
 ## 단계 나누기
 

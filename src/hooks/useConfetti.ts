@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useEffect, useRef, useState } from "react"
 
-import { getRandomInRange, getRandomColor } from "@utils/random"
+import { getRandomInRange } from "@utils/random"
 
 interface Size {
   width: number
@@ -15,7 +15,6 @@ export interface ConfettiOptions {
   gravity: number
   friction?: number
   margin?: number // remove particles that's going too far from canvas. default: 0.2
-  colorSet?: string[]
 }
 
 export interface ParticleOptions {
@@ -23,6 +22,7 @@ export interface ParticleOptions {
   initialPosition: Vector // in 0-1, relative position on canvas [x, y]
   initialSpeed: number
   initialAngle: number // 0-360
+  color: string
 }
 
 interface Callbacks {
@@ -131,7 +131,7 @@ export default function useConfetti(
     if (!canvas) return
 
     const particleId = ++nextId.current
-    const particle = createParticle(particleId, canvas, particleOptions, confettiOptions)
+    const particle = createParticle(particleId, canvas, particleOptions)
     particleIds.current.push(particle.id)
     particles.current[particle.id] = particle
     setActive(true)
@@ -188,13 +188,8 @@ function addSwingMovement(particle: Particle, friction = 0) {
   particle.position = { x: x + Math.cos(particle.swing) * swingX, y }
 }
 
-function createParticle(
-  id: number,
-  canvas: HTMLCanvasElement,
-  particleOptions: ParticleOptions,
-  confettiOptions: ConfettiOptions
-) {
-  const { size, initialPosition, initialSpeed, initialAngle } = particleOptions
+function createParticle(id: number, canvas: HTMLCanvasElement, particleOptions: ParticleOptions) {
+  const { size, initialPosition, initialSpeed, initialAngle, color } = particleOptions
 
   const particle: Particle = {
     id,
@@ -211,7 +206,7 @@ function createParticle(
     ],
     size,
     swing: Math.random() * 2 * Math.PI,
-    color: getRandomColor(confettiOptions.colorSet),
+    color,
   }
   return particle
 }

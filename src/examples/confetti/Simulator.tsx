@@ -29,7 +29,6 @@ const Simulator = () => {
   const [confettiOptions, setConfettiOptions] = useState<ConfettiOptionsInput>({
     gravity: 1000,
     friction: 0.02,
-    colorSet: ["green", "#dddd00", "hsl(240,100%,50%)", "red"],
   })
   const [particleOptions, setParticleOptions] = useState<ParticleOptionsInput>({
     width: 10,
@@ -55,6 +54,8 @@ const Simulator = () => {
     const coord = { x: canvasX / canvas.width, y: canvasY / canvas.height }
     setCoord(coord)
 
+    const colorSet = ["green", "#dddd00", "hsl(240,100%,50%)", "red"]
+
     for (let i = 0; i < particleOptions.count; ++i) {
       const singleParticleOptions = {
         size: { width: particleOptions.width, height: particleOptions.height },
@@ -64,6 +65,7 @@ const Simulator = () => {
           particleOptions.initialAngle - particleOptions.initialAngleSpread / 2,
           particleOptions.initialAngle + particleOptions.initialAngleSpread / 2
         ),
+        color: colorSet[getRandomInt(0, colorSet.length)],
       }
       addParticle(singleParticleOptions)
     }
