@@ -2,7 +2,11 @@ import styled, { css, keyframes } from "styled-components"
 
 export const AboutMe = styled.section`
   width: 100%;
-  height: 100vh;
+  ${({ theme }) =>
+    !theme.mobile &&
+    css`
+      height: 100vh;
+    `}
 `
 
 export const Title = styled.div`
@@ -10,14 +14,14 @@ export const Title = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 30vh;
+  height: 30%;
   font-size: 4rem;
   font-weight: bold;
 `
 
 export const MoleGame = styled.div`
   position: relative;
-  height: 70vh;
+  height: 70%;
   ${({ theme }) =>
     theme.large &&
     css`

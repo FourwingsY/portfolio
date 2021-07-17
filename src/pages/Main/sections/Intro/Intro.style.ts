@@ -1,20 +1,15 @@
 import styled, { css } from "styled-components"
 
-import { ContentsWidth } from "@styles/adaptive"
 import { palette } from "@styles/theme"
 
 export const Intro = styled.section`
-  overflow: hidden;
-  height: calc(100vh - var(--headerHeight));
+  position: relative;
   background: linear-gradient(${palette.primary}, white);
 `
 
 export const Background = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100%;
-  height: 100vh;
   background: url("/images/intro.jpg") no-repeat;
   background-size: cover;
   background-position: center;
@@ -25,11 +20,11 @@ export const Background = styled.div`
       height: 0;
       padding-bottom: 200%;
     `}
-`
-
-export const Contents = styled(ContentsWidth)`
-  position: relative;
-  height: 100%;
+  ${({ theme }) =>
+    !theme.mobile &&
+    css`
+      height: calc(100vh - var(--headerHeight));
+    `}
 `
 
 export const Title = styled.h1`

@@ -142,7 +142,8 @@ export const Drawer = styled.div<{ opened: boolean }>`
   justify-content: center;
   flex-direction: column;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   background: ${palette.primary};
   transform: translateX(100%);
   transition: transform 0.3s;
