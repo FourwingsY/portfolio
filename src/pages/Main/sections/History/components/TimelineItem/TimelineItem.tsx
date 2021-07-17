@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { Product } from "../../data"
 import Duration from "../Duration"
@@ -10,6 +10,9 @@ interface Props {
 }
 const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
   const [active, setActive] = useState(defaultActive)
+  const [heights, setHeights] = useState<[number, number]>([0, 0])
+  const detectorClosed = useRef<HTMLDivElement>(null)
+  const detectorOpened = useRef<HTMLDivElement>(null)
 
   function openLink() {
     if (item.link) {
@@ -17,8 +20,14 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
     }
   }
 
+  useEffect(() => {
+    setHeights([detectorClosed.current?.clientHeight || 0, detectorOpened.current?.clientHeight || 0])
+  }, [])
+
+  const [closedHeight, openedHeight] = heights
+
   return (
-    <S.TimelineItem onClick={() => setActive(!active)}>
+    <S.TimelineItem>
       <S.ShortDescription>
         <Duration duration={item.duration} />
         <S.ProductName hasLink={!!item.link} onClick={openLink}>
@@ -27,11 +36,25 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
         </S.ProductName>
         <S.Company>{item.company}</S.Company>
       </S.ShortDescription>
-      <S.DisplayZone>
+      <S.DisplayZone onClick={() => setActive(!active)}>
         <S.BorderBox active={active}>
-          {!active && <S.More>See What I've learned</S.More>}
+          <S.LongDescription forSizeDetect ref={detectorClosed}>
+            <p>{item.experienced.split("\n")[0]}</p>
+            <S.More>더보기</S.More>
+          </S.LongDescription>
+          <S.LongDescription forSizeDetect ref={detectorOpened}>
+            {item.experienced.split("\n").map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
+          </S.LongDescription>
+          {!active && (
+            <S.LongDescription style={{ height: closedHeight }} key="main">
+              <p>{item.experienced.split("\n")[0]}</p>
+              <S.More>더보기</S.More>
+            </S.LongDescription>
+          )}
           {active && (
-            <S.LongDescription>
+            <S.LongDescription style={{ height: openedHeight }} key="main">
               {item.experienced.split("\n").map((line, i) => (
                 <p key={i}>{line}</p>
               ))}

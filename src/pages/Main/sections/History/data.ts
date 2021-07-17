@@ -21,7 +21,7 @@ export const realclass: Product = {
     Typescript, Next.js, redux, redux-saga... Showcase에 적은 글의 대부분은 이 프로젝트를 하면서 얻은 경험 중 일부를 적어내려간 것입니다.
     프로젝트의 기본 뼈대를 잡고, 컨벤션을 잡아가며, 다섯명의 프론트엔드 개발자가 협업해가며 즐겁게 진행했습니다.
     다섯명이 협업했지만, 제대로 된 코드 리뷰를 진행했기 때문에, 전체 프로젝트의 구조와 코드를 웬만큼은 파악하고 있다고 할 수 있습니다. 
-    그동안 제대로 하지 못했던, 프론트엔드 개발자 사이의 협업에 대한 경험을 제대로 해본 것 같습니다.
+    그동안 제대로 하지 못했던, 프론트엔드 개발자 사이의 협업에 대한 경험을 제대로 해봤다고 느낍니다.
     한편으로는, Next.js를 좀더 깊게 사용하며 SSR / SSG에 대해서도 이해하기 시작했습니다.
   `,
   company: "Qualson",
@@ -111,6 +111,7 @@ export const moncast: Product = {
   productName: "moncast.com",
   experienced: `\
     첫 회사의 첫 프로젝트입니다. Angular.js로 작성된 몬캐스트라는 콘텐츠 플랫폼을 유지보수하며, 멀티 이미지 콘텐츠를 추가하는 등의 작업을 진행했습니다.
+    공부할 때엔 바닐라 스크립트만 공부했었기에, coffeescript, stylus 등의 도구를 사용하며 빌드 설정은 이렇게 하는거구나, 하는 것들이 제일 기억에 남습니다.
   `,
   company: "Makeus mobile",
   status: ProductStatus.DEAD,
