@@ -1,8 +1,3 @@
-import { useRouter } from "next/router"
-
-import modalActions from "@store/modal/modal.actions"
-import { useDispatch } from "@store/useStore"
-
 import Layout from "@pages/Layout"
 
 import Link from "@components/Link"
@@ -12,6 +7,7 @@ import External from "@icons/External"
 import Medium from "@icons/Medium"
 
 import * as S from "./Showcase.style"
+import ModalThumbnail from "./thumbnails/ModalThumbnail"
 
 const mediumPosts = [
   { id: "988ce0d939e7", title: "Next.JS hydration 스타일 이슈 파악하기", written: "2021.01.24" },
@@ -26,22 +22,6 @@ const mediumPosts = [
 ]
 
 const Showcase = () => {
-  const dispatch = useDispatch()
-  const router = useRouter()
-  function openModal(e: React.MouseEvent) {
-    e.preventDefault()
-    dispatch(
-      modalActions.openModal({
-        type: "Alert",
-        props: {
-          message: "Wanna read my post?",
-          confirmText: "Sure",
-          onConfirm: () => router.push("/showcase/modal"),
-        },
-      })
-    )
-  }
-
   return (
     <Layout>
       <S.Showcase>
@@ -62,7 +42,7 @@ const Showcase = () => {
           <Link href="/showcase/modal">
             <S.FixedRate169>
               <S.CardThumbnail>
-                <S.Button onClick={openModal}>Read This</S.Button>
+                <ModalThumbnail />
               </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>
@@ -89,10 +69,10 @@ const Showcase = () => {
             <S.PostList>
               {mediumPosts.map((post) => (
                 <S.Post key={post.id}>
-                  <a href={`https://fourwingsy.medium.com/${post.id}`}>
+                  <S.ExternalLink href={`https://fourwingsy.medium.com/${post.id}`}>
                     <External width={16} height={16} color="#333" />
-                    {post.title}
-                  </a>
+                    <S.PostTitle>{post.title}</S.PostTitle>
+                  </S.ExternalLink>
                   <S.PostWritten>{post.written}</S.PostWritten>
                 </S.Post>
               ))}

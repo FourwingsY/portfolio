@@ -66,13 +66,14 @@ export const PostList = styled.ul`
   top: 0;
   bottom: 0;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   overflow-y: scroll;
   list-style: none;
 `
 
 export const Post = styled.li`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 0.8rem 0;
   border-bottom: 1px solid ${palette.primary80};
@@ -80,16 +81,25 @@ export const Post = styled.li`
     border-bottom: 0;
   }
   svg {
+    flex-shrink: 0;
     margin-right: 0.5rem;
     vertical-align: bottom;
   }
+`
+
+export const PostTitle = styled.span`
+  display: inline-block;
 `
 
 export const PostWritten = styled.span`
   font-size: 0.8rem;
   opacity: 0.8;
 `
-export const ExternalLink = styled.a``
+export const ExternalLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  padding-right: 0.5rem;
+`
 
 export const Button = styled.button`
   position: relative;
