@@ -9,7 +9,7 @@ export const ModalThumbnail = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 170%;
+  width: 42rem;
 `
 
 const blinking = keyframes`
