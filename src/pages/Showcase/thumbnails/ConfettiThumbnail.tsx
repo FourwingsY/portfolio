@@ -32,12 +32,7 @@ const FireworksCanvas = () => {
     }
   }
 
-  return (
-    <>
-      <Canvas ref={setCanvas} />
-      <p>Auto-playing!</p>
-    </>
-  )
+  return <Canvas ref={setCanvas} />
 }
 
 export default FireworksCanvas

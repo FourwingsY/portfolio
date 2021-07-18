@@ -2,11 +2,11 @@ import Layout from "@pages/Layout"
 
 import Link from "@components/Link"
 import ScreenMonitor from "@examples/adaptive/ScreenMonitor"
-import FireworksCanvas from "@examples/confetti/FireworksCanvas"
 import External from "@icons/External"
 import Medium from "@icons/Medium"
 
 import * as S from "./Showcase.style"
+import ConfettiThumbnail from "./thumbnails/ConfettiThumbnail"
 import ModalThumbnail from "./thumbnails/ModalThumbnail"
 
 const mediumPosts = [
@@ -29,7 +29,7 @@ const Showcase = () => {
           <Link href="/showcase/confetti">
             <S.FixedRate169>
               <S.CardThumbnail>
-                <FireworksCanvas />
+                <ConfettiThumbnail />
               </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>
