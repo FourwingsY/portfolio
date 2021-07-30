@@ -8,6 +8,11 @@ const History = () => {
   return (
     <S.History>
       <S.Title>What I've done?</S.Title>
+      <S.Future>
+        <ContentsWidth>
+          <S.TimelineFadein />
+        </ContentsWidth>
+      </S.Future>
       <TimelineItem item={realclass} defaultActive />
       <TimelineItem item={crm} />
       <TimelineItem item={junior} />

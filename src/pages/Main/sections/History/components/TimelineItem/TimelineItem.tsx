@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 
+import { useLayoutChangeEffect } from "@hooks/useLayoutChangeEffect"
+
 import { Product } from "../../data"
 import Duration from "../Duration"
 import * as S from "./TimelineItem.style"
@@ -20,24 +22,25 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
     }
   }
 
-  useEffect(() => {
+  // re-calculate when responsive context changes
+  useLayoutChangeEffect(() => {
     setHeights([detectorClosed.current?.clientHeight || 0, detectorOpened.current?.clientHeight || 0])
-  }, [])
+  })
 
   const [closedHeight, openedHeight] = heights
 
   return (
     <S.TimelineItem>
-      <S.ShortDescription>
-        <Duration duration={item.duration} />
-        <S.ProductName hasLink={!!item.link} onClick={openLink}>
-          {item.productName}
-          <S.ProductStatusBadge status={item.status} />
-        </S.ProductName>
-        <S.Company>{item.company}</S.Company>
-      </S.ShortDescription>
-      <S.DisplayZone onClick={() => setActive(!active)}>
-        <S.BorderBox active={active}>
+      <S.BorderBox>
+        <S.ShortDescription>
+          <Duration duration={item.duration} />
+          <S.ProductName hasLink={!!item.link} onClick={openLink}>
+            {item.productName}
+            <S.ProductStatusBadge status={item.status} />
+          </S.ProductName>
+          <S.Company>{item.company}</S.Company>
+        </S.ShortDescription>
+        <S.DisplayZone onClick={() => setActive(!active)}>
           <S.LongDescription forSizeDetect ref={detectorClosed}>
             <p>{item.experienced.split("\n")[0]}</p>
             <S.More>더보기</S.More>
@@ -60,8 +63,8 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
               ))}
             </S.LongDescription>
           )}
-        </S.BorderBox>
-      </S.DisplayZone>
+        </S.DisplayZone>
+      </S.BorderBox>
     </S.TimelineItem>
   )
 }

@@ -10,7 +10,6 @@ export const ShortDescription = styled.div`
   padding: 2rem 0 0.5rem;
   padding-left: 2rem;
   text-align: left;
-  border-left: 2px solid black;
 `
 
 export const ProductName = styled.span<{ hasLink?: boolean }>`
@@ -27,6 +26,7 @@ export const ProductName = styled.span<{ hasLink?: boolean }>`
 `
 
 export const ProductStatusBadge = styled.span<{ status: ProductStatus }>`
+  vertical-align: middle;
   padding: 0.25rem 0.5rem;
   margin-left: 0.5rem;
   border-radius: 0.5rem;
@@ -57,53 +57,14 @@ export const Company = styled.p`
 
 export const DisplayZone = styled.div`
   position: relative;
-  padding: calc(1rem - 2px);
-  ::before,
-  ::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 1rem;
-    border: 2px solid transparent;
-    box-sizing: border-box;
-    transition: 0.5s;
-  }
-  ::before {
-    top: 0;
-    border-bottom-color: black;
-    transform: translateY(-1rem) rotate(45deg);
-  }
-  ::after {
-    bottom: 0;
-    border-top-color: black;
-    transform: translateY(1rem) rotate(-45deg);
-  }
-`
-
-export const BorderBox = styled.div<{ active: boolean }>`
-  position: relative;
-  border: 2px solid black;
-  border-color: black black black transparent;
-  border-radius: 0 1rem 1rem 0;
-  box-sizing: border-box;
-  overflow: hidden;
-  ${({ active }) =>
-    active &&
-    css`
-      width: 100%;
-      border: 2px solid;
-      border-color: black black black transparent;
-    `}
 `
 
 export const LongDescription = styled.div<{ forSizeDetect?: boolean }>`
-  width: 100%;
-  padding: 1rem;
+  padding: 2rem;
   font-size: 0;
   white-space: pre-line;
   transition: 0.5s;
+  overflow: hidden;
   p {
     font-size: 1.5rem;
     &:not(:last-child) {
@@ -126,12 +87,49 @@ export const More = styled.span`
   cursor: pointer;
 `
 
+export const BorderBox = styled.div`
+  position: relative;
+  ::before,
+  ::after {
+    content: "";
+    position: absolute;
+    top: -1px;
+    bottom: -1px;
+    display: block;
+    width: 50%;
+    border: 2px solid black;
+    box-sizing: border-box;
+  }
+  ::before {
+    left: 0;
+    border-right: none;
+    border-radius: 2rem 0 0 2rem;
+  }
+  ::after {
+    right: 0;
+    border-left: none;
+    border-radius: 0 2rem 2rem 0;
+  }
+`
+
 export const TimelineItem = styled(ContentsWidth)`
   position: relative;
+
   font-size: 0;
   &:hover {
     ${More} {
       color: ${palette.highlight};
+    }
+  }
+
+  &:nth-child(even) {
+    ${BorderBox}::before {
+      display: none;
+    }
+  }
+  &:nth-child(odd) {
+    ${BorderBox}::after {
+      display: none;
     }
   }
 `
