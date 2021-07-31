@@ -17,7 +17,7 @@ written: 2021.05.31
 대신 이 부분을 적용하기 위해 (그리고 거의 항상 같이 사용하는, `redux`와 같은) 전역 스토어를 활용한다.
 때문에 모달을 연다는 것은, 타입과 속성을 한번에 담아 액션으로 `dispatch(openModal({ type, props }))` 하는 것과 동일한 의미가 된다.
 사실, 이 문제는 이미 [이 글](https://fourwingsy.medium.com/afd1923797d8)을 쓰던 시점에 이미 원하던 모습에 90% 가까워졌다고 생각한다. 지금의 구조와는 디테일한 부분에서 차이가 조금 있다.
-`redux`를 사용하지 않는다면? 음 그런 경우에 부딛히면, 그 때 생각해봐야지. (나중에 나중에)
+`redux`를 사용하지 않는다면? [컨텍스트를 사용해서 모달을 구현해보자(...Writing)](#)
 
 두 번째는 **모달 타입에 따른 속성값 일치 여부가 타입시스템으로 검증 가능**할 수 있는 것을 목표로 삼았다. 타입스크립트와 모달 시스템의 조화를 이루는 것.
 하지만 첫 번째 목표를 위해 이미 `redux`를 사용중이었기 때문에, 이 문제는 `openModal()의 타입을 어떻게 정의할 것인가?`와 같은 질문이 된다.
@@ -201,6 +201,6 @@ Omit<AlertProps, keyof BasicModalProps>
 
 ### 실제로 사용된 코드를 보고 싶다면
 
-- 이 페이지 상단에 있는 예시 [모달들에 대한 코드](https://github.com/FourwingsY/portfolio/tree/main/src/modals)
-- 그리고 모달을 열기 위한 [액션 호출 코드](https://github.com/FourwingsY/portfolio/blob/main/src/pages/Showcase/Modal/ModalTester.tsx)에서
-- 이 모달들을 열고 닫기 위한 [스토어](https://github.com/FourwingsY/portfolio/tree/main/src/store/modal)와 모달을 렌더링하는 [컨테이너](https://github.com/FourwingsY/portfolio/blob/main/src/modals/Container.tsx)
+- 이 페이지 상단에 있는 예시 [모달들에 대한 코드](https://github.com/FourwingsY/portfolio/tree/19375273ba09aa2e3c8d6a1d99aabdde1e4a6c97/src/modals)
+- 그리고 모달을 열기 위한 [액션 호출 코드](https://github.com/FourwingsY/portfolio/blob/19375273ba09aa2e3c8d6a1d99aabdde1e4a6c97/src/pages/Showcase/Modal/ModalTester.tsx)에서
+- 이 모달들을 열고 닫기 위한 [스토어](https://github.com/FourwingsY/portfolio/tree/19375273ba09aa2e3c8d6a1d99aabdde1e4a6c97/src/store/modal)와 모달을 렌더링하는 [컨테이너](https://github.com/FourwingsY/portfolio/blob/19375273ba09aa2e3c8d6a1d99aabdde1e4a6c97/src/modals/Container.tsx)
