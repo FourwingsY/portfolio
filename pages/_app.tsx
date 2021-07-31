@@ -3,8 +3,7 @@ import { Provider as StoreProvider } from "react-redux"
 
 import store from "@store/index"
 
-import ModalContainer from "@modals/Container"
-
+import withModal from "@hocs/withModal"
 import withResponsive from "@hocs/withResponsive"
 
 import DefaultHead from "@components/Meta/Default"
@@ -19,9 +18,8 @@ function App({ Component, pageProps }: AppProps) {
       <FontStyle />
       <DefaultHead />
       <Component {...pageProps} />
-      <ModalContainer />
       <ThirdParties />
     </StoreProvider>
   )
 }
-export default withResponsive(App)
+export default withResponsive(withModal(App))

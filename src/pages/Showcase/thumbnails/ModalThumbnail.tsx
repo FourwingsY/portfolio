@@ -1,28 +1,26 @@
 import { useRouter } from "next/router"
 
-import modalActions from "@store/modal/modal.actions"
-import { useDispatch } from "@store/useStore"
+import { useModal } from "@hocs/withModal"
 
 import * as S from "./ModalThumbnail.style"
 
 const ModalThumbnail = () => {
-  const dispatch = useDispatch()
+  const { openModal } = useModal()
   const router = useRouter()
-  function openModal(e: React.MouseEvent) {
+
+  function askToRead(e: React.MouseEvent) {
     e.preventDefault()
-    dispatch(
-      modalActions.openModal({
-        type: "Alert",
-        props: {
-          message: "Wanna read my post?",
-          confirmText: "Sure",
-          onConfirm: () => router.push("/showcase/modal"),
-        },
-      })
-    )
+    openModal({
+      type: "Alert",
+      props: {
+        message: "Wanna read my post?",
+        confirmText: "Sure",
+        onConfirm: () => router.push("/showcase/modal"),
+      },
+    })
   }
   const createButton = (delay: number) => (
-    <S.Button onClick={openModal} style={{ animationDelay: `-${delay * 2}ms` }}>
+    <S.Button onClick={askToRead} style={{ animationDelay: `-${delay * 2}ms` }}>
       Read This
     </S.Button>
   )

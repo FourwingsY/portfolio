@@ -1,5 +1,4 @@
-import modalActions from "@store/modal/modal.actions"
-import { useDispatch } from "@store/useStore"
+import { useModal } from "@hocs/withModal"
 
 import { Taste } from "@constants/tastes"
 
@@ -9,15 +8,13 @@ interface Props {
   taste: Taste
 }
 const TasteIcon: React.FC<Props> = ({ taste }) => {
-  const dispatch = useDispatch()
+  const { openModal } = useModal()
   function showInformation() {
-    dispatch(
-      modalActions.openModal({
-        type: "MoleInformation",
-        props: { taste },
-        overlayOptions: { closeDelay: 500, dim: false },
-      })
-    )
+    openModal({
+      type: "MoleInformation",
+      props: { taste },
+      overlayOptions: { closeDelay: 500, dim: false },
+    })
   }
   return (
     <S.Jumping style={{ animationDelay: `-${Math.random().toFixed(2)}s` }}>

@@ -1,26 +1,27 @@
 import { useRouter } from "next/router"
-import { useEffect, useState, cloneElement } from "react"
+import { useEffect, useState, cloneElement, useContext } from "react"
 
-import modalActions from "@store/modal/modal.actions"
 import { EnhancedModalPayload, OverlayOptions } from "@store/modal/modal.types"
-import { useDispatch, useSelector } from "@store/useStore"
+
+import { ModalContext } from "@hocs/withModal"
 
 import * as S from "./overlay.style"
 import { ModalType } from "./types"
 
-const ModalContainer = () => {
-  const dispatch = useDispatch()
+interface Props {
+  openedModals: EnhancedModalPayload<ModalType>[]
+}
+const ModalContainer = ({ openedModals }: Props) => {
+  const { closeAll } = useContext(ModalContext)
   const router = useRouter()
 
   // 뒤로가기 시 모달 닫기
   useEffect(() => {
     router.beforePopState(() => {
-      dispatch(modalActions.closeAll())
+      closeAll()
       return true
     })
   }, [])
-
-  const openedModals = useSelector((state) => state.modal)
 
   return (
     <div id="modal-root">
@@ -34,7 +35,7 @@ interface ImportedModule {
   default: React.ComponentType
 }
 const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, props, overlayOptions }) => {
-  const dispatch = useDispatch()
+  const { closeModal } = useContext(ModalContext)
   const [Component, setComponent] = useState<React.ComponentType>()
 
   // asynchronously import modal file: for reduce bundle size.
@@ -46,7 +47,7 @@ const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, prop
     })
   }, [type])
 
-  const close = () => dispatch(modalActions.closeModal({ id }))
+  const close = () => closeModal({ id })
 
   if (!Component) return null
   return (
