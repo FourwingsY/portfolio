@@ -1,10 +1,23 @@
 import { createContext, Dispatch, useContext, useReducer } from "react"
-import { ActionCreator, compose } from "redux"
-
-import { EnhancedModalPayload, OpenModalPayload } from "@store/modal/modal.types"
+import { compose } from "redux"
 
 import ModalContainer from "@modals/Container"
-import { ModalType } from "@modals/types"
+import { ModalOwnProps, ModalType } from "@modals/types"
+
+export type OpenModalPayload<T extends ModalType> = {
+  type: T
+  props: ModalOwnProps<T>
+  overlayOptions?: OverlayOptions
+}
+
+export type EnhancedModalPayload<T extends ModalType> = OpenModalPayload<T> & { id: string }
+
+export interface OverlayOptions {
+  dim?: boolean
+  closeDelay?: number
+  closeOnOverlayClick?: boolean
+  preventScroll?: boolean
+}
 
 type ModalContextType = {
   openModal: <T extends ModalType>(payload: OpenModalPayload<T>) => void
@@ -49,6 +62,8 @@ function reducer(state: EnhancedModalPayload<ModalType>[], action: ModalAction) 
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ActionCreator<A> = { (...args: any[]): A }
 function bindActionCreator<A, C extends ActionCreator<A>>(
   actionCreator: C,
   dispatch: Dispatch<A>

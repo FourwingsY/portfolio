@@ -13,6 +13,5 @@
   - pages/Layout: 페이지의 공통 레이아웃을 구성합니다.
   - pages/${PAGE}/sections: 페이지를 구성하는 섹션입니다. 페이지 컴포넌트는 단순해지고, 읽기 쉬워집니다.
   - pages/${PAGE}/sections/${SECTION}/components: 해당 섹션에서만 사용되는 컴포넌트를 모아둡니다.
-- store: `redux` 관련 코드들의 모음입니다. `@redux/toolkit`을 사용합니다.
 - styles: CSS-in-js 관련 공통 코드를 모아둡니다.
 - utils: 재사용 될 법한, 간단한 함수들을 모아둡니다. 분류 기준은 **재사용 가능성**이므로 한 번만 사용되는 함수도 여기에 있을 수 있습니다.

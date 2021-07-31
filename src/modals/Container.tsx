@@ -1,8 +1,7 @@
 import { useRouter } from "next/router"
 import { useEffect, useState, cloneElement, useContext } from "react"
 
-import { EnhancedModalPayload, OverlayOptions } from "@store/modal/modal.types"
-
+import type { EnhancedModalPayload, OverlayOptions } from "@hocs/withModal"
 import { ModalContext } from "@hocs/withModal"
 
 import * as S from "./overlay.style"
