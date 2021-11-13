@@ -2,11 +2,13 @@ import styled, { css } from "styled-components"
 
 import { OVERLAY } from "@styles/zIndex"
 
-const dimmedBackground = css`
-  background: rgba(0, 0, 0, 0.6);
-`
+const dimmedBackground = (color: boolean | string) => {
+  if (!color) return "none"
+  if (typeof color === "boolean") return "rgba(0, 0, 0, 0.6)"
+  return color
+}
 
-export const Overlay = styled.div<{ dim: boolean; visible: boolean }>`
+export const Overlay = styled.div<{ dim: boolean | string; visible: boolean }>`
   position: fixed;
   display: flex;
   align-items: center;
@@ -16,7 +18,10 @@ export const Overlay = styled.div<{ dim: boolean; visible: boolean }>`
   width: 100vw;
   height: 100%;
   z-index: ${OVERLAY};
-  ${({ dim }) => dim && dimmedBackground}
+  ${({ dim }) =>
+    css`
+      background: ${dimmedBackground(dim)};
+    `};
 
   // animation
   opacity: 0;

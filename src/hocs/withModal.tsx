@@ -1,5 +1,4 @@
 import { createContext, Dispatch, useContext, useReducer } from "react"
-import { compose } from "redux"
 
 import ModalContainer from "@modals/Container"
 import { ModalOwnProps, ModalType } from "@modals/types"
@@ -13,7 +12,7 @@ export type OpenModalPayload<T extends ModalType> = {
 export type EnhancedModalPayload<T extends ModalType> = OpenModalPayload<T> & { id: string }
 
 export interface OverlayOptions {
-  dim?: boolean
+  dim?: boolean | string
   closeDelay?: number
   closeOnOverlayClick?: boolean
   preventScroll?: boolean
@@ -32,8 +31,6 @@ export const ModalContext = createContext<ModalContextType>({
 })
 
 /** action creators */
-type ModalActionCreator = typeof openModal | typeof closeModal | typeof closeAll
-type ModalAction = ReturnType<ModalActionCreator>
 function openModal(payload: OpenModalPayload<ModalType>) {
   return {
     type: "@modal/OPEN_MODAL" as const,
@@ -51,6 +48,8 @@ function closeAll() {
 }
 
 /** reducer */
+type ModalActionCreator = typeof openModal | typeof closeModal | typeof closeAll
+type ModalAction = ReturnType<ModalActionCreator>
 function reducer(state: EnhancedModalPayload<ModalType>[], action: ModalAction) {
   switch (action.type) {
     case "@modal/OPEN_MODAL":
@@ -64,25 +63,21 @@ function reducer(state: EnhancedModalPayload<ModalType>[], action: ModalAction) 
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ActionCreator<A> = { (...args: any[]): A }
-function bindActionCreator<A, C extends ActionCreator<A>>(
-  actionCreator: C,
-  dispatch: Dispatch<A>
-): (...args: Parameters<C>) => void {
-  return compose(dispatch, actionCreator)
+function bindActionCreator<A, C extends ActionCreator<A>>(actionCreator: C, dispatch: Dispatch<A>) {
+  return (...args: Parameters<C>) => dispatch(actionCreator(...args))
 }
 
 const withModal = <P,>(Component: React.ComponentType<P>) => {
   const WithModal = (props: P) => {
     const [openedModals, dispatch] = useReducer(reducer, [])
+    const modalActions = {
+      openModal: bindActionCreator(openModal, dispatch),
+      closeModal: bindActionCreator(closeModal, dispatch),
+      closeAll: bindActionCreator(closeAll, dispatch),
+    }
 
     return (
-      <ModalContext.Provider
-        value={{
-          openModal: bindActionCreator(openModal, dispatch),
-          closeModal: bindActionCreator(closeModal, dispatch),
-          closeAll: bindActionCreator(closeAll, dispatch),
-        }}
-      >
+      <ModalContext.Provider value={modalActions}>
         <Component {...props} />
         <ModalContainer openedModals={openedModals} />
       </ModalContext.Provider>
