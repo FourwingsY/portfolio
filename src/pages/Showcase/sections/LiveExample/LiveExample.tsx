@@ -11,9 +11,11 @@ const LiveExample: React.FC<Props> = ({ postId }) => {
   const [Component, setComponent] = useState<React.ComponentType>()
 
   useEffect(() => {
-    void import(`@examples/${postId}`).then((module: ImportedModule) => {
-      setComponent(() => module.default)
-    })
+    void import(`@examples/${postId}`)
+      .then((module: ImportedModule) => {
+        setComponent(() => module.default)
+      })
+      .catch((e) => void e)
   }, [postId])
 
   if (!Component) return null

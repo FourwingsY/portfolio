@@ -1,0 +1,114 @@
+---
+title: Suspense with Next & SWR
+author: HS Yang
+written: 2022.02.25
+---
+# Nextjs 12.1 과 SWR 로 Suspense 사용하기
+
+Nextjs 12 에서부터는 React 18의 기능이 alpha 버전으로 지원되기 시작했다.
+이 기능을 한번 시도해보자! 특히, Suspense가 굉장히 기대된다!
+
+## Next 12.1 에서 React 18 활성화하기
+
+#### Step 1.
+[Document](https://nextjs.org/docs/advanced-features/react-18/overview)에 따라, `yarn add next@latest react@rc react-dom@rc`을 실행한다.
+
+#### Step 2.
+`next.config.js` 에서, React 18을 지원하도록 옵션을 켜 줘야 한다.
+
+```javascript
+module.exports = {
+  ...,
+  experimental: {
+    reactRoot: true,
+  },
+}
+```
+
+## SWR 에서 Suspesne 모드 사용하기
+
+#### Step 1.
+이 부분은 생각보다 간단하다.
+```typescript
+useSWR(key, fetcher, { ...previousOptions, suspense: true })
+```
+
+#### Step 2.
+그리고 하나 더 해야 한다. 이 SWR 훅을 사용하는 컴포넌트를 `<Suspense>` 로 감싸주면 된다.
+모든 컴포넌트에 하나씩 해줘야 하는게 조금 귀찮지만.
+
+### Problem: Typing
+Suspense가 왜 좋은가? 데이터를 불러오지 못 했을 때의 처리를 컴포넌트 외적으로 처리하도록 분리해주기 때문에 좋은 것이다.
+하지만 useSWR은 여전히 undefined를 반환할 수도 있는 타입을 가지고 있다.
+
+```typescript
+interface Data { name: string }
+const { data } = useSWR<Data>(key, fetcher, { ...previousOptions, suspense: true })
+// 여기에서 반환되는 data의 타입은 undefined | Data 이다.
+// 잠깐, 우리, suspense를 사용하면 데이터가 있다는 게 보장되는게 아니었나?
+```
+
+SWR의 동작 상, key가 falsy(null, undefined, ...)한 값이 입력될 경우, 요청을 보내지 않고 `undefined`를 리턴하기 때문에,
+이 동작이 틀린 동작은 아니다... 그렇다면 suspense를 쓰고도 `if (!data) return null` 을 매번 해줘야 한단 말인가?
+
+### Solution
+useSWR을 한번 감싸서 문제점을 좀 해결해보자.
+
+첫 번째로, key가 항상 입력되도록 해, 실행될 때 `undefined`가 반환되지 않도록 강제하자.
+
+두 번째로, 타입도 조금 강제해주자. return type을 Data로 덮어쓰자.
+
+```typescript
+import useSWR, { Fetcher, SWRConfiguration, SWRResponse } from "swr"
+
+type SuspensedSWRResponse<Data, Error> = SWRResponse<Data, Error> & { data: Data }
+
+export const useSuspensedSWR = <Data = any, Error = any, SWRKey extends string | any[] = any[]>(
+  key: SWRKey,
+  fetcher: Fetcher<Data, SWRKey> | null,
+  config?: SWRConfiguration<Data, Error, Fetcher<Data, SWRKey>> | undefined
+): SuspensedSWRResponse<Data, Error> => {
+  return useSWR(key, fetcher, { ...config, suspense: true }) as SuspensedSWRResponse<Data, Error>
+}
+```
+
+**주의: 이 해결책은 개발자가 이 훅을 사용하는 컴포넌트를 Suspense로 감싸지 않을 경우 에러가 발생할 가능성을 높인다**
+
+## 실행을 해 보자!
+
+잘... 되지 않는다... 첫 렌더링은 잘 되는 듯 싶다가도, hot reload가 발생하기라도 하면 뻑이 나는 이 기분은 무엇인가.
+
+### Problem 1. SSR / SSG
+
+Next.js의 서버사이드 렌더링 상황에서, useSWR은, useEffect와 다르게, **실행된다**.
+서버사이드 렌더링은 비동기로 이루어지지 않기 때문에, 
+정확하게는, axios 와 같은 ajax 요청을 막아둔 상태로 렌더링을 진행하기 때문에, 이 요청이 보내지지 않고 렌더링 에러가 발생한다.
+이 경우, Nextjs에서 렌더링 과정에 오류가 있었음을 알려주는 403 에러가 찍히는 것을 확인할 수 있다.
+
+이 문제를 해결할 수 있는 방법을 두 가지를 찾았다.
+
+### Solution 1. fallbackData
+useSWR이 fetcher에서 에러가 났을 때에도 기본적인 데이터를 반환할 수 있도록 fallbackData를 지정해주는 방식이다.
+
+```typescript
+interface Data { name: string }
+const { data } = useSuspensedSWR<Data>(key, fetcher, { fallbackData: { name: 'unknown' } })
+```
+
+여기에는 두 가지 방법이 있는데,
+1. 각각의 swr마다 fallbackData를 지정할 수도 있고, 
+2. SWRConfig fallback 을 지정, 특정 컴포넌트마다 키-fallbackData의 맵을 전달해서 사용할 수도 있다.
+
+물론 가장 정석적인 해결방법은, `getServerSideProps`를 통해 가져온 데이터를 fallback 으로 넣어주는 방식이지만,
+`getServerSideProps`는 페이지 단위로 일어나는 동작이고, 우리가 데이터를 넣어야 할 곳은 수없이 많을 가능성이 높다.
+
+그런데 잠깐. 굳이 fallbackData를 일일이 넣어주는 상황이라면, suspense가 무슨 의미가 있지?
+Suspense fallback으로 떨어지기 전에 SWR fallback에서 다 막는 거잖아?
+
+### Solution 2. React.lazy
+[React.lazy](https://ko.reactjs.org/docs/code-splitting.html#reactlazy)를 사용하면, 이 컴포넌트가 클라이언트 사이드에서만 렌더링되도록 제한할 수 있다.
+서버사이드에서는 lazy한 컴포넌트를 렌더링하지 않기 때문에, Suspense fallback 컴포넌트를 렌더링하게 된다.
+
+이 케이스는 아주 편리하지만, lazy하게 렌더링되는 컴포넌트가 크면 커질수록 SSG의 장점을 잃어버리게 되는 문제가 있다.
+
+...하지만 Suspense 자체가 애초에 SSR이랑은 거리가 멀지 않나? 라고 생각하면 이 방법을 충분히 채택할 만 하다.

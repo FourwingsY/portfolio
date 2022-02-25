@@ -8,6 +8,7 @@ import Medium from "@icons/Medium"
 import * as S from "./Showcase.style"
 import ConfettiThumbnail from "./thumbnails/ConfettiThumbnail"
 import ModalThumbnail from "./thumbnails/ModalThumbnail"
+import SuspenseThumbnail from "./thumbnails/SuspenseThumbnail"
 
 const mediumPosts = [
   { id: "988ce0d939e7", title: "Next.JS hydration 스타일 이슈 파악하기", written: "2021.01.24" },
@@ -25,6 +26,19 @@ const Showcase = () => {
   return (
     <Layout>
       <S.Showcase>
+        <S.Card>
+          <Link href="/showcase/suspense">
+            <S.FixedRate169>
+              <S.CardThumbnail>
+                <SuspenseThumbnail />
+              </S.CardThumbnail>
+            </S.FixedRate169>
+            <S.CardBody>
+              <S.CardTitle>Suspense with Next &amp; SWR</S.CardTitle>
+              <S.PostWritten>2022.02.25</S.PostWritten>
+            </S.CardBody>
+          </Link>
+        </S.Card>
         <S.Card>
           <Link href="/showcase/confetti">
             <S.FixedRate169>

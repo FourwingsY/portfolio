@@ -5,6 +5,7 @@ export function removeNulls<S>(value: S | undefined | null): value is S {
 }
 
 const CONTRIBUTES = [
+  { link: "https://github.com/vercel/Next.js/pull/34808", date: "2022-02-25" },
   { link: "https://github.com/iamkun/dayjs/pull/1555", date: "2021-07-01" },
   { link: "https://github.com/DefinitelyTyped/DefinitelyTyped/pull/52803", date: "2021-05-11" },
   { link: "https://github.com/DefinitelyTyped/DefinitelyTyped/pull/22463", date: "2018-01-04" },
@@ -14,7 +15,7 @@ const CONTRIBUTES = [
 ]
 const Contributes = () => {
   const parsedContributes = CONTRIBUTES.map((pr) => {
-    const regex = /https:\/\/github.com\/[\w-]+\/([\w-]+)\/pull\/(\d+)/
+    const regex = /https:\/\/github.com\/[\w-]+\/([.\w-]+)\/pull\/(\d+)/
     const matched = regex.exec(pr.link)
     if (!matched) return null
     const [link, repository, prNumber] = matched
