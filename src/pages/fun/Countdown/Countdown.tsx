@@ -34,15 +34,17 @@ const Countdown = () => {
   }
 
   return (
-    <Layout style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-      {!isRunning && (
-        <S.StartButton onClick={startCountdown} disabled={timeLeft === 0}>
-          Start
-        </S.StartButton>
-      )}
-      {isRunning && <S.ResetButton onClick={resetCountdown}>Reset</S.ResetButton>}
-      <S.Timer runningOut={timeLeft < 5000}>{formatTime(timeLeft)}</S.Timer>
-      <S.AddButton onClick={addTime}>+ 10s</S.AddButton>
+    <Layout style={{ display: "flex", alignItems: "center" }}>
+      <S.Centerize>
+        {!isRunning && (
+          <S.StartButton onClick={startCountdown} disabled={timeLeft === 0}>
+            Start
+          </S.StartButton>
+        )}
+        {isRunning && <S.ResetButton onClick={resetCountdown}>Reset</S.ResetButton>}
+        <S.Timer runningOut={timeLeft < 5000}>{formatTime(timeLeft)}</S.Timer>
+        <S.AddButton onClick={addTime}>+ 10s</S.AddButton>
+      </S.Centerize>
     </Layout>
   )
 }
