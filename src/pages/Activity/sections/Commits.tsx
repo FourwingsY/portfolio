@@ -1,82 +1,90 @@
-import { format } from "date-fns"
-import { useEffect, useState } from "react"
-import Calendar, { CalendarTileProperties } from "react-calendar"
+import { useEffect, useRef, useState } from "react"
 import "react-calendar/dist/Calendar.css"
 
-import type { Result, CommitLog } from "@api/commits"
+import Tooltip from "@components/Tooltip/Tooltip"
 
 import * as S from "./Commits.style"
 
-type Timestamp = number
+interface Week {
+  contributionDays: {
+    weekday: number
+    date: string
+    contributionCount: number
+    color: string
+  }[]
+}
+
+interface Month {
+  name: string
+  year: number
+  firstDay: string
+  totalWeeks: number
+}
+interface Response {
+  user: {
+    contributionsCollection: {
+      contributionCalendar: {
+        totalContributions: number
+        weeks: Week[]
+        months: Month[]
+      }
+    }
+  }
+}
+
 const Commits = () => {
-  const [date, setDate] = useState<Date>(new Date())
-  const [updated, setUpdated] = useState<Timestamp>(0)
-  const [commits, setCommits] = useState<CommitLog>({})
+  const [weeks, setWeeks] = useState<Week[]>([])
+  const [months, setMonths] = useState<string[]>([])
+  const tiles = useRef<HTMLDivElement>(null)
   useEffect(() => {
     fetch("/api/commits")
       .then((response) => response.json())
-      .then(({ updated, data }: Result) => {
-        setCommits(data)
-        setUpdated(updated)
-        setDate(new Date(updated))
+      .then(({ data }: { data: Response }) => {
+        const calendar = data.user.contributionsCollection.contributionCalendar
+        const { weeks, months } = calendar
+        setWeeks(weeks)
+        setMonths(
+          months.flatMap((m) => {
+            const labels = new Array(m.totalWeeks).fill("")
+            labels[0] = m.name
+            return labels
+          })
+        )
       })
   }, [])
 
-  function tileContent({ date, view }: CalendarTileProperties) {
-    // Add class to tiles in month view only
-    if (view !== "month") return null
+  // 최초 로딩 시 스크롤을 최신(우측)으로 이동
+  useEffect(() => {
+    tiles.current?.scrollTo({ left: 9999 })
+  }, [months.length])
 
-    const key = format(date, "yyyy-MM-dd")
-    const data = commits[key]
-    return <DailyCommits data={data} />
-  }
-
-  const commitsOfDay = commits[format(date, "yyyy-MM-dd")]
-
-  if (!updated) return null
   return (
     <S.Commits>
-      <S.Title>
-        Commits Calendar <S.Updated>updated: {format(updated, "yyyy-MM-dd")}</S.Updated>
-      </S.Title>
-      <Calendar
-        value={date}
-        onChange={setDate}
-        defaultActiveStartDate={new Date(updated)}
-        tileContent={tileContent}
-        locale="ko-KR"
-      />
-      {commitsOfDay && (
-        <S.Details>
-          <S.Summary>{format(date, "yyyy-MM-dd")}</S.Summary>
-          {Object.keys(commitsOfDay).map((repo) => (
-            <S.Summary>
-              {commitsOfDay[repo]} Commit{commitsOfDay[repo] > 1 ? "s" : ""} on {repo}
-            </S.Summary>
-          ))}
-        </S.Details>
-      )}
+      <S.Title>Commits Calendar</S.Title>
+      <S.Tiles ref={tiles}>
+        <S.WeekdayColumn>
+          <S.Month />
+          <S.Commit />
+          <S.Commit>월</S.Commit>
+          <S.Commit />
+          <S.Commit>수</S.Commit>
+          <S.Commit />
+          <S.Commit>금</S.Commit>
+          <S.Commit />
+        </S.WeekdayColumn>
+        {weeks.map((w, i) => (
+          <S.Week key={i}>
+            <S.Month>{months[i]}</S.Month>
+            {w.contributionDays.map((d) => (
+              <Tooltip key={d.date} title={`${d.date}에 ${d.contributionCount}개의 커밋`}>
+                <S.Commit style={{ backgroundColor: d.color }} />
+              </Tooltip>
+            ))}
+          </S.Week>
+        ))}
+      </S.Tiles>
     </S.Commits>
   )
 }
 
 export default Commits
-
-interface DailyCommitsProps {
-  data?: { [repo: string]: number }
-}
-const DailyCommits = ({ data }: DailyCommitsProps) => {
-  if (!data) return <S.DailyCommits />
-
-  const products = Object.keys(data)
-
-  return (
-    <S.DailyCommits>
-      {products.map((p) => (
-        <S.Commit product={p} key={p}>
-          {data[p]}
-        </S.Commit>
-      ))}
-    </S.DailyCommits>
-  )
-}

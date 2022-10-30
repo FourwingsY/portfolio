@@ -16,6 +16,7 @@ function App({ Component, pageProps }: AppProps) {
       <DefaultHead />
       <Component {...pageProps} />
       <ThirdParties />
+      <div id="tooltip-root" />
     </>
   )
 }
