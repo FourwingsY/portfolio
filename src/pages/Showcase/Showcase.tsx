@@ -27,6 +27,17 @@ const Showcase = () => {
     <Layout>
       <S.Showcase>
         <S.Card>
+          <Link href="/showcase/swr-query">
+            <S.FixedRate169>
+              <S.CardThumbnail>{/* <SuspenseThumbnail /> */}</S.CardThumbnail>
+            </S.FixedRate169>
+            <S.CardBody>
+              <S.CardTitle>SWR vs React Query</S.CardTitle>
+              <S.PostWritten>2022.11.05</S.PostWritten>
+            </S.CardBody>
+          </Link>
+        </S.Card>
+        <S.Card>
           <Link href="/showcase/suspense">
             <S.FixedRate169>
               <S.CardThumbnail>
