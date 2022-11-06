@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 import withCSR from "@hocs/withCSR"
 import { useResponsiveContext } from "@hocs/withResponsive"
@@ -12,7 +12,7 @@ interface Props {
   taste: Taste
 }
 /* Mole: 두더지 */
-const Mole: React.FC<Props> = ({ children, taste }) => {
+const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   const { DLPM } = useResponsiveContext()
   const size = DLPM(80, 80, 64, 64) // 5rem 5rem 4rem 4rem
   const canvasSize = { width: window.innerWidth, height: window.innerHeight * 0.7 }

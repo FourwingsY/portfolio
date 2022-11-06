@@ -68,7 +68,7 @@ function bindActionCreator<A, C extends ActionCreator<A>>(actionCreator: C, disp
 }
 
 const withModal = <P,>(Component: React.ComponentType<P>) => {
-  const WithModal = (props: P) => {
+  const WithModal = (props: P & JSX.IntrinsicAttributes) => {
     const [openedModals, dispatch] = useReducer(reducer, [])
     const modalActions = {
       openModal: bindActionCreator(openModal, dispatch),

@@ -80,7 +80,7 @@ export function useResponsiveContext() {
 }
 
 const withResponsive = <P,>(Component: React.ComponentType<P>) => {
-  const WithResponsive = (props: P) => {
+  const WithResponsive = (props: P & JSX.IntrinsicAttributes) => {
     const { isMounted, ...context } = useResponsive()
 
     return (

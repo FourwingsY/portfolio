@@ -9,7 +9,7 @@ interface Props {
 }
 const Post: React.FC<Props> = ({ content }) => {
   return (
-    <Markdown className="markdown-body" plugins={[gfm]} rehypePlugins={[highlight]}>
+    <Markdown className="markdown-body" remarkPlugins={[gfm]} rehypePlugins={[highlight]}>
       {content}
     </Markdown>
   )

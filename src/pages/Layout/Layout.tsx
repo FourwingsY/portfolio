@@ -6,7 +6,7 @@ import Header from "./components/Header"
 interface Props {
   style?: CSSProperties
 }
-const Layout: React.FC<Props> = ({ style, children }) => {
+const Layout = ({ style, children }: React.PropsWithChildren<Props>) => {
   return (
     <S.Layout>
       <Header />

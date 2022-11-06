@@ -1,7 +1,6 @@
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { match } from "path-to-regexp"
-
-import Link from "@components/Link"
 
 import * as S from "./Header.style"
 
@@ -10,7 +9,12 @@ interface Props {
   activeOnly?: boolean
   includeChildPath?: boolean
 }
-const NavLink: React.FC<Props> = ({ href, includeChildPath = false, activeOnly = false, children }) => {
+export default function NavLink({
+  href,
+  includeChildPath = false,
+  activeOnly = false,
+  children,
+}: React.PropsWithChildren<Props>) {
   const router = useRouter()
   const matchFn = match(href, { end: !includeChildPath })
   const matched = Boolean(matchFn(router.pathname))
@@ -25,5 +29,3 @@ const NavLink: React.FC<Props> = ({ href, includeChildPath = false, activeOnly =
     </Link>
   )
 }
-
-export default NavLink

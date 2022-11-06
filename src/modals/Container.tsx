@@ -33,7 +33,7 @@ const ModalContainer = ({ openedModals }: Props) => {
 interface ImportedModule {
   default: React.ComponentType
 }
-const OpenedModal: React.FC<EnhancedModalPayload<ModalType>> = ({ type, id, props, overlayOptions }) => {
+const OpenedModal = ({ type, id, props, overlayOptions }: EnhancedModalPayload<ModalType>) => {
   const { closeModal } = useContext(ModalContext)
   const [Component, setComponent] = useState<React.ComponentType>()
 

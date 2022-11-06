@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import "react-calendar/dist/Calendar.css"
 
 import Tooltip from "@components/Tooltip/Tooltip"
 
