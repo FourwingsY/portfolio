@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import Layout from "@pages/Layout"
@@ -30,7 +31,9 @@ const Showcase = () => {
         <S.Card>
           <Link href="/showcase/swr-query">
             <S.FixedRate169>
-              <S.CardThumbnail>{/* <SuspenseThumbnail /> */}</S.CardThumbnail>
+              <S.CardThumbnail>
+                <Image src="/images/posts/swr-query.jpg" layout="fill" alt="thumbnail" />
+              </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>
               <S.CardTitle>SWR vs React Query</S.CardTitle>
