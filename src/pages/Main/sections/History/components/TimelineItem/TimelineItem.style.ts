@@ -89,26 +89,27 @@ export const More = styled.span`
 
 export const BorderBox = styled.div`
   position: relative;
-  ::before,
-  ::after {
+  ::before {
     content: "";
     position: absolute;
     top: -1px;
+    left: 0;
     bottom: -1px;
     display: block;
-    width: 50%;
-    border: 2px solid black;
+    width: 0;
+    border-left: 2px solid black;
     box-sizing: border-box;
   }
-  ::before {
-    left: 0;
-    border-right: none;
-    border-radius: 2rem 0 0 2rem;
-  }
   ::after {
-    right: 0;
-    border-left: none;
-    border-radius: 0 2rem 2rem 0;
+    content: "";
+    position: absolute;
+    top: calc(2rem + ${({ theme }) => (theme.small ? "0.6rem" : "1.2rem")});
+    left: -7px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: ${palette.highlight};
   }
 `
 
@@ -119,17 +120,6 @@ export const TimelineItem = styled(ContentsWidth)`
   &:hover {
     ${More} {
       color: ${palette.highlight};
-    }
-  }
-
-  &:nth-child(even) {
-    ${BorderBox}::before {
-      display: none;
-    }
-  }
-  &:nth-child(odd) {
-    ${BorderBox}::after {
-      display: none;
     }
   }
 `

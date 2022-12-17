@@ -7,35 +7,67 @@ export const History = styled.section`
 export const Future = styled.div`
   position: relative;
   width: 100%;
-  height: 10rem;
 `
 
 export const TimelineFadein = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
+  position: relative;
+  width: 50%;
+  height: 8rem;
 
   ::before {
     content: "";
     position: absolute;
+    bottom: 0;
     display: block;
-    bottom: 2rem;
-    left: 2rem;
-    width: 2px;
-    height: 10rem;
-    background: linear-gradient(rgba(0, 0, 0, 0) 10%, #000);
+    width: 50%;
+    height: 25%;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-top-left-radius: 2rem;
+    box-sizing: border-box;
   }
   ::after {
     content: "";
     position: absolute;
+    top: 0;
+    right: 0;
     display: block;
-    bottom: -1px;
-    left: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 50%;
+    height: 75%;
     border-bottom: 2px solid black;
     border-right: 2px solid black;
-    border-radius: 0 0 2rem 0;
+    border-bottom-right-radius: 2rem;
+  }
+`
+
+export const TimelineFadeout = styled.div`
+  position: relative;
+  width: 50%;
+  height: 8rem;
+
+  ::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 50%;
+    height: 25%;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom-left-radius: 2rem;
+    box-sizing: border-box;
+  }
+  ::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 50%;
+    height: 75%;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-top-right-radius: 2rem;
   }
 `
 
@@ -51,33 +83,4 @@ export const NotDeveloper = styled.div`
   width: 100%;
   height: 10rem;
   background: linear-gradient(hsla(220, 60%, 80%, 0), hsla(220, 60%, 50%, 1));
-`
-
-export const TimelineFadeout = styled.div`
-  position: absolute;
-  top: 0;
-  right: 50%;
-
-  ::before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: -1px;
-    right: 0;
-    width: 2rem;
-    height: 2rem;
-    border-top: 2px solid black;
-    border-left: 2px solid black;
-    border-radius: 2rem 0 0 0;
-  }
-  ::after {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 2rem;
-    right: 2rem;
-    width: 2px;
-    height: 10rem;
-    background: linear-gradient(#000, rgba(0, 0, 0, 0) 90%);
-  }
 `

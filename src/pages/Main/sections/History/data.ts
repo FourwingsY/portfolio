@@ -19,28 +19,27 @@ export const realclass: Product = {
   experienced: `\
     기존에 알던 지식과 경험을 총동원해 새로운 프로젝트를 진행했습니다. 
     Typescript, Next.js, redux, redux-saga... Showcase에 적은 글의 대부분은 이 프로젝트를 하면서 얻은 경험 중 일부를 적어내려간 것입니다.
-    프로젝트의 기본 뼈대를 잡고, 컨벤션을 잡아가며, 다섯명의 프론트엔드 개발자가 협업해가며 즐겁게 진행했습니다.
-    다섯명이 협업했지만, 제대로 된 코드 리뷰를 진행했기 때문에, 전체 프로젝트의 구조와 코드를 웬만큼은 파악하고 있다고 할 수 있습니다. 
-    그동안 제대로 하지 못했던, 프론트엔드 개발자 사이의 협업에 대한 경험을 제대로 해봤다고 느낍니다.
+    프로젝트의 기본 뼈대를 잡고, 컨벤션을 잡고 코드 리뷰를 진행하며, 여러명의 프론트엔드 개발자가 협업해가며 즐겁게 진행했습니다.
+    그동안 제대로 하지 못했던, 프론트엔드 개발자 사이의 협업에 대한 경험을 제대로 해보는 중입니다.
     한편으로는, Next.js를 좀더 깊게 사용하며 SSR / SSG에 대해서도 이해하기 시작했습니다.
+    최근에는 redux를 제거하고 swr 및 recoil로 옮겨가는 작업을 진행하고 있습니다.
   `,
   company: "Qualson",
   status: ProductStatus.LIVE,
   link: "https://realclass.co.kr/new",
 }
-export const crm: Product = {
-  duration: ["2020-11-01", "2020-04-20"],
-  productName: "Customer Relation Management",
+export const qms: Product = {
+  duration: ["2021-12-01", null],
+  productName: "Qualson Management System",
   experienced: `\
-    통칭 백오피스. 리얼클래스의 고객 관리, 판매 및 상품 관리용 페이지를 만들었습니다.
-    백오피스를 개발하며 굉장히 복잡한 모델을 다루기도 했습니다. 특히 환불 관련된 부분은 혀를 내두를 정도였습니다.
-    그래도 그나마 기존에 했던 업로딩고가 나름 백오피스에 가까운 서비스였기 때문에 쉽게 적응할 수 있었습니다. 
-    수많은 CRUD 폼을 작성해봤던 경험을 다시 한번 활용해볼 수 있는 기회였습니다.
-    빠른 개발을 위해 컴포넌트를 일일이 만드는 대신 ant.design 컴포넌트를 활용했습니다.
-    컴포넌트를 가져다 쓰는 것의 장점과 단점을 동시에 느낄 수 있었습니다.
+    통칭 어드민. 퀄슨의 여러 프로덕트에 공통적으로 사용되는 리얼클래스의 고객 관리, 판매 및 상품 관리용 백오피스를 만들었습니다.
+    이 프로젝트를 진행하면서는 기존 어드민에서 사용된 antd 컴포넌트를 제거하고, 손수 한땀 한땀 컴포넌트를 만들었습니다.
+    이 과정에서, 기존 회사의 디자인 시스템에서 부족하다고 생각한 부분을 스스로 채워보고자 시도해보았고, 여기에 적용해보았습니다.
+    개인적인 디자인 시스템을 만들어보는 경험을 해봤습니다. 이 섹션의 제목을 클릭하시면 피그마로 이동합니다.
   `,
   company: "Qualson",
   status: ProductStatus.PRIVATE,
+  link: "https://www.figma.com/file/9bffFe0mlm15ercj4A8y5E/Design-System?node-id=0%3A1&t=iBdP3EHsxfxVlM3a-1",
 }
 export const junior: Product = {
   duration: ["2020-06-01", "2020-10-30"],

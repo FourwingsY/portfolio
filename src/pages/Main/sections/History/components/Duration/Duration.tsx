@@ -1,4 +1,4 @@
-import { parseISO, format, isSameYear } from "date-fns"
+import { parseISO, format } from "date-fns"
 import { useEffect, useRef, useState } from "react"
 
 import { useOnceVisible } from "@hooks/useIntersectionObserver"
@@ -13,8 +13,8 @@ const Duration: React.FC<Props> = ({ duration }) => {
   const from = parseISO(stringFrom)
   const to = nullableTo ? parseISO(nullableTo) : new Date()
   const element = useRef(null)
-  const animatingFrom = useIncreasingDate(element, from, parseISO("2013-02-15"))
-  const animatingTo = useIncreasingDate(element, to, parseISO("2015-01-03"))
+  const animatingFrom = useAnimatingDate(element, from, new Date())
+  const animatingTo = useAnimatingDate(element, to, new Date())
 
   return (
     <S.Duration ref={element}>
@@ -22,7 +22,7 @@ const Duration: React.FC<Props> = ({ duration }) => {
       <S.Month>{format(animatingFrom, "MM")}</S.Month>
       <span style={{ display: "inline-block" }}>
         <S.Tilde>-</S.Tilde>
-        {!isSameYear(from, to) && <S.Year>{format(animatingTo, "yyyy.")}</S.Year>}
+        <S.Year>{format(animatingTo, "yyyy.")}</S.Year>
         <S.Month>{format(animatingTo, "MM")}</S.Month>
       </span>
     </S.Duration>
@@ -31,23 +31,23 @@ const Duration: React.FC<Props> = ({ duration }) => {
 
 export default Duration
 
-function useIncreasingDate(element: React.RefObject<Element>, end: Date, start: Date) {
-  const aMonth = 30 * 86400 * 1000
+function useAnimatingDate(element: React.RefObject<Element>, end: Date, start: Date) {
+  const aMonth = 30 * 86400 * 1000 * Math.sign(+end - +start)
   const [date, setDate] = useState(start)
   const visible = useOnceVisible(element)
-  function increase() {
+  function animate() {
     setDate((date) => {
-      const increased = date.valueOf() + aMonth
-      if (end.valueOf() <= increased) {
+      const next = date.valueOf() + aMonth
+      if ((aMonth < 0 && next <= end.valueOf()) || (aMonth > 0 && end.valueOf() <= next)) {
         setDate(() => end)
       }
-      requestAnimationFrame(increase)
-      return new Date(increased)
+      requestAnimationFrame(animate)
+      return new Date(next)
     })
   }
 
   useEffect(() => {
-    if (visible) increase()
+    if (visible) animate()
   }, [visible])
 
   return date
