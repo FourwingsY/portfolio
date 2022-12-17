@@ -32,7 +32,7 @@ interface Response {
 }
 
 const Commits = () => {
-  const [weeks, setWeeks] = useState<Week[]>([])
+  const [weeks, setWeeks] = useState<Week[]>(emptyWeeks)
   const [months, setMonths] = useState<string[]>([])
   const tiles = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -87,3 +87,12 @@ const Commits = () => {
 }
 
 export default Commits
+
+const emptyWeeks = new Array(52).fill(0).map((_, i) => ({
+  contributionDays: [0, 1, 2, 3, 4, 5, 6].map((j) => ({
+    weekday: 0,
+    date: `${i}-${j}`,
+    contributionCount: 0,
+    color: "#ebedf0",
+  })),
+}))

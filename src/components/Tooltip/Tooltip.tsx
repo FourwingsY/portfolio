@@ -7,7 +7,6 @@ interface Props {
   title: string
 }
 export default function Tooltip({ title, children }: React.PropsWithChildren<Props>) {
-  const root = document.getElementById("tooltip-root") || document.body
   const ref = useRef<HTMLSpanElement>(null)
   const [isHover, setIsHover] = useState(false)
   const [position, setPosition] = useState({ top: 0, left: 0, width: 0, height: 0 })
@@ -23,6 +22,16 @@ export default function Tooltip({ title, children }: React.PropsWithChildren<Pro
     setIsHover(false)
   }
 
+  const ssr = typeof document === "undefined"
+  if (ssr) {
+    return (
+      <S.TooltipWrapper onMouseOver={show} onMouseOut={hide} ref={ref}>
+        {children}
+      </S.TooltipWrapper>
+    )
+  }
+
+  const root = document.getElementById("tooltip-root") || document.body
   return (
     <S.TooltipWrapper onMouseOver={show} onMouseOut={hide} ref={ref}>
       {children}
