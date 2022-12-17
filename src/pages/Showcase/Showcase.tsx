@@ -81,7 +81,7 @@ const Showcase = () => {
           </Link>
         </S.Card>
         <S.Card>
-          <Link href="/showcase/adaptive">
+          <Link href="/showcase/adaptive-design">
             <S.FixedRate169>
               <S.CardThumbnail>
                 <ScreenMonitor />
