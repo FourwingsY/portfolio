@@ -12,7 +12,7 @@
 
 # production
 /build
-/public/sitemap.xml
+/public/sitemap*.xml
 
 # misc
 .DS_Store

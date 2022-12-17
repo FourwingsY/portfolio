@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import Layout from "@pages/Layout"
 
-import ScreenMonitor from "@examples/adaptivee/ScreenMonitor"
+import ScreenMonitor from "@examples/adaptive/ScreenMonitor"
 import External from "@icons/External"
 import Medium from "@icons/Medium"
 
