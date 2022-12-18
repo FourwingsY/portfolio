@@ -8,6 +8,7 @@ import External from "@icons/External"
 import Medium from "@icons/Medium"
 
 import * as S from "./Showcase.style"
+import AnimatedMDX from "./thumbnails/AnimatedMDX"
 import ConfettiThumbnail from "./thumbnails/ConfettiThumbnail"
 import ModalThumbnail from "./thumbnails/ModalThumbnail"
 import SuspenseThumbnail from "./thumbnails/SuspenseThumbnail"
@@ -29,10 +30,24 @@ const Showcase = () => {
     <Layout>
       <S.Showcase>
         <S.Card>
+          <Link href="/showcase/mdx">
+            <S.FixedRate169>
+              <S.CardThumbnail>
+                <AnimatedMDX />
+                {/* <Image src="/images/posts/swr-query.jpg" alt="thumbnail" fill /> */}
+              </S.CardThumbnail>
+            </S.FixedRate169>
+            <S.CardBody>
+              <S.CardTitle>MDX</S.CardTitle>
+              <S.PostWritten>2022.12.18</S.PostWritten>
+            </S.CardBody>
+          </Link>
+        </S.Card>
+        <S.Card>
           <Link href="/showcase/swr-query">
             <S.FixedRate169>
               <S.CardThumbnail>
-                <Image src="/images/posts/swr-query.jpg" layout="fill" alt="thumbnail" />
+                <Image src="/images/posts/swr-query.jpg" alt="thumbnail" fill />
               </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>
