@@ -74,8 +74,8 @@ const Commits = () => {
         {weeks.map((w, i) => (
           <S.Week key={i}>
             <S.Month>{months[i]}</S.Month>
-            {w.contributionDays.map((d) => (
-              <Tooltip key={d.date} title={`${d.date}에 ${d.contributionCount}개의 커밋`}>
+            {w.contributionDays.map((d, j) => (
+              <Tooltip key={`${i}_${j}`} title={`${d.date}에 ${d.contributionCount}개의 커밋`}>
                 <S.Commit style={{ backgroundColor: d.color }} />
               </Tooltip>
             ))}

@@ -51,4 +51,5 @@ export const Commit = styled.div`
   width: var(--cellSize);
   height: var(--cellSize);
   line-height: var(--cellSize);
+  transition: background-color 0.2s;
 `
