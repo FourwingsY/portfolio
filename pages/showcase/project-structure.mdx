@@ -1,0 +1,141 @@
+import PostLayout from "@pages/posts/PostLayout"
+
+export const meta = {
+  title: "React Project Structure",
+  written: "2023.04.29",
+  keywords: ["react", "directory", "project", "structure", "atomic"],
+}
+
+# React Project Structure v2023
+
+지난 2017년의 [React 프로젝트의 디렉토리 구조](https://medium.com/@fourwingsy/react-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EA%B5%AC%EC%A1%B0-bb183c0a426e) 이후로
+6년이라는 시간이 흘렀다. 그 사이 변화한 생각들을 비교하며 적어본다.
+
+## React Hooks
+
+2019년, 훅이 등장했고 리액트 프로젝트는 서서히 격변을 맞이하게 되었다.
+더이상 컴포넌트는 클래스가 아니어도 상태를 관리할 수 있게 되었고, 이에 따라 Container - Presentatinal 컴포넌트 패턴은 무의미해졌다.
+
+또, 전체 앱의 상태를 한번에 관리하던 리덕스는 관리하기엔 너무 무겁고 커다란 레거시 덩어리가 되어갔다.
+앱의 전역적인 상태는 Recoil, Jotai 같은 간단한 Atomic 단위로 관리하는 것이 트렌드가 되었고, thunk, saga와 같은 비동기 처리는 react-query, SWR 같은 라이브러리가 대체하기 시작했다.
+
+리덕스가 지배하던 세상에서는 리덕스를 어떻게 잘 나누어 관리하냐가 프로젝트의 디렉토리 구조를 관리하는 핵심이었다.
+그렇다면 이제는 어떤 관점에서 디렉토리 구조를 잡아야 할까?
+
+## Atomic Design
+
+이야기에 들어가기 앞서, 아토믹 디자인 패턴에 대해 이야기를 해보려고 한다. 이전 글에서도 아토믹 디자인 패턴을 차용해 디렉토리 구조를 잡았었기 때문이지만,
+최근 채용을 진행하면서 사전 과제를 진행하면, 많은 주니어 개발자 분들이 아토믹 디자인 패턴에 매료되어 그 방향을 좇아간 과제를 제출해주시기 때문이다.
+그런 분들에게는 항상 "아토믹 디자인 패턴의 단점은 뭔가요?" 라고 질문해본다.
+
+### 아토믹 디자인 패턴의 단점
+
+#### `Atom` 이라는 단위는 꽤 간단하다.
+
+보통은 기본 html을 대신해 사용할, 디자인을 입힌 컴포넌트를 의미한다. 이 컴포넌트는 범용적으로 재사용성을 높여야 하는 목적이 있기 때문에, 몇 가지 단점이 있다.
+
+- 컴포넌트가 스스로 위치를 잡지 않는다.
+  - 따라서 아톰 컴포넌트를 사용할 곳에서는 컴포넌트의 위치를 잡아줄 Wrapper 가 거의 항상 필요하다.
+- 컴포넌트가 굉장히 다양한 props를 받게 된다.
+  - 컴포넌트가 갖는 props의 종류가 많아질 수록, 컴포넌트 내부 구현의 분기는 더욱 복잡해진다.
+- 직접적인 기능을 갖지 않는다.
+  - 웬만해선 controlled 컴포넌트로 만들기 때문에 컴포넌트가 상태를 갖지 않는다.
+    - 따라서 상태와 이벤트 리스너를 부모로부터 props로 받아야 한다.
+  - 부모 컴포넌트는 모든 일들을 관리하기 위해 복잡해지고, 렌더링 로직은 한층 더 길어진다.
+
+#### `Molecule` 부터는 머리가 아프다.
+
+어디부터 어디까지가 Molecule인지, 어디부터 어디까지가 Organism인지, 모호하고 희미하다.
+그렇다고 Molecule 같은 중간 단위를 안 쓰자니, Page > Atom 의 단순한 구조에서, 위의 Atom의 단점이 굉장히 두드러진다.
+Page가 모든 책임을, 상태를, 기능과 레이아웃을 전부 관리하게 된다. 코드를 읽는 데 IDE의 바로가기 기능에 감사하게 된다.
+
+게다가 가장 큰 단점은: 대형 프로젝트가 되면 될 수록 재사용되는 Molecule이 점점 사라진다.
+거의 같아 보이지만 조금씩 제약조건이 다르고 기능이 다르면 props를 추가해 분기를 태워야 하는데, 이 경우 Molecule이 위에서 언급한 Atom의 단점을 그대로 가져가게 된다.
+
+## 대안
+
+### Page > Section
+
+각 기능별로 Section을 나누고, Section은 그 안에 필요한 컴포넌트를 관리한다.
+
+이렇게 되면 `useEffect()` 나 `useRecoilState()` 같은 훅은 섹션 내에서만 관리할 수 있다.
+
+```tsx
+import Layout from "@pages/Layout"
+
+import AboutMe from "./sections/AboutMe"
+import History from "./sections/History"
+import Intro from "./sections/Intro"
+
+export default function Main() {
+  return (
+    <Layout>
+      <Intro />
+      <AboutMe />
+      <History />
+    </Layout>
+  )
+}
+```
+
+만약 레이아웃이 이렇게 단순한 컬럼 구조가 아니라면, Compound Component 형식을 사용해 이런 식으로 구현하는 것도 좋다.
+
+```tsx
+export default function PageWithSidebar() {
+  return (
+    <Layout>
+      <Layout.Sidebar>
+        <Filter />
+      </Layout.Sidebar>
+      <Layout.Body>
+        <HeadingSection />
+        <TableSection />
+      </Layout.Body>
+    </Layout>
+  )
+}
+```
+
+아, 물론 페이지 단위로 데이터를 관리해야 한다면, 페이지에 로직이 들어가는 것을 피할 필요는 없다.
+
+### Atom -> Components
+
+Atom에 해당하는 기본 컴포넌트만 components 폴더에서 관리하도록 한다.
+
+### ~~Molecule / Organism~~ Sections > Components
+
+어떤 섹션에서만 사용되는 컴포넌트가 존재한다면 section > components 폴더에서 관리하도록 한다.
+보통 이 컴포넌트는 해당 페이지에서만 필요한 독특한 디자인을 가지거나, 독특한 기능을 가지기도 한다.
+이 컴포넌트가 다른 페이지나 섹션에서 재사용될 일이 없다고 생각된다면 **컴포넌트가 자체적으로 기능을 가지도록 한다.**
+
+컴포넌트가 자체적으로 기능을 가지면, 해당 컴포넌트를 사용하는 페이지나 섹션에서는 해당 컴포넌트의 상태를 관리할 필요가 없다.
+그러니까 기본적인 onClick, 라우팅, 모달 등의 동작은 컴포넌트가 가져가도 문제가 없다.
+
+때로는 이 컴포넌트는 공통 컴포넌트를 Wrapping 하여 디자인은 공통 컴포넌트를 따르지만, 기능은 독자적으로 가져가기도 한다.
+
+물론, 파일이 길어진다 싶으면 커스텀 훅으로 로직을 분리하기도 하는데 이 훅은 사용되는 컴포넌트 바로 옆에 둔다.
+
+### 여기까지를 요약하자면
+
+<div style={{ background: "#252526", textAlign: "center" }}>
+  <img src="/images/directory-structure.png" style={{ height: "30rem" }} />
+</div>
+
+### ~Redux~ Data Hooks
+
+데이터 훅은 사실 크게 생각할 거리가 별로 없다. 리덕스에서 액션과 리듀서와 사가를 어떻게 관리해야할지 고민했던 것이 굉장히 무색하게도 말이다.
+
+도메인 별로 API, Model, Hook, 그리고 필요하다면 Atom 정도만 구분해서 폴더 단위로 관리하고 있다.
+
+## 결론 및 하고싶은 말
+
+많은 주니어 개발자 분들이 컴포넌트나 커스텀 훅의 분리 시 "재사용성"에만 초점을 맞추고 있을 때가 많다.
+하지만 대형 프로젝트로 가면 갈 수록 재사용성보다 "가독성"을 위해 파일을 분리하는 경우가 훨씬 많아진다. 그리고 코드의 중복 제거보다 가독성이 **훨씬 훨씬** 중요하다!
+
+아토믹 디자인 역시 재사용성에만 초점을 맞춘 컴포넌트 패턴이므로, 아토믹 디자인 패턴*만* 사용한다면 많은 props와 onChange 같은 이벤트 핸들러로 코드가 더러워지는 것은 피할 수 없다.
+최대한 한 컴포넌트 파일을 150줄 이내로 유지하려고 노력해보자. 재사용성이 아니라 가독성을 위해 컴포넌트를 분리해보고, 커스텀 훅을 만들어보자.
+다른 사람이 코드를 읽을 때, 함수의 이름만 보고 어떤 일이 벌어지는지 추측하고 스크롤이 지나갈 수 있도록 해보자.
+
+그렇게 된다면 당신도 합격!
+
+export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>

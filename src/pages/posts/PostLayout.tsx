@@ -15,9 +15,7 @@ export default function PostLayout({ meta, children }: React.PropsWithChildren<P
         <title>{meta.title}</title>
         <meta name="keywords" content={meta.keywords.join(", ")} />
       </Head>
-      <S.Contents className="markdown-body" style={{ paddingTop: "2rem", paddingBottom: "2rem" }}>
-        {children}
-      </S.Contents>
+      <S.Contents className="markdown-body">{children}</S.Contents>
     </Layout>
   )
 }

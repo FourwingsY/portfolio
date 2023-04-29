@@ -30,11 +30,23 @@ const Showcase = () => {
     <Layout>
       <S.Showcase>
         <S.Card>
+          <Link href="/showcase/project-structure">
+            <S.FixedRate169>
+              <S.CardThumbnail>
+                <Image src="/images/posts/directories.jpg" alt="thumbnail" fill />
+              </S.CardThumbnail>
+            </S.FixedRate169>
+            <S.CardBody>
+              <S.CardTitle>리액트 프로젝트 구조</S.CardTitle>
+              <S.PostWritten>2023.04.29</S.PostWritten>
+            </S.CardBody>
+          </Link>
+        </S.Card>
+        <S.Card>
           <Link href="/showcase/mdx">
             <S.FixedRate169>
               <S.CardThumbnail>
                 <AnimatedMDX />
-                {/* <Image src="/images/posts/swr-query.jpg" alt="thumbnail" fill /> */}
               </S.CardThumbnail>
             </S.FixedRate169>
             <S.CardBody>

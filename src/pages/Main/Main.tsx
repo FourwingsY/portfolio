@@ -4,7 +4,7 @@ import AboutMe from "./sections/AboutMe"
 import History from "./sections/History"
 import Intro from "./sections/Intro"
 
-const Main: React.FC = () => {
+export default function Main() {
   return (
     <Layout>
       <Intro />
@@ -13,5 +13,3 @@ const Main: React.FC = () => {
     </Layout>
   )
 }
-
-export default Main

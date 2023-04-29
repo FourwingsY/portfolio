@@ -84,6 +84,8 @@ const highlightjs_github = css`
 `
 
 export const Contents = styled(ContentsWidth)`
+  padding-top: 2rem;
+  padding-bottom: 6rem;
   code {
     color: ${palette.highlight};
   }
