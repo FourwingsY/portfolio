@@ -5,6 +5,7 @@ export function removeNulls<S>(value: S | undefined | null): value is S {
 }
 
 const CONTRIBUTES = [
+  { link: "https://github.com/iamkun/dayjs/pull/2272", date: "2023-03-31" },
   { link: "https://github.com/vercel/Next.js/pull/34808", date: "2022-02-25" },
   { link: "https://github.com/iamkun/dayjs/pull/1555", date: "2021-07-01" },
   { link: "https://github.com/DefinitelyTyped/DefinitelyTyped/pull/52803", date: "2021-05-11" },
