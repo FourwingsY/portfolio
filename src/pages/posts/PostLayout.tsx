@@ -1,6 +1,6 @@
+import Giscus from "@giscus/react"
 import "github-markdown-css/github-markdown.css"
 import Head from "next/head"
-import Script from "next/script"
 
 import Layout from "@pages/Layout"
 
@@ -18,25 +18,22 @@ export default function PostLayout({ meta, children }: React.PropsWithChildren<P
       </Head>
       <S.Contents className="markdown-body">
         {children}
-        <section className="giscus" />
+
+        <Giscus
+          repo="FourwingsY/portfolio"
+          repoId="MDEwOlJlcG9zaXRvcnkzNzE3NDAyMzg="
+          category="Comments"
+          categoryId="DIC_kwDOFihOTs4CWOq9"
+          mapping="pathname"
+          strict="0"
+          reactions-enabled="1"
+          emit-metadata="0"
+          input-position="top"
+          theme="light_tritanopia"
+          lang="ko"
+          loading="lazy"
+        />
       </S.Contents>
-      <Script
-        src="https://giscus.app/client.js"
-        data-repo="FourwingsY/portfolio"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzNzE3NDAyMzg="
-        data-category="Comments"
-        data-category-id="DIC_kwDOFihOTs4CWOq9"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="light_tritanopia"
-        data-lang="ko"
-        data-loading="lazy"
-        crossOrigin="anonymous"
-        async
-      />
     </Layout>
   )
 }

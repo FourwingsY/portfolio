@@ -51,4 +51,8 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  giscus-widget {
+    display: block;
+    margin-top: 4rem;
+  }
 `

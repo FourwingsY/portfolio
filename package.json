@@ -10,6 +10,7 @@
     "update-commits": "./scripts/parseCommits.sh"
   },
   "dependencies": {
+    "@giscus/react": "^2.2.8",
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^13.0.5",
