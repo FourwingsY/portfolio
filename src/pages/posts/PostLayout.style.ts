@@ -83,11 +83,39 @@ const highlightjs_github = css`
   }
 `
 
+export const Title = styled.h1`
+  position: relative;
+  time {
+    position: absolute;
+    right: 0;
+    bottom: 15%;
+    font-size: 0.9rem;
+  }
+`
+
 export const Contents = styled(ContentsWidth)`
   padding-top: 2rem;
   padding-bottom: 6rem;
   code {
     color: ${palette.highlight};
   }
+  h1 {
+    display: none;
+    &.custom {
+      display: block;
+    }
+  }
+  blockquote {
+    background: ${palette.primary95};
+    border-left: 0.25em solid ${palette.primary60};
+    color: #333;
+    padding: 0.5em 1em;
+  }
   ${highlightjs_github};
+
+  ${({ theme }) =>
+    theme.desktop &&
+    css`
+      font-size: 1.2rem;
+    `};
 `

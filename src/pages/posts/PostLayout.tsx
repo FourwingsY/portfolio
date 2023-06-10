@@ -7,7 +7,7 @@ import Layout from "@pages/Layout"
 import * as S from "./PostLayout.style"
 
 interface Props {
-  meta: { title: string; keywords: string[] }
+  meta: { id: string; title: string; written: string; keywords: string[] }
 }
 export default function PostLayout({ meta, children }: React.PropsWithChildren<Props>) {
   return (
@@ -15,10 +15,37 @@ export default function PostLayout({ meta, children }: React.PropsWithChildren<P
       <Head>
         <title>{meta.title}</title>
         <meta name="keywords" content={meta.keywords.join(", ")} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org/",
+              "@type": "BlogPosting",
+              "@id": `https://yanggoon.dev/showcase/${meta.id}`,
+              headline: meta.title,
+              name: meta.title,
+              datePublished: meta.written,
+              author: {
+                "@type": "Person",
+                "@id": "https://yanggoon.dev",
+                name: "Hyeonseok Yang",
+                url: "https://yanggoon.dev",
+              },
+              url: `https://yanggoon.dev/showcase/${meta.id}`,
+              isPartOf: {
+                "@type": "Blog",
+                "@id": "https://yanggoon.dev/showcase/",
+                name: "YG's Portfolio",
+              },
+            }),
+          }}
+        />
       </Head>
       <S.Contents className="markdown-body">
+        <S.Title className="custom">
+          {meta.title} <time>{meta.written}</time>
+        </S.Title>
         {children}
-
         <Giscus
           repo="FourwingsY/portfolio"
           repoId="MDEwOlJlcG9zaXRvcnkzNzE3NDAyMzg="
