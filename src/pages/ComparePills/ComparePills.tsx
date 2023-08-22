@@ -138,19 +138,51 @@ export default function ComparePills() {
           <div className="p p2" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
           image4
         </p>
-        {/* <p style={{ fontSize: 10, marginLeft: 4 }}>
-          <div className="p p3" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
-          image6
-        </p> */}
-        {image1.map(([x, y], i) => (
-          <div className="p p1" key={i} style={{ top: y, left: x }} />
+        {image1
+          .map(([x, y]) => ({ x, y }))
+          .map((p, i) => (
+            <div className="p p1" key={i} style={{ top: p.y, left: p.x }} />
+          ))}
+        {image4
+          .map(([x, y]) => ({ x, y }))
+          .map((p, i) => (
+            <div className="p p2" key={i} style={{ top: p.y, left: p.x }} />
+          ))}
+      </div>
+
+      <div style={{ position: "relative", width: 320, height: 320, background: "white", marginTop: 20 }}>
+        <style>{`
+          .p {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.5;
+          }
+          .p1 {
+            background: red;
+          }
+          .p2 {
+            background: blue;
+          }
+          .p3 {
+            background: green;
+          }
+        `}</style>
+        <p style={{ fontSize: 10, marginLeft: 4 }}>
+          <div className="p p1" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
+          image1 - normalized
+        </p>
+        <p style={{ fontSize: 10, marginLeft: 4 }}>
+          <div className="p p2" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
+          image4 - normalized
+        </p>
+        {getNormalizedPoints(image1.map(([x, y]) => ({ x, y }))).map((p, i) => (
+          <div className="p p1" key={i} style={{ top: 160 + 160 * p.y, left: 160 + 160 * p.x }} />
         ))}
-        {image4.map(([x, y], i) => (
-          <div className="p p2" key={i} style={{ top: y, left: x }} />
+        {getNormalizedPoints(image4.map(([x, y]) => ({ x, y }))).map((p, i) => (
+          <div className="p p2" key={i} style={{ top: 160 + 160 * p.y, left: 160 + 160 * p.x }} />
         ))}
-        {/* {image6.map(([x, y], i) => (
-          <div className="p p3" key={i} style={{ top: y, left: x }} />
-        ))} */}
       </div>
     </div>
   )
