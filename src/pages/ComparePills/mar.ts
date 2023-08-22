@@ -1,18 +1,20 @@
+import { makeHull } from "./convexHull"
 import { Point, Rect } from "./types"
 
 // MAR : minumym area rectangle
 export function getMAR(points: Array<Point>): { mar: Rect; minAngle: number } {
+  const hull = makeHull(points)
   let minArea = 720 * 720
   let minAngle = 0
   let mar: Rect = { x: 0, y: 0, width: 0, height: 0 }
 
-  const center = getCentroid(points)
-  let p0 = points[0]
-  let p1 = points[1]
-  for (let i = 0; i < points.length - 1; i++) {
-    p1 = points[i + 1]
+  const center = getCentroid(hull)
+  let p0 = hull[0]
+  let p1 = hull[1]
+  for (let i = 0; i < hull.length - 1; i++) {
+    p1 = hull[i + 1]
     const angle = Math.atan2(p1.y - p0.y, p1.x - p0.x)
-    const rotated = rotatePolygon(points, center, -1 * angle)
+    const rotated = rotatePolygon(hull, center, -1 * angle)
     const rect = getBoundingRect(rotated)
     const area = rect.width * rect.height
     if (area < minArea) {

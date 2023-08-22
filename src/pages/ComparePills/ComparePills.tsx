@@ -110,6 +110,48 @@ export default function ComparePills() {
           <td>{sim(tensor6, tensor6).toFixed(4)}</td>
         </tr>
       </table>
+
+      <div style={{ position: "relative", width: 320, height: 320, background: "white", marginTop: 20 }}>
+        <style>{`
+          .p {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.5;
+          }
+          .p1 {
+            background: red;
+          }
+          .p2 {
+            background: blue;
+          }
+          .p3 {
+            background: green;
+          }
+        `}</style>
+        <p style={{ fontSize: 10, marginLeft: 4 }}>
+          <div className="p p1" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
+          image1
+        </p>
+        <p style={{ fontSize: 10, marginLeft: 4 }}>
+          <div className="p p2" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
+          image4
+        </p>
+        {/* <p style={{ fontSize: 10, marginLeft: 4 }}>
+          <div className="p p3" style={{ position: "relative", display: "inline-block", opacity: 1, marginRight: 4 }} />
+          image6
+        </p> */}
+        {image1.map(([x, y], i) => (
+          <div className="p p1" key={i} style={{ top: y, left: x }} />
+        ))}
+        {image4.map(([x, y], i) => (
+          <div className="p p2" key={i} style={{ top: y, left: x }} />
+        ))}
+        {/* {image6.map(([x, y], i) => (
+          <div className="p p3" key={i} style={{ top: y, left: x }} />
+        ))} */}
+      </div>
     </div>
   )
 }
@@ -120,6 +162,25 @@ function getTensor(image: number[][]) {
 }
 
 function asTensor(polygon: Point[]) {
+  const normalizedPoints = getNormalizedPoints(polygon)
+
+  function getTheta(p: Point) {
+    if (p.x === 0) {
+      return p.y > 0 ? Math.PI / 2 : -Math.PI / 2
+    }
+    return Math.atan(p.y / p.x)
+  }
+  function getR(p: Point) {
+    return Math.sqrt(p.x * p.x + p.y * p.y)
+  }
+  const sorted = normalizedPoints.sort((a, b) => getTheta(a) - getTheta(b))
+  const tensor = sorted.map((p) => getR(p))
+  // const tensor = sorted.map(({ x, y }) => Math.abs(x) + Math.abs(y))
+
+  return tensor
+}
+
+function getNormalizedPoints(polygon: Point[]) {
   const hull = makeHull(polygon)
   const { mar, minAngle } = getMAR(hull)
   const boundingRect = getBoundingRect(rectToPolygon(mar))
@@ -130,10 +191,5 @@ function asTensor(polygon: Point[]) {
     x: (x - boundingRect.x) / boundingRect.width - 0.5,
     y: (y - boundingRect.y) / boundingRect.height - 0.5,
   }))
-
-  const sorted = normalizedPoints.sort((a, b) => Math.atan(a.y / (a.x || 0.01)) - Math.atan(b.y / (b.x || 0.01)))
-  const tensor = sorted.map(({ x, y }) => Math.abs(x * x + y * y))
-  // const tensor = sorted.map(({ x, y }) => Math.abs(x) + Math.abs(y))
-
-  return tensor
+  return normalizedPoints
 }
