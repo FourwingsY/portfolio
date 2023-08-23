@@ -99,7 +99,7 @@ export const image1 = [
   [240, 170],
   [177, 193],
   [202, 58],
-]
+].map(([x, y]) => ({ x, y }))
 
 export const image2 = [
   [212, 52],
@@ -202,7 +202,7 @@ export const image2 = [
   [184, 144],
   [193, 65],
   [240, 148],
-]
+].map(([x, y]) => ({ x, y }))
 
 export const image3 = [
   [117, 233],
@@ -305,7 +305,7 @@ export const image3 = [
   [65, 170],
   [60, 85],
   [157, 171],
-]
+].map(([x, y]) => ({ x, y }))
 
 export const image4 = [
   [206, 257],
@@ -408,7 +408,7 @@ export const image4 = [
   [182, 74],
   [244, 159],
   [58, 92],
-]
+].map(([x, y]) => ({ x, y }))
 
 export const image5 = [
   [206, 257],
@@ -511,7 +511,7 @@ export const image5 = [
   [182, 74],
   [58, 92],
   [244, 159],
-]
+].map(([x, y]) => ({ x, y }))
 
 export const image6 = [
   [219, 246],
@@ -614,4 +614,4 @@ export const image6 = [
   [81, 137],
   [249, 125],
   [173, 74],
-]
+].map(([x, y]) => ({ x, y }))
