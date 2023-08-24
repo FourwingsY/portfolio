@@ -6,7 +6,7 @@ interface Request extends NextApiRequest {
 }
 export default async function handler(req: Request, res: NextApiResponse): Promise<void> {
   const { a, b } = JSON.parse(req.body) as { a: number[]; b: number[] }
-  const result = icpts.pointToPoint(a, b, { tolerance: 10, maxIterations: 50 })
+  const result = icpts.pointToPoint(a, b, { tolerance: 1, maxIterations: 100 })
 
   res.send(result)
 }

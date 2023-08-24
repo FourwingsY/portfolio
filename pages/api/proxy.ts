@@ -7,7 +7,7 @@ interface Request extends NextApiRequest {
 }
 export default async function handler(req: Request, res: NextApiResponse): Promise<void> {
   const { url } = req.query as Request["query"]
-  const response = await fetch(url)
+  const response = await fetch(url, { headers: { origin: "" } })
   const data = await response.json()
   res.send(data)
 }

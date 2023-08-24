@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 import * as S from "./ComparePills.style"
-import { PointSet } from "./models"
+import { PointSet, Polygon } from "./models"
 
 interface Props {
   set1: PointSet | undefined
@@ -43,21 +43,9 @@ export default function ComparePreview({ set1, set2 }: Props) {
       ctx.closePath()
     })
 
-    // draw convex hull
-    const hull = set.getHull()
     ctx.strokeStyle = color
-    // hull.getLoop().forEach((p, i) => {
-    //   if (i === 0) {
-    //     ctx.moveTo(r(p.x), r(p.y))
-    //   } else {
-    //     ctx.lineTo(r(p.x), r(p.y))
-    //   }
-    // })
-    // ctx.stroke()
-
-    const { mar, rotated } = set.getMAR()
-    const boundingRect = mar.asPointSet().rotate(rotated, hull.getCentroid()).getLoop()
-    boundingRect.forEach((p, i) => {
+    const mar = set.getHull().getMAR()
+    mar.points.forEach((p, i) => {
       if (i === 0) {
         ctx.moveTo(r(p.x), r(p.y))
       } else {
@@ -71,15 +59,15 @@ export default function ComparePreview({ set1, set2 }: Props) {
     const canvas = document.querySelector(".norm canvas") as HTMLCanvasElement
     const ctx = canvas.getContext("2d")!
 
-    const rotatedSet1 = rectangulatePointSet(set1)
-    const rotatedSet2 = rectangulatePointSet(set2)
-    const final1 = adjustScale(rotatedSet1, rotatedSet2)
+    const rect1 = rectangulatePointSet(set1)
+    const rect2 = rectangulatePointSet(set2)
+    const scaled1 = adjustScale(rect1, rect2)
 
     const res = await fetch("http://localhost:3000/api/icp", {
       method: "post",
       body: JSON.stringify({
-        a: final1.points.flatMap((p) => [p.x, p.y, 0]),
-        b: rotatedSet2.points.flatMap((p) => [p.x, p.y, 0]),
+        a: scaled1.points.flatMap((p) => [p.x, p.y, 0]),
+        b: rect2.points.flatMap((p) => [p.x, p.y, 0]),
       }),
     })
     const { transform, error } = await res.json()
@@ -91,7 +79,7 @@ export default function ComparePreview({ set1, set2 }: Props) {
     }
 
     ctx.fillStyle = color1
-    final1.points.forEach((p) => {
+    scaled1.points.forEach((p) => {
       ctx.beginPath()
       ctx.arc(r(ax * p.x + bx * p.y + dx), r(ay * p.x + by * p.y + dy), 3, 0, 2 * Math.PI)
       ctx.fill()
@@ -99,7 +87,7 @@ export default function ComparePreview({ set1, set2 }: Props) {
     })
 
     ctx.fillStyle = color2
-    rotatedSet2.points.forEach((p) => {
+    rect2.points.forEach((p) => {
       ctx.beginPath()
       ctx.arc(r(p.x), r(p.y), 3, 0, 2 * Math.PI)
       ctx.fill()
@@ -127,26 +115,30 @@ export default function ComparePreview({ set1, set2 }: Props) {
   )
 }
 
-function getAngleToRotate(angle: number) {
-  const target = Math.min(angle, Math.PI / 2 - angle)
-  if (target === angle) return angle
-  return angle - Math.PI / 2
-}
-
+// ICP가 회전 변환은 좀 취약해서 로컬 최적화에 잘 빠지는 듯 하다
+// 포인트셋의 MAR을 좌표계와 평행한 직사각형으로 회전시키는 방향으로 두 데이터셋의 각도를 맞춘다.
 function rectangulatePointSet(set: PointSet) {
   const rotationCenter = set.getHull().getCentroid()
-  const { rotated } = set.getMAR()
-  const normalizedAngle = (rotated + Math.PI) % (Math.PI / 2)
-  const angleToRotate = getAngleToRotate(normalizedAngle)
-  const rotatedSet = set.rotate(-angleToRotate, rotationCenter)
+  const mar = set.getHull().getMAR()
+  const angleToRotate = getAngleToRotate(mar)
+  const rotatedSet = set.rotate(angleToRotate, rotationCenter)
 
   return rotatedSet
 }
 
+// MAR의 한 변(가로든 세로든)을 가지고, 회전할 각도를 구한다.
+function getAngleToRotate(mar: Polygon) {
+  const angle = Math.atan2(mar.points[0].y - mar.points[1].y, mar.points[0].x - mar.points[1].x)
+  const normalizedAngle = (angle + Math.PI) % (Math.PI / 2)
+  const target = Math.min(normalizedAngle, Math.PI / 2 - normalizedAngle)
+  if (target === normalizedAngle) return normalizedAngle
+  return normalizedAngle - Math.PI / 2
+}
+
 function adjustScale(set: PointSet, ref: PointSet) {
   // ref가 있으면 ref와 사이즈를 좀 맞춘다
-  const { width, height } = set.getBoundingRect()
-  const { width: refWidth, height: refHeight } = ref.getBoundingRect()
-  const ratio = (refWidth / width + refHeight / height) / 2
+  const area = set.getHull().getMAR().getArea()
+  const refArea = ref.getHull().getMAR().getArea()
+  const ratio = Math.sqrt(refArea / area)
   return set.scale(ratio)
 }

@@ -39,56 +39,52 @@ export class Rect {
     return new Point(this.x + this.width / 2, this.y + this.height / 2)
   }
 
-  asPointSet(): PointSet {
+  asPolygon(): Polygon {
     const points = [
       new Point(this.x, this.y),
       new Point(this.x + this.width, this.y),
       new Point(this.x + this.width, this.y + this.height),
       new Point(this.x, this.y + this.height),
     ]
-    return new PointSet("", points)
+    return new Polygon(points)
   }
 }
 
-export class PointSet {
-  id: string
+export class Polygon {
   points: Point[]
-  hull: PointSet | null = null
   centroid: Point | null = null
 
-  constructor(id: string, points: Point[]) {
-    this.id = id
+  constructor(points: Point[]) {
     this.points = points
-  }
-
-  getHull(): PointSet {
-    if (!this.hull) {
-      this.hull = makeHull(this.points)
+    // polygon should be loop
+    if (points[0]?.x != points[points.length - 1]?.x || points[0]?.y != points[points.length - 1]?.y) {
+      this.points.push(points[0])
     }
-    return this.hull
   }
 
-  getLoop(): Point[] {
-    const first = this.points[0]
-    const last = this.points[this.points.length - 1]
-    if (first.x != last.x || first.y != last.y) return [...this.points, this.points[0]]
-    return this.points
+  getBoundingRect(): Rect {
+    const xs = this.points.map((p) => p.x)
+    const ys = this.points.map((p) => p.y)
+    const minX = Math.min(...xs)
+    const maxX = Math.max(...xs)
+    const minY = Math.min(...ys)
+    const maxY = Math.max(...ys)
+    return new Rect(minX, minY, maxX - minX, maxY - minY)
   }
 
   getCentroid(): Point {
     if (!this.centroid) {
-      const loop = this.getHull().getLoop()
-      const first = loop[0]
+      const first = this.points[0]
       let twicearea = 0,
         x = 0,
         y = 0,
         p1,
         p2,
         f
-      const pointsCount = loop.length
+      const pointsCount = this.points.length
       for (let i = 0, j = pointsCount - 1; i < pointsCount; j = i++) {
-        p1 = loop[i]
-        p2 = loop[j]
+        p1 = this.points[i]
+        p2 = this.points[j]
         f = (p1.y - first.y) * (p2.x - first.x) - (p2.y - first.y) * (p1.x - first.x)
         twicearea += f
         x += (p1.x + p2.x - 2 * first.x) * f
@@ -100,35 +96,72 @@ export class PointSet {
     return this.centroid
   }
 
-  // MAR : minumym area rectangle
-  getMAR(): { mar: Rect; rotated: number } {
-    const hull = this.getHull()
-    let minArea = 1000 * 1000
-    let minAngle = 0
-    let mar: Rect = new Rect(0, 0, 0, 0)
+  rotate(radian: number, center?: Point): Polygon {
+    const rotationCenter = center ?? this.getCentroid()
+    const newPoints = this.points.map((p) => p.rotate(radian, rotationCenter))
+    return new Polygon(newPoints)
+  }
 
-    let p0 = hull.points[0]
-    let p1 = hull.points[1]
-    for (let i = 0; i < hull.points.length - 1; i++) {
-      p1 = hull.points[i + 1]
+  getArea(): number {
+    let area = 0
+
+    for (let i = 0, l = this.points.length; i < l; i++) {
+      const addX = this.points[i].x
+      const addY = this.points[i == this.points.length - 1 ? 0 : i + 1].y
+      const subX = this.points[i == this.points.length - 1 ? 0 : i + 1].x
+      const subY = this.points[i].y
+
+      area += addX * addY * 0.5
+      area -= subX * subY * 0.5
+    }
+
+    return Math.abs(area)
+  }
+
+  // MAR : minumym area rectangle
+  getMAR(): Polygon {
+    let minArea = 1000 * 1000
+    let mar: Polygon = new Polygon([])
+
+    let p0 = this.points[0]
+    let p1 = this.points[1]
+    for (let i = 0; i < this.points.length - 1; i++) {
+      p1 = this.points[i + 1]
       const angle = Math.atan2(p1.y - p0.y, p1.x - p0.x)
-      const rotated = hull.rotate(-1 * angle)
+      const rotated = this.rotate(-1 * angle)
       const rect = rotated.getBoundingRect()
       const area = rect.area
 
       if (area < minArea) {
         minArea = area
-        mar = rect
-        minAngle = angle
+        mar = rect.asPolygon().rotate(angle, this.getCentroid())
       }
       p0 = p1
     }
 
-    return { mar, rotated: minAngle }
+    return mar
+  }
+}
+
+export class PointSet {
+  id: string
+  points: Point[]
+  hull: Polygon | null = null
+
+  constructor(id: string, points: Point[]) {
+    this.id = id
+    this.points = points
+  }
+
+  getHull(): Polygon {
+    if (!this.hull) {
+      this.hull = makeHull(this.points)
+    }
+    return this.hull
   }
 
   rotate(radian: number, center?: Point): PointSet {
-    const rotationCenter = center ?? this.getCentroid()
+    const rotationCenter = center ?? this.getHull().getCentroid()
     const newPoints = this.points.map((p) => p.rotate(radian, rotationCenter))
     return new PointSet(`${this.id}-r${radian}`, newPoints)
   }
