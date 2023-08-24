@@ -18,15 +18,15 @@
  * along with this program (see COPYING.txt and COPYING.LESSER.txt).
  * If not, see <http://www.gnu.org/licenses/>.
  */
-import { Point } from "./types"
+import { Point, PointSet } from "../models"
 
 // Returns a new array of points representing the convex hull of
 // the given set of points. The convex hull excludes collinear points.
 // This algorithm runs in O(n log n) time.
-export function makeHull<P extends Point>(points: Readonly<Array<P>>): Array<P> {
+export function makeHull<P extends Point>(points: Readonly<Array<P>>): PointSet {
   const newPoints: Array<P> = points.slice()
   newPoints.sort(POINT_COMPARATOR)
-  return makeHullPresorted(newPoints)
+  return new PointSet("", makeHullPresorted(newPoints))
 }
 
 // Returns the convex hull, assuming that each points[i] <= points[i + 1]. Runs in O(n) time.

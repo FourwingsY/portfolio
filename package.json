@@ -18,6 +18,8 @@
     "color": "^3.1.3",
     "date-fns": "^2.22.1",
     "github-markdown-css": "^4.0.0",
+    "icpts": "^0.6.0",
+    "iterative-closest-point": "^1.2.1",
     "markdown-yaml-metadata-parser": "^3.0.0",
     "ml-distance": "^4.0.1",
     "next": "^13.0.2",
