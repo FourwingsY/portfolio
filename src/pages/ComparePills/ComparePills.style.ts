@@ -13,7 +13,7 @@ export const InputWrapper = styled.div`
   }
   input {
     margin-left: 0.5rem;
-    width: 25rem;
+    flex: 1;
     height: 2rem;
     border: none;
     outline: none;

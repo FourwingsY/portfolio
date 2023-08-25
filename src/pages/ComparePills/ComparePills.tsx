@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 import * as S from "./ComparePills.style"
 import ComparePreview from "./ComparePreview"
@@ -11,18 +11,12 @@ export default function ComparePills() {
   const [pointSetList, setPointSetList] = useState<PointSet[]>([])
   const [compareTarget, setCompareTarget] = useState<[string, string]>(["", ""])
 
-  useEffect(() => {
-    ;[
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:07:30.166978_163881b8-8dea-4024-9e19-de5fc7c9c254.jpg", //0
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:07:07.362993_70cec1cb-bee7-44ca-8f37-38856ab46916.jpg", //1
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:07:02.272715_95a42131-4e26-4db8-98ae-25cc51523639.jpg", //2
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:06:52.664564_9097e55e-0eea-4294-b311-6b09936ee720.jpg", //3
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:06:50.854215_5a2993b4-fd05-48bc-84c7-9a6d241369ca.jpg", //4
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:06:27.760251_6e0d2ccd-c2c3-42e7-abe8-b77ca72b1970.jpg", //5
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:05:47.275205_e16adaf8-9ade-40c6-b75e-da7bc69b7942.jpg", //6
-      "https://medility-image-detection-seoul.medility.cc/2023/08/23/6/6_2023-08-23_17:05:20.273270_486cf87b-3f6e-4639-be14-bb2b4be9d876.jpg", //7
-    ].map(addData)
-  }, [])
+  // useEffect(() => {
+  //   ;[
+  //     "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:31:03.324911_9ae6aba7-a312-4bd4-a246-54e52c406103.json", //0
+  //     "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:26:16.165138_b3ab2c5d-6ce7-4753-924c-2bb2d1a1908b.jpg", //1
+  //   ].map(addData)
+  // }, [])
 
   function handleClick() {
     const url = ref.current?.value
