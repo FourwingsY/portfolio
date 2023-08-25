@@ -33,7 +33,7 @@ export const Dataset = styled.ol`
   display: flex;
   flex-flow: row wrap;
   list-style: none;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 2rem;
   color: white;
   padding-left: 2rem;

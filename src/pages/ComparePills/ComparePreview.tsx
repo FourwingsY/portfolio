@@ -63,7 +63,7 @@ export default function ComparePreview({ set1, set2 }: Props) {
     const rect2 = rectangulatePointSet(set2)
     const scaled1 = adjustScale(rect1, rect2)
 
-    const res = await fetch("http://localhost:3000/api/icp", {
+    const res = await fetch(`${location.origin}/api/icp`, {
       method: "post",
       body: JSON.stringify({
         a: scaled1.points.flatMap((p) => [p.x, p.y, 0]),
