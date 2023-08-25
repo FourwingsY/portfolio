@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Layout = styled.main`
   width: 1200px;
@@ -30,22 +30,68 @@ export const InputWrapper = styled.div`
 `
 
 export const Dataset = styled.ol`
+  display: flex;
+  flex-flow: row wrap;
+  list-style: none;
+  justify-content: space-between;
   margin-top: 2rem;
   color: white;
   padding-left: 2rem;
 `
-export const DatasetItem = styled.li`
+export const DatasetItem = styled.li<{ $highlight?: number }>`
+  position: relative;
+  display: flex;
+  flex-flow: column;
+
   margin-bottom: 0.5rem;
-  span {
-    display: inline-block;
-    width: 12rem;
+  img {
+    width: 284px;
+    height: 284px;
   }
+  p {
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  ${({ $highlight }) =>
+    $highlight === 0 &&
+    css`
+      outline: 3px solid red;
+    `};
+  ${({ $highlight }) =>
+    $highlight === 1 &&
+    css`
+      outline: 3px solid skyblue;
+    `};
 `
+
+export const Label = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  line-height: 28px;
+  border-bottom-right-radius: 8px;
+`
+
 export const DeleteButton = styled.button`
-  background: #fd3420;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #fd342088;
   padding: 0.25rem 0.5rem;
   margin-left: 0.5rem;
   color: white;
+  &:hover {
+    background: #fd3420;
+  }
 `
 
 export const CompareTable = styled.table`

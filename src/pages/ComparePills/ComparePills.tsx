@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 
 import * as S from "./ComparePills.style"
@@ -46,8 +47,10 @@ export default function ComparePills() {
       </S.InputWrapper>
       <S.Dataset>
         {pointSetList.map((points, i) => (
-          <S.DatasetItem key={i}>
-            <span title={points.id}>...{points.id.split("-").at(-1)}</span>
+          <S.DatasetItem key={i} $highlight={compareTarget.findIndex((id) => id === points.id)}>
+            <Image src={points.id.replace(/.json$/, ".jpg")} width={250} height={250} alt="image" unoptimized />
+            <S.Label>{i + 1}</S.Label>
+            <p title={points.id}>...{points.id.split("-").at(-1)}</p>
             <S.DeleteButton onClick={() => deleteItem(points.id)}>X</S.DeleteButton>
           </S.DatasetItem>
         ))}
