@@ -3,9 +3,10 @@ import { PointSet } from "./models"
 
 interface Props {
   dataset: PointSet[]
+  compareResults: Record<string, number>
   onSelect: (id1: string, id2: string) => void
 }
-export default function CompareTable({ dataset, onSelect }: Props) {
+export default function CompareTable({ dataset, compareResults, onSelect }: Props) {
   return (
     <S.CompareTable>
       <tr>
@@ -20,7 +21,7 @@ export default function CompareTable({ dataset, onSelect }: Props) {
           {dataset.map((set2, j) =>
             i < j ? (
               <td key={j} onClick={() => onSelect(set1.id, set2.id)}>
-                비교하기
+                {compareResults[`${set1.id}-${set2.id}`]?.toFixed(2) ?? "비교하기"}
               </td>
             ) : (
               <td />

@@ -16,6 +16,12 @@ export class Point {
       ny = cos * (this.y - center.y) - sin * (this.x - center.x) + center.y
     return new Point(nx, ny)
   }
+
+  transform(matrix: number[][]): Point {
+    const x = this.x * matrix[0][0] + this.y * matrix[1][0] + matrix[2][0]
+    const y = this.x * matrix[0][1] + this.y * matrix[1][1] + matrix[2][1]
+    return new Point(x, y)
+  }
 }
 
 export class Rect {

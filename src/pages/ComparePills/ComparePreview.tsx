@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 import * as S from "./ComparePills.style"
+import pointToPoint, { PointT } from "./logics/pointToPoint"
 import { PointSet, Polygon } from "./models"
 
 interface Props {
   set1: PointSet | undefined
   set2: PointSet | undefined
+  onCompareComplete: Dispatch<SetStateAction<Record<string, number>>>
 }
-export default function ComparePreview({ set1, set2 }: Props) {
+export default function ComparePreview({ set1, set2, onCompareComplete }: Props) {
   const [error, setError] = useState(999)
   // init canvas
   useEffect(initCanvas, [])
@@ -63,16 +65,21 @@ export default function ComparePreview({ set1, set2 }: Props) {
     const rect2 = rectangulatePointSet(set2)
     const scaled1 = adjustScale(rect1, rect2)
 
-    const res = await fetch(`${location.origin}/api/icp`, {
-      method: "post",
-      body: JSON.stringify({
-        a: scaled1.points.flatMap((p) => [p.x, p.y, 0]),
-        b: rect2.points.flatMap((p) => [p.x, p.y, 0]),
-      }),
-    })
-    const { transform, error } = await res.json()
+    // const res = await fetch(`${location.origin}/api/icp`, {
+    //   method: "post",
+    //   body: JSON.stringify({
+    //     a: scaled1.points.flatMap((p) => [p.x, p.y, 0]),
+    //     b: rect2.points.flatMap((p) => [p.x, p.y, 0]),
+    //   }),
+    // })
+    console.log(Date.now())
+    const { transform: tr, error } = pointToPoint(scaled1.points, rect2.points, { maxIterations: 100, tolerance: 1 })
+    console.log(Date.now())
+    // const { transform, error } = await res.json()
     setError(error)
-    const [ax, ay, , , bx, by, , , , , , , dx, dy] = transform
+    onCompareComplete((r) => ({ ...r, [`${set1.id}-${set2.id}`]: error }))
+
+    // const [ax, ay, , , bx, by, , , , , , , dx, dy] = transform
 
     function r(x: number) {
       return (x * 592) / 720
@@ -80,8 +87,11 @@ export default function ComparePreview({ set1, set2 }: Props) {
 
     ctx.fillStyle = color1
     scaled1.points.forEach((p) => {
+      const newP = new PointT(p.x, p.y, 1)
+      newP.applyTransform(tr)
       ctx.beginPath()
-      ctx.arc(r(ax * p.x + bx * p.y + dx), r(ay * p.x + by * p.y + dy), 3, 0, 2 * Math.PI)
+      ctx.arc(r(newP.x), r(newP.y), 3, 0, 2 * Math.PI)
+      // ctx.arc(r(ax * p.x + bx * p.y + dx), r(ay * p.x + by * p.y + dy), 3, 0, 2 * Math.PI)
       ctx.fill()
       ctx.closePath()
     })

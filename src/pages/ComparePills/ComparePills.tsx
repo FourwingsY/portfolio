@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import * as S from "./ComparePills.style"
 import ComparePreview from "./ComparePreview"
@@ -10,18 +10,24 @@ export default function ComparePills() {
   const ref = useRef<HTMLInputElement>(null)
   const [pointSetList, setPointSetList] = useState<PointSet[]>([])
   const [compareTarget, setCompareTarget] = useState<[string, string]>(["", ""])
+  const [compareResults, setCompareResults] = useState<Record<string, number>>({})
 
-  // useEffect(() => {
-  //   ;[
-  //     "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:31:03.324911_9ae6aba7-a312-4bd4-a246-54e52c406103.json", //0
-  //     "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:26:16.165138_b3ab2c5d-6ce7-4753-924c-2bb2d1a1908b.jpg", //1
-  //   ].map(addData)
-  // }, [])
+  useEffect(() => {
+    ;[
+      "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:31:03.324911_9ae6aba7-a312-4bd4-a246-54e52c406103.json", //0
+      "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:26:16.165138_b3ab2c5d-6ce7-4753-924c-2bb2d1a1908b.jpg", //1
+    ].map(addData)
+  }, [])
 
   function handleClick() {
     const url = ref.current?.value
     if (!url) return
-    addData(url)
+    try {
+      addData(url)
+      ref.current.value = ""
+    } catch (e) {
+      alert("데이터 로딩 중 에러")
+    }
   }
   function addData(url: string) {
     if (pointSetList.find((points) => points.id === url)) return
@@ -50,11 +56,16 @@ export default function ComparePills() {
         ))}
       </S.Dataset>
       {pointSetList.length > 0 && (
-        <CompareTable dataset={pointSetList} onSelect={(id1, id2) => setCompareTarget([id1, id2])} />
+        <CompareTable
+          dataset={pointSetList}
+          onSelect={(id1, id2) => setCompareTarget([id1, id2])}
+          compareResults={compareResults}
+        />
       )}
       <ComparePreview
         set1={pointSetList.find((points) => points.id === compareTarget[0])}
         set2={pointSetList.find((points) => points.id === compareTarget[1])}
+        onCompareComplete={setCompareResults}
       />
     </S.Layout>
   )
