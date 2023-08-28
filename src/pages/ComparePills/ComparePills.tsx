@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 import * as S from "./ComparePills.style"
 import ComparePreview from "./ComparePreview"
@@ -11,13 +11,6 @@ export default function ComparePills() {
   const [pointSetList, setPointSetList] = useState<PointSet[]>([])
   const [compareTarget, setCompareTarget] = useState<[string, string]>(["", ""])
   const [compareResults, setCompareResults] = useState<Record<string, number>>({})
-
-  useEffect(() => {
-    ;[
-      "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:31:03.324911_9ae6aba7-a312-4bd4-a246-54e52c406103.json", //0
-      "https://pilleye-images.medility.cc/2023/08/10/300140/300140_2023-08-10_10:26:16.165138_b3ab2c5d-6ce7-4753-924c-2bb2d1a1908b.jpg", //1
-    ].map(addData)
-  }, [])
 
   function handleClick() {
     const url = ref.current?.value
