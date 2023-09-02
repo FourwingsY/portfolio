@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
-import * as S from "./ComparePills.style"
 import pointToPoint, { PointT } from "./logics/pointToPoint"
 import { PointSet, Polygon } from "./models"
+import * as S from "./page.style"
 
 interface Props {
   set1: PointSet | undefined

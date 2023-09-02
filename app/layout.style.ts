@@ -12,6 +12,8 @@ export const Layout = styled.div`
   min-height: 100vh;
 `
 export const Main = styled.main`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   background: white;
 `

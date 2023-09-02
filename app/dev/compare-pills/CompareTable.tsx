@@ -1,5 +1,5 @@
-import * as S from "./ComparePills.style"
 import { PointSet } from "./models"
+import * as S from "./page.style"
 
 interface Props {
   dataset: PointSet[]

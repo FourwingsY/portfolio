@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import * as S from "./SuspenseThumbnail.style"
+import * as S from "./Thumbnail.style"
 
 const SuspenseThumbnail = () => {
   const [loading, setLoading] = useState(true)

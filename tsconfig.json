@@ -14,7 +14,6 @@
       "@/lib/*": ["lib/*"],
       "@/posts/*": ["posts/*"],
       "@/components/*": ["components/*"],
-      "@/*": ["app/*"],
       "@*": ["src/*"]
     },
     "resolveJsonModule": true,

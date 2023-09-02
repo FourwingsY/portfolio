@@ -1,8 +1,7 @@
 import React, { useRef, useState } from "react"
 
-import useConfetti from "@hooks/useConfetti"
-
 import { getRandomInRange, getRandomInt } from "@/lib/utils/random"
+import useConfetti from "@/posts/confetti/useConfetti"
 
 import * as S from "./Simulator.style"
 

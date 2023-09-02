@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react"
 import styled from "styled-components"
 
-import useConfetti from "@hooks/useConfetti"
-
 import { getRandomInRange, getRandomInt } from "@/lib/utils/random"
+
+import useConfetti from "./useConfetti"
 
 const colorSet = ["hsl(0, 70%, 50%)", "hsl(0, 70%, 70%)", "hsl(0, 90%, 50%)", "hsl(0, 90%, 70%)", "hsl(0, 90%, 80%)"]
 

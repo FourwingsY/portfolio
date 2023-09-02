@@ -1,8 +1,13 @@
+"use client"
+
 import styled, { css } from "styled-components"
 
-export const Layout = styled.main`
-  width: 1200px;
-  margin: 5rem auto;
+export const Layout = styled.div`
+  width: 100%;
+  flex: 1;
+  padding: 5rem 0;
+  margin: 0 auto;
+  background: #457;
 `
 
 export const InputWrapper = styled.div`

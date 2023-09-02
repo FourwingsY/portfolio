@@ -1,9 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import ScreenMonitor from "@examples/adaptive/ScreenMonitor"
-
 import { MEDIUM_POSTS } from "@/lib/constants/medium"
+import ScreenMonitor from "@/posts/adaptive-design/components/ScreenMonitor/ScreenMonitor"
 
 import External from "@/components/icons/External"
 import Medium from "@/components/icons/Medium"

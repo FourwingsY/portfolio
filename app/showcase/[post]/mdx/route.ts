@@ -5,7 +5,7 @@ import highlight from "rehype-highlight"
 import gfm from "remark-gfm"
 
 export async function GET(request: NextRequest, { params }: { params: { post: string } }): Promise<NextResponse> {
-  const text = await fs.readFile(`./posts/${params.post}.mdx`, "utf8")
+  const text = await fs.readFile(`./posts/${params.post}/post.mdx`, "utf8")
   const data = await serialize(text, {
     mdxOptions: {
       remarkPlugins: [gfm],

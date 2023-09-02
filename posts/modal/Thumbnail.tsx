@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 
 import { useModal } from "@/lib/hooks/useModal"
 
-import * as S from "./ModalThumbnail.style"
+import * as S from "./Thumbnail.style"
 
 const ModalThumbnail = () => {
   const { openModal } = useModal()

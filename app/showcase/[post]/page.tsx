@@ -8,8 +8,6 @@ import Head from "next/head"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
-import Adaptive from "@examples/adaptive"
-
 import * as S from "./page.style"
 
 async function getPost(id: string) {
@@ -18,6 +16,7 @@ async function getPost(id: string) {
 
 export default function PostPage() {
   const [post, setPost] = useState<MDXRemoteSerializeResult<unknown, Post.Metadata>>()
+  const [components, setComponents] = useState<Record<string, React.ComponentType>>({})
   const params = useParams()
 
   useEffect(() => {
@@ -25,13 +24,18 @@ export default function PostPage() {
       const post = await getPost(params?.post as string)
       setPost(post)
     })()
+    ;(async function () {
+      // components가 없으면 없는대로 에러 무시
+      const module = await import(`../../../posts/${params?.post}/components`).catch(() => void 0)
+      setComponents({ ...module })
+    })()
   }, [])
 
   if (!post) return null
 
   const meta = post.frontmatter
   return (
-    <MDXProvider components={{ Adaptive }}>
+    <MDXProvider components={components}>
       <Head>
         <title>{meta.title}</title>
         <meta name="keywords" content={meta.keywords.join(", ")} />
