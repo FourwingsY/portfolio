@@ -6,10 +6,13 @@ import gfm from "remark-gfm"
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  // experimental: { mdxRs: true },
+  experimental: { mdxRs: true },
   pageExtensions: ["ts", "tsx", "mdx"],
 }
 
+/**
+ * @type {import('@next/mdx').NextMDXOptions}
+ */
 const mdxOptions = {
   extension: /\.mdx?$/,
   options: {
