@@ -5,10 +5,6 @@ written: "2023-03-01"
 keywords: ["react", "mdx", "next", "markdown"]
 ---
 
-import PostLayout from "@pages/posts/PostLayout"
-
-import Tooltip from "@components/Tooltip"
-
 # MDX
 
 이 사이트에 MDX를 적용해보았다.
@@ -77,5 +73,3 @@ export default function Page() {
 여기에 SSG 방식에 대한 고민이 한 스푼 더해지면, 생각보다 깔끔하게 풀어내기엔 쉽지 않은 것 같다.
 
 하지만 일단은 지금의 방식에 만족하고, 이 방식을 더 활용해서 글을 써 보는 방향으로 노력해보려고 한다.
-
-export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>

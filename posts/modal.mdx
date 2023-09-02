@@ -5,10 +5,6 @@ written: "2021-05-31"
 keywords: ["react", "modal", "typescript", "typesafe", "hook"]
 ---
 
-import PostLayout from "@pages/posts/PostLayout"
-
-import ModalTester from "@examples/modal"
-
 > **Deprecated Warning**
 >
 > 아래 글은 [@reactleaf/modal](https://github.com/reactleaf/modal) 라이브러리로 구현하면서 대체되었다.
@@ -213,5 +209,3 @@ Omit<AlertProps, keyof BasicModalProps>
 <ModalTester />
 
 타입이 강력하게 잡힌 시스템을 얻기 위해서, 타입스크립트를 이해하기 위한 험난한 과정을 거쳤다. 특히나 union 타입은 굉장히 격한 혼돈의 도가니인 것 같다. 아직까지도 내가 제대로 이해하고 풀어쓴게 맞는지 좀 햇갈릴 정도이긴 하지만, 그래도 하나의 문제를 풀었다는 것에 성취감을 느낀다.
-
-export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>
