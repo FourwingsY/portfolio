@@ -3,7 +3,6 @@
 import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
-import { palette } from "@styles/theme"
 
 import { ProductStatus } from "../../data"
 
@@ -21,8 +20,8 @@ export const ProductName = styled.span<{ hasLink?: boolean }>`
     hasLink &&
     css`
       cursor: pointer;
-      :hover {
-        color: ${palette.highlight};
+      &:hover {
+        color: var(--leaf-primary-50);
       }
     `};
 `
@@ -37,7 +36,7 @@ export const ProductStatusBadge = styled.span<{ status: ProductStatus }>`
   background: ${({ status }) => {
     switch (status) {
       case ProductStatus.LIVE:
-        return palette.highlight
+        return `var(--leaf-primary-50)`
       case ProductStatus.PRIVATE:
         return "hsl(40, 80%, 50%)"
       case ProductStatus.DEAD:
@@ -91,7 +90,7 @@ export const More = styled.span`
 
 export const BorderBox = styled.div`
   position: relative;
-  ::before {
+  &::before {
     content: "";
     position: absolute;
     top: -1px;
@@ -102,7 +101,7 @@ export const BorderBox = styled.div`
     border-left: 2px solid black;
     box-sizing: border-box;
   }
-  ::after {
+  &::after {
     content: "";
     position: absolute;
     top: calc(2rem + ${({ theme }) => (theme.small ? "0.6rem" : "1.2rem")});
@@ -111,7 +110,7 @@ export const BorderBox = styled.div`
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: ${palette.highlight};
+    background: var(--leaf-primary-40);
   }
 `
 
@@ -121,7 +120,7 @@ export const TimelineItem = styled(ContentsWidth)`
   font-size: 0;
   &:hover {
     ${More} {
-      color: ${palette.highlight};
+      color: var(--leaf-primary-50);
     }
   }
 `
