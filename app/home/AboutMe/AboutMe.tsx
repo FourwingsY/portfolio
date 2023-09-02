@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react"
 
-import { useResponsiveContext } from "@hocs/withResponsive"
-
 import { TASTES } from "@/lib/constants/tastes"
 import { throttle } from "@/lib/utils/event"
+
+import { useResponsiveContext } from "@/components/Providers/WithResponsive"
 
 import * as S from "./AboutMe.style"
 import Mole from "./components/Mole"

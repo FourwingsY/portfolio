@@ -1,6 +1,6 @@
 "use client"
 
-import { useResponsiveContext } from "@hocs/withResponsive"
+import { useResponsiveContext } from "@/components/Providers/WithResponsive"
 
 import Header from "./Header"
 import HeaderMobile from "./Header.mobile"

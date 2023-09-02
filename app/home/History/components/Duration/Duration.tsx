@@ -3,7 +3,7 @@
 import { parseISO, format } from "date-fns"
 import { useEffect, useRef, useState } from "react"
 
-import { useOnceVisible } from "@hooks/useIntersectionObserver"
+import { useOnceVisible } from "@/lib/hooks/useIntersectionObserver"
 
 import * as S from "./Duration.style"
 
@@ -42,8 +42,9 @@ function useAnimatingDate(element: React.RefObject<Element>, end: Date, start: D
       const next = date.valueOf() + aMonth
       if ((aMonth < 0 && next <= end.valueOf()) || (aMonth > 0 && end.valueOf() <= next)) {
         setDate(() => end)
+      } else {
+        requestAnimationFrame(animate)
       }
-      requestAnimationFrame(animate)
       return new Date(next)
     })
   }

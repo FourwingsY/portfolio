@@ -14,7 +14,7 @@ export const TimelineFadein = styled.div`
   width: 50%;
   height: 8rem;
 
-  ::before {
+  &::before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -26,7 +26,7 @@ export const TimelineFadein = styled.div`
     border-top-left-radius: 2rem;
     box-sizing: border-box;
   }
-  ::after {
+  &::after {
     content: "";
     position: absolute;
     top: 0;
@@ -45,7 +45,7 @@ export const TimelineFadeout = styled.div`
   width: 50%;
   height: 8rem;
 
-  ::before {
+  &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -57,7 +57,7 @@ export const TimelineFadeout = styled.div`
     border-bottom-left-radius: 2rem;
     box-sizing: border-box;
   }
-  ::after {
+  &::after {
     content: "";
     position: absolute;
     bottom: 0;

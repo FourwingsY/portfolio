@@ -2,7 +2,7 @@
 
 import { ModalProvider } from "@reactleaf/modal"
 
-import WithResponsive from "@hocs/withResponsive"
+import WithResponsive from "./WithResponsive"
 
 export default function ClientSideProviders({ children }: { children: React.ReactNode }) {
   return (

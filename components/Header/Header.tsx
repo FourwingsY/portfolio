@@ -1,4 +1,4 @@
-import { useHideOnScrollDown } from "@hooks/useScroll"
+import { useHideOnScrollDown } from "@/lib/hooks/useScroll"
 
 import Github from "@/components/icons/Github"
 import LinkedIn from "@/components/icons/LinkedIn"

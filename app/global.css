@@ -37,3 +37,12 @@ abbr[title] {
 * {
   box-sizing: border-box;
 }
+
+/* @reactleaf/modal */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s;
+}
+.modal-overlay.dim.visible {
+  background-color: rgba(0, 0, 0, 0.6);
+}

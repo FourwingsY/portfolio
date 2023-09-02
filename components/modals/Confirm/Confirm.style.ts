@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { ModalButton } from "@modals/common.style"
+import { ModalButton } from "@/components/modals/common.style"
 
 export const ConfirmButton = styled(ModalButton)`
   width: 50%;

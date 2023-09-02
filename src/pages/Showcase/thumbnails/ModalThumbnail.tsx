@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 
-import { useModal } from "@hocs/withModal"
+import { useModal } from "@/lib/hooks/useModal"
 
 import * as S from "./ModalThumbnail.style"
 

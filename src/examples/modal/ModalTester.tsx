@@ -1,6 +1,4 @@
-import usePreloadModal from "@modals/usePreload"
-
-import { useModal } from "@hocs/withModal"
+import { useModal } from "@/lib/hooks/useModal"
 
 import * as S from "./ModalTester.style"
 
@@ -8,7 +6,7 @@ const ModalTester = () => {
   const { openModal } = useModal()
 
   // preload some modal which has mounting animation
-  usePreloadModal("Slideup", "Information")
+  // preloadModal("Slideup", "Information")
 
   function openAlert() {
     openModal({ type: "Alert", props: { title: "You need to know", message: "This is Alert" } })

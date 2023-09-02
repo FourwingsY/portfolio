@@ -1,8 +1,7 @@
+import { BasicModalProps } from "@reactleaf/modal"
 import { useEffect, useRef } from "react"
 
-import { BasicModalProps } from "@modals/types"
-
-import { useScrollTop } from "@hooks/useScroll"
+import { useScrollTop } from "@/lib/hooks/useScroll"
 
 import * as CS from "../common.style"
 import * as S from "./Information.style"

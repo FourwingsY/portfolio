@@ -1,3 +1,4 @@
+import "@reactleaf/modal/style.css"
 import "@reactleaf/theme/theme.css"
 
 import StyledComponentsRegistry from "@/lib/StyledComponentsRegistry"

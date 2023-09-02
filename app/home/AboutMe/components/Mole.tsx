@@ -2,9 +2,9 @@
 
 import React, { useEffect, useRef, useState } from "react"
 
-import { useResponsiveContext } from "@hocs/withResponsive"
-
 import { Taste } from "@/lib/constants/tastes"
+
+import { useResponsiveContext } from "@/components/Providers/WithResponsive"
 
 import * as S from "../AboutMe.style"
 import { createPositionFactory, Position } from "../utils"

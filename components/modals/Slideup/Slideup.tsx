@@ -1,4 +1,4 @@
-import { BasicModalProps } from "@modals/types"
+import { BasicModalProps } from "@reactleaf/modal"
 
 import * as CS from "../common.style"
 import * as S from "./Slideup.style"

@@ -1,8 +1,6 @@
 "use client"
 
-import { useRef, useState } from "react"
-
-import { useLayoutChangeEffect } from "@hooks/useLayoutChangeEffect"
+import { useEffect, useRef, useState } from "react"
 
 import { Product } from "@/lib/constants/career"
 
@@ -26,7 +24,7 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
   }
 
   // re-calculate when responsive context changes
-  useLayoutChangeEffect(() => {
+  useEffect(() => {
     setHeights([detectorClosed.current?.clientHeight || 0, detectorOpened.current?.clientHeight || 0])
   })
 

@@ -1,6 +1,5 @@
+import { BasicModalProps } from "@reactleaf/modal"
 import { useEffect } from "react"
-
-import { BasicModalProps } from "@modals/types"
 
 import { Taste } from "@/lib/constants/tastes"
 

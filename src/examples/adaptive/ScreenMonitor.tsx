@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 
-import { useResponsiveContext } from "@hocs/withResponsive"
-
 import { throttle } from "@/lib/utils/event"
+
+import { useResponsiveContext } from "@/components/Providers/WithResponsive"
 
 import * as S from "./ScreenMonitor.style"
 
