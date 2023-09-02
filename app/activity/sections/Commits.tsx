@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef, useState } from "react"
 
 import Tooltip from "@components/Tooltip/Tooltip"
@@ -36,7 +38,7 @@ const Commits = () => {
   const [months, setMonths] = useState<string[]>([])
   const tiles = useRef<HTMLDivElement>(null)
   useEffect(() => {
-    fetch("/api/commits")
+    fetch("/activity/commits")
       .then((response) => response.json())
       .then(({ data }: { data: Response }) => {
         const calendar = data.user.contributionsCollection.contributionCalendar
@@ -47,7 +49,7 @@ const Commits = () => {
             const labels = new Array(m.totalWeeks).fill("")
             labels[0] = m.name
             return labels
-          })
+          }),
         )
       })
   }, [])

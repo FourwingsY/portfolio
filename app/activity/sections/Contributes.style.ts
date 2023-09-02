@@ -1,6 +1,6 @@
-import styled from "styled-components"
+"use client"
 
-import { palette } from "@styles/theme"
+import styled from "styled-components"
 
 export const Contributes = styled.section``
 export const Title = styled.h2`
@@ -17,8 +17,8 @@ export const Repository = styled.span``
 export const PullRequest = styled.span`
   margin-left: 0.4rem;
   font-size: 1.2rem;
-  color: ${palette.primary60};
-  ::before {
+  color: var(--leaf-primary-60);
+  &::before {
     content: "#";
   }
 `
