@@ -13,8 +13,19 @@ export interface Product {
   link?: string
 }
 
+export const pilleye: Product = {
+  duration: ["2023-07-23", null],
+  productName: "Pilleye",
+  experienced: `\
+    메딜리티로 이직 후 맡은 프로덕트입니다. 입사 직후부터 2개월간 프로덕트의 초기 구조부터 새로 짜내었습니다. 
+  `,
+  company: "Medility",
+  status: ProductStatus.LIVE,
+  link: "https://pilleye.com",
+}
+
 export const realclass: Product = {
-  duration: ["2020-08-18", null],
+  duration: ["2020-08-18", "2023-07-05"],
   productName: "Realclass v2.0",
   experienced: `\
     기존에 알던 지식과 경험을 총동원해 새로운 프로젝트를 진행했습니다. 
@@ -29,7 +40,7 @@ export const realclass: Product = {
   link: "https://realclass.co.kr/new",
 }
 export const qms: Product = {
-  duration: ["2021-12-01", null],
+  duration: ["2021-12-01", "2023-07-05"],
   productName: "Qualson Management System",
   experienced: `\
     통칭 어드민. 퀄슨의 여러 프로덕트에 공통적으로 사용되는 리얼클래스의 고객 관리, 판매 및 상품 관리용 백오피스를 만들었습니다.

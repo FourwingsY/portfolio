@@ -1,8 +1,10 @@
+"use client"
+
 import { ContentsWidth } from "@styles/adaptive"
 
 import * as S from "./History.style"
 import TimelineItem from "./components/TimelineItem"
-import { realclass, qms, junior, muzy, qgis, uploadingo, dingo, moncast } from "./data"
+import { realclass, qms, junior, muzy, qgis, uploadingo, dingo, moncast, pilleye } from "./data"
 
 const History = () => {
   return (
@@ -13,8 +15,9 @@ const History = () => {
           <S.TimelineFadein />
         </ContentsWidth>
       </S.Future>
+      <TimelineItem item={pilleye} defaultActive />
       <TimelineItem item={qms} />
-      <TimelineItem item={realclass} defaultActive />
+      <TimelineItem item={realclass} />
       <TimelineItem item={junior} />
       <TimelineItem item={muzy} />
       <TimelineItem item={qgis} />

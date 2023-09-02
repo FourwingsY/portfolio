@@ -1,15 +1,13 @@
-import Layout from "@pages/Layout"
-
-// import AboutMe from "@pages/Main/sections/AboutMe"
-// import History from "@pages/Main/sections/History"
-// import Intro from "@pages/Main/sections/Intro"
+import AboutMe from "./home/AboutMe"
+import History from "./home/History"
+import Intro from "./home/Intro"
 
 export default function MainPage() {
   return (
-    <Layout>
-      {/* <Intro />
+    <>
+      <Intro />
       <AboutMe />
-      <History /> */}
-    </Layout>
+      <History />
+    </>
   )
 }

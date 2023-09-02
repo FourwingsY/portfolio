@@ -1,10 +1,11 @@
-import styled, { css } from "styled-components"
+"use client"
 
-import { palette } from "@styles/theme"
+import styled, { css } from "styled-components"
 
 export const Intro = styled.section`
   position: relative;
-  background: linear-gradient(${palette.primary}, white);
+  background: linear-gradient(#b6befe, #738ab5);
+  scroll-snap-align: start;
 `
 
 export const Background = styled.div`

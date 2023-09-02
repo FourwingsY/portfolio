@@ -2,6 +2,7 @@ import styled, { css, keyframes } from "styled-components"
 
 export const AboutMe = styled.section`
   width: 100%;
+  scroll-snap-align: start;
   ${({ theme }) =>
     !theme.mobile &&
     css`

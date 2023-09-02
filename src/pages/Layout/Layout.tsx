@@ -1,5 +1,5 @@
+import Header from "../../../app/components/Header"
 import * as S from "./Layout.style"
-import Header from "./components/Header"
 
 interface Props {
   style?: React.CSSProperties

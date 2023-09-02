@@ -1,6 +1,6 @@
 import * as S from "./Intro.style"
 
-const Intro = () => {
+export default function Intro() {
   return (
     <S.Intro>
       <S.Background />
@@ -12,5 +12,3 @@ const Intro = () => {
     </S.Intro>
   )
 }
-
-export default Intro
