@@ -1,6 +1,6 @@
 import { useModal } from "@hocs/withModal"
 
-import { Taste } from "@constants/tastes"
+import { Taste } from "@/lib/constants/tastes"
 
 import * as S from "../AboutMe.style"
 

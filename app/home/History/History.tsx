@@ -2,9 +2,10 @@
 
 import { ContentsWidth } from "@styles/adaptive"
 
+import { realclass, qms, junior, muzy, qgis, uploadingo, dingo, moncast, pilleye } from "@/lib/constants/career"
+
 import * as S from "./History.style"
 import TimelineItem from "./components/TimelineItem"
-import { realclass, qms, junior, muzy, qgis, uploadingo, dingo, moncast, pilleye } from "./data"
 
 const History = () => {
   return (

@@ -12,6 +12,7 @@
     "^(@hocs|@hooks)/(.*)$",
     "^(@components|@examples|@icons)/(.*)$",
     "^(@utils|@styles|@constants)/(.*)$",
+    "^@/lib/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true

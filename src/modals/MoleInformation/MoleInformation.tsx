@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { BasicModalProps } from "@modals/types"
 
-import { Taste } from "@constants/tastes"
+import { Taste } from "@/lib/constants/tastes"
 
 import * as CS from "../common.style"
 import * as S from "./MoleInformation.style"

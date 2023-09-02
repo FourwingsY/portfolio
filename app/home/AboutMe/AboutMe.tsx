@@ -4,8 +4,9 @@ import { useEffect, useState } from "react"
 
 import { useResponsiveContext } from "@hocs/withResponsive"
 
-import { TASTES } from "@constants/tastes"
 import { throttle } from "@utils/event"
+
+import { TASTES } from "@/lib/constants/tastes"
 
 import * as S from "./AboutMe.style"
 import Mole from "./components/Mole"

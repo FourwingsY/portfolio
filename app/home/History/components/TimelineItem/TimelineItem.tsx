@@ -4,7 +4,8 @@ import { useRef, useState } from "react"
 
 import { useLayoutChangeEffect } from "@hooks/useLayoutChangeEffect"
 
-import { Product } from "../../data"
+import { Product } from "@/lib/constants/career"
+
 import Duration from "../Duration"
 import * as S from "./TimelineItem.style"
 

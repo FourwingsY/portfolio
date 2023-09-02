@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react"
 import withCSR from "@hocs/withCSR"
 import { useResponsiveContext } from "@hocs/withResponsive"
 
-import { Taste } from "@constants/tastes"
+import { Taste } from "@/lib/constants/tastes"
 
 import * as S from "../AboutMe.style"
 import { createPositionFactory, Position } from "../utils"
