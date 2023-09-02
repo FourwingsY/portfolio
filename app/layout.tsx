@@ -7,8 +7,8 @@ import GA from "@/lib/thirdParties/GA"
 import Header from "@/components/Header"
 import Providers from "@/components/Providers"
 
+import "./global.css"
 import * as S from "./layout.style"
-import "./reset.css"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
