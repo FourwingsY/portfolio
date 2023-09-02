@@ -1,8 +1,7 @@
 "use client"
 
-import { ContentsWidth } from "@styles/adaptive"
-
 import { realclass, qms, junior, muzy, qgis, uploadingo, dingo, moncast, pilleye } from "@/lib/constants/career"
+import { ContentsWidth } from "@/lib/styles/adaptive"
 
 import * as S from "./History.style"
 import TimelineItem from "./components/TimelineItem"

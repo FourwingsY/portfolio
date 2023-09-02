@@ -1,5 +1,5 @@
-import ReactIcon from "@/icons/ReactIcon"
-import TypeScript from "@/icons/TypeScript"
+import ReactIcon from "@/components/icons/ReactIcon"
+import TypeScript from "@/components/icons/TypeScript"
 
 export interface Taste {
   icon: React.ReactNode

@@ -1,6 +1,6 @@
 import styled, { css, keyframes } from "styled-components"
 
-import { palette } from "@styles/theme"
+import { palette } from "@/lib/styles/theme"
 
 export const SuspenseThumbnail = styled.div`
   width: 100%;

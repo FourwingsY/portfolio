@@ -5,8 +5,8 @@ import ScreenMonitor from "@examples/adaptive/ScreenMonitor"
 
 import { MEDIUM_POSTS } from "@/lib/constants/medium"
 
-import External from "@/icons/External"
-import Medium from "@/icons/Medium"
+import External from "@/components/icons/External"
+import Medium from "@/components/icons/Medium"
 
 import * as S from "./page.style"
 

@@ -1,6 +1,6 @@
 import Script from "next/script"
 
-const ThirdParties = () => {
+const GA = () => {
   return (
     <>
       {/** gtag for GA */}
@@ -10,4 +10,4 @@ const ThirdParties = () => {
   )
 }
 
-export default ThirdParties
+export default GA

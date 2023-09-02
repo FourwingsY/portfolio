@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 import { useResponsiveContext } from "@hocs/withResponsive"
 
-import { throttle } from "@utils/event"
+import { throttle } from "@/lib/utils/event"
 
 import * as S from "./ScreenMonitor.style"
 

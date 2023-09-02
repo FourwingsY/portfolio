@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { useResponsiveContext } from "@hocs/withResponsive"
 
-import { throttle } from "@utils/event"
+import { throttle } from "@/lib/utils/event"
 
 export function useLayoutChangeEffect(func: () => void): void {
   const { desktop, tabletL, tabletP, mobile } = useResponsiveContext()

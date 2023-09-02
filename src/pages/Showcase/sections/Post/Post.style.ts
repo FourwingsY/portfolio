@@ -1,7 +1,7 @@
 import ReactMarkdown from "react-markdown"
 import styled, { css } from "styled-components"
 
-import { palette } from "@styles/theme"
+import { palette } from "@/lib/styles/theme"
 
 const highlightjs_github = css`
   .hljs {

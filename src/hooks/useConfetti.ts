@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useEffect, useRef, useState } from "react"
 
-import { getRandomInRange } from "@utils/random"
+import { getRandomInRange } from "@/lib/utils/random"
 
 interface Size {
   width: number
@@ -44,7 +44,7 @@ interface Particle {
 export default function useConfetti(
   canvas: HTMLCanvasElement | null,
   confettiOptions: ConfettiOptions,
-  callbacks?: Callbacks
+  callbacks?: Callbacks,
 ) {
   const [initialized, setInitialized] = useState(false)
   const [active, setActive] = useState(false)

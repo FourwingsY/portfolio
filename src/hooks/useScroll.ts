@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 
-import { throttle } from "@utils/event"
+import { throttle } from "@/lib/utils/event"
 
 export function useScrollTop(): number {
   const [scrollTop, setScrollTop] = useState(0)

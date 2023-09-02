@@ -2,8 +2,8 @@
 
 import styled, { css } from "styled-components"
 
-import { ContentsWidth } from "@styles/adaptive"
-import { palette } from "@styles/theme"
+import { ContentsWidth } from "@/lib/styles/adaptive"
+import { palette } from "@/lib/styles/theme"
 
 export const Showcase = styled(ContentsWidth)`
   display: flex;

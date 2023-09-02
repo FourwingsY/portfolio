@@ -2,9 +2,9 @@
 
 import styled, { css } from "styled-components"
 
-import { ContentsWidth } from "@styles/adaptive"
-import { palette } from "@styles/theme"
-import { POSITION } from "@styles/zIndex"
+import { ContentsWidth } from "@/lib/styles/adaptive"
+import { palette } from "@/lib/styles/theme"
+import { POSITION } from "@/lib/styles/zIndex"
 
 const hidden = css`
   transform: translateY(-100%);

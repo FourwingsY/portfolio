@@ -1,4 +1,4 @@
-import { ContentsWidth } from "@styles/adaptive"
+import { ContentsWidth } from "@/lib/styles/adaptive"
 
 import Commits from "./sections/Commits"
 import Contributes from "./sections/Contributes"

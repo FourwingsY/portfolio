@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { ContentsWidth } from "@styles/adaptive"
+import { ContentsWidth } from "@/lib/styles/adaptive"
 
 const highlightjs_github = css`
   .hljs {

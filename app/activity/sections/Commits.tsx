@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 
-import Tooltip from "@components/Tooltip/Tooltip"
+import Tooltip from "@/components/Tooltip/Tooltip"
 
 import * as S from "./Commits.style"
 

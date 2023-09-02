@@ -1,8 +1,11 @@
 import "@reactleaf/theme/theme.css"
-import StyledComponentsRegistry from "lib/StyledComponentsRegistry"
 
-import Providers from "./Providers"
-import Header from "./components/Header"
+import StyledComponentsRegistry from "@/lib/StyledComponentsRegistry"
+import GA from "@/lib/thirdParties/GA"
+
+import Header from "@/components/Header"
+import Providers from "@/components/Providers"
+
 import * as S from "./layout.style"
 import "./reset.css"
 
@@ -17,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <GA />
       </head>
       <body>
         <StyledComponentsRegistry>

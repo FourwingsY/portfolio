@@ -2,9 +2,8 @@
 
 import styled, { css } from "styled-components"
 
-import { ContentsWidth } from "@styles/adaptive"
-
 import { ProductStatus } from "@/lib/constants/career"
+import { ContentsWidth } from "@/lib/styles/adaptive"
 
 export const ShortDescription = styled.div`
   position: relative;

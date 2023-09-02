@@ -1,4 +1,4 @@
-import { getRandomInRange } from "@utils/random"
+import { getRandomInRange } from "@/lib/utils/random"
 
 export interface Position {
   x: number

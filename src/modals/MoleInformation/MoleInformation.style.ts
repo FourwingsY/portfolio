@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { palette } from "@styles/theme"
+import { palette } from "@/lib/styles/theme"
 
 import * as CS from "../common.style"
 
@@ -13,11 +13,10 @@ export const MoleInformation = styled(CS.Modal)<{ visible: boolean }>`
   a {
     color: blue;
   }
-  ${({ visible }) =>
-    css`
-      transition: transform 500ms;
-      transform: translateY(${visible ? 0 : "-30px"});
-    `}
+  ${({ visible }) => css`
+    transition: transform 500ms;
+    transform: translateY(${visible ? 0 : "-30px"});
+  `}
 `
 
 export const Title = styled.h4`

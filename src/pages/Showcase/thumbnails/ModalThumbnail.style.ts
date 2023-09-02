@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components"
 
-import { palette } from "@styles/theme"
+import { palette } from "@/lib/styles/theme"
 
 export const ModalThumbnail = styled.div`
   font-size: 0;

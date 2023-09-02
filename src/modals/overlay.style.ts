@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components"
 
-import { OVERLAY } from "@styles/zIndex"
+import { OVERLAY } from "@/lib/styles/zIndex"
 
 const dimmedBackground = (color: boolean | string) => {
   if (!color) return "none"
@@ -18,10 +18,9 @@ export const Overlay = styled.div<{ dim: boolean | string; visible: boolean }>`
   width: 100vw;
   height: 100%;
   z-index: ${OVERLAY};
-  ${({ dim }) =>
-    css`
-      background: ${dimmedBackground(dim)};
-    `};
+  ${({ dim }) => css`
+    background: ${dimmedBackground(dim)};
+  `};
 
   // animation
   opacity: 0;

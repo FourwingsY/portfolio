@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import { palette } from "@styles/theme"
+import { palette } from "@/lib/styles/theme"
 
 export const ModalTester = styled.div`
   margin-bottom: 2rem;
