@@ -1,7 +1,7 @@
-import { useHideOnScrollDown } from "@hooks/useScroll"
+import Github from "@/icons/Github"
+import LinkedIn from "@/icons/LinkedIn"
 
-import Github from "@icons/Github"
-import LinkedIn from "@icons/LinkedIn"
+import { useHideOnScrollDown } from "@hooks/useScroll"
 
 import * as S from "./Header.style"
 import NavLink from "./NavLink"

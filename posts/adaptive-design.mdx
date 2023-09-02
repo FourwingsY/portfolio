@@ -1,13 +1,9 @@
-import PostLayout from "@pages/posts/PostLayout"
-
-import Adaptive from "@examples/adaptive"
-
-export const meta = {
-  id: "adaptive-design",
-  title: "Adaptive Design",
-  written: "2021.05.29",
-  keywords: ["react", "responsive", "adaptive", "design", "breakpoint", "media query"],
-}
+---
+id: "adaptive-design"
+title: "Adaptive Design"
+written: "2021-05-29"
+keywords: ["react", "responsive", "adaptive", "design", "breakpoint", "media query"]
+---
 
 # Adaptive Design 구현하기
 
@@ -55,5 +51,3 @@ SSG를 버리고 SSR로 전향, userAgent를 확인해서 적절하게 내려주
 
 4가지 적응형 모델로 구현을 하다보니, mobile / tabletP 와, tabletL / desktop 에서 비슷한 스타일을 사용하게 되는 일이 잦았다. 그래서 small / large 라는 그룹도 하나 더 두기로 했다.
 결론적으로 나온 모델이 위에 렌더링된 방식이다. SVG로 그려진 이 도표는 현재 당신이 보고 있는 화면 사이즈에 따라 반응한다. 현재 화면은 빨갛게 칠해진 플래그가 활성화 된 상태라는 표시이다.
-
-export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>

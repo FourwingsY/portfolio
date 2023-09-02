@@ -12,8 +12,9 @@
     "noEmit": true,
     "paths": {
       "@/lib/*": ["lib/*"],
-      "@*": ["src/*"],
-      "@api/*": ["pages/api/*"]
+      "@/posts/*": ["posts/*"],
+      "@/*": ["app/*"],
+      "@*": ["src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components"
 
 import { ContentsWidth } from "@styles/adaptive"
-import { palette } from "@styles/theme"
 
 const highlightjs_github = css`
   .hljs {
@@ -97,7 +96,7 @@ export const Contents = styled(ContentsWidth)`
   padding-top: 2rem;
   padding-bottom: 6rem;
   code {
-    color: ${palette.highlight};
+    color: var(--leaf-primary-50);
   }
   h1 {
     display: none;
@@ -106,8 +105,8 @@ export const Contents = styled(ContentsWidth)`
     }
   }
   blockquote {
-    background: ${palette.primary95};
-    border-left: 0.25em solid ${palette.primary60};
+    background: var(--leaf-primary-95);
+    border-left: 0.25em solid var(--leaf-primary-60);
     color: #333;
     padding: 0.5em 1em;
   }

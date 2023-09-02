@@ -2,10 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 
 import ScreenMonitor from "@examples/adaptive/ScreenMonitor"
-import External from "@icons/External"
-import Medium from "@icons/Medium"
 
 import { MEDIUM_POSTS } from "@/lib/constants/medium"
+
+import External from "@/icons/External"
+import Medium from "@/icons/Medium"
 
 import * as S from "./page.style"
 
@@ -13,48 +14,51 @@ const POSTS = [
   {
     id: "project-structure",
     title: "리액트 프로젝트 구조",
-    written: "2023.04.29",
+    written: "2023-04-29",
     thumbnail: <Image src="/images/posts/directories.jpg" alt="thumbnail" fill />,
   },
 
   {
     id: "mdx",
     title: "MDX",
-    written: "2022.12.18",
+    written: "2022-12-18",
     // thumbnail: <AnimatedMDX />,
   },
   {
     id: "swr-query",
     title: "SWR vs React Query",
-    written: "2022.11.05",
+    written: "2022-11-05",
     thumbnail: <Image src="/images/posts/swr-query.jpg" alt="thumbnail" fill />,
   },
   {
     id: "suspense",
     title: "Suspense with Next & SWR",
-    written: "2022.02.25",
+    written: "2022-02-25",
     // thumbnail: <SuspenseThumbnail />,
   },
   {
     id: "confetti",
     title: "Coding Confetti on Canvas",
-    written: "2021.06.08",
+    written: "2021-06-08",
     // thumbnail: <ConfettiThumbnail />,
   },
   {
     id: "modal",
     title: "Typed Modal system",
-    written: "2021.05.31",
+    written: "2021-05-31",
     // thumbnail: <ModalThumbnail />,
   },
   {
     id: "adaptive-design",
     title: "Adaptive Design",
-    written: "2021.05.29",
+    written: "2021-05-29",
     thumbnail: <ScreenMonitor />,
   },
 ]
 
+/**
+ * 선별적으로 올라오는 쇼케이스인 만큼, 수동으로 관리하자
+ */
 export default function Showcase() {
   return (
     <S.Showcase>

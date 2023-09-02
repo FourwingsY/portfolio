@@ -1,11 +1,9 @@
-import PostLayout from "@pages/posts/PostLayout"
-
-export const meta = {
-  id: "suspense",
-  title: "Suspense with Next & SWR",
-  written: "2022.02.25",
-  keywords: ["next", "swr", "suspense", "react"],
-}
+---
+id: "suspense"
+title: "Suspense with Next & SWR"
+written: "2022-02-25"
+keywords: ["next", "swr", "suspense", "react"]
+---
 
 # Nextjs 12.1 과 SWR 로 Suspense 사용하기
 
@@ -79,7 +77,7 @@ type SuspensedSWRResponse<Data, Error> = SWRResponse<Data, Error> & { data: Data
 export const useSuspensedSWR = <Data = any, Error = any, SWRKey extends string | any[] = any[]>(
   key: SWRKey,
   fetcher: Fetcher<Data, SWRKey> | null,
-  config?: SWRConfiguration<Data, Error, Fetcher<Data, SWRKey>> | undefined
+  config?: SWRConfiguration<Data, Error, Fetcher<Data, SWRKey>> | undefined,
 ): SuspensedSWRResponse<Data, Error> => {
   return useSWR(key, fetcher, { ...config, suspense: true }) as SuspensedSWRResponse<Data, Error>
 }
@@ -130,5 +128,3 @@ Suspense fallback으로 떨어지기 전에 SWR fallback에서 다 막는 거잖
 이 케이스는 아주 편리하지만, lazy하게 렌더링되는 컴포넌트가 크면 커질수록 SSG의 장점을 잃어버리게 되는 문제가 있다.
 
 ...하지만 Suspense 자체가 애초에 SSR이랑은 거리가 멀지 않나? 라고 생각하면 이 방법을 충분히 채택할 만 하다.
-
-export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>

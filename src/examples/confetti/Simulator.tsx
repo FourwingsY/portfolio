@@ -63,7 +63,7 @@ const Simulator = () => {
         initialSpeed: getRandomInt(particleOptions.initialSpeedMin, particleOptions.initialSpeedMax),
         initialAngle: getRandomInRange(
           particleOptions.initialAngle - particleOptions.initialAngleSpread / 2,
-          particleOptions.initialAngle + particleOptions.initialAngleSpread / 2
+          particleOptions.initialAngle + particleOptions.initialAngleSpread / 2,
         ),
         color: colorSet[getRandomInt(0, colorSet.length)],
       }
@@ -107,7 +107,11 @@ const Simulator = () => {
   return (
     <S.Simulator>
       <S.DrawingArea>
-        <S.SimulatorCanvas ref={canvasRef} onMouseDown={(e) => e.preventDefault()} onClick={handleClick} />
+        <S.SimulatorCanvas
+          ref={canvasRef}
+          onMouseDown={(e: React.MouseEvent) => e.preventDefault()}
+          onClick={handleClick}
+        />
         <S.Coord>
           {coord.x.toFixed(2)}, {coord.y.toFixed(2)}
         </S.Coord>

@@ -6,13 +6,12 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^(@api)/(.*)$",
-    "^(@store)/(.*)$",
     "^(@modals|@pages)/(.*)$",
     "^(@hocs|@hooks)/(.*)$",
     "^(@components|@examples|@icons)/(.*)$",
     "^(@utils|@styles|@constants)/(.*)$",
-    "^@/lib/(.*)$",
+    "^@/(lib|posts)/(.*)$",
+    "^@/(.*)/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true

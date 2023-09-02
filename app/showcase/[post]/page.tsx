@@ -1,17 +1,37 @@
+"use client"
+
 import Giscus from "@giscus/react"
+import { MDXProvider } from "@mdx-js/react"
 import "github-markdown-css/github-markdown.css"
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import Head from "next/head"
+import { useParams } from "next/navigation"
+import { useEffect, useState } from "react"
 
-import Layout from "@pages/Layout"
+import Adaptive from "@examples/adaptive"
 
-import * as S from "./PostLayout.style"
+import * as S from "./page.style"
 
-interface Props {
-  meta: { id: string; title: string; written: string; keywords: string[] }
+async function getPost(id: string) {
+  return fetch(`/showcase/${id}/mdx`).then((res) => res.json())
 }
-export default function PostLayout({ meta, children }: React.PropsWithChildren<Props>) {
+
+export default function PostPage() {
+  const [post, setPost] = useState<MDXRemoteSerializeResult<unknown, Post.Metadata>>()
+  const params = useParams()
+
+  useEffect(() => {
+    ;(async function () {
+      const post = await getPost(params?.post as string)
+      setPost(post)
+    })()
+  }, [])
+
+  if (!post) return null
+
+  const meta = post.frontmatter
   return (
-    <Layout>
+    <MDXProvider components={{ Adaptive }}>
       <Head>
         <title>{meta.title}</title>
         <meta name="keywords" content={meta.keywords.join(", ")} />
@@ -45,7 +65,7 @@ export default function PostLayout({ meta, children }: React.PropsWithChildren<P
         <S.Title className="custom">
           {meta.title} <time>{meta.written}</time>
         </S.Title>
-        {children}
+        <MDXRemote {...post} />
         <Giscus
           repo="FourwingsY/portfolio"
           repoId="MDEwOlJlcG9zaXRvcnkzNzE3NDAyMzg="
@@ -61,6 +81,6 @@ export default function PostLayout({ meta, children }: React.PropsWithChildren<P
           loading="lazy"
         />
       </S.Contents>
-    </Layout>
+    </MDXProvider>
   )
 }
