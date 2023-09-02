@@ -49,7 +49,7 @@ export const NavLink = styled.span<{ match: boolean }>`
   color: ${palette.primary95};
   cursor: pointer;
   overflow: hidden;
-  ::after {
+  &::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -106,12 +106,12 @@ export const Menu = styled.button<{ opened: boolean }>`
   height: 1.5rem;
   background: none;
   z-index: 1;
-  ::before {
+  &::before {
     content: "";
     ${bar};
     transform: translate(-50%, -50%) translateY(-0.5625rem);
   }
-  ::after {
+  &::after {
     content: "";
     ${bar};
     transform: translate(-50%, -50%) translateY(0.5625rem);
@@ -123,13 +123,13 @@ export const Menu = styled.button<{ opened: boolean }>`
   ${({ opened }) =>
     opened &&
     css`
-      ::before {
+      &::before {
         transform: translate(-50%, -50%) rotate(45deg) scaleX(1.3);
       }
       i {
         transform: translate(-50%, -50%) scaleX(0);
       }
-      ::after {
+      &::after {
         transform: translate(-50%, -50%) rotate(-45deg) scaleX(1.3);
       }
     `}
