@@ -1,3 +1,14 @@
+# YG's portfolio
+
+## 구성
+
+Next.js 13 (WIP: + appdir) 기반으로 구성하였으며, 아래 구조를 갖습니다.
+
+- 홈 (index)
+- 커스텀 페이지 (activity)
+- MDX 기반의 페이지 (showcase)
+- TODO: 블로그 (blog)
+
 ## About directory structures
 
 - @types: 전역 타입 및 타이핑이 되지 않은 라이브러리의 `d.ts` 파일들이 있습니다. 써드파티에 의한 `window.thirdParty` 같은 변수의 타입도 여기에서 관리합니다.

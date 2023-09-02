@@ -1,3 +1,5 @@
+"use client"
+
 import { createContext, useContext, useEffect, useState } from "react"
 import { useMediaQuery } from "react-responsive"
 import styled, { DefaultTheme, ThemeProvider } from "styled-components"
@@ -79,21 +81,16 @@ export function useResponsiveContext() {
   return { ...context, DLPM }
 }
 
-const withResponsive = <P,>(Component: React.ComponentType<P>) => {
-  const WithResponsive = (props: P & JSX.IntrinsicAttributes) => {
-    const { isMounted, ...context } = useResponsive()
+const WithResponsive = ({ children }: { children: React.ReactNode }) => {
+  const { isMounted, ...context } = useResponsive()
 
-    return (
-      <ThemeProvider theme={context}>
-        <ResponsiveContext.Provider value={context}>
-          <HideAndLoad isInitialRender={!isMounted}>
-            <Component {...props} />
-          </HideAndLoad>
-        </ResponsiveContext.Provider>
-      </ThemeProvider>
-    )
-  }
-  return WithResponsive
+  return (
+    <ThemeProvider theme={context}>
+      <ResponsiveContext.Provider value={context}>
+        <HideAndLoad isInitialRender={!isMounted}>{children}</HideAndLoad>
+      </ResponsiveContext.Provider>
+    </ThemeProvider>
+  )
 }
 
-export default withResponsive
+export default WithResponsive

@@ -1,3 +1,5 @@
+"use client"
+
 import { useResponsiveContext } from "@hocs/withResponsive"
 
 import Header from "./Header"

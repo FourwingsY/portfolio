@@ -1,10 +1,8 @@
-import type { CSSProperties } from "styled-components"
-
 import * as S from "./Layout.style"
 import Header from "./components/Header"
 
 interface Props {
-  style?: CSSProperties
+  style?: React.CSSProperties
 }
 const Layout = ({ style, children }: React.PropsWithChildren<Props>) => {
   return (

@@ -1,5 +1,7 @@
+"use client"
+
 import Link from "next/link"
-import { useRouter } from "next/router"
+import { usePathname } from "next/navigation"
 import { match } from "path-to-regexp"
 
 import * as S from "./Header.style"
@@ -15,9 +17,9 @@ export default function NavLink({
   activeOnly = false,
   children,
 }: React.PropsWithChildren<Props>) {
-  const router = useRouter()
+  const pathname = usePathname()
   const matchFn = match(href, { end: !includeChildPath })
-  const matched = Boolean(matchFn(router.pathname))
+  const matched = Boolean(matchFn(pathname ?? ""))
 
   // just want to use styling, not using as a hyperlink
   if (activeOnly) {
