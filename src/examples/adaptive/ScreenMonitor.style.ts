@@ -13,10 +13,11 @@ export const ScreenMeter = styled.svg`
 `
 
 const fontSize = css`
-  ${({ theme }) => (theme.desktop ? 30 : theme.tabletL ? 40 : theme.tabletP ? 50 : 60)}
+  ${({ theme }) => (theme.desktop ? "40px" : theme.tabletL ? "45px" : theme.tabletP ? "50px" : "60px")}
 `
 export const Text = styled.text<{ active?: boolean }>`
-  font: ${fontSize}px sans-serif;
+  font: sans-serif;
+  font-size: ${fontSize};
   text-anchor: middle;
   ${({ active }) =>
     active &&
@@ -26,8 +27,9 @@ export const Text = styled.text<{ active?: boolean }>`
 `
 
 const smallFont = css`
-  ${({ theme }) => (theme.desktop ? 25 : theme.tabletL ? 34 : theme.tabletP ? 40 : 50)}
+  ${({ theme }) => (theme.desktop ? "30px" : theme.tabletL ? "35px" : theme.tabletP ? "40px" : "50px")}
 `
 export const SmallText = styled(Text)`
-  font: ${smallFont}px sans-serif;
+  font: sans-serif;
+  font-size: ${smallFont};
 `
