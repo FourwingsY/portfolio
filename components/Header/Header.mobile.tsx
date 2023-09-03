@@ -31,18 +31,18 @@ const Header = () => {
   }
 
   return (
-    <S.Header hide={hide}>
+    <S.Header $hide={hide}>
       <S.Wrapper>
         <S.NavGroup>
           <NavLink href="/">YG's portfolio</NavLink>
         </S.NavGroup>
         <S.NavGroup>
-          <S.Menu opened={opened} onClick={toggleMenu}>
+          <S.Menu $opened={opened} onClick={toggleMenu}>
             <i />
           </S.Menu>
         </S.NavGroup>
       </S.Wrapper>
-      <S.Drawer opened={opened}>
+      <S.Drawer $opened={opened}>
         <NavLink href="/">HOME</NavLink>
         <NavLink href="/showcase" includeChildPath>
           Showcase

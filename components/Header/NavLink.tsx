@@ -23,11 +23,12 @@ export default function NavLink({
 
   // just want to use styling, not using as a hyperlink
   if (activeOnly) {
-    return <S.NavLink match={matched}>{children}</S.NavLink>
+    return <S.NavLink $match={matched}>{children}</S.NavLink>
   }
+
   return (
     <Link href={href}>
-      <S.NavLink match={matched}>{children}</S.NavLink>
+      <S.NavLink $match={matched}>{children}</S.NavLink>
     </Link>
   )
 }

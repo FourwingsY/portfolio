@@ -35,18 +35,18 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
       <S.BorderBox>
         <S.ShortDescription>
           <Duration duration={item.duration} />
-          <S.ProductName hasLink={!!item.link} onClick={openLink}>
+          <S.ProductName $hasLink={!!item.link} onClick={openLink}>
             {item.productName}
-            <S.ProductStatusBadge status={item.status} />
+            <S.ProductStatusBadge $status={item.status} />
           </S.ProductName>
           <S.Company>{item.company}</S.Company>
         </S.ShortDescription>
         <S.DisplayZone onClick={() => setActive(!active)}>
-          <S.LongDescription forSizeDetect ref={detectorClosed}>
+          <S.LongDescription $forSizeDetect ref={detectorClosed}>
             <p>{item.experienced.split("\n")[0]}</p>
             <S.More>더보기</S.More>
           </S.LongDescription>
-          <S.LongDescription forSizeDetect ref={detectorOpened}>
+          <S.LongDescription $forSizeDetect ref={detectorOpened}>
             {item.experienced.split("\n").map((line, i) => (
               <p key={i}>{line}</p>
             ))}

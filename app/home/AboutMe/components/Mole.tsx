@@ -26,6 +26,7 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   useEffect(() => {
     canvasSize.current = { width: window.innerWidth, height: window.innerHeight * 0.7 }
   }, [])
+
   // visiblility control
   useEffect(() => {
     if (show) {
@@ -52,7 +53,7 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
     setShow(true)
   }
 
-  if (!position) return null
+  if (!position) return <S.Mole $show={false}>{children}</S.Mole>
 
   const relativePosition = {
     left: ((position.x / canvasSize.current.width) * 100).toFixed(1) + "%",
@@ -61,7 +62,7 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   const jumpingAnimation = { animationDelay: `${Math.random().toFixed(2)}s` }
 
   return (
-    <S.Mole show={show} style={{ ...relativePosition, ...jumpingAnimation }}>
+    <S.Mole $show={show} style={{ ...relativePosition, ...jumpingAnimation }}>
       {children}
     </S.Mole>
   )

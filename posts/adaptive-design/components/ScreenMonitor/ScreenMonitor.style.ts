@@ -15,12 +15,12 @@ export const ScreenMeter = styled.svg`
 const fontSize = css`
   ${({ theme }) => (theme.desktop ? "40px" : theme.tabletL ? "45px" : theme.tabletP ? "50px" : "60px")}
 `
-export const Text = styled.text<{ active?: boolean }>`
+export const Text = styled.text<{ $active?: boolean }>`
   font: sans-serif;
   font-size: ${fontSize};
   text-anchor: middle;
-  ${({ active }) =>
-    active &&
+  ${({ $active }) =>
+    $active &&
     css`
       fill: red;
     `}

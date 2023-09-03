@@ -35,13 +35,13 @@ export const MoleGame = styled.div`
     `}
 `
 
-export const Mole = styled.div<{ show: boolean }>`
+export const Mole = styled.div<{ $show: boolean }>`
   position: absolute;
   transform: translate(-50%, -50%);
   opacity: 1;
   transition: opacity 1s;
-  ${({ show }) =>
-    !show &&
+  ${({ $show }) =>
+    !$show &&
     css`
       opacity: 0;
     `}

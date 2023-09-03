@@ -23,25 +23,25 @@ const ScreenMonitor: React.FC = () => {
           <S.Text x="1200">1200</S.Text>
         </g>
         <g className="labels">
-          <S.Text x="450" y="300" active={small}>
+          <S.Text x="450" y="300" $active={small}>
             small
           </S.Text>
-          <S.Text x="1200" y="300" active={large}>
+          <S.Text x="1200" y="300" $active={large}>
             large
           </S.Text>
-          <S.Text x="300" y="200" active={mobile}>
+          <S.Text x="300" y="200" $active={mobile}>
             mobile
           </S.Text>
-          <S.Text x="750" y="200" active={tabletP}>
+          <S.Text x="750" y="200" $active={tabletP}>
             tabletP
           </S.Text>
-          <S.Text x="1050" y="200" active={tabletL}>
+          <S.Text x="1050" y="200" $active={tabletL}>
             tabletL
           </S.Text>
-          <S.Text x="1350" y="200" active={desktop}>
+          <S.Text x="1350" y="200" $active={desktop}>
             desktop
           </S.Text>
-          <S.Text x="180" y="100" active={tooSmall}>
+          <S.Text x="180" y="100" $active={tooSmall}>
             tooSmall
           </S.Text>
         </g>
@@ -57,7 +57,7 @@ const ScreenMonitor: React.FC = () => {
           <S.SmallText x="0" y="-170">
             Your screen
           </S.SmallText>
-          <S.Text x="0" y="-120" active>
+          <S.Text x="0" y="-120" $active>
             {screenWidth}
           </S.Text>
         </g>

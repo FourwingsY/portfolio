@@ -10,7 +10,7 @@ const hidden = css`
   transform: translateY(-100%);
 `
 
-export const Header = styled.header<{ hide?: boolean }>`
+export const Header = styled.header<{ $hide?: boolean }>`
   position: sticky;
   top: 0;
   display: flex;
@@ -25,7 +25,7 @@ export const Header = styled.header<{ hide?: boolean }>`
   transition: transform 0.5s;
   overflow-x: hidden;
   z-index: ${POSITION};
-  ${({ hide }) => hide && hidden}
+  ${({ $hide }) => $hide && hidden}
 `
 
 export const Wrapper = styled(ContentsWidth)`
@@ -38,7 +38,7 @@ export const NavGroup = styled.nav`
   font-size: 0;
 `
 
-export const NavLink = styled.span<{ match: boolean }>`
+export const NavLink = styled.span<{ $match: boolean }>`
   position: relative;
   display: inline-block;
   height: 100%;
@@ -67,8 +67,8 @@ export const NavLink = styled.span<{ match: boolean }>`
       transform: translateY(50%);
     }
   }
-  ${({ match }) =>
-    match &&
+  ${({ $match }) =>
+    $match &&
     css`
       font-weight: bold;
       &:hover {
@@ -100,7 +100,7 @@ const bar = css`
   background: white;
   transition: transform 0.3s;
 `
-export const Menu = styled.button<{ opened: boolean }>`
+export const Menu = styled.button<{ $opened: boolean }>`
   position: relative;
   width: 1.5rem;
   height: 1.5rem;
@@ -120,8 +120,8 @@ export const Menu = styled.button<{ opened: boolean }>`
     ${bar};
     transform: translate(-50%, -50%);
   }
-  ${({ opened }) =>
-    opened &&
+  ${({ $opened }) =>
+    $opened &&
     css`
       &::before {
         transform: translate(-50%, -50%) rotate(45deg) scaleX(1.3);
@@ -135,7 +135,7 @@ export const Menu = styled.button<{ opened: boolean }>`
     `}
 `
 
-export const Drawer = styled.div<{ opened: boolean }>`
+export const Drawer = styled.div<{ $opened: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -149,8 +149,8 @@ export const Drawer = styled.div<{ opened: boolean }>`
   background: ${palette.primary};
   transform: translateX(100%);
   transition: transform 0.3s;
-  ${({ opened }) =>
-    opened &&
+  ${({ $opened }) =>
+    $opened &&
     css`
       transform: translateX(0);
     `};

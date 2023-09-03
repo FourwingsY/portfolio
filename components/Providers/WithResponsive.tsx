@@ -32,8 +32,8 @@ const ResponsiveContext = createContext<DefaultTheme>({
 })
 
 // fix responsive + hydration issue
-const HideAndLoad = styled.div<{ isInitialRender: boolean }>`
-  visibility: ${({ isInitialRender }) => (isInitialRender ? "hidden" : "visible")};
+const HideAndLoad = styled.div<{ $isInitialRender: boolean }>`
+  visibility: ${({ $isInitialRender }) => ($isInitialRender ? "hidden" : "visible")};
 `
 
 /**
@@ -87,7 +87,7 @@ const WithResponsive = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider theme={context}>
       <ResponsiveContext.Provider value={context}>
-        <HideAndLoad isInitialRender={!isMounted}>{children}</HideAndLoad>
+        <HideAndLoad $isInitialRender={!isMounted}>{children}</HideAndLoad>
       </ResponsiveContext.Provider>
     </ThemeProvider>
   )
