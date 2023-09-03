@@ -1,78 +1,29 @@
-import Image from "next/image"
-import Link from "next/link"
+"use client"
+
+import { useEffect, useState } from "react"
 
 import { MEDIUM_POSTS } from "@/lib/constants/medium"
-import ScreenMonitor from "@/posts/adaptive-design/components/ScreenMonitor/ScreenMonitor"
 
 import External from "@/components/icons/External"
 import Medium from "@/components/icons/Medium"
 
+import PostCard from "./components/PostCard"
 import * as S from "./page.style"
 
-const POSTS = [
-  {
-    id: "project-structure",
-    title: "리액트 프로젝트 구조",
-    written: "2023-04-29",
-    thumbnail: <Image src="/images/posts/directories.jpg" alt="thumbnail" fill />,
-  },
+async function getPosts(): Promise<Post.Metadata[]> {
+  return fetch("/showcase/posts").then((res) => res.json())
+}
 
-  {
-    id: "mdx",
-    title: "MDX",
-    written: "2022-12-18",
-    // thumbnail: <AnimatedMDX />,
-  },
-  {
-    id: "swr-query",
-    title: "SWR vs React Query",
-    written: "2022-11-05",
-    thumbnail: <Image src="/images/posts/swr-query.jpg" alt="thumbnail" fill />,
-  },
-  {
-    id: "suspense",
-    title: "Suspense with Next & SWR",
-    written: "2022-02-25",
-    // thumbnail: <SuspenseThumbnail />,
-  },
-  {
-    id: "confetti",
-    title: "Coding Confetti on Canvas",
-    written: "2021-06-08",
-    // thumbnail: <ConfettiThumbnail />,
-  },
-  {
-    id: "modal",
-    title: "Typed Modal system",
-    written: "2021-05-31",
-    // thumbnail: <ModalThumbnail />,
-  },
-  {
-    id: "adaptive-design",
-    title: "Adaptive Design",
-    written: "2021-05-29",
-    thumbnail: <ScreenMonitor />,
-  },
-]
-
-/**
- * 선별적으로 올라오는 쇼케이스인 만큼, 수동으로 관리하자
- */
 export default function Showcase() {
+  const [posts, setPosts] = useState<Post.Metadata[]>([])
+  useEffect(() => {
+    getPosts().then(setPosts)
+  }, [])
+
   return (
     <S.Showcase>
-      {POSTS.map((post) => (
-        <S.Card key={post.id}>
-          <Link href={`/showcase/${post.id}`}>
-            <S.FixedRate169>
-              <S.CardThumbnail>{post.thumbnail}</S.CardThumbnail>
-            </S.FixedRate169>
-            <S.CardBody>
-              <S.CardTitle>{post.title}</S.CardTitle>
-              <S.PostWritten>{post.written}</S.PostWritten>
-            </S.CardBody>
-          </Link>
-        </S.Card>
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
       ))}
       <S.Card>
         <S.FixedRate169>

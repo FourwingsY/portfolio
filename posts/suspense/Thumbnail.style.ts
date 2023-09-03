@@ -35,7 +35,7 @@ export const Contents = styled.div`
   height: 5rem;
   padding: 0.5rem;
   border: 3px solid black;
-  ::before {
+  &::before {
     content: "";
     display: block;
     width: 80%;
@@ -43,7 +43,7 @@ export const Contents = styled.div`
     margin-bottom: 0.5rem;
     background: rgba(0, 0, 0, 0.5);
   }
-  ::after {
+  &::after {
     content: "";
     display: block;
     width: 60%;
@@ -98,9 +98,9 @@ const bubble = keyframes`
 `
 
 const nthDot = (n: number) => css`
-  :nth-child(${n}) {
+  &:nth-child(${n}) {
     transform: rotate(${n * 45}deg);
-    ::before {
+    &::before {
       background-color: hsl(${n * 45}, 100%, 50%);
       animation-delay: ${-n * 0.2}s;
     }
@@ -111,7 +111,7 @@ export const Dot = styled.div`
   top: 0;
   left: 50%;
   transform-origin: 0 2.5rem;
-  ::before {
+  &::before {
     content: "";
     display: block;
     width: 2rem;

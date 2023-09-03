@@ -6,6 +6,7 @@ import gfm from "remark-gfm"
 
 export async function GET(request: NextRequest, { params }: { params: { post: string } }): Promise<NextResponse> {
   const text = await fs.readFile(`./posts/${params.post}/post.mdx`, "utf8")
+  const metadata = await fs.readFile(`./posts/${params.post}/metadata.json`, "utf8").then((data) => JSON.parse(data))
   const data = await serialize(text, {
     mdxOptions: {
       remarkPlugins: [gfm],
@@ -13,7 +14,6 @@ export async function GET(request: NextRequest, { params }: { params: { post: st
       // https://github.com/hashicorp/next-mdx-remote/issues/350
       development: process.env.NODE_ENV === "development",
     },
-    parseFrontmatter: true,
   })
-  return NextResponse.json(data)
+  return NextResponse.json({ source: data.compiledSource, metadata })
 }

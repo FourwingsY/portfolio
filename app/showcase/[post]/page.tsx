@@ -3,7 +3,7 @@
 import Giscus from "@giscus/react"
 import { MDXProvider } from "@mdx-js/react"
 import "github-markdown-css/github-markdown.css"
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
+import { MDXRemote } from "next-mdx-remote"
 import Head from "next/head"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -15,14 +15,14 @@ async function getPost(id: string) {
 }
 
 export default function PostPage() {
-  const [post, setPost] = useState<MDXRemoteSerializeResult<unknown, Post.Metadata>>()
+  const [post, setPost] = useState<{ source: string; metadata: Post.Metadata }>()
   const [components, setComponents] = useState<Record<string, React.ComponentType>>({})
   const params = useParams()
 
   useEffect(() => {
     ;(async function () {
-      const post = await getPost(params?.post as string)
-      setPost(post)
+      const { source, metadata } = await getPost(params?.post as string)
+      setPost({ source, metadata })
     })()
     ;(async function () {
       // components가 없으면 없는대로 에러 무시
@@ -33,7 +33,7 @@ export default function PostPage() {
 
   if (!post) return null
 
-  const meta = post.frontmatter
+  const { source, metadata: meta } = post
   return (
     <MDXProvider components={components}>
       <Head>
@@ -69,7 +69,7 @@ export default function PostPage() {
         <S.Title className="custom">
           {meta.title} <time>{meta.written}</time>
         </S.Title>
-        <MDXRemote {...post} />
+        <MDXRemote compiledSource={source} scope={null} frontmatter={false} />
         <Giscus
           repo="FourwingsY/portfolio"
           repoId="MDEwOlJlcG9zaXRvcnkzNzE3NDAyMzg="
