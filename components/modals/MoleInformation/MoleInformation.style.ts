@@ -9,12 +9,15 @@ export const MoleInformation = styled(CS.Modal)<{ visible: boolean }>`
   max-width: 24rem;
   background: ${palette.primary98};
   font-size: 1.5rem;
+  transition:
+    transform 500ms,
+    opacity 500ms;
 
   a {
     color: blue;
   }
   ${({ visible }) => css`
-    transition: transform 500ms;
+    opacity: ${visible ? 1 : 0};
     transform: translateY(${visible ? 0 : "-30px"});
   `}
 `
