@@ -194,7 +194,7 @@ export class PointSet {
 }
 
 export async function loadImage(url: string): Promise<PointSet> {
-  return await fetch(`${location.origin}/api/proxy?url=${url.replace(/\.jpg$/, ".json")}`)
+  return await fetch(`/dev/compare-pills/proxy?url=${url.replace(/\.jpg$/, ".json")}`)
     .then((res) => res.json())
     .then((data: { pred_boxes: [number, number, number, number][] }) => {
       return data.pred_boxes.map(([x, y]) => new Point(x, y))
