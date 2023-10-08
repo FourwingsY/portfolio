@@ -38,7 +38,7 @@ export default function Tooltip({ title, children }: React.PropsWithChildren<Pro
       {isHover &&
         createPortal(
           <S.Tooltip style={{ top: position.top, left: position.left + position.width / 2 }}>{title}</S.Tooltip>,
-          root
+          root,
         )}
     </S.TooltipWrapper>
   )

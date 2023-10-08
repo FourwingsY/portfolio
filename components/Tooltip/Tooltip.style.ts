@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components"
 
 export const TooltipWrapper = styled.span`
-  position: relative;
   ${() => css`
     &:hover ${Tooltip} {
       display: block;
@@ -9,7 +8,7 @@ export const TooltipWrapper = styled.span`
   `}
 `
 export const Tooltip = styled.div`
-  position: absolute;
+  position: fixed;
   transform: translate(-50%, -100%) translateY(-0.5rem);
   z-index: 9999;
 
