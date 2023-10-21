@@ -110,6 +110,11 @@ export const Contents = styled(ContentsWidth)`
     color: #333;
     padding: 0.5em 1em;
   }
+  figcaption {
+    color: var(--leaf---leaf-grey-70);
+    font-size: 0.8rem;
+    text-align: center;
+  }
   ${highlightjs_github};
 
   ${({ theme }) =>

@@ -1,0 +1,119 @@
+# Next.js App router 사용 후기
+
+Next.js 13에서 App router가 소개되며 React 서버 컴포넌트가 어떤 식으로 사용될지 소개되었었다.
+결국 13.4에서 베타 딱지를 떼고 정식 버전으로 출시되었고, 서버 컴포넌트의 세상이 열리기 시작했다.
+
+App router를 지금 이 블로그와 회사의 메인 프로젝트에 적용해보았는데, 그 과정에서 겪고 느낀 점들을 한번 정리해볼까 한다.
+
+## Breaking Changes
+
+일단 App router를 기존 프로젝트에 바로 적용하기엔 깨지는 부분이 많다. 분명 Next.js는 기존 pages와 공존하면서 슬금슬금 넘어갈 수 있을 것 처럼 말했지만, 현실적으로는 불가능했다.
+
+가장 큰 차이점은 App router에서는 `_app.tsx`가 동작하지 않는다는 점이다. 따라서 앱 전체에 적용되는 무언가를 `app/layout.tsx`에 다시 한 번 적용해야 한다.
+
+물론 이 과정에서도 굉장히 많은 난관들이 존재한다. 하나씩 살펴보자.
+
+### CSS-in-JS
+
+Next가 SSG, 서버 컴포넌트에 무게를 실어주면서, 점차 CSS-in-JS가 힘을 발휘하기 힘든 환경이 되어가고 있다.
+서버 사이드에서 생성되는 클래스명과 브라우저에서 생성되는 클래스명이 달라지면, 결국 클라이언트에서 스크립트가 한번 더 실행되면서 서버사이드 렌더링의 장점이 퇴색되기 때문이다.
+일부 라이브러리(ex. styled components)는 이에 맞춰 서버에서 생성된 클래스명을 유지할 수 있도록 `StyleSheetManager`같은 툴을 제공해주고 있지만,
+emotion같은 경우는 지원이 조금 더디게 되고 있어 app router를 적용하고 싶어도 적용하지 못할 수 있다. (아마 조만간 지원될 것 같다.)
+
+이에 맞춰 Tailwind.css의 기세가 올라가고 있는데, 개인적인 취향의 문제로 선택을 고려하고 있지 않다.
+
+<figure>
+  <img src="https://www.aleksandrhovhannisyan.com/assets/images/SlYrQIW6RE-1261.webp" />
+  <figcaption>협업하면서 이런 스타일 코드를 건드리고 싶지 않다</figcaption>
+</figure>
+
+아직까지는 어떻게든 해결책이 있긴 하지만, 1-2년 뒤에는 조금 더 정적인 스타일링 도구를 고려해봐야 할 것 같다.
+
+### 컨텍스트 관리
+
+회사 프로젝트에서는 다국어 지원때문에 애를 먹었다. 기존에 사용하던 `next-translate`가 App router 지원이 늦어서 `next-i18n`를 사용하게 되었다. (이제는 지원된다)
+다국어 적용 중에도 조금 어려운 부분이 있었는데, 서버사이드 렌더링 컨텍스트와 클라이언트 렌더링 컨텍스트 양쪽에 다국어 데이터를 넣어주어야 양쪽 렌더링이 잘 이뤄질 수 있다.
+
+Next App router 에서는 서버 컴포넌트가 기본으로 잡히면서, 클라이언트 컴포넌트에서는 `'use client';` directive를 붙여줘야 하는데,
+이런 선언이 있을 때와 없을 때 동작의 차이가 있다.
+
+때문에 앱 전역에 컨텍스트를 제공하는 `Provider`를 적용하기 위해서는 약간의 추가 작업이 필요했다.
+
+```tsx
+// app/layout.tsx
+
+<body>
+  <StyledComponentsRegistry>
+    <Providers>{children}</Providers>
+  </StyledComponentsRegistry>
+</body>
+```
+
+여기에서 Providers는 사실 아래와 같이 구성되어있다.
+
+```tsx
+import ClientSideProviders from "./Providers.client"
+import ServerSideProviders from "./Providers.server"
+
+export default function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <ServerSideProviders>
+      <ClientSideProviders>{children}</ClientSideProviders>
+    </ServerSideProviders>
+  )
+}
+```
+
+서버사이드 렌더링에 필요한 데이터를 제공하는 `next-intl` 같은 라이브러리는 양쪽 컴포넌트에 두 번 구현해야 할 수도 있다.
+클라이언트 사이드에서만 동작하는 라이브러리는 클라이언트 사이드에서만 제공되도록 분리해주었다. 주로 상태 관리 라이브러리들이 이쪽에 포함된다.
+
+## Server Components
+
+서버 컴포넌트는 몇 가지 특징을 갖는다
+
+- useState / useEffect 등 대다수의 훅 사용 불가
+- onClick 등 이벤트 핸들러 사용 불가
+
+때문에 정말 정적으로 렌더링되어야 하는 컴포넌트만 서버 컴포넌트로 내려줄 수 있다.
+app router에서 `layout` 파일을 별도로 구현하도록 구조를 잡아준 것도, "그래도 레이아웃은 정적이지?" 라는 가이드처럼 느껴졌다.
+
+### 어라?
+
+막상 클라이언트 컴포넌트와 서버 컴포넌트를 잘 분리해놓고 보니 클라이언트 컴포넌트가 대다수인 것 처럼 느껴졌다.
+그래서 이 변화로 오히려 CSR이 늘어나면서 SSG의 장점을 포기하는것이 아닌가 하는 의문이 들었다.
+
+하지만 막상 작업 된 페이지에 접속해보니... 분명 클라이언트 컴포넌트인데도 렌더링이 되어 내려온다...?
+
+```tsx
+// app/home/AboutMe/AmoutMe.tsx
+
+"use client";
+
+import { useEffect, useState } from "react";
+
+
+return (<><S.Title>Who am I?</S.Title>{...others}</>);
+```
+
+분명 이건 클라이언트 컴포넌트인데...
+
+```html
+<div class="sc-df792189-1 jrVNBY">Who am I?</div>
+```
+
+이게 어떻게 렌더링이 되었지?
+
+### 고민
+
+만약에 내가 이걸 pages router로 구현을 했다면, 이건 렌더링 되어서 내려오는게 맞다. SSG로 렌더링했을테니까.
+SSG는 useState의 기본 상태와 useEffect를 실행하지 않은 상태에서 렌더링을 하는데, 중간에 `return null`이 끼어있지 않다면 어쨋든 렌더링은 될 테니까.
+
+음... 그렇지, app router에서 굳이 이런 SSG를 포기할 이유는 없었겠지.
+
+## 결론 및 요약
+
+App router 적용은 고생이 많고, 거의 모든 페이지와 컴포넌트를 건드려야 하는 일이긴 하지만,
+페이지를 이동해도 동일한 레이아웃이라면 레이아웃 컴포넌트가 유지된다는 가장 큰 장점 외에는 큰 변화가 없다고 느꼈다.
+
+하지만 곧 발표될 Next 14에서 아마 더 많은 발전이 있을 것으로 기대하고 있다.
+특히 App router에 집중할 것으로 예상하고 있기 때문에 더욱 기다려진다.
