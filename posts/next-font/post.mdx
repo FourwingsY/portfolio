@@ -1,0 +1,60 @@
+# next/font/google 로딩 이슈
+
+프로젝트에서 Noto Sans KR을 사용하는데, next/font/google을 사용해 로딩을 적용했다.
+그런데 자꾸만 이런 에러가 보였다.
+
+```
+Failed to download `Noto Sans KR` from Google Fonts. Using fallback font instead.
+```
+
+에러 메시지를 조금 자세히 들여다보니
+
+```
+AbortError: The user aborted a request.
+    at abort (~/node_modules/next/dist/compiled/node-fetch/index.js:1:65190)
+    at EventTarget.abortAndFinalize (~/node_modules/next/dist/compiled/node-fetch/index.js:1:65410)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:741:20)
+    at EventTarget.dispatchEvent (node:internal/event_target:683:26)
+    at abortSignal (node:internal/abort_controller:368:10)
+    at AbortController.abort (node:internal/abort_controller:402:5)
+    at Timeout.<anonymous> (~/node_modules/next/dist/compiled/@next/font/dist/google/fetch-font-file.js:24:51)
+```
+
+`fetch-font-file` 이란 파일에서 Timeout 에러가 나고 있는 것을 확인할 수 있었다.
+
+관련 이슈를 조금 더 찾아보자
+
+Noto Sans JP에 대한 이슈[#45080](https://github.com/vercel/next.js/issues/45080)도 하나 있었고,
+다른 폰트에서도 발생[#53279](https://github.com/vercel/next.js/issues/53279)하는 듯 했다.
+
+## 원인
+
+그러니까, 정확하게는, 우리가 설정한 옵션에 맞춰 폰트 파일을 구글에서 받아오는데,
+
+```js
+// fetch-font-file.js
+const timeoutId = setTimeout(() => controller.abort(), 3000)
+```
+
+3초 타임아웃 내에 폰트 파일을 전부 받아오지 못한 문제다.
+
+## 해결?
+
+[이 PR](https://github.com/vercel/next.js/pull/57276)에서는 retry를 적용해 문제를 해결하려고 하고 있긴 한데,
+아직 머지되지 않은 상태에다, 이걸로 해결될 지 확신이 들지 않는다.
+
+물론 코드를 살짝 더 파보면 dev 환경일 때만 발생하는 문제라는 것을 알 수 있으므로, 실 서버엔 문제가 없다는 것을 확인할 수 있지만
+
+```js
+const arrayBuffer = await fetch(url, {
+  signal: isDev ? controller.signal : undefined,
+})
+```
+
+여기서 살짝의 꼼수를 발견했다.
+`next build`를 통해 타임아웃 안 걸린 환경에서 폰트 파일을 받아오고 난 뒤 `next dev`를 실행하면 회피할 수 있다.
+
+## 근본적인 해결
+
+한중일 3개 국어 폰트만이라도 타임아웃을 늘려줬으면 좋겠는데, 폰트 파일에 어떤 언어에 대응하는지- 같은 내용이 포함된 것도 아니라 애매하다.
+올해 안에 한 번쯤 이 문제에 대한 PR을 올려볼지도...?
