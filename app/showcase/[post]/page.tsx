@@ -2,11 +2,13 @@ import "github-markdown-css/github-markdown.css"
 import { Metadata } from "next"
 import Head from "next/head"
 
-import PostMarkdown from "./PostMarkdown"
+import fetch from "@/lib/thirdParties/fetch"
+
+import Post from "./Post"
 import * as S from "./page.style"
 
 async function getPost(id: string) {
-  return fetch(`http://localhost:3000/showcase/${id}/mdx`).then((res) => res.json() as Promise<Post.Parsed>)
+  return fetch(`/showcase/${id}/mdx`).then((res) => res.json() as Promise<Post.Parsed>)
 }
 
 interface Props {
@@ -37,7 +39,7 @@ export default async function PostPage({ params }: Props) {
         <S.Title className="custom">
           {post.metadata.title} <time>{post.metadata.written}</time>
         </S.Title>
-        <PostMarkdown post={post} />
+        <Post post={post} />
       </S.Contents>
     </>
   )
