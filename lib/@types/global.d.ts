@@ -1,7 +1,7 @@
 declare namespace Post {
   interface Parsed {
-    content: string
-    data: Metadata
+    source: string
+    metadata: Metadata
   }
   interface Metadata {
     id: string

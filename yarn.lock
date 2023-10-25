@@ -4803,6 +4803,11 @@ resolve@^2.0.0-next.3:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
+return-fetch@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/return-fetch/-/return-fetch-0.4.5.tgz#f243c34383407687d3693dc5c9582b8fbb0d0618"
+  integrity sha512-B4dEbp7cjVuXE0EshS4skHfCdGKYA2U1XDGRCa8EhE6P+R+tAmMtfVskeOI4CAyryD3HNz1esvFGKxOwq4VOhw==
+
 reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
