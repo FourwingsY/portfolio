@@ -1,7 +1,6 @@
 "use client"
 
 import { MDXProvider } from "@mdx-js/react"
-import "github-markdown-css/github-markdown.css"
 
 import { ScreenMonitor } from "@/posts/adaptive-design/components"
 import { ConfettiSimulator } from "@/posts/confetti/components"
