@@ -1,39 +1,67 @@
-"use client"
-
-import Giscus from "@giscus/react"
-import { MDXProvider } from "@mdx-js/react"
 import "github-markdown-css/github-markdown.css"
-import { MDXRemote } from "next-mdx-remote"
-import { useEffect, useState } from "react"
+import { Metadata } from "next"
+import Head from "next/head"
 
-export default function PostPage({ post }: { post: Post.Parsed }) {
-  const [components, setComponents] = useState<Record<string, React.ComponentType>>({})
+import PostMarkdown from "./PostMarkdown"
+import * as S from "./page.style"
 
-  useEffect(() => {
-    ;(async function () {
-      // components가 없으면 없는대로 에러 무시
-      const module = await import(`../../../posts/${post.metadata.id}/components`).catch(() => void 0)
-      setComponents({ ...module })
-    })()
-  }, [])
+async function getPost(id: string) {
+  return fetch(`http://localhost:3000/showcase/${id}/mdx`).then((res) => res.json() as Promise<Post.Parsed>)
+}
+
+interface Props {
+  params: { post: string }
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getPost(params.post as string)
+  return {
+    title: post.metadata.title,
+    keywords: post.metadata.keywords,
+  }
+}
+
+export default async function PostPage({ params }: Props) {
+  const post = await getPost(params?.post as string)
 
   return (
-    <MDXProvider components={components}>
-      <MDXRemote compiledSource={post?.source} scope={null} frontmatter={false} />
-      <Giscus
-        repo="FourwingsY/portfolio"
-        repoId="MDEwOlJlcG9zaXRvcnkzNzE3NDAyMzg="
-        category="Comments"
-        categoryId="DIC_kwDOFihOTs4CWOq9"
-        mapping="pathname"
-        strict="0"
-        reactions-enabled="1"
-        emit-metadata="0"
-        input-position="top"
-        theme="light_tritanopia"
-        lang="ko"
-        loading="lazy"
-      />
-    </MDXProvider>
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getJsonLD(post.metadata)),
+          }}
+        />
+      </Head>
+      <S.Contents className="markdown-body">
+        <S.Title className="custom">
+          {post.metadata.title} <time>{post.metadata.written}</time>
+        </S.Title>
+        <PostMarkdown post={post} />
+      </S.Contents>
+    </>
   )
+}
+
+function getJsonLD(meta: Post.Metadata) {
+  return {
+    "@context": "https://schema.org/",
+    "@type": "BlogPosting",
+    "@id": `https://yanggoon.dev/showcase/${meta.id}`,
+    headline: meta.title,
+    name: meta.title,
+    datePublished: meta.written,
+    author: {
+      "@type": "Person",
+      "@id": "https://yanggoon.dev",
+      name: "Hyeonseok Yang",
+      url: "https://yanggoon.dev",
+    },
+    url: `https://yanggoon.dev/showcase/${meta.id}`,
+    isPartOf: {
+      "@type": "Blog",
+      "@id": "https://yanggoon.dev/showcase/",
+      name: "YG's Portfolio",
+    },
+  }
 }
