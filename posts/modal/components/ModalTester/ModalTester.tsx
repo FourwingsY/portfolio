@@ -1,3 +1,5 @@
+"use client"
+
 import { useModal } from "@/lib/hooks/useModal"
 
 import * as S from "./ModalTester.style"

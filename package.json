@@ -42,9 +42,9 @@
     "@types/kd-tree-javascript": "^1.0.1",
     "@types/mdx": "^2.0.7",
     "@types/node": "18.11.9",
-    "@types/react": "^18.0.25",
+    "@types/react": "^18.2.31",
     "@types/react-calendar": "^3.4.0",
-    "@types/react-dom": "^18.0.8",
+    "@types/react-dom": "^18.2.14",
     "@types/react-responsive": "^8.0.2",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
@@ -55,6 +55,6 @@
     "eslint-config-prettier": "^8.5.0",
     "next-sitemap": "^4.2.3",
     "prettier": "^3.0.3",
-    "typescript": "^4.8.4"
+    "typescript": "^5.2.2"
   }
 }

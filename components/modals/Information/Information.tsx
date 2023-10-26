@@ -1,3 +1,5 @@
+"use client"
+
 import { BasicModalProps } from "@reactleaf/modal"
 import { useEffect, useRef } from "react"
 

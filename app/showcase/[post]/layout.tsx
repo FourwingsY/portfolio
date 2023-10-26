@@ -1,10 +1,9 @@
-import "github-markdown-css/github-markdown.css"
 import { Metadata } from "next"
 import Head from "next/head"
 
 import fetch from "@/lib/thirdParties/fetch"
 
-import PostWrapper from "./PostWrapper"
+import PostFooter from "./PostFooter"
 import * as S from "./page.style"
 
 async function getPost(id: string) {
@@ -40,7 +39,8 @@ export default async function PostLayout({ params, children }: Props) {
         <S.Title className="custom">
           {post.metadata.title} <time>{post.metadata.written}</time>
         </S.Title>
-        <PostWrapper>{children}</PostWrapper>
+        {children}
+        <PostFooter />
       </S.Contents>
     </>
   )

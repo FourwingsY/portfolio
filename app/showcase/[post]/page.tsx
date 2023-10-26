@@ -4,6 +4,13 @@ import highlight from "rehype-highlight"
 import gfm from "remark-gfm"
 
 import fetch from "@/lib/thirdParties/fetch"
+import { ScreenMonitor } from "@/posts/adaptive-design/components"
+import { ConfettiSimulator } from "@/posts/confetti/components"
+import { ModalTester } from "@/posts/modal/components"
+
+import Tooltip from "@/components/Tooltip"
+
+const components = { ScreenMonitor, ConfettiSimulator, Tooltip, ModalTester }
 
 async function getPost(id: string) {
   return fetch(`/showcase/${id}/mdx`).then((res) => res.json() as Promise<Post.Parsed>)
@@ -27,6 +34,7 @@ export default async function PostPage({ params }: Props) {
           development: process.env.NODE_ENV === "development",
         },
       }}
+      components={components}
     />
   )
 }
