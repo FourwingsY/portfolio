@@ -1,8 +1,5 @@
-"use client"
-
-import { useEffect, useState } from "react"
-
 import { MEDIUM_POSTS } from "@/lib/constants/medium"
+import fetch from "@/lib/thirdParties/fetch"
 
 import External from "@/components/icons/External"
 import Medium from "@/components/icons/Medium"
@@ -14,11 +11,8 @@ async function getPosts(): Promise<Post.Metadata[]> {
   return fetch("/showcase/posts").then((res) => res.json())
 }
 
-export default function Showcase() {
-  const [posts, setPosts] = useState<Post.Metadata[]>([])
-  useEffect(() => {
-    getPosts().then(setPosts)
-  }, [])
+export default async function Showcase() {
+  const posts = await getPosts()
 
   return (
     <S.Showcase>
