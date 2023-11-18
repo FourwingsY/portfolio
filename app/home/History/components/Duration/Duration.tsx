@@ -37,16 +37,15 @@ function useAnimatingDate(element: React.RefObject<Element>, end: Date, start: D
   const aMonth = 30 * 86400 * 1000 * Math.sign(+end - +start)
   const [date, setDate] = useState(start)
   const visible = useOnceVisible(element)
+
   function animate() {
-    setDate((date) => {
-      const next = date.valueOf() + aMonth
-      if ((aMonth < 0 && next <= end.valueOf()) || (aMonth > 0 && end.valueOf() <= next)) {
-        setDate(() => end)
-      } else {
-        requestAnimationFrame(animate)
-      }
-      return new Date(next)
-    })
+    const next = date.valueOf() + aMonth
+    if (+end <= next) {
+      setDate(() => end)
+    } else {
+      requestAnimationFrame(animate)
+      setDate(() => new Date(next))
+    }
   }
 
   useEffect(() => {
