@@ -30,6 +30,12 @@ const Header = () => {
     setOpened(!opened)
   }
 
+  function handleMenuClick(e: React.MouseEvent<HTMLDivElement>) {
+    if (e.target instanceof HTMLSpanElement) {
+      setOpened(false)
+    }
+  }
+
   return (
     <S.Header $hide={hide}>
       <S.Wrapper>
@@ -42,7 +48,7 @@ const Header = () => {
           </S.Menu>
         </S.NavGroup>
       </S.Wrapper>
-      <S.Drawer $opened={opened}>
+      <S.Drawer $opened={opened} onClick={handleMenuClick}>
         <NavLink href="/">HOME</NavLink>
         <NavLink href="/showcase" includeChildPath>
           Showcase
@@ -51,10 +57,10 @@ const Header = () => {
           Activity
         </NavLink>
         <S.DrawerFooter>
-          <S.ExternalLink href="https://www.linkedin.com/in/fourwingsy/">
+          <S.ExternalLink href="https://www.linkedin.com/in/fourwingsy/" target="_blank">
             <LinkedIn width={24} height={24} color="white" />
           </S.ExternalLink>
-          <S.ExternalLink href="https://github.com/fourwingsy">
+          <S.ExternalLink href="https://github.com/fourwingsy" target="_blank">
             <Github width={26} height={26} color="white" />
           </S.ExternalLink>
         </S.DrawerFooter>

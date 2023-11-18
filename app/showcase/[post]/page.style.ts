@@ -87,10 +87,11 @@ const highlightjs_github = css`
 export const Title = styled.h1`
   position: relative;
   time {
-    position: absolute;
-    right: 0;
-    bottom: 15%;
+    display: block;
+    margin-top: 0.25rem;
+    text-align: right;
     font-size: 0.9rem;
+    font-weight: 400;
   }
 `
 
