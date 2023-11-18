@@ -7,7 +7,7 @@ import { Taste } from "@/lib/constants/tastes"
 import { useResponsiveContext } from "@/components/Providers/WithResponsive"
 
 import * as S from "../AboutMe.style"
-import { createPositionFactory, Position } from "../utils"
+import { usePositionFactory, Position } from "../utils"
 
 interface Props {
   taste: Taste
@@ -16,15 +16,15 @@ interface Props {
 const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   const { DLPM } = useResponsiveContext()
   const size = DLPM(80, 80, 64, 64) // 5rem 5rem 4rem 4rem
-  const canvasSize = useRef<{ width: number; height: number }>({ width: 1, height: 1 })
-  const getPosition = createPositionFactory(canvasSize.current.width, canvasSize.current.height, size)
+  const [canvasSize, setCanvasSize] = useState<{ width: number; height: number }>({ width: 1, height: 1 })
+  const getPosition = usePositionFactory(canvasSize.width, canvasSize.height, size)
 
   const [position, setPosition] = useState<Position | null>(() => getPosition(taste.name))
   const [show, setShow] = useState(true)
   const delay = useRef(Math.random() * 10000)
 
   useEffect(() => {
-    canvasSize.current = { width: window.innerWidth, height: window.innerHeight * 0.7 }
+    setCanvasSize({ width: window.innerWidth, height: window.innerHeight * 0.7 })
   }, [])
 
   // visiblility control
@@ -56,8 +56,8 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   if (!position) return <S.Mole $show={false}>{children}</S.Mole>
 
   const relativePosition = {
-    left: ((position.x / canvasSize.current.width) * 100).toFixed(1) + "%",
-    top: ((position.y / canvasSize.current.height) * 100).toFixed(1) + "%",
+    left: ((position.x / canvasSize.width) * 100).toFixed(1) + "%",
+    top: ((position.y / canvasSize.height) * 100).toFixed(1) + "%",
   }
   const jumpingAnimation = { animationDelay: `${Math.random().toFixed(2)}s` }
 

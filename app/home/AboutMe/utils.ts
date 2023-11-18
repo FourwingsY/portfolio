@@ -1,3 +1,5 @@
+import { useCallback } from "react"
+
 import { getRandomInRange } from "@/lib/utils/random"
 
 export interface Position {
@@ -23,19 +25,22 @@ function collisionCheck(pos: Position, others: TastePosition[], size: number) {
   return others.some((t) => isCollided(pos, t.position))
 }
 
-export function createPositionFactory(width: number, height: number, size: number) {
-  return function getPosition(key: string): Position | null {
-    const others = tastePositions.filter((p) => p.key !== key)
+export function usePositionFactory(width: number, height: number, size: number): (key: string) => Position | null {
+  return useCallback(
+    function getPosition(key: string): Position | null {
+      const others = tastePositions.filter((p) => p.key !== key)
 
-    // try 10 times and giveup
-    let pos = getRandomPosition(width, height, size)
-    let tryCount = 0
-    while (collisionCheck(pos, others, size)) {
-      pos = getRandomPosition(width, height, size)
-      tryCount += 1
-      if (tryCount > 10) return null
-    }
-    tastePositions = [...others, { key, position: pos }]
-    return pos
-  }
+      // try 10 times and giveup
+      let pos = getRandomPosition(width, height, size)
+      let tryCount = 0
+      while (collisionCheck(pos, others, size)) {
+        pos = getRandomPosition(width, height, size)
+        tryCount += 1
+        if (tryCount > 10) return null
+      }
+      tastePositions = [...others, { key, position: pos }]
+      return pos
+    },
+    [width, height],
+  )
 }

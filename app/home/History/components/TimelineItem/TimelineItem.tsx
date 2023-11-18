@@ -23,9 +23,14 @@ const TimelineItem: React.FC<Props> = ({ item, defaultActive = false }) => {
     }
   }
 
-  // re-calculate when responsive context changes
-  useEffect(() => {
+  function resizeHeight() {
     setHeights([detectorClosed.current?.clientHeight || 0, detectorOpened.current?.clientHeight || 0])
+  }
+
+  useEffect(() => {
+    resizeHeight()
+    window.addEventListener("resize", resizeHeight)
+    return () => window.removeEventListener("resize", resizeHeight)
   }, [])
 
   const [closedHeight, openedHeight] = heights
