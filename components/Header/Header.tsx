@@ -16,6 +16,9 @@ const Header = () => {
           <NavLink href="/showcase" includeChildPath>
             Showcase
           </NavLink>
+          <NavLink href="/projects" includeChildPath>
+            Projects
+          </NavLink>
           <NavLink href="/activity" includeChildPath>
             Activity
           </NavLink>
