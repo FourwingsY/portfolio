@@ -1,0 +1,877 @@
+{
+  "1": {
+    "name": "강릉",
+    "highway": "영동선",
+    "children": [
+      { "id": 1, "direction": "하행", "visited": false },
+      { "id": 2, "direction": "상행", "visited": false }
+    ]
+  },
+  "2": {
+    "name": "강천산",
+    "highway": "광주대구선",
+    "children": [
+      { "id": 3, "direction": "하행", "visited": false },
+      { "id": 4, "direction": "상행", "visited": false }
+    ]
+  },
+  "3": {
+    "name": "거창",
+    "highway": "광주대구선",
+    "children": [
+      { "id": 5, "direction": "하행", "visited": false },
+      { "id": 6, "direction": "상행", "visited": false }
+    ]
+  },
+  "4": {
+    "name": "건천",
+    "highway": "경부선",
+    "children": [
+      { "id": 7, "direction": "하행", "visited": false },
+      { "id": 8, "direction": "상행", "visited": false }
+    ]
+  },
+  "5": {
+    "name": "경산",
+    "highway": "경부선",
+    "children": [{ "id": 9, "direction": "상행", "visited": false }]
+  },
+  "6": {
+    "name": "경주",
+    "highway": "경부선",
+    "children": [{ "id": 10, "direction": "하행", "visited": false }]
+  },
+  "7": {
+    "name": "고성공룡나라",
+    "highway": "대전통영선",
+    "children": [
+      { "id": 11, "direction": "상행", "visited": false },
+      { "id": 12, "direction": "하행", "visited": false }
+    ]
+  },
+  "8": {
+    "name": "고창고인돌",
+    "highway": "서해안선",
+    "children": [
+      { "id": 13, "direction": "하행", "visited": false },
+      { "id": 14, "direction": "상행", "visited": false }
+    ]
+  },
+  "9": {
+    "name": "곡성",
+    "highway": "호남선",
+    "children": [
+      { "id": 15, "direction": "하행", "visited": false },
+      { "id": 16, "direction": "상행", "visited": false }
+    ]
+  },
+  "10": {
+    "name": "공주",
+    "highway": "당진영덕선",
+    "children": [
+      { "id": 17, "direction": "하행", "visited": false },
+      { "id": 18, "direction": "상행", "visited": false }
+    ]
+  },
+  "11": {
+    "name": "괴산",
+    "highway": "중부내륙선",
+    "children": [
+      { "id": 19, "direction": "상행", "visited": false },
+      { "id": 20, "direction": "하행", "visited": false }
+    ]
+  },
+  "12": {
+    "name": "구리",
+    "highway": "수도권제1순환선",
+    "children": [{ "id": 21, "direction": "하행", "visited": false }]
+  },
+  "13": {
+    "name": "구정",
+    "highway": "동해선",
+    "children": [
+      { "id": 22, "direction": "하행", "visited": false },
+      { "id": 23, "direction": "상행", "visited": false }
+    ]
+  },
+  "14": {
+    "name": "군산",
+    "highway": "서해안선",
+    "children": [
+      { "id": 24, "direction": "하행", "visited": false },
+      { "id": 25, "direction": "상행", "visited": false }
+    ]
+  },
+  "15": {
+    "name": "군위",
+    "highway": "중앙선",
+    "children": [
+      { "id": 26, "direction": "하행", "visited": false },
+      { "id": 27, "direction": "상행", "visited": false }
+    ]
+  },
+  "16": {
+    "name": "금강",
+    "highway": "경부선",
+    "children": [{ "id": 28, "direction": "하행", "visited": false }]
+  },
+  "17": {
+    "name": "금산인삼랜드",
+    "highway": "대전통영선",
+    "children": [
+      { "id": 29, "direction": "상행", "visited": false },
+      { "id": 30, "direction": "하행", "visited": false }
+    ]
+  },
+  "18": {
+    "name": "금왕",
+    "highway": "평택제천선",
+    "children": [
+      { "id": 31, "direction": "하행", "visited": false },
+      { "id": 32, "direction": "상행", "visited": false }
+    ]
+  },
+  "19": {
+    "name": "기흥",
+    "highway": "경부선",
+    "children": [{ "id": 33, "direction": "하행", "visited": false }]
+  },
+  "20": {
+    "name": "김천",
+    "highway": "경부선",
+    "children": [
+      { "id": 34, "direction": "하행", "visited": false },
+      { "id": 35, "direction": "상행", "visited": false }
+    ]
+  },
+  "21": {
+    "name": "김해금관가야",
+    "highway": "부산외곽선",
+    "children": [{ "id": 36, "direction": "양방향", "visited": false }]
+  },
+  "22": {
+    "name": "남성주참외",
+    "highway": "중부내륙선",
+    "children": [
+      { "id": 37, "direction": "상행", "visited": false },
+      { "id": 38, "direction": "하행", "visited": false }
+    ]
+  },
+  "23": {
+    "name": "내린천",
+    "highway": "서울양양선",
+    "children": [{ "id": 39, "direction": "양방향", "visited": false }]
+  },
+  "24": {
+    "name": "논공",
+    "highway": "광주대구선",
+    "children": [
+      { "id": 40, "direction": "하행", "visited": false },
+      { "id": 41, "direction": "상행", "visited": false }
+    ]
+  },
+  "25": {
+    "name": "단양팔경",
+    "highway": "중앙선",
+    "children": [
+      { "id": 42, "direction": "상행", "visited": false },
+      { "id": 43, "direction": "하행", "visited": false }
+    ]
+  },
+  "26": {
+    "name": "대천",
+    "highway": "서해안선",
+    "children": [
+      { "id": 44, "direction": "하행", "visited": false },
+      { "id": 45, "direction": "상행", "visited": false }
+    ]
+  },
+  "27": {
+    "name": "덕유산",
+    "highway": "대전통영선",
+    "children": [
+      { "id": 46, "direction": "상행", "visited": false },
+      { "id": 47, "direction": "하행", "visited": false }
+    ]
+  },
+  "28": {
+    "name": "덕평",
+    "highway": "영동선",
+    "children": [{ "id": 48, "direction": "양방향", "visited": false }]
+  },
+  "29": {
+    "name": "동명",
+    "highway": "중앙선",
+    "children": [
+      { "id": 49, "direction": "하행", "visited": false },
+      { "id": 50, "direction": "상행", "visited": false }
+    ]
+  },
+  "30": {
+    "name": "동해",
+    "highway": "동해선",
+    "children": [{ "id": 51, "direction": "하행", "visited": false }]
+  },
+  "31": {
+    "name": "마장",
+    "highway": "중부선",
+    "children": [{ "id": 52, "direction": "양방향", "visited": false }]
+  },
+  "32": {
+    "name": "망향",
+    "highway": "경부선",
+    "children": [{ "id": 53, "direction": "하행", "visited": false }]
+  },
+  "33": {
+    "name": "매송",
+    "highway": "서해안선",
+    "children": [
+      { "id": 54, "direction": "하행", "visited": false },
+      { "id": 55, "direction": "상행", "visited": false }
+    ]
+  },
+  "34": {
+    "name": "문경",
+    "highway": "중부내륙선",
+    "children": [
+      { "id": 56, "direction": "상행", "visited": false },
+      { "id": 57, "direction": "하행", "visited": false }
+    ]
+  },
+  "35": {
+    "name": "문막",
+    "highway": "영동선",
+    "children": [
+      { "id": 58, "direction": "하행", "visited": false },
+      { "id": 59, "direction": "상행", "visited": false }
+    ]
+  },
+  "36": {
+    "name": "문산",
+    "highway": "남해선",
+    "children": [{ "id": 60, "direction": "하행", "visited": false }]
+  },
+  "37": {
+    "name": "문의청남대",
+    "highway": "당진영덕선",
+    "children": [
+      { "id": 61, "direction": "하행", "visited": false },
+      { "id": 62, "direction": "상행", "visited": false }
+    ]
+  },
+  "38": {
+    "name": "백양사",
+    "highway": "호남선",
+    "children": [
+      { "id": 63, "direction": "하행", "visited": false },
+      { "id": 64, "direction": "상행", "visited": false }
+    ]
+  },
+  "39": {
+    "name": "벌곡",
+    "highway": "호남지선",
+    "children": [
+      { "id": 65, "direction": "하행", "visited": false },
+      { "id": 66, "direction": "상행", "visited": false }
+    ]
+  },
+  "40": {
+    "name": "보성녹차",
+    "highway": "남해선",
+    "children": [
+      { "id": 67, "direction": "하행", "visited": false },
+      { "id": 68, "direction": "상행", "visited": false }
+    ]
+  },
+  "41": {
+    "name": "부안고려청자",
+    "highway": "서해안선",
+    "children": [
+      { "id": 69, "direction": "상행", "visited": false },
+      { "id": 70, "direction": "상행", "visited": false }
+    ]
+  },
+  "42": {
+    "name": "부여백제",
+    "highway": "서천공주선",
+    "children": [
+      { "id": 71, "direction": "상행", "visited": false },
+      { "id": 72, "direction": "하행", "visited": false }
+    ]
+  },
+  "43": {
+    "name": "사천",
+    "highway": "남해선",
+    "children": [
+      { "id": 73, "direction": "상행", "visited": false },
+      { "id": 74, "direction": "하행", "visited": false }
+    ]
+  },
+  "44": {
+    "name": "산청",
+    "highway": "대전통영선",
+    "children": [
+      { "id": 75, "direction": "상행", "visited": false },
+      { "id": 76, "direction": "하행", "visited": false }
+    ]
+  },
+  "45": {
+    "name": "서산",
+    "highway": "서해안선",
+    "children": [
+      { "id": 77, "direction": "하행", "visited": false },
+      { "id": 78, "direction": "상행", "visited": false }
+    ]
+  },
+  "46": {
+    "name": "서여주",
+    "highway": "중부내륙",
+    "children": [
+      { "id": 79, "direction": "상행", "visited": false },
+      { "id": 80, "direction": "하행", "visited": false }
+    ]
+  },
+  "47": {
+    "name": "서울만남",
+    "highway": "경부선",
+    "children": [{ "id": 81, "direction": "하행", "visited": false }]
+  },
+  "48": {
+    "name": "서천",
+    "highway": "서해안선",
+    "children": [
+      { "id": 82, "direction": "하행", "visited": false },
+      { "id": 83, "direction": "상행", "visited": false }
+    ]
+  },
+  "49": {
+    "name": "선산",
+    "highway": "중부내륙선",
+    "children": [
+      { "id": 84, "direction": "상행", "visited": false },
+      { "id": 85, "direction": "하행", "visited": false }
+    ]
+  },
+  "50": {
+    "name": "섬진강",
+    "highway": "호남선",
+    "children": [
+      { "id": 86, "direction": "상행", "visited": false },
+      { "id": 87, "direction": "하행", "visited": false }
+    ]
+  },
+  "51": {
+    "name": "성주",
+    "highway": "중부내륙선",
+    "children": [
+      { "id": 88, "direction": "상행", "visited": false },
+      { "id": 89, "direction": "하행", "visited": false }
+    ]
+  },
+  "52": {
+    "name": "속리산",
+    "highway": "당진영덕선",
+    "children": [{ "id": 90, "direction": "상행", "visited": false }]
+  },
+  "53": {
+    "name": "순천",
+    "highway": "호남선",
+    "children": [{ "id": 91, "direction": "하행", "visited": false }]
+  },
+  "54": {
+    "name": "시흥하늘",
+    "highway": "수도권제1순환선",
+    "children": [{ "id": 92, "direction": "양방향", "visited": false }]
+  },
+  "55": {
+    "name": "신탄진",
+    "highway": "경부선",
+    "children": [{ "id": 93, "direction": "상행", "visited": false }]
+  },
+  "56": {
+    "name": "안동",
+    "highway": "중앙선",
+    "children": [
+      { "id": 94, "direction": "하행", "visited": false },
+      { "id": 95, "direction": "상행", "visited": false }
+    ]
+  },
+  "57": {
+    "name": "안산",
+    "highway": "영동선",
+    "children": [{ "id": 96, "direction": "양방향", "visited": false }]
+  },
+  "58": {
+    "name": "안성",
+    "highway": "경부선",
+    "children": [
+      { "id": 97, "direction": "하행", "visited": false },
+      { "id": 98, "direction": "상행", "visited": false }
+    ]
+  },
+  "59": {
+    "name": "안성맞춤",
+    "highway": "평택제천선",
+    "children": [
+      { "id": 99, "direction": "하행", "visited": false },
+      { "id": 100, "direction": "상행", "visited": false }
+    ]
+  },
+  "60": {
+    "name": "양산",
+    "highway": "경부선",
+    "children": [{ "id": 101, "direction": "상행", "visited": false }]
+  },
+  "61": {
+    "name": "언양",
+    "highway": "경부선",
+    "children": [{ "id": 102, "direction": "상행", "visited": false }]
+  },
+  "62": {
+    "name": "여산",
+    "highway": "호남선",
+    "children": [
+      { "id": 103, "direction": "하행", "visited": false },
+      { "id": 104, "direction": "상행", "visited": false }
+    ]
+  },
+  "63": {
+    "name": "여주",
+    "highway": "영동선",
+    "children": [
+      { "id": 105, "direction": "하행", "visited": false },
+      { "id": 106, "direction": "상행", "visited": false }
+    ]
+  },
+  "64": {
+    "name": "영산",
+    "highway": "중부내륙지선",
+    "children": [{ "id": 107, "direction": "하행", "visited": false }]
+  },
+  "65": {
+    "name": "영천",
+    "highway": "대구포항선",
+    "children": [
+      { "id": 108, "direction": "하행", "visited": false },
+      { "id": 109, "direction": "상행", "visited": false }
+    ]
+  },
+  "66": {
+    "name": "예산",
+    "highway": "당진영덕선",
+    "children": [
+      { "id": 110, "direction": "하행", "visited": false },
+      { "id": 111, "direction": "상행", "visited": false }
+    ]
+  },
+  "67": {
+    "name": "오수",
+    "highway": "순천완주선",
+    "children": [
+      { "id": 112, "direction": "하행", "visited": false },
+      { "id": 113, "direction": "상행", "visited": false }
+    ]
+  },
+  "68": {
+    "name": "오창",
+    "highway": "중부선",
+    "children": [
+      { "id": 114, "direction": "하행", "visited": false },
+      { "id": 115, "direction": "상행", "visited": false }
+    ]
+  },
+  "69": {
+    "name": "옥계",
+    "highway": "동해선",
+    "children": [{ "id": 116, "direction": "상행", "visited": false }]
+  },
+  "70": {
+    "name": "옥산",
+    "highway": "경부선",
+    "children": [{ "id": 117, "direction": "하행", "visited": false }]
+  },
+  "71": {
+    "name": "옥천",
+    "highway": "경부선",
+    "children": [
+      { "id": 118, "direction": "하행", "visited": false },
+      { "id": 119, "direction": "상행", "visited": false }
+    ]
+  },
+  "72": {
+    "name": "옥천만남",
+    "highway": "경부선",
+    "children": [{ "id": 120, "direction": "양방향", "visited": false }]
+  },
+  "73": {
+    "name": "와촌",
+    "highway": "대구포항선",
+    "children": [{ "id": 121, "direction": "상행", "visited": false }]
+  },
+  "74": {
+    "name": "외동",
+    "highway": "울산포항선",
+    "children": [
+      { "id": 122, "direction": "하행", "visited": false },
+      { "id": 123, "direction": "상행", "visited": false }
+    ]
+  },
+  "75": {
+    "name": "용인",
+    "highway": "영동선",
+    "children": [
+      { "id": 124, "direction": "하행", "visited": false },
+      { "id": 125, "direction": "상행", "visited": false }
+    ]
+  },
+  "76": {
+    "name": "울주",
+    "highway": "밀양울산선",
+    "children": [
+      { "id": 126, "direction": "상행", "visited": false },
+      { "id": 127, "direction": "하행", "visited": false }
+    ]
+  },
+  "77": {
+    "name": "원주",
+    "highway": "중앙선",
+    "children": [
+      { "id": 128, "direction": "하행", "visited": false },
+      { "id": 129, "direction": "상행", "visited": false }
+    ]
+  },
+  "78": {
+    "name": "음성",
+    "highway": "중부선",
+    "children": [
+      { "id": 130, "direction": "하행", "visited": false },
+      { "id": 131, "direction": "상행", "visited": false }
+    ]
+  },
+  "79": {
+    "name": "의성",
+    "highway": "상주영덕선",
+    "children": [
+      { "id": 132, "direction": "하행", "visited": false },
+      { "id": 133, "direction": "상행", "visited": false }
+    ]
+  },
+  "80": {
+    "name": "이서",
+    "highway": "호남선",
+    "children": [
+      { "id": 134, "direction": "하행", "visited": false },
+      { "id": 135, "direction": "상행", "visited": false }
+    ]
+  },
+  "81": {
+    "name": "이천",
+    "highway": "중부선",
+    "children": [{ "id": 136, "direction": "하행", "visited": false }]
+  },
+  "82": {
+    "name": "이천쌀",
+    "highway": "중부선",
+    "children": [{ "id": 137, "direction": "상행", "visited": false }]
+  },
+  "83": {
+    "name": "입장거봉포도",
+    "highway": "경부선",
+    "children": [{ "id": 138, "direction": "상행", "visited": false }]
+  },
+  "84": {
+    "name": "장유",
+    "highway": "남해선",
+    "children": [{ "id": 139, "direction": "하행", "visited": false }]
+  },
+  "85": {
+    "name": "장흥정남진",
+    "highway": "남해선",
+    "children": [{ "id": 140, "direction": "양방향", "visited": false }]
+  },
+  "86": {
+    "name": "정읍녹두장군",
+    "highway": "호남선",
+    "children": [
+      { "id": 141, "direction": "하행", "visited": false },
+      { "id": 142, "direction": "상행", "visited": false }
+    ]
+  },
+  "87": {
+    "name": "주암",
+    "highway": "호남선",
+    "children": [
+      { "id": 143, "direction": "하행", "visited": false },
+      { "id": 144, "direction": "상행", "visited": false }
+    ]
+  },
+  "88": {
+    "name": "죽암",
+    "highway": "경부선",
+    "children": [
+      { "id": 145, "direction": "하행", "visited": false },
+      { "id": 146, "direction": "상행", "visited": false }
+    ]
+  },
+  "89": {
+    "name": "죽전",
+    "highway": "경부선",
+    "children": [{ "id": 147, "direction": "상행", "visited": false }]
+  },
+  "90": {
+    "name": "지리산",
+    "highway": "광주대구선",
+    "children": [
+      { "id": 148, "direction": "하행", "visited": false },
+      { "id": 149, "direction": "상행", "visited": false }
+    ]
+  },
+  "91": {
+    "name": "진안마이산",
+    "highway": "익산장수선",
+    "children": [
+      { "id": 150, "direction": "하행", "visited": false },
+      { "id": 151, "direction": "상행", "visited": false }
+    ]
+  },
+  "92": {
+    "name": "진영",
+    "highway": "남해선",
+    "children": [
+      { "id": 152, "direction": "상행", "visited": false },
+      { "id": 153, "direction": "하행", "visited": false }
+    ]
+  },
+  "93": {
+    "name": "진주",
+    "highway": "남해선",
+    "children": [{ "id": 154, "direction": "상행", "visited": false }]
+  },
+  "94": {
+    "name": "천등산",
+    "highway": "평택제천선",
+    "children": [
+      { "id": 155, "direction": "하행", "visited": false },
+      { "id": 156, "direction": "상행", "visited": false }
+    ]
+  },
+  "95": {
+    "name": "천안삼거리",
+    "highway": "경부선",
+    "children": [{ "id": 157, "direction": "상행", "visited": false }]
+  },
+  "96": {
+    "name": "천안호두",
+    "highway": "경부선",
+    "children": [{ "id": 158, "direction": "하행", "visited": false }]
+  },
+  "97": {
+    "name": "청송",
+    "highway": "상주영덕선",
+    "children": [
+      { "id": 159, "direction": "상행", "visited": false },
+      { "id": 160, "direction": "하행", "visited": false }
+    ]
+  },
+  "98": {
+    "name": "청주",
+    "highway": "경부선",
+    "children": [{ "id": 161, "direction": "상행", "visited": false }]
+  },
+  "99": {
+    "name": "청통",
+    "highway": "대구포항선",
+    "children": [{ "id": 162, "direction": "하행", "visited": false }]
+  },
+  "100": {
+    "name": "추풍령",
+    "highway": "경부선",
+    "children": [
+      { "id": 163, "direction": "하행", "visited": false },
+      { "id": 164, "direction": "상행", "visited": false }
+    ]
+  },
+  "101": {
+    "name": "춘천",
+    "highway": "중앙선",
+    "children": [{ "id": 165, "direction": "하행", "visited": false }]
+  },
+  "102": {
+    "name": "춘향",
+    "highway": "순천완주선",
+    "children": [
+      { "id": 166, "direction": "하행", "visited": false },
+      { "id": 167, "direction": "상행", "visited": false }
+    ]
+  },
+  "103": {
+    "name": "충주",
+    "highway": "중부내륙선",
+    "children": [
+      { "id": 168, "direction": "상행", "visited": false },
+      { "id": 169, "direction": "하행", "visited": false }
+    ]
+  },
+  "104": {
+    "name": "치악",
+    "highway": "중앙선",
+    "children": [
+      { "id": 170, "direction": "상행", "visited": false },
+      { "id": 171, "direction": "하행", "visited": false }
+    ]
+  },
+  "105": {
+    "name": "칠곡",
+    "highway": "경부선",
+    "children": [
+      { "id": 172, "direction": "하행", "visited": false },
+      { "id": 173, "direction": "상행", "visited": false }
+    ]
+  },
+  "106": {
+    "name": "칠서",
+    "highway": "중부내륙지선",
+    "children": [{ "id": 174, "direction": "상행", "visited": false }]
+  },
+  "107": {
+    "name": "통도사",
+    "highway": "경부선",
+    "children": [{ "id": 175, "direction": "하행", "visited": false }]
+  },
+  "108": {
+    "name": "평사",
+    "highway": "경부선",
+    "children": [{ "id": 176, "direction": "하행", "visited": false }]
+  },
+  "109": {
+    "name": "평창",
+    "highway": "영동선",
+    "children": [
+      { "id": 177, "direction": "하행", "visited": false },
+      { "id": 178, "direction": "상행", "visited": false }
+    ]
+  },
+  "110": {
+    "name": "평택",
+    "highway": "평택제천선",
+    "children": [{ "id": 179, "direction": "양방향", "visited": false }]
+  },
+  "111": {
+    "name": "하남드림",
+    "highway": "중부선",
+    "children": [{ "id": 180, "direction": "양방향", "visited": false }]
+  },
+  "112": {
+    "name": "함안",
+    "highway": "남해선",
+    "children": [
+      { "id": 181, "direction": "상행", "visited": false },
+      { "id": 182, "direction": "하행", "visited": false }
+    ]
+  },
+  "113": {
+    "name": "함양",
+    "highway": "대전통영선",
+    "children": [
+      { "id": 183, "direction": "상행", "visited": false },
+      { "id": 184, "direction": "하행", "visited": false }
+    ]
+  },
+  "114": {
+    "name": "함평나비",
+    "highway": "무안광주선",
+    "children": [
+      { "id": 185, "direction": "상행", "visited": false },
+      { "id": 186, "direction": "하행", "visited": false }
+    ]
+  },
+  "115": {
+    "name": "함평천지",
+    "highway": "서해안선",
+    "children": [
+      { "id": 187, "direction": "하행", "visited": false },
+      { "id": 188, "direction": "상행", "visited": false }
+    ]
+  },
+  "116": {
+    "name": "행담도",
+    "highway": "서해안선",
+    "children": [
+      {
+        "id": 189,
+        "direction": "양방향",
+        "visited": {
+          "visitedAt": "2024-06-15",
+          "photos": ["rest-area-189-1.jpg"],
+          "memo": "첫 드라이브! 목적지는 새만금"
+        }
+      }
+    ]
+  },
+  "117": {
+    "name": "현풍",
+    "highway": "중부내륙지선",
+    "children": [
+      { "id": 190, "direction": "상행", "visited": false },
+      { "id": 191, "direction": "하행", "visited": false }
+    ]
+  },
+  "118": {
+    "name": "홍성",
+    "highway": "서해안선",
+    "children": [
+      { "id": 192, "direction": "하행", "visited": false },
+      { "id": 193, "direction": "상행", "visited": false }
+    ]
+  },
+  "119": {
+    "name": "홍천",
+    "highway": "서울양양선",
+    "children": [
+      { "id": 194, "direction": "상행", "visited": false },
+      { "id": 195, "direction": "하행", "visited": false }
+    ]
+  },
+  "120": {
+    "name": "홍천강",
+    "highway": "중앙선",
+    "children": [{ "id": 196, "direction": "상행", "visited": false }]
+  },
+  "121": {
+    "name": "화서",
+    "highway": "당진영덕선",
+    "children": [{ "id": 197, "direction": "상행", "visited": false }]
+  },
+  "122": {
+    "name": "화성",
+    "highway": "서해안선",
+    "children": [
+      { "id": 198, "direction": "하행", "visited": false },
+      { "id": 199, "direction": "상행", "visited": false }
+    ]
+  },
+  "123": {
+    "name": "황간",
+    "highway": "경부선",
+    "children": [
+      { "id": 200, "direction": "하행", "visited": false },
+      { "id": 201, "direction": "상행", "visited": false }
+    ]
+  },
+  "124": {
+    "name": "황전",
+    "highway": "순천완주선",
+    "children": [
+      { "id": 202, "direction": "하행", "visited": false },
+      { "id": 203, "direction": "상행", "visited": false }
+    ]
+  },
+  "125": {
+    "name": "횡성",
+    "highway": "영동선",
+    "children": [
+      { "id": 204, "direction": "하행", "visited": false },
+      { "id": 205, "direction": "상행", "visited": false }
+    ]
+  }
+}

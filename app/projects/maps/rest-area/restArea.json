@@ -1,1242 +1,1367 @@
 [
   {
+    "id": 1,
     "name": "강릉",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.759240500000004, "lng": 128.80600405 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.758206, "lng": 128.806648 } },
-      { "direction": "상행", "center": { "lat": 37.760275, "lng": 128.8053601 } }
+      { "id": 1, "direction": "하행", "center": { "lat": 37.758206, "lng": 128.806648 } },
+      { "id": 2, "direction": "상행", "center": { "lat": 37.760275, "lng": 128.8053601 } }
     ]
   },
   {
+    "id": 2,
     "name": "강천산",
     "highway": "광주대구선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.36505955, "lng": 127.10510400000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.3657501, "lng": 127.105451 } },
-      { "direction": "상행", "center": { "lat": 35.364369, "lng": 127.104757 } }
+      { "id": 3, "direction": "하행", "center": { "lat": 35.3657501, "lng": 127.105451 } },
+      { "id": 4, "direction": "상행", "center": { "lat": 35.364369, "lng": 127.104757 } }
     ]
   },
   {
+    "id": 3,
     "name": "거창",
     "highway": "광주대구선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.707665500000004, "lng": 128.0574535 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.708862, "lng": 128.057962 } },
-      { "direction": "상행", "center": { "lat": 35.706469, "lng": 128.056945 } }
+      { "id": 5, "direction": "하행", "center": { "lat": 35.708862, "lng": 128.057962 } },
+      { "id": 6, "direction": "상행", "center": { "lat": 35.706469, "lng": 128.056945 } }
     ]
   },
   {
+    "id": 4,
     "name": "건천",
     "highway": "경부선",
     "type": "간이휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.831305, "lng": 129.10927705 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.830716, "lng": 129.1093101 } },
-      { "direction": "상행", "center": { "lat": 35.831894, "lng": 129.109244 } }
+      { "id": 7, "direction": "하행", "center": { "lat": 35.830716, "lng": 129.1093101 } },
+      { "id": 8, "direction": "상행", "center": { "lat": 35.831894, "lng": 129.109244 } }
     ]
   },
   {
+    "id": 5,
     "name": "경산",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.879323, "lng": 128.810331 },
-    "children": [{ "direction": "상행", "center": { "lat": 35.879323, "lng": 128.810331 } }]
+    "children": [{ "id": 9, "direction": "상행", "center": { "lat": 35.879323, "lng": 128.810331 } }]
   },
   {
+    "id": 6,
     "name": "경주",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.724761, "lng": 129.1929501 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.724761, "lng": 129.1929501 } }]
+    "children": [{ "id": 10, "direction": "하행", "center": { "lat": 35.724761, "lng": 129.1929501 } }]
   },
   {
+    "id": 7,
     "name": "고성공룡나라",
     "highway": "대전통영선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.054237549999996, "lng": 128.257561 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.056665, "lng": 128.252359 } },
-      { "direction": "하행", "center": { "lat": 35.0518101, "lng": 128.262763 } }
+      { "id": 11, "direction": "상행", "center": { "lat": 35.056665, "lng": 128.252359 } },
+      { "id": 12, "direction": "하행", "center": { "lat": 35.0518101, "lng": 128.262763 } }
     ]
   },
   {
+    "id": 8,
     "name": "고창고인돌",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.46536155, "lng": 126.673674 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.468653, "lng": 126.673871 } },
-      { "direction": "상행", "center": { "lat": 35.4620701, "lng": 126.673477 } }
+      { "id": 13, "direction": "하행", "center": { "lat": 35.468653, "lng": 126.673871 } },
+      { "id": 14, "direction": "상행", "center": { "lat": 35.4620701, "lng": 126.673477 } }
     ]
   },
   {
+    "id": 9,
     "name": "곡성",
     "highway": "호남선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.25906500000001, "lng": 127.151739 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.258498, "lng": 127.150737 } },
-      { "direction": "상행", "center": { "lat": 35.259632, "lng": 127.152741 } }
+      { "id": 15, "direction": "하행", "center": { "lat": 35.258498, "lng": 127.150737 } },
+      { "id": 16, "direction": "상행", "center": { "lat": 35.259632, "lng": 127.152741 } }
     ]
   },
   {
+    "id": 10,
     "name": "공주",
     "highway": "당진영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.4978125, "lng": 127.16579555000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.498679, "lng": 127.164921 } },
-      { "direction": "상행", "center": { "lat": 36.496946, "lng": 127.1666701 } }
+      { "id": 17, "direction": "하행", "center": { "lat": 36.498679, "lng": 127.164921 } },
+      { "id": 18, "direction": "상행", "center": { "lat": 36.496946, "lng": 127.1666701 } }
     ]
   },
   {
+    "id": 11,
     "name": "괴산",
     "highway": "중부내륙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.831675000000004, "lng": 127.95899299999999 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.831894, "lng": 127.960141 } },
-      { "direction": "하행", "center": { "lat": 36.831456, "lng": 127.957845 } }
+      { "id": 19, "direction": "상행", "center": { "lat": 36.831894, "lng": 127.960141 } },
+      { "id": 20, "direction": "하행", "center": { "lat": 36.831456, "lng": 127.957845 } }
     ]
   },
   {
+    "id": 12,
     "name": "구리",
     "highway": "수도권제1순환선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.628023, "lng": 127.139237 },
-    "children": [{ "direction": "하행", "center": { "lat": 37.628023, "lng": 127.139237 } }]
+    "children": [{ "id": 21, "direction": "하행", "center": { "lat": 37.628023, "lng": 127.139237 } }]
   },
   {
+    "id": 13,
     "name": "구정",
     "highway": "동해선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.722612999999996, "lng": 128.85269405 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.722214, "lng": 128.8511601 } },
-      { "direction": "상행", "center": { "lat": 37.723012, "lng": 128.854228 } }
+      { "id": 22, "direction": "하행", "center": { "lat": 37.722214, "lng": 128.8511601 } },
+      { "id": 23, "direction": "상행", "center": { "lat": 37.723012, "lng": 128.854228 } }
     ]
   },
   {
+    "id": 14,
     "name": "군산",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.999711, "lng": 126.8133345 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.980591, "lng": 126.828971 } },
-      { "direction": "상행", "center": { "lat": 36.018831, "lng": 126.797698 } }
+      { "id": 24, "direction": "하행", "center": { "lat": 35.980591, "lng": 126.828971 } },
+      { "id": 25, "direction": "상행", "center": { "lat": 36.018831, "lng": 126.797698 } }
     ]
   },
   {
+    "id": 15,
     "name": "군위",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.266279, "lng": 128.57581299999998 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.266556, "lng": 128.574852 } },
-      { "direction": "상행", "center": { "lat": 36.266002, "lng": 128.576774 } }
+      { "id": 26, "direction": "하행", "center": { "lat": 36.266556, "lng": 128.574852 } },
+      { "id": 27, "direction": "상행", "center": { "lat": 36.266002, "lng": 128.576774 } }
     ]
   },
   {
+    "id": 16,
     "name": "금강",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.279148, "lng": 127.672231 },
-    "children": [{ "direction": "하행", "center": { "lat": 36.279148, "lng": 127.672231 } }]
+    "children": [{ "id": 28, "direction": "하행", "center": { "lat": 36.279148, "lng": 127.672231 } }]
   },
   {
+    "id": 17,
     "name": "금산인삼랜드",
     "highway": "대전통영선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.153781499999994, "lng": 127.49681749999999 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.154689, "lng": 127.497681 } },
-      { "direction": "하행", "center": { "lat": 36.152874, "lng": 127.495954 } }
+      { "id": 29, "direction": "상행", "center": { "lat": 36.154689, "lng": 127.497681 } },
+      { "id": 30, "direction": "하행", "center": { "lat": 36.152874, "lng": 127.495954 } }
     ]
   },
   {
+    "id": 18,
     "name": "금왕",
     "highway": "평택제천선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.970052550000005, "lng": 127.590172 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.9694501, "lng": 127.590845 } },
-      { "direction": "상행", "center": { "lat": 36.970655, "lng": 127.589499 } }
+      { "id": 31, "direction": "하행", "center": { "lat": 36.9694501, "lng": 127.590845 } },
+      { "id": 32, "direction": "상행", "center": { "lat": 36.970655, "lng": 127.589499 } }
     ]
   },
   {
+    "id": 19,
     "name": "기흥",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.235125, "lng": 127.104595 },
-    "children": [{ "direction": "하행", "center": { "lat": 37.235125, "lng": 127.104595 } }]
+    "children": [{ "id": 33, "direction": "하행", "center": { "lat": 37.235125, "lng": 127.104595 } }]
   },
   {
+    "id": 20,
     "name": "김천",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.1301795, "lng": 128.1643955 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.129252, "lng": 128.164782 } },
-      { "direction": "상행", "center": { "lat": 36.131107, "lng": 128.164009 } }
+      { "id": 34, "direction": "하행", "center": { "lat": 36.129252, "lng": 128.164782 } },
+      { "id": 35, "direction": "상행", "center": { "lat": 36.131107, "lng": 128.164009 } }
     ]
   },
   {
+    "id": 21,
     "name": "김해금관가야",
     "highway": "부산외곽선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 35.269933, "lng": 129.003134 },
-    "children": [{ "direction": "양방향", "center": { "lat": 35.269933, "lng": 129.003134 } }]
+    "children": [{ "id": 36, "direction": "양방향", "center": { "lat": 35.269933, "lng": 129.003134 } }]
   },
   {
+    "id": 22,
     "name": "남성주참외",
     "highway": "중부내륙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.8637185, "lng": 128.31835999999998 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.858422, "lng": 128.319904 } },
-      { "direction": "하행", "center": { "lat": 35.869015, "lng": 128.316816 } }
+      { "id": 37, "direction": "상행", "center": { "lat": 35.858422, "lng": 128.319904 } },
+      { "id": 38, "direction": "하행", "center": { "lat": 35.869015, "lng": 128.316816 } }
     ]
   },
   {
+    "id": 23,
     "name": "내린천",
     "highway": "서울양양선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.916535, "lng": 128.286377 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.916535, "lng": 128.286377 } }]
+    "children": [{ "id": 39, "direction": "양방향", "center": { "lat": 37.916535, "lng": 128.286377 } }]
   },
   {
+    "id": 24,
     "name": "논공",
     "highway": "광주대구선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.766205, "lng": 128.403201 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.767421, "lng": 128.403493 } },
-      { "direction": "상행", "center": { "lat": 35.764989, "lng": 128.402909 } }
+      { "id": 40, "direction": "하행", "center": { "lat": 35.767421, "lng": 128.403493 } },
+      { "id": 41, "direction": "상행", "center": { "lat": 35.764989, "lng": 128.402909 } }
     ]
   },
   {
+    "id": 25,
     "name": "단양팔경",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.969181, "lng": 128.30487900000003 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.995459, "lng": 128.287616 } },
-      { "direction": "하행", "center": { "lat": 36.942903, "lng": 128.322142 } }
+      { "id": 42, "direction": "상행", "center": { "lat": 36.995459, "lng": 128.287616 } },
+      { "id": 43, "direction": "하행", "center": { "lat": 36.942903, "lng": 128.322142 } }
     ]
   },
   {
+    "id": 26,
     "name": "대천",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.373726000000005, "lng": 126.5570055 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.372995, "lng": 126.555684 } },
-      { "direction": "상행", "center": { "lat": 36.374457, "lng": 126.558327 } }
+      { "id": 44, "direction": "하행", "center": { "lat": 36.372995, "lng": 126.555684 } },
+      { "id": 45, "direction": "상행", "center": { "lat": 36.374457, "lng": 126.558327 } }
     ]
   },
   {
+    "id": 27,
     "name": "덕유산",
     "highway": "대전통영선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.8149545, "lng": 127.644661 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.816481, "lng": 127.646149 } },
-      { "direction": "하행", "center": { "lat": 35.813428, "lng": 127.643173 } }
+      { "id": 46, "direction": "상행", "center": { "lat": 35.816481, "lng": 127.646149 } },
+      { "id": 47, "direction": "하행", "center": { "lat": 35.813428, "lng": 127.643173 } }
     ]
   },
   {
+    "id": 28,
     "name": "덕평",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.241456, "lng": 127.390189 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.241456, "lng": 127.390189 } }]
+    "children": [{ "id": 48, "direction": "양방향", "center": { "lat": 37.241456, "lng": 127.390189 } }]
   },
   {
+    "id": 29,
     "name": "동명",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.00670805, "lng": 128.54794705 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.0069901, "lng": 128.546504 } },
-      { "direction": "상행", "center": { "lat": 36.006426, "lng": 128.5493901 } }
+      { "id": 49, "direction": "하행", "center": { "lat": 36.0069901, "lng": 128.546504 } },
+      { "id": 50, "direction": "상행", "center": { "lat": 36.006426, "lng": 128.5493901 } }
     ]
   },
   {
+    "id": 30,
     "name": "동해",
     "highway": "동해선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.601776, "lng": 129.073636 },
-    "children": [{ "direction": "하행", "center": { "lat": 37.601776, "lng": 129.073636 } }]
+    "children": [{ "id": 51, "direction": "하행", "center": { "lat": 37.601776, "lng": 129.073636 } }]
   },
   {
+    "id": 31,
     "name": "마장",
     "highway": "중부선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.263849, "lng": 127.407043 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.263849, "lng": 127.407043 } }]
+    "children": [{ "id": 52, "direction": "양방향", "center": { "lat": 37.263849, "lng": 127.407043 } }]
   },
   {
+    "id": 32,
     "name": "망향",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.8556501, "lng": 127.180929 },
-    "children": [{ "direction": "하행", "center": { "lat": 36.8556501, "lng": 127.180929 } }]
+    "children": [{ "id": 53, "direction": "하행", "center": { "lat": 36.8556501, "lng": 127.180929 } }]
   },
   {
+    "id": 33,
     "name": "매송",
     "highway": "서해안선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.2649265, "lng": 126.8901695 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.265084, "lng": 126.888544 } },
-      { "direction": "상행", "center": { "lat": 37.264769, "lng": 126.891795 } }
+      { "id": 54, "direction": "하행", "center": { "lat": 37.265084, "lng": 126.888544 } },
+      { "id": 55, "direction": "상행", "center": { "lat": 37.264769, "lng": 126.891795 } }
     ]
   },
   {
+    "id": 34,
     "name": "문경",
     "highway": "중부내륙선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.620808499999995, "lng": 128.15118604999998 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.621068, "lng": 128.1523901 } },
-      { "direction": "하행", "center": { "lat": 36.620549, "lng": 128.149982 } }
+      { "id": 56, "direction": "상행", "center": { "lat": 36.621068, "lng": 128.1523901 } },
+      { "id": 57, "direction": "하행", "center": { "lat": 36.620549, "lng": 128.149982 } }
     ]
   },
   {
+    "id": 35,
     "name": "문막",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.316661, "lng": 127.83774055 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.335469, "lng": 127.8582201 } },
-      { "direction": "상행", "center": { "lat": 37.297853, "lng": 127.817261 } }
+      { "id": 58, "direction": "하행", "center": { "lat": 37.335469, "lng": 127.8582201 } },
+      { "id": 59, "direction": "상행", "center": { "lat": 37.297853, "lng": 127.817261 } }
     ]
   },
   {
+    "id": 36,
     "name": "문산",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.171374, "lng": 128.151591 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.171374, "lng": 128.151591 } }]
+    "children": [{ "id": 60, "direction": "하행", "center": { "lat": 35.171374, "lng": 128.151591 } }]
   },
   {
+    "id": 37,
     "name": "문의청남대",
     "highway": "당진영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.5433135, "lng": 127.484205 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.542544, "lng": 127.483797 } },
-      { "direction": "상행", "center": { "lat": 36.544083, "lng": 127.484613 } }
+      { "id": 61, "direction": "하행", "center": { "lat": 36.542544, "lng": 127.483797 } },
+      { "id": 62, "direction": "상행", "center": { "lat": 36.544083, "lng": 127.484613 } }
     ]
   },
   {
+    "id": 38,
     "name": "백양사",
     "highway": "호남선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.3937215, "lng": 126.8063685 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.394425, "lng": 126.805361 } },
-      { "direction": "상행", "center": { "lat": 35.393018, "lng": 126.807376 } }
+      { "id": 63, "direction": "하행", "center": { "lat": 35.394425, "lng": 126.805361 } },
+      { "id": 64, "direction": "상행", "center": { "lat": 35.393018, "lng": 126.807376 } }
     ]
   },
   {
+    "id": 39,
     "name": "벌곡",
     "highway": "호남지선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.2142125, "lng": 127.27200500000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.217974, "lng": 127.273468 } },
-      { "direction": "상행", "center": { "lat": 36.210451, "lng": 127.270542 } }
+      { "id": 65, "direction": "하행", "center": { "lat": 36.217974, "lng": 127.273468 } },
+      { "id": 66, "direction": "상행", "center": { "lat": 36.210451, "lng": 127.270542 } }
     ]
   },
   {
+    "id": 40,
     "name": "보성녹차",
     "highway": "남해선",
     "type": "간이휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 34.807313, "lng": 127.181003 },
     "children": [
-      { "direction": "하행", "center": { "lat": 34.807313, "lng": 127.181003 } },
-      { "direction": "상행", "center": { "lat": 34.807313, "lng": 127.181003 } }
+      { "id": 67, "direction": "하행", "center": { "lat": 34.807313, "lng": 127.181003 } },
+      { "id": 68, "direction": "상행", "center": { "lat": 34.807313, "lng": 127.181003 } }
     ]
   },
   {
+    "id": 41,
     "name": "부안고려청자",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.671613, "lng": 126.7333325 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.671628, "lng": 126.732073 } },
-      { "direction": "상행", "center": { "lat": 35.671598, "lng": 126.734592 } }
+      { "id": 69, "direction": "상행", "center": { "lat": 35.671628, "lng": 126.732073 } },
+      { "id": 70, "direction": "상행", "center": { "lat": 35.671598, "lng": 126.734592 } }
     ]
   },
   {
+    "id": 42,
     "name": "부여백제",
     "highway": "서천공주선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.258367500000006, "lng": 126.79841255 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.258352, "lng": 126.8000701 } },
-      { "direction": "하행", "center": { "lat": 36.258383, "lng": 126.796755 } }
+      { "id": 71, "direction": "상행", "center": { "lat": 36.258352, "lng": 126.8000701 } },
+      { "id": 72, "direction": "하행", "center": { "lat": 36.258383, "lng": 126.796755 } }
     ]
   },
   {
+    "id": 43,
     "name": "사천",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.0740705, "lng": 128.0116955 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.073173, "lng": 128.010802 } },
-      { "direction": "하행", "center": { "lat": 35.074968, "lng": 128.012589 } }
+      { "id": 73, "direction": "상행", "center": { "lat": 35.073173, "lng": 128.010802 } },
+      { "id": 74, "direction": "하행", "center": { "lat": 35.074968, "lng": 128.012589 } }
     ]
   },
   {
+    "id": 44,
     "name": "산청",
     "highway": "대전통영선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.333512999999996, "lng": 127.9380235 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.333522, "lng": 127.938998 } },
-      { "direction": "하행", "center": { "lat": 35.333504, "lng": 127.937049 } }
+      { "id": 75, "direction": "상행", "center": { "lat": 35.333522, "lng": 127.938998 } },
+      { "id": 76, "direction": "하행", "center": { "lat": 35.333504, "lng": 127.937049 } }
     ]
   },
   {
+    "id": 45,
     "name": "서산",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.7385925, "lng": 126.5656655 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.742991, "lng": 126.565029 } },
-      { "direction": "상행", "center": { "lat": 36.734194, "lng": 126.566302 } }
+      { "id": 77, "direction": "하행", "center": { "lat": 36.742991, "lng": 126.565029 } },
+      { "id": 78, "direction": "상행", "center": { "lat": 36.734194, "lng": 126.566302 } }
     ]
   },
   {
+    "id": 46,
     "name": "서여주",
     "highway": "중부내륙",
     "type": "간이휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.2790095, "lng": 127.57929200000001 },
     "children": [
-      { "direction": "상행", "center": { "lat": 37.278607, "lng": 127.580501 } },
-      { "direction": "하행", "center": { "lat": 37.279412, "lng": 127.578083 } }
+      { "id": 79, "direction": "상행", "center": { "lat": 37.278607, "lng": 127.580501 } },
+      { "id": 80, "direction": "하행", "center": { "lat": 37.279412, "lng": 127.578083 } }
     ]
   },
   {
+    "id": 47,
     "name": "서울만남",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.460166, "lng": 127.041908 },
-    "children": [{ "direction": "하행", "center": { "lat": 37.460166, "lng": 127.041908 } }]
+    "children": [{ "id": 81, "direction": "하행", "center": { "lat": 37.460166, "lng": 127.041908 } }]
   },
   {
+    "id": 48,
     "name": "서천",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.130717000000004, "lng": 126.6271595 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.129505, "lng": 126.626485 } },
-      { "direction": "상행", "center": { "lat": 36.131929, "lng": 126.627834 } }
+      { "id": 82, "direction": "하행", "center": { "lat": 36.129505, "lng": 126.626485 } },
+      { "id": 83, "direction": "상행", "center": { "lat": 36.131929, "lng": 126.627834 } }
     ]
   },
   {
+    "id": 49,
     "name": "선산",
     "highway": "중부내륙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.276082, "lng": 128.2500205 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.277941, "lng": 128.249296 } },
-      { "direction": "하행", "center": { "lat": 36.274223, "lng": 128.250745 } }
+      { "id": 84, "direction": "상행", "center": { "lat": 36.277941, "lng": 128.249296 } },
+      { "id": 85, "direction": "하행", "center": { "lat": 36.274223, "lng": 128.250745 } }
     ]
   },
   {
+    "id": 50,
     "name": "섬진강",
     "highway": "호남선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 34.98518455, "lng": 127.770013 },
     "children": [
-      { "direction": "상행", "center": { "lat": 34.9847001, "lng": 127.770697 } },
-      { "direction": "하행", "center": { "lat": 34.985669, "lng": 127.769329 } }
+      { "id": 86, "direction": "상행", "center": { "lat": 34.9847001, "lng": 127.770697 } },
+      { "id": 87, "direction": "하행", "center": { "lat": 34.985669, "lng": 127.769329 } }
     ]
   },
   {
+    "id": 51,
     "name": "성주",
     "highway": "중부내륙선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.00943155, "lng": 128.260608 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.0082601, "lng": 128.261541 } },
-      { "direction": "하행", "center": { "lat": 36.010603, "lng": 128.259675 } }
+      { "id": 88, "direction": "상행", "center": { "lat": 36.0082601, "lng": 128.261541 } },
+      { "id": 89, "direction": "하행", "center": { "lat": 36.010603, "lng": 128.259675 } }
     ]
   },
   {
+    "id": 52,
     "name": "속리산",
     "highway": "당진영덕선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.447804, "lng": 127.869061 },
-    "children": [{ "direction": "상행", "center": { "lat": 36.447804, "lng": 127.869061 } }]
+    "children": [{ "id": 90, "direction": "상행", "center": { "lat": 36.447804, "lng": 127.869061 } }]
   },
   {
+    "id": 53,
     "name": "순천",
     "highway": "호남선",
     "type": "간이휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.0085501, "lng": 127.445044 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.0085501, "lng": 127.445044 } }]
+    "children": [{ "id": 91, "direction": "하행", "center": { "lat": 35.0085501, "lng": 127.445044 } }]
   },
   {
+    "id": 54,
     "name": "시흥하늘",
     "highway": "수도권제1순환선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.383794, "lng": 126.855452 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.383794, "lng": 126.855452 } }]
+    "children": [{ "id": 92, "direction": "양방향", "center": { "lat": 37.383794, "lng": 126.855452 } }]
   },
   {
+    "id": 55,
     "name": "신탄진",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.426834, "lng": 127.418438 },
-    "children": [{ "direction": "상행", "center": { "lat": 36.426834, "lng": 127.418438 } }]
+    "children": [{ "id": 93, "direction": "상행", "center": { "lat": 36.426834, "lng": 127.418438 } }]
   },
   {
+    "id": 56,
     "name": "안동",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.55329855, "lng": 128.6435335 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.553167, "lng": 128.641923 } },
-      { "direction": "상행", "center": { "lat": 36.5534301, "lng": 128.645144 } }
+      { "id": 94, "direction": "하행", "center": { "lat": 36.553167, "lng": 128.641923 } },
+      { "id": 95, "direction": "상행", "center": { "lat": 36.5534301, "lng": 128.645144 } }
     ]
   },
   {
+    "id": 57,
     "name": "안산",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.351075, "lng": 126.818799 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.351075, "lng": 126.818799 } }]
+    "children": [{ "id": 96, "direction": "양방향", "center": { "lat": 37.351075, "lng": 126.818799 } }]
   },
   {
+    "id": 58,
     "name": "안성",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.045044000000004, "lng": 127.13864805 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.013407, "lng": 127.1448001 } },
-      { "direction": "상행", "center": { "lat": 37.076681, "lng": 127.132496 } }
+      { "id": 97, "direction": "하행", "center": { "lat": 37.013407, "lng": 127.1448001 } },
+      { "id": 98, "direction": "상행", "center": { "lat": 37.076681, "lng": 127.132496 } }
     ]
   },
   {
+    "id": 59,
     "name": "안성맞춤",
     "highway": "평택제천선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.968986, "lng": 127.27444 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.968057, "lng": 127.274261 } },
-      { "direction": "상행", "center": { "lat": 36.969915, "lng": 127.274619 } }
+      { "id": 99, "direction": "하행", "center": { "lat": 36.968057, "lng": 127.274261 } },
+      { "id": 100, "direction": "상행", "center": { "lat": 36.969915, "lng": 127.274619 } }
     ]
   },
   {
+    "id": 60,
     "name": "양산",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.323172, "lng": 129.056867 },
-    "children": [{ "direction": "상행", "center": { "lat": 35.323172, "lng": 129.056867 } }]
+    "children": [{ "id": 101, "direction": "상행", "center": { "lat": 35.323172, "lng": 129.056867 } }]
   },
   {
+    "id": 61,
     "name": "언양",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.597942, "lng": 129.141801 },
-    "children": [{ "direction": "상행", "center": { "lat": 35.597942, "lng": 129.141801 } }]
+    "children": [{ "id": 102, "direction": "상행", "center": { "lat": 35.597942, "lng": 129.141801 } }]
   },
   {
+    "id": 62,
     "name": "여산",
     "highway": "호남선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.0485415, "lng": 127.10352449999999 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.048555, "lng": 127.102333 } },
-      { "direction": "상행", "center": { "lat": 36.048528, "lng": 127.104716 } }
+      { "id": 103, "direction": "하행", "center": { "lat": 36.048555, "lng": 127.102333 } },
+      { "id": 104, "direction": "상행", "center": { "lat": 36.048528, "lng": 127.104716 } }
     ]
   },
   {
+    "id": 63,
     "name": "여주",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.2388805, "lng": 127.5694205 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.238022, "lng": 127.568892 } },
-      { "direction": "상행", "center": { "lat": 37.239739, "lng": 127.569949 } }
+      { "id": 105, "direction": "하행", "center": { "lat": 37.238022, "lng": 127.568892 } },
+      { "id": 106, "direction": "상행", "center": { "lat": 37.239739, "lng": 127.569949 } }
     ]
   },
   {
+    "id": 64,
     "name": "영산",
     "highway": "중부내륙지선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.429794, "lng": 128.495915 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.429794, "lng": 128.495915 } }]
+    "children": [{ "id": 107, "direction": "하행", "center": { "lat": 35.429794, "lng": 128.495915 } }]
   },
   {
+    "id": 65,
     "name": "영천",
     "highway": "대구포항선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.0523525, "lng": 129.04348299999998 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.053254, "lng": 129.044422 } },
-      { "direction": "상행", "center": { "lat": 36.051451, "lng": 129.042544 } }
+      { "id": 108, "direction": "하행", "center": { "lat": 36.053254, "lng": 129.044422 } },
+      { "id": 109, "direction": "상행", "center": { "lat": 36.051451, "lng": 129.042544 } }
     ]
   },
   {
+    "id": 66,
     "name": "예산",
     "highway": "당진영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.62144455, "lng": 126.84300400000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.619429, "lng": 126.846389 } },
-      { "direction": "상행", "center": { "lat": 36.6234601, "lng": 126.839619 } }
+      { "id": 110, "direction": "하행", "center": { "lat": 36.619429, "lng": 126.846389 } },
+      { "id": 111, "direction": "상행", "center": { "lat": 36.6234601, "lng": 126.839619 } }
     ]
   },
   {
+    "id": 67,
     "name": "오수",
     "highway": "순천완주선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.540598, "lng": 127.3104445 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.540925, "lng": 127.309267 } },
-      { "direction": "상행", "center": { "lat": 35.540271, "lng": 127.311622 } }
+      { "id": 112, "direction": "하행", "center": { "lat": 35.540925, "lng": 127.309267 } },
+      { "id": 113, "direction": "상행", "center": { "lat": 35.540271, "lng": 127.311622 } }
     ]
   },
   {
+    "id": 68,
     "name": "오창",
     "highway": "중부선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.757531, "lng": 127.481843 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.758481, "lng": 127.481777 } },
-      { "direction": "상행", "center": { "lat": 36.756581, "lng": 127.481909 } }
+      { "id": 114, "direction": "하행", "center": { "lat": 36.758481, "lng": 127.481777 } },
+      { "id": 115, "direction": "상행", "center": { "lat": 36.756581, "lng": 127.481909 } }
     ]
   },
   {
+    "id": 69,
     "name": "옥계",
     "highway": "동해선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.616198, "lng": 129.060129 },
-    "children": [{ "direction": "상행", "center": { "lat": 37.616198, "lng": 129.060129 } }]
+    "children": [{ "id": 116, "direction": "상행", "center": { "lat": 37.616198, "lng": 129.060129 } }]
   },
   {
+    "id": 70,
     "name": "옥산",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.657743, "lng": 127.369817 },
-    "children": [{ "direction": "하행", "center": { "lat": 36.657743, "lng": 127.369817 } }]
+    "children": [{ "id": 117, "direction": "하행", "center": { "lat": 36.657743, "lng": 127.369817 } }]
   },
   {
+    "id": 71,
     "name": "옥천",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.2972395, "lng": 127.59700000000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.296863, "lng": 127.595223 } },
-      { "direction": "상행", "center": { "lat": 36.297616, "lng": 127.598777 } }
+      { "id": 118, "direction": "하행", "center": { "lat": 36.296863, "lng": 127.595223 } },
+      { "id": 119, "direction": "상행", "center": { "lat": 36.297616, "lng": 127.598777 } }
     ]
   },
   {
+    "id": 72,
     "name": "옥천만남",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 36.308718, "lng": 127.572308 },
-    "children": [{ "direction": "양방향", "center": { "lat": 36.308718, "lng": 127.572308 } }]
+    "children": [{ "id": 120, "direction": "양방향", "center": { "lat": 36.308718, "lng": 127.572308 } }]
   },
   {
+    "id": 73,
     "name": "와촌",
     "highway": "대구포항선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.951819, "lng": 128.775563 },
-    "children": [{ "direction": "상행", "center": { "lat": 35.951819, "lng": 128.775563 } }]
+    "children": [{ "id": 121, "direction": "상행", "center": { "lat": 35.951819, "lng": 128.775563 } }]
   },
   {
+    "id": 74,
     "name": "외동",
     "highway": "울산포항선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.672799999999995, "lng": 129.28691 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.672753, "lng": 129.285277 } },
-      { "direction": "상행", "center": { "lat": 35.672847, "lng": 129.288543 } }
+      { "id": 122, "direction": "하행", "center": { "lat": 35.672753, "lng": 129.285277 } },
+      { "id": 123, "direction": "상행", "center": { "lat": 35.672847, "lng": 129.288543 } }
     ]
   },
   {
+    "id": 75,
     "name": "용인",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.2469505, "lng": 127.24016105000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.245583, "lng": 127.2419801 } },
-      { "direction": "상행", "center": { "lat": 37.248318, "lng": 127.238342 } }
+      { "id": 124, "direction": "하행", "center": { "lat": 37.245583, "lng": 127.2419801 } },
+      { "id": 125, "direction": "상행", "center": { "lat": 37.248318, "lng": 127.238342 } }
     ]
   },
   {
+    "id": 76,
     "name": "울주",
     "highway": "밀양울산선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.51199055, "lng": 129.129477 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.510821, "lng": 129.130435 } },
-      { "direction": "하행", "center": { "lat": 35.5131601, "lng": 129.128519 } }
+      { "id": 126, "direction": "상행", "center": { "lat": 35.510821, "lng": 129.130435 } },
+      { "id": 127, "direction": "하행", "center": { "lat": 35.5131601, "lng": 129.128519 } }
     ]
   },
   {
+    "id": 77,
     "name": "원주",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.434868, "lng": 127.93041550000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.435194, "lng": 127.929063 } },
-      { "direction": "상행", "center": { "lat": 37.434542, "lng": 127.931768 } }
+      { "id": 128, "direction": "하행", "center": { "lat": 37.435194, "lng": 127.929063 } },
+      { "id": 129, "direction": "상행", "center": { "lat": 37.434542, "lng": 127.931768 } }
     ]
   },
   {
+    "id": 78,
     "name": "음성",
     "highway": "중부선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.0208515, "lng": 127.4825135 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.019638, "lng": 127.480712 } },
-      { "direction": "상행", "center": { "lat": 37.022065, "lng": 127.484315 } }
+      { "id": 130, "direction": "하행", "center": { "lat": 37.019638, "lng": 127.480712 } },
+      { "id": 131, "direction": "상행", "center": { "lat": 37.022065, "lng": 127.484315 } }
     ]
   },
   {
+    "id": 79,
     "name": "의성",
     "highway": "상주영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.4102275, "lng": 128.44620455 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.409501, "lng": 128.447699 } },
-      { "direction": "상행", "center": { "lat": 36.410954, "lng": 128.4447101 } }
+      { "id": 132, "direction": "하행", "center": { "lat": 36.409501, "lng": 128.447699 } },
+      { "id": 133, "direction": "상행", "center": { "lat": 36.410954, "lng": 128.4447101 } }
     ]
   },
   {
+    "id": 80,
     "name": "이서",
     "highway": "호남선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.802934, "lng": 127.024732 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.803936, "lng": 127.023705 } },
-      { "direction": "상행", "center": { "lat": 35.801932, "lng": 127.025759 } }
+      { "id": 134, "direction": "하행", "center": { "lat": 35.803936, "lng": 127.023705 } },
+      { "id": 135, "direction": "상행", "center": { "lat": 35.801932, "lng": 127.025759 } }
     ]
   },
   {
+    "id": 81,
     "name": "이천",
     "highway": "중부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.264574, "lng": 127.403687 },
-    "children": [{ "direction": "하행", "center": { "lat": 37.264574, "lng": 127.403687 } }]
+    "children": [{ "id": 136, "direction": "하행", "center": { "lat": 37.264574, "lng": 127.403687 } }]
   },
   {
+    "id": 82,
     "name": "이천쌀",
     "highway": "중부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.293979, "lng": 127.378203 },
-    "children": [{ "direction": "상행", "center": { "lat": 37.293979, "lng": 127.378203 } }]
+    "children": [{ "id": 137, "direction": "상행", "center": { "lat": 37.293979, "lng": 127.378203 } }]
   },
   {
+    "id": 83,
     "name": "입장거봉포도",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.942997, "lng": 127.192467 },
-    "children": [{ "direction": "상행", "center": { "lat": 36.942997, "lng": 127.192467 } }]
+    "children": [{ "id": 138, "direction": "상행", "center": { "lat": 36.942997, "lng": 127.192467 } }]
   },
   {
+    "id": 84,
     "name": "장유",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.212074, "lng": 128.7935801 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.212074, "lng": 128.7935801 } }]
+    "children": [{ "id": 139, "direction": "하행", "center": { "lat": 35.212074, "lng": 128.7935801 } }]
   },
   {
+    "id": 85,
     "name": "장흥정남진",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 34.720894, "lng": 126.931319 },
-    "children": [{ "direction": "양방향", "center": { "lat": 34.720894, "lng": 126.931319 } }]
+    "children": [{ "id": 140, "direction": "양방향", "center": { "lat": 34.720894, "lng": 126.931319 } }]
   },
   {
+    "id": 86,
     "name": "정읍녹두장군",
     "highway": "호남선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.600719999999995, "lng": 126.863171 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.601465, "lng": 126.862006 } },
-      { "direction": "상행", "center": { "lat": 35.599975, "lng": 126.864336 } }
+      { "id": 141, "direction": "하행", "center": { "lat": 35.601465, "lng": 126.862006 } },
+      { "id": 142, "direction": "상행", "center": { "lat": 35.599975, "lng": 126.864336 } }
     ]
   },
   {
+    "id": 87,
     "name": "주암",
     "highway": "호남선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.076392, "lng": 127.26493105 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.076197, "lng": 127.2641001 } },
-      { "direction": "상행", "center": { "lat": 35.076587, "lng": 127.265762 } }
+      { "id": 143, "direction": "하행", "center": { "lat": 35.076197, "lng": 127.2641001 } },
+      { "id": 144, "direction": "상행", "center": { "lat": 35.076587, "lng": 127.265762 } }
     ]
   },
   {
+    "id": 88,
     "name": "죽암",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.49179255, "lng": 127.42995554999999 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.4868101, "lng": 127.429261 } },
-      { "direction": "상행", "center": { "lat": 36.496775, "lng": 127.4306501 } }
+      { "id": 145, "direction": "하행", "center": { "lat": 36.4868101, "lng": 127.429261 } },
+      { "id": 146, "direction": "상행", "center": { "lat": 36.496775, "lng": 127.4306501 } }
     ]
   },
   {
+    "id": 89,
     "name": "죽전",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.332371, "lng": 127.104795 },
-    "children": [{ "direction": "상행", "center": { "lat": 37.332371, "lng": 127.104795 } }]
+    "children": [{ "id": 147, "direction": "상행", "center": { "lat": 37.332371, "lng": 127.104795 } }]
   },
   {
+    "id": 90,
     "name": "지리산",
     "highway": "광주대구선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.4826475, "lng": 127.56695500000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.483942, "lng": 127.567106 } },
-      { "direction": "상행", "center": { "lat": 35.481353, "lng": 127.566804 } }
+      { "id": 148, "direction": "하행", "center": { "lat": 35.483942, "lng": 127.567106 } },
+      { "id": 149, "direction": "상행", "center": { "lat": 35.481353, "lng": 127.566804 } }
     ]
   },
   {
+    "id": 91,
     "name": "진안마이산",
     "highway": "익산장수선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.776359049999996, "lng": 127.4258205 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.777898, "lng": 127.425279 } },
-      { "direction": "상행", "center": { "lat": 35.7748201, "lng": 127.426362 } }
+      { "id": 150, "direction": "하행", "center": { "lat": 35.777898, "lng": 127.425279 } },
+      { "id": 151, "direction": "상행", "center": { "lat": 35.7748201, "lng": 127.426362 } }
     ]
   },
   {
+    "id": 92,
     "name": "진영",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.278984550000004, "lng": 128.715716 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.2779101, "lng": 128.715388 } },
-      { "direction": "하행", "center": { "lat": 35.280059, "lng": 128.716044 } }
+      { "id": 152, "direction": "상행", "center": { "lat": 35.2779101, "lng": 128.715388 } },
+      { "id": 153, "direction": "하행", "center": { "lat": 35.280059, "lng": 128.716044 } }
     ]
   },
   {
+    "id": 93,
     "name": "진주",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.159772, "lng": 128.1220101 },
-    "children": [{ "direction": "상행", "center": { "lat": 35.159772, "lng": 128.1220101 } }]
+    "children": [{ "id": 154, "direction": "상행", "center": { "lat": 35.159772, "lng": 128.1220101 } }]
   },
   {
+    "id": 94,
     "name": "천등산",
     "highway": "평택제천선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.0692345, "lng": 127.9642745 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.061597, "lng": 127.939378 } },
-      { "direction": "상행", "center": { "lat": 37.076872, "lng": 127.989171 } }
+      { "id": 155, "direction": "하행", "center": { "lat": 37.061597, "lng": 127.939378 } },
+      { "id": 156, "direction": "상행", "center": { "lat": 37.076872, "lng": 127.989171 } }
     ]
   },
   {
+    "id": 95,
     "name": "천안삼거리",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.787809, "lng": 127.173455 },
-    "children": [{ "direction": "상행", "center": { "lat": 36.787809, "lng": 127.173455 } }]
+    "children": [{ "id": 157, "direction": "상행", "center": { "lat": 36.787809, "lng": 127.173455 } }]
   },
   {
+    "id": 96,
     "name": "천안호두",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.730226, "lng": 127.263879 },
-    "children": [{ "direction": "하행", "center": { "lat": 36.730226, "lng": 127.263879 } }]
+    "children": [{ "id": 158, "direction": "하행", "center": { "lat": 36.730226, "lng": 127.263879 } }]
   },
   {
+    "id": 97,
     "name": "청송",
     "highway": "상주영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.456223, "lng": 129.01260904999998 },
     "children": [
-      { "direction": "상행", "center": { "lat": 36.455725, "lng": 129.0131901 } },
-      { "direction": "하행", "center": { "lat": 36.456721, "lng": 129.012028 } }
+      { "id": 159, "direction": "상행", "center": { "lat": 36.455725, "lng": 129.0131901 } },
+      { "id": 160, "direction": "하행", "center": { "lat": 36.456721, "lng": 129.012028 } }
     ]
   },
   {
+    "id": 98,
     "name": "청주",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.716005, "lng": 127.349315 },
-    "children": [{ "direction": "상행", "center": { "lat": 36.716005, "lng": 127.349315 } }]
+    "children": [{ "id": 161, "direction": "상행", "center": { "lat": 36.716005, "lng": 127.349315 } }]
   },
   {
+    "id": 99,
     "name": "청통",
     "highway": "대구포항선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.993928, "lng": 128.859145 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.993928, "lng": 128.859145 } }]
+    "children": [{ "id": 162, "direction": "하행", "center": { "lat": 35.993928, "lng": 128.859145 } }]
   },
   {
+    "id": 100,
     "name": "추풍령",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.200032, "lng": 128.00178649999998 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.200356, "lng": 128.000331 } },
-      { "direction": "상행", "center": { "lat": 36.199708, "lng": 128.003242 } }
+      { "id": 163, "direction": "하행", "center": { "lat": 36.200356, "lng": 128.000331 } },
+      { "id": 164, "direction": "상행", "center": { "lat": 36.199708, "lng": 128.003242 } }
     ]
   },
   {
+    "id": 101,
     "name": "춘천",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.8126801, "lng": 127.766078 },
-    "children": [{ "direction": "하행", "center": { "lat": 37.8126801, "lng": 127.766078 } }]
+    "children": [{ "id": 165, "direction": "하행", "center": { "lat": 37.8126801, "lng": 127.766078 } }]
   },
   {
+    "id": 102,
     "name": "춘향",
     "highway": "순천완주선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.337224, "lng": 127.3526499 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.3367566, "lng": 127.3515503 } },
-      { "direction": "상행", "center": { "lat": 35.3376914, "lng": 127.3537495 } }
+      { "id": 166, "direction": "하행", "center": { "lat": 35.3367566, "lng": 127.3515503 } },
+      { "id": 167, "direction": "상행", "center": { "lat": 35.3376914, "lng": 127.3537495 } }
     ]
   },
   {
+    "id": 103,
     "name": "충주",
     "highway": "중부내륙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.022702, "lng": 127.838184 },
     "children": [
-      { "direction": "상행", "center": { "lat": 37.023175, "lng": 127.839297 } },
-      { "direction": "하행", "center": { "lat": 37.022229, "lng": 127.837071 } }
+      { "id": 168, "direction": "상행", "center": { "lat": 37.023175, "lng": 127.839297 } },
+      { "id": 169, "direction": "하행", "center": { "lat": 37.022229, "lng": 127.837071 } }
     ]
   },
   {
+    "id": 104,
     "name": "치악",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.2551695, "lng": 128.04869205 },
     "children": [
-      { "direction": "상행", "center": { "lat": 37.253647, "lng": 128.048514 } },
-      { "direction": "하행", "center": { "lat": 37.256692, "lng": 128.0488701 } }
+      { "id": 170, "direction": "상행", "center": { "lat": 37.253647, "lng": 128.048514 } },
+      { "id": 171, "direction": "하행", "center": { "lat": 37.256692, "lng": 128.0488701 } }
     ]
   },
   {
+    "id": 105,
     "name": "칠곡",
     "highway": "경부선",
     "type": "화물차휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.0159, "lng": 128.42965855 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.019795, "lng": 128.428517 } },
-      { "direction": "상행", "center": { "lat": 36.012005, "lng": 128.4308001 } }
+      { "id": 172, "direction": "하행", "center": { "lat": 36.019795, "lng": 128.428517 } },
+      { "id": 173, "direction": "상행", "center": { "lat": 36.012005, "lng": 128.4308001 } }
     ]
   },
   {
+    "id": 106,
     "name": "칠서",
     "highway": "중부내륙지선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.3708801, "lng": 128.496807 },
-    "children": [{ "direction": "상행", "center": { "lat": 35.3708801, "lng": 128.496807 } }]
+    "children": [{ "id": 174, "direction": "상행", "center": { "lat": 35.3708801, "lng": 128.496807 } }]
   },
   {
+    "id": 107,
     "name": "통도사",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.488841, "lng": 129.090775 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.488841, "lng": 129.090775 } }]
+    "children": [{ "id": 175, "direction": "하행", "center": { "lat": 35.488841, "lng": 129.090775 } }]
   },
   {
+    "id": 108,
     "name": "평사",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.885522, "lng": 128.867541 },
-    "children": [{ "direction": "하행", "center": { "lat": 35.885522, "lng": 128.867541 } }]
+    "children": [{ "id": 176, "direction": "하행", "center": { "lat": 35.885522, "lng": 128.867541 } }]
   },
   {
+    "id": 109,
     "name": "평창",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.60822305, "lng": 128.458022 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.6055701, "lng": 128.452681 } },
-      { "direction": "상행", "center": { "lat": 37.610876, "lng": 128.463363 } }
+      { "id": 177, "direction": "하행", "center": { "lat": 37.6055701, "lng": 128.452681 } },
+      { "id": 178, "direction": "상행", "center": { "lat": 37.610876, "lng": 128.463363 } }
     ]
   },
   {
+    "id": 110,
     "name": "평택",
     "highway": "평택제천선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.045585, "lng": 126.943774 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.045585, "lng": 126.943774 } }]
+    "children": [{ "id": 179, "direction": "양방향", "center": { "lat": 37.045585, "lng": 126.943774 } }]
   },
   {
+    "id": 111,
     "name": "하남드림",
     "highway": "중부선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 37.530281, "lng": 127.206084 },
-    "children": [{ "direction": "양방향", "center": { "lat": 37.530281, "lng": 127.206084 } }]
+    "children": [{ "id": 180, "direction": "양방향", "center": { "lat": 37.530281, "lng": 127.206084 } }]
   },
   {
+    "id": 112,
     "name": "함안",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.29438450000001, "lng": 128.345862 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.294068, "lng": 128.346957 } },
-      { "direction": "하행", "center": { "lat": 35.294701, "lng": 128.344767 } }
+      { "id": 181, "direction": "상행", "center": { "lat": 35.294068, "lng": 128.346957 } },
+      { "id": 182, "direction": "하행", "center": { "lat": 35.294701, "lng": 128.344767 } }
     ]
   },
   {
+    "id": 113,
     "name": "함양",
     "highway": "대전통영선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.551466500000004, "lng": 127.75949155 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.551611, "lng": 127.7604201 } },
-      { "direction": "하행", "center": { "lat": 35.551322, "lng": 127.758563 } }
+      { "id": 183, "direction": "상행", "center": { "lat": 35.551611, "lng": 127.7604201 } },
+      { "id": 184, "direction": "하행", "center": { "lat": 35.551322, "lng": 127.758563 } }
     ]
   },
   {
+    "id": 114,
     "name": "함평나비",
     "highway": "무안광주선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.0377405, "lng": 126.5102445 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.037283, "lng": 126.511676 } },
-      { "direction": "하행", "center": { "lat": 35.038198, "lng": 126.508813 } }
+      { "id": 185, "direction": "상행", "center": { "lat": 35.037283, "lng": 126.511676 } },
+      { "id": 186, "direction": "하행", "center": { "lat": 35.038198, "lng": 126.508813 } }
     ]
   },
   {
+    "id": 115,
     "name": "함평천지",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.1002165, "lng": 126.48027099999999 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.069687, "lng": 126.478247 } },
-      { "direction": "상행", "center": { "lat": 35.130746, "lng": 126.482295 } }
+      { "id": 187, "direction": "하행", "center": { "lat": 35.069687, "lng": 126.478247 } },
+      { "id": 188, "direction": "상행", "center": { "lat": 35.130746, "lng": 126.482295 } }
     ]
   },
   {
+    "id": 116,
     "name": "행담도",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "양방향",
     "center": { "lat": 36.944819, "lng": 126.807525 },
-    "children": [{ "direction": "양방향", "center": { "lat": 36.944819, "lng": 126.807525 } }]
+    "children": [{ "id": 189, "direction": "양방향", "center": { "lat": 36.944819, "lng": 126.807525 } }]
   },
   {
+    "id": 117,
     "name": "현풍",
     "highway": "중부내륙지선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.701812000000004, "lng": 128.43672955 },
     "children": [
-      { "direction": "상행", "center": { "lat": 35.701841, "lng": 128.4381001 } },
-      { "direction": "하행", "center": { "lat": 35.701783, "lng": 128.435359 } }
+      { "id": 190, "direction": "상행", "center": { "lat": 35.701841, "lng": 128.4381001 } },
+      { "id": 191, "direction": "하행", "center": { "lat": 35.701783, "lng": 128.435359 } }
     ]
   },
   {
+    "id": 118,
     "name": "홍성",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.55250705, "lng": 126.58069205000001 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.552584, "lng": 126.579514 } },
-      { "direction": "상행", "center": { "lat": 36.5524301, "lng": 126.5818701 } }
+      { "id": 192, "direction": "하행", "center": { "lat": 36.552584, "lng": 126.579514 } },
+      { "id": 193, "direction": "상행", "center": { "lat": 36.5524301, "lng": 126.5818701 } }
     ]
   },
   {
+    "id": 119,
     "name": "홍천",
     "highway": "서울양양선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.7581335, "lng": 128.00483954999999 },
     "children": [
-      { "direction": "상행", "center": { "lat": 37.758898, "lng": 128.0065801 } },
-      { "direction": "하행", "center": { "lat": 37.757369, "lng": 128.003099 } }
+      { "id": 194, "direction": "상행", "center": { "lat": 37.758898, "lng": 128.0065801 } },
+      { "id": 195, "direction": "하행", "center": { "lat": 37.757369, "lng": 128.003099 } }
     ]
   },
   {
+    "id": 120,
     "name": "홍천강",
     "highway": "중앙선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 37.712386, "lng": 127.827719 },
-    "children": [{ "direction": "상행", "center": { "lat": 37.712386, "lng": 127.827719 } }]
+    "children": [{ "id": 196, "direction": "상행", "center": { "lat": 37.712386, "lng": 127.827719 } }]
   },
   {
+    "id": 121,
     "name": "화서",
     "highway": "당진영덕선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.444053, "lng": 127.922637 },
-    "children": [{ "direction": "상행", "center": { "lat": 36.444053, "lng": 127.922637 } }]
+    "children": [{ "id": 197, "direction": "상행", "center": { "lat": 36.444053, "lng": 127.922637 } }]
   },
   {
+    "id": 122,
     "name": "화성",
     "highway": "서해안선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.1435545, "lng": 126.88018455 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.143612, "lng": 126.8790801 } },
-      { "direction": "상행", "center": { "lat": 37.143497, "lng": 126.881289 } }
+      { "id": 198, "direction": "하행", "center": { "lat": 37.143612, "lng": 126.8790801 } },
+      { "id": 199, "direction": "상행", "center": { "lat": 37.143497, "lng": 126.881289 } }
     ]
   },
   {
+    "id": 123,
     "name": "황간",
     "highway": "경부선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.249168, "lng": 127.85375255 },
     "children": [
-      { "direction": "하행", "center": { "lat": 36.248899, "lng": 127.8526701 } },
-      { "direction": "상행", "center": { "lat": 36.249437, "lng": 127.854835 } }
+      { "id": 200, "direction": "하행", "center": { "lat": 36.248899, "lng": 127.8526701 } },
+      { "id": 201, "direction": "상행", "center": { "lat": 36.249437, "lng": 127.854835 } }
     ]
   },
   {
+    "id": 124,
     "name": "황전",
     "highway": "순천완주선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.1511055, "lng": 127.454414 },
     "children": [
-      { "direction": "하행", "center": { "lat": 35.148905, "lng": 127.454145 } },
-      { "direction": "상행", "center": { "lat": 35.153306, "lng": 127.454683 } }
+      { "id": 202, "direction": "하행", "center": { "lat": 35.148905, "lng": 127.454145 } },
+      { "id": 203, "direction": "상행", "center": { "lat": 35.153306, "lng": 127.454683 } }
     ]
   },
   {
+    "id": 125,
     "name": "횡성",
     "highway": "영동선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.463869, "lng": 128.134709 },
     "children": [
-      { "direction": "하행", "center": { "lat": 37.462755, "lng": 128.133969 } },
-      { "direction": "상행", "center": { "lat": 37.464983, "lng": 128.135449 } }
+      { "id": 204, "direction": "하행", "center": { "lat": 37.462755, "lng": 128.133969 } },
+      { "id": 205, "direction": "상행", "center": { "lat": 37.464983, "lng": 128.135449 } }
     ]
   }
 ]
