@@ -104,7 +104,7 @@
   {
     "id": 10,
     "name": "공주",
-    "highway": "당진영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.4978125, "lng": 127.16579555000001 },
@@ -398,7 +398,7 @@
   {
     "id": 37,
     "name": "문의청남대",
-    "highway": "당진영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.5433135, "lng": 127.484205 },
@@ -506,7 +506,7 @@
   {
     "id": 46,
     "name": "서여주",
-    "highway": "중부내륙",
+    "highway": "중부내륙선",
     "type": "간이휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 37.2790095, "lng": 127.57929200000001 },
@@ -551,7 +551,7 @@
   {
     "id": 50,
     "name": "섬진강",
-    "highway": "호남선",
+    "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 34.98518455, "lng": 127.770013 },
@@ -575,7 +575,7 @@
   {
     "id": 52,
     "name": "속리산",
-    "highway": "당진영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.447804, "lng": 127.869061 },
@@ -719,7 +719,7 @@
   {
     "id": 66,
     "name": "예산",
-    "highway": "당진영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.62144455, "lng": 126.84300400000001 },
@@ -803,7 +803,7 @@
   {
     "id": 74,
     "name": "외동",
-    "highway": "울산포항선",
+    "highway": "동해선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.672799999999995, "lng": 129.28691 },
@@ -827,7 +827,7 @@
   {
     "id": 76,
     "name": "울주",
-    "highway": "밀양울산선",
+    "highway": "함양울산선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 35.51199055, "lng": 129.129477 },
@@ -863,7 +863,7 @@
   {
     "id": 79,
     "name": "의성",
-    "highway": "상주영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.4102275, "lng": 128.44620455 },
@@ -1052,7 +1052,7 @@
   {
     "id": 97,
     "name": "청송",
-    "highway": "상주영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "상하행",
     "center": { "lat": 36.456223, "lng": 129.01260904999998 },
@@ -1310,7 +1310,7 @@
   {
     "id": 121,
     "name": "화서",
-    "highway": "당진영덕선",
+    "highway": "서산영덕선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 36.444053, "lng": 127.922637 },
@@ -1362,6 +1362,28 @@
     "children": [
       { "id": 204, "direction": "하행", "center": { "lat": 37.462755, "lng": 128.133969 } },
       { "id": 205, "direction": "상행", "center": { "lat": 37.464983, "lng": 128.135449 } }
+    ]
+  },
+  {
+    "id": 126,
+    "name": "정안알밤",
+    "highway": "호남선",
+    "type": "일반휴게소",
+    "groupDirection": "상하행",
+    "center": { "lat": 36.57035, "lng": 127.11365 },
+    "children": [
+      { "id": 206, "direction": "하행", "center": { "lat": 36.5711, "lng": 127.1122 } },
+      { "id": 207, "direction": "상행", "center": { "lat": 36.5696, "lng": 127.1151 } }
+    ]
+  }, {
+    "id": 127,
+    "name": "서부산",
+    "highway": "남해선",
+    "type": "일반휴게소",
+    "groupDirection": "단방향",
+    "center": { "lat": 35.1572, "lng": 128.9488 },
+    "children": [
+      { "id": 208, "direction": "하행", "center": { "lat": 35.1572, "lng": 128.9488 } }
     ]
   }
 ]
