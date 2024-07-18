@@ -870,7 +870,11 @@
     "name": "횡성",
     "highway": "영동선",
     "children": [
-      { "id": 204, "direction": "하행", "visited": false },
+      {
+        "id": 204,
+        "direction": "하행",
+        "visited": { "visitedAt": "2024-07-05", "memo": "강릉에 워크샵 가는 길", "photos": ["rest-area-204-1.jpg"] }
+      },
       { "id": 205, "direction": "상행", "visited": false }
     ]
   },
@@ -879,14 +883,28 @@
     "highway": "호남선",
     "children": [
       { "id": 206, "direction": "하행", "visited": false },
-      { "id": 207, "direction": "상행", "visited": {"visitedAt": "2024-06-16", "memo": "첫 드라이브 돌아오는 길","photos": []} }
+      {
+        "id": 207,
+        "direction": "상행",
+        "visited": { "visitedAt": "2024-06-16", "memo": "첫 드라이브 돌아오는 길", "photos": ["rest-area-207-1.jpg"] }
+      }
     ]
-  }, 
+  },
   "127": {
     "name": "서부산",
     "highway": "남해선",
+    "children": [{ "id": 208, "direction": "하행", "visited": false }]
+  },
+  "128": {
+    "name": "광주",
+    "highway": "광주원주선",
     "children": [
-      { "id": 208, "direction": "하행", "visited": false} 
+      { "id": 209, "direction": "하행", "visited": false },
+      {
+        "id": 210,
+        "direction": "상행",
+        "visited": { "visitedAt": "2024-07-07", "memo": "강릉 다녀오는 길", "photos": ["rest-area-210-1.jpg"] }
+      }
     ]
   }
 }

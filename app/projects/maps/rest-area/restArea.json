@@ -1375,15 +1375,26 @@
       { "id": 206, "direction": "하행", "center": { "lat": 36.5711, "lng": 127.1122 } },
       { "id": 207, "direction": "상행", "center": { "lat": 36.5696, "lng": 127.1151 } }
     ]
-  }, {
+  },
+  {
     "id": 127,
     "name": "서부산",
     "highway": "남해선",
     "type": "일반휴게소",
     "groupDirection": "단방향",
     "center": { "lat": 35.1572, "lng": 128.9488 },
+    "children": [{ "id": 208, "direction": "하행", "center": { "lat": 35.1572, "lng": 128.9488 } }]
+  },
+  {
+    "id": 128,
+    "name": "광주",
+    "highway": "광주원주선",
+    "type": "일반휴게소",
+    "groupDirection": "상하행",
+    "center": { "lat": 37.3795, "lng": 127.4305 },
     "children": [
-      { "id": 208, "direction": "하행", "center": { "lat": 35.1572, "lng": 128.9488 } }
+      { "id": 209, "direction": "하행", "center": { "lat": 37.3786, "lng": 127.4362 } },
+      { "id": 210, "direction": "상행", "center": { "lat": 37.3804, "lng": 127.4247 } }
     ]
   }
 ]
