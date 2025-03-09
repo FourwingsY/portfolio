@@ -6,7 +6,7 @@ import Link from "next/link"
 import * as S from "../page.style"
 
 export default function PostCard({ post }: { post: Post.Metadata }) {
-  const Thumbnail = dynamic(() => import(`../../../posts/${post.id}/Thumbnail`))
+  const Thumbnail = dynamic(() => import(`../../../posts/${post.id}/Thumbnail`), { ssr: false })
 
   return (
     <S.Card key={post.id}>

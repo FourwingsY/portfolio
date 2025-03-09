@@ -16,8 +16,8 @@ const TasteIcon: React.FC<Props> = ({ taste }) => {
     })
   }
   return (
-    <S.Jumping style={{ animationDelay: `-${Math.random().toFixed(2)}s` }}>
-      <S.Shaking style={{ animationDelay: `-${Math.random().toFixed(2)}s` }}>
+    <S.Jumping style={{ animationDelay: `-${Math.random().toFixed(2)}s` }} suppressHydrationWarning>
+      <S.Shaking style={{ animationDelay: `-${Math.random().toFixed(2)}s` }} suppressHydrationWarning>
         <S.TasteIcon onClick={showInformation}>{taste.icon}</S.TasteIcon>
       </S.Shaking>
     </S.Jumping>

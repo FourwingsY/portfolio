@@ -20,7 +20,7 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   const getPosition = usePositionFactory(canvasSize.width, canvasSize.height, size)
 
   const [position, setPosition] = useState<Position | null>(() => getPosition(taste.name))
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(false)
   const delay = useRef(Math.random() * 10000)
 
   useEffect(() => {
@@ -53,7 +53,12 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
     setShow(true)
   }
 
-  if (!position) return <S.Mole $show={false}>{children}</S.Mole>
+  if (!position)
+    return (
+      <S.Mole $show={false} suppressHydrationWarning>
+        {children}
+      </S.Mole>
+    )
 
   const relativePosition = {
     left: ((position.x / canvasSize.width) * 100).toFixed(1) + "%",
@@ -62,7 +67,7 @@ const Mole = ({ children, taste }: React.PropsWithChildren<Props>) => {
   const jumpingAnimation = { animationDelay: `${Math.random().toFixed(2)}s` }
 
   return (
-    <S.Mole $show={show} style={{ ...relativePosition, ...jumpingAnimation }}>
+    <S.Mole $show={show} style={{ ...relativePosition, ...jumpingAnimation }} suppressHydrationWarning>
       {children}
     </S.Mole>
   )

@@ -11,11 +11,11 @@ async function getPost(id: string) {
 }
 
 interface Props {
-  params: { post: string }
+  params: Promise<{ post: string }>
   children: React.ReactNode
 }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPost(params.post as string)
+  const post = await getPost((await params).post)
   return {
     title: post.metadata.title,
     keywords: post.metadata.keywords,
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PostLayout({ params, children }: Props) {
-  const post = await getPost(params?.post as string)
+  const post = await getPost((await params).post)
 
   return (
     <>
