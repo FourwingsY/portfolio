@@ -30,8 +30,6 @@ export const Subtitle = styled.h4`
 `
 
 export const VisitedAt = styled.span`
-  position: absolute;
-  right: 0;
   color: #666;
 `
 export const Photos = styled.div`

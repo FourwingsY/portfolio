@@ -6,27 +6,15 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "@/lib/*": [
-        "lib/*"
-      ],
-      "@/posts/*": [
-        "posts/*"
-      ],
-      "@/components/*": [
-        "components/*"
-      ],
-      "@*": [
-        "src/*"
-      ]
+      "@/lib/*": ["lib/*"],
+      "@/posts/*": ["posts/*"],
+      "@/components/*": ["components/*"],
+      "@*": ["src/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
@@ -40,13 +28,6 @@
     ],
     "strict": false
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }
