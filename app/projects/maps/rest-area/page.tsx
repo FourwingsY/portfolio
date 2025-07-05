@@ -12,7 +12,7 @@ import record from "./visit-record.json"
 export default function RestArea() {
   const { openModal } = useModal()
   const [isMapLoaded, setIsMapLoaded] = useState(false)
-  const map = useRef<naver.maps.Map>(null)
+  const map = useRef<naver.maps.Map | null>(null)
 
   // init map
   useEffect(() => {
@@ -23,6 +23,8 @@ export default function RestArea() {
     const visitedRecords = record as Record<string, RestAreaVisitedRecord>
 
     map.current = new naver.maps.Map("map", mapOptions)
+
+    if (!map.current) return
 
     REST_AREA_GROUPS.forEach((d) => {
       const spriteOrigin = getSprite(d, visitedRecords[d.name])
@@ -35,7 +37,7 @@ export default function RestArea() {
           anchor: { x: 10, y: 24 },
         },
         position: new naver.maps.LatLng(d.center.lat, d.center.lng),
-        map: map.current,
+        map: map.current!,
         title: `${d.name}`,
         zIndex: visitedRecords[d.name] ? 1 : 0,
       })

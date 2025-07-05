@@ -102,9 +102,6 @@ importers:
       '@types/react':
         specifier: ^18.2.31
         version: 18.3.3
-      '@types/react-calendar':
-        specifier: ^3.4.0
-        version: 3.9.0
       '@types/react-dom':
         specifier: ^18.2.14
         version: 18.3.0
@@ -831,9 +828,6 @@ packages:
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
-
-  '@types/react-calendar@3.9.0':
-    resolution: {integrity: sha512-KpAu1MKAGFw5hNwlDnWsHWqI9i/igAB+8jH97YV7QpC2v7rlwNEU5i6VMFb73lGRacuejM/Zd2LklnEzkFV3XA==}
 
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
@@ -3286,10 +3280,6 @@ snapshots:
   '@types/node@18.11.9': {}
 
   '@types/prop-types@15.7.12': {}
-
-  '@types/react-calendar@3.9.0':
-    dependencies:
-      '@types/react': 18.3.3
 
   '@types/react-dom@18.3.0':
     dependencies:

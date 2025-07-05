@@ -18,15 +18,14 @@
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    // "strict": true,
+    "strict": true,
     "target": "es5",
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
-    ],
-    "strict": false
+    ]
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
