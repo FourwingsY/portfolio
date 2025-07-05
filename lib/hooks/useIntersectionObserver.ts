@@ -1,7 +1,7 @@
 // import 'intersection-observer'
 import { useState, useEffect, useRef } from "react"
 
-export function useVisible(targetRef: React.RefObject<Element>, options: IntersectionObserverInit = {}): boolean {
+export function useVisible(targetRef: React.RefObject<Element | null>, options: IntersectionObserverInit = {}): boolean {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function useVisible(targetRef: React.RefObject<Element>, options: Interse
 }
 
 export function useOnceVisible(
-  targetRef: React.RefObject<Element>,
+  targetRef: React.RefObject<Element | null>,
   options: IntersectionObserverInit = {},
   delay = 0
 ): boolean {
@@ -38,7 +38,7 @@ export function useOnceVisible(
 /**
  * 화면에 보일 때만 requestAnimationFrame을 호출
  */
-export function useRAFOnVisible(targetRef: React.RefObject<Element>, onFrame: (time: number) => void): void {
+export function useRAFOnVisible(targetRef: React.RefObject<Element | null>, onFrame: (time: number) => void): void {
   const visible = useVisible(targetRef)
   const requestRef = useRef(0)
 

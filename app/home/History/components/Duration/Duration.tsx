@@ -14,7 +14,7 @@ const Duration: React.FC<Props> = ({ duration }) => {
   const [stringFrom, nullableTo] = duration
   const from = parseISO(stringFrom)
   const to = nullableTo ? parseISO(nullableTo) : new Date()
-  const element = useRef(null)
+  const element = useRef<HTMLSpanElement>(null)
   const animatingFrom = useAnimatingDate(element, from, new Date())
   const animatingTo = useAnimatingDate(element, to, new Date())
 
@@ -33,7 +33,7 @@ const Duration: React.FC<Props> = ({ duration }) => {
 
 export default Duration
 
-function useAnimatingDate(element: React.RefObject<Element>, end: Date, start: Date) {
+function useAnimatingDate(element: React.RefObject<HTMLSpanElement | null>, end: Date, start: Date) {
   const aMonth = 30 * 86400 * 1000 * Math.sign(+end - +start)
   const [date, setDate] = useState(start)
   const visible = useOnceVisible(element)

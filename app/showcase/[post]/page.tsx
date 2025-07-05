@@ -10,7 +10,12 @@ import { ModalTester } from "@/posts/modal/components"
 
 import Tooltip from "@/components/Tooltip"
 
-const components = { ScreenMonitor, ConfettiSimulator, Tooltip, ModalTester }
+const components = { 
+  ScreenMonitor: ScreenMonitor as any, 
+  ConfettiSimulator: ConfettiSimulator as any, 
+  Tooltip: Tooltip as any, 
+  ModalTester: ModalTester as any 
+}
 
 async function getPost(id: string) {
   return fetch(`/showcase/${id}/mdx`).then((res) => res.json() as Promise<Post.Parsed>)

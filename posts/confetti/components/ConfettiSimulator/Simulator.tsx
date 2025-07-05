@@ -24,7 +24,7 @@ interface ParticleOptionsInput {
 
 const Simulator = () => {
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
-  const canvasRect = useRef<DOMRect>()
+  const canvasRect = useRef<DOMRect | null>(null)
   const [playing, setPlaying] = useState(false)
   const [coord, setCoord] = useState<{ x: number; y: number }>({ x: 0, y: 0 })
   const [confettiOptions, setConfettiOptions] = useState<ConfettiOptionsInput>({
