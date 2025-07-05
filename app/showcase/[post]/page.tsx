@@ -1,8 +1,5 @@
-"use client"
-
 import "github-markdown-css/github-markdown.css"
 import { MDXRemote } from "next-mdx-remote/rsc"
-import { use } from "react"
 import highlight from "rehype-highlight"
 import gfm from "remark-gfm"
 
@@ -24,8 +21,8 @@ interface Props {
 }
 
 export default async function PostPage(props: Props) {
-  const params = use(props.params)
-  const post = await getPost(params?.post as string)
+  const params = await props.params
+  const post = await getPost(params.post)
 
   return (
     <MDXRemote
