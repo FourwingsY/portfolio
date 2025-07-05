@@ -7,7 +7,9 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "update-commits": "./scripts/parseCommits.sh"
+    "update-commits": "./scripts/parseCommits.sh",
+    "create-post": "node scripts/create-post.js",
+    "list-posts": "node scripts/list-posts.js"
   },
   "dependencies": {
     "@giscus/react": "^2.2.8",
