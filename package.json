@@ -8,8 +8,8 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "update-commits": "./scripts/parseCommits.sh",
-    "create-post": "node scripts/create-post.js",
-    "list-posts": "node scripts/list-posts.js"
+    "create-post": "tsx scripts/create-post.ts",
+    "list-posts": "tsx scripts/list-posts.ts"
   },
   "dependencies": {
     "@giscus/react": "^2.2.8",
@@ -56,6 +56,7 @@
     "eslint-config-prettier": "^8.5.0",
     "next-sitemap": "^4.2.3",
     "prettier": "^3.0.3",
+    "tsx": "^4.20.3",
     "typescript": "^5.2.2"
   }
 }
