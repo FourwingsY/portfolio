@@ -14,6 +14,7 @@
     "@mdx-js/react": "^2.3.0",
     "@reactleaf/modal": "^1.1.2",
     "@reactleaf/theme": "^1.2.1",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/navermaps": "^3.7.5",
     "classnames": "^2.3.1",
     "color": "^3.1.3",
@@ -23,6 +24,7 @@
     "next": "^15.3.5",
     "next-mdx-remote": "^4.4.1",
     "path-to-regexp": "^6.2.0",
+    "postcss": "^8.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
@@ -31,7 +33,8 @@
     "remark-gfm": "^3.0.1",
     "return-fetch": "^0.4.5",
     "styled-components": "^6.0.7",
-    "svd-js": "^1.1.1"
+    "svd-js": "^1.1.1",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",

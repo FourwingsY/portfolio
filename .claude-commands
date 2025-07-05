@@ -1,0 +1,19 @@
+# Claude Commands & Guidelines
+
+## Commit Message Format
+- Always use `[claude]` prefix in commit messages
+- Format: `[claude] type: description`
+- Example: `[claude] feat: add new feature`
+
+## User Commands to Remember
+1. Use `[claude]` prefix for all commit messages
+2. Write down user commands in files to keep them persistent
+3. Keep using MDX for posts but make easier management
+4. Use Tailwind CSS v4 (not v3) - be mindful of dropped features
+5. Consider SSR-able styling solutions
+
+## Project Context
+- Portfolio project with Next.js 15.3.5
+- Korean language site (yanggoon.dev)
+- MDX-based blog posts
+- Migrating from styled-components to Tailwind CSS v4
