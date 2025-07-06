@@ -35,6 +35,8 @@ export const Wrapper = styled(ContentsWidth)`
 `
 
 export const NavGroup = styled.nav`
+  display: flex;
+  gap: 1rem;
   font-size: 0;
 `
 
@@ -81,7 +83,6 @@ export const NavLink = styled.span<{ $match: boolean }>`
 `
 
 export const ExternalLink = styled.a`
-  margin-left: 1rem;
   transition: transform 0.3s;
   &:hover {
     opacity: 0.8;
