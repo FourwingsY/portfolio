@@ -1,7 +1,10 @@
 // import 'intersection-observer'
 import { useState, useEffect, useRef } from "react"
 
-export function useVisible(targetRef: React.RefObject<Element | null>, options: IntersectionObserverInit = {}): boolean {
+export function useVisible(
+  targetRef: React.RefObject<Element | null>,
+  options: IntersectionObserverInit = {},
+): boolean {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -13,7 +16,7 @@ export function useVisible(targetRef: React.RefObject<Element | null>, options: 
     }, options)
     observer.observe(targetRef.current)
     return () => observer.disconnect()
-  }, [])
+  }, [targetRef, options])
 
   return visible
 }
@@ -21,7 +24,7 @@ export function useVisible(targetRef: React.RefObject<Element | null>, options: 
 export function useOnceVisible(
   targetRef: React.RefObject<Element | null>,
   options: IntersectionObserverInit = {},
-  delay = 0
+  delay = 0,
 ): boolean {
   const [once, setOnce] = useState(false)
   const visible = useVisible(targetRef, options)

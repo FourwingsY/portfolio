@@ -11,12 +11,11 @@ interface Props {
   duration: [string, string | null]
 }
 const Duration: React.FC<Props> = ({ duration }) => {
-  const [stringFrom, nullableTo] = duration
-  const from = dayjs(stringFrom).toDate()
-  const to = nullableTo ? dayjs(nullableTo).toDate() : new Date()
+  const [from, to] = duration
+  const today = dayjs().format("YYYY-MM-DD")
   const element = useRef<HTMLSpanElement>(null)
-  const animatingFrom = useAnimatingDate(element, from, new Date())
-  const animatingTo = useAnimatingDate(element, to, new Date())
+  const animatingFrom = useAnimatingDate(element, from, today)
+  const animatingTo = useAnimatingDate(element, to ?? today, today)
 
   return (
     <S.Duration ref={element}>
@@ -33,24 +32,33 @@ const Duration: React.FC<Props> = ({ duration }) => {
 
 export default Duration
 
-function useAnimatingDate(element: React.RefObject<HTMLSpanElement | null>, end: Date, start: Date) {
-  const aMonth = 30 * 86400 * 1000 * Math.sign(+end - +start)
-  const [date, setDate] = useState(start)
+/**
+ * 현재에서 과거로 가는 날짜 애니메이션.
+ * end <- start, start가 항상 end보다 미래의 날짜임을 감안하고 작성됨.
+ */
+function useAnimatingDate(element: React.RefObject<HTMLSpanElement | null>, end: string, start: string) {
+  const [date, setDate] = useState(dayjs(start).toDate())
   const visible = useOnceVisible(element)
+  const endDate = dayjs(end)
+  const startDate = dayjs(start)
 
-  function animate() {
-    const next = date.valueOf() + aMonth
-    if (+end <= next) {
-      setDate(() => end)
-    } else {
-      requestAnimationFrame(animate)
-      setDate(() => new Date(next))
+  const animateStep = (currentDayjs: dayjs.Dayjs) => {
+    const nextDayjs = currentDayjs.add(-1, "month")
+
+    if (nextDayjs.isBefore(endDate)) {
+      setDate(endDate.toDate())
+      return
     }
+
+    setDate(nextDayjs.toDate())
+    setTimeout(() => animateStep(nextDayjs), 20)
   }
 
   useEffect(() => {
-    if (visible) animate()
-  }, [visible])
+    if (!visible) return
+    if (startDate.isBefore(endDate)) return
+    animateStep(startDate)
+  }, [visible, end, start])
 
   return date
 }
