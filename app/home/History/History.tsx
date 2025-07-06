@@ -1,6 +1,18 @@
 "use client"
 
-import { realclass, qms, junior, muzy, qgis, uploadingo, dingo, moncast, pilleye } from "@/lib/constants/career"
+import {
+  realclass,
+  qms,
+  junior,
+  muzy,
+  qgis,
+  uploadingo,
+  dingo,
+  moncast,
+  pilleye,
+  devsistersEvents,
+  devplay,
+} from "@/lib/constants/career"
 import { ContentsWidth } from "@/lib/styles/adaptive"
 
 import * as S from "./History.style"
@@ -15,7 +27,9 @@ const History = () => {
           <S.TimelineFadein />
         </ContentsWidth>
       </S.Future>
-      <TimelineItem item={pilleye} defaultActive />
+      <TimelineItem item={devplay} defaultActive />
+      <TimelineItem item={devsistersEvents} />
+      <TimelineItem item={pilleye} />
       <TimelineItem item={qms} />
       <TimelineItem item={realclass} />
       <TimelineItem item={junior} />

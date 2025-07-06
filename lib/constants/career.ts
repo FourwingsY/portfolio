@@ -13,11 +13,41 @@ export interface Product {
   link?: string
 }
 
-export const pilleye: Product = {
+export const devplay: Product = {
   duration: ["2023-07-23", null],
+  productName: "DevPlay Portal",
+  experienced: `\
+    데브시스터즈에서 맡고 있는 프로젝트입니다. 
+    게임의 배포와 운영을 위한 퍼블리싱 플랫폼을 운영하기 위한 사이트이며, 리뉴얼 작업을 진행하고 있습니다.
+    디자인시스템의 역할은 어디까지이고, 어느 정도의 확장성을 고려해야 할까, 와 같은 주제에 대해 다시 한번 고민하고 있습니다.
+  `,
+  company: "Devsisters",
+  status: ProductStatus.PRIVATE,
+  link: "",
+}
+
+export const devsistersEvents: Product = {
+  duration: ["2023-07-23", null],
+  productName: "이벤트 페이지",
+  experienced: `\
+    데브시스터즈 웹콘솔셀에서는 이벤트 페이지 작업도 겸하고 있습니다.
+    백오피스 웹만 만들다가 가끔 이렇게 CSS와 애니메이션이 가득한 프로젝트를 진행하게 되면 기분을 리프레시하게 됩니다.
+    프로젝트를 진행하면서 새 회사의 기술 스택에 익숙해지고 있습니다.
+    그동안 별로 좋지 않은 시선으로 바라보던 Tailwind CSS도 막상 사용해보니 생각보다 별 차이 없구나, 라는 생각을 하게 되었습니다.
+    다만 여전히 CSS 클래스가 잔뜩 포함된 코드는 읽기엔 영 좋지 않다고 생각합니다.
+  `,
+  company: "Devsisters",
+  status: ProductStatus.LIVE,
+  link: "https://cookierun16th.com",
+}
+
+export const pilleye: Product = {
+  duration: ["2023-07-23", "2025-05-22"],
   productName: "Pilleye",
   experienced: `\
     메딜리티로 이직 후 맡은 프로덕트입니다. 입사 직후부터 2개월간 프로덕트의 초기 구조부터 새로 짜내었습니다. 
+    홈페이지와 내부 어드민, B2B 고객을 위한 고객 어드민, 플러터 앱과 웹뷰까지, 하나의 프로덕트를 위한 모든 과정을 함께 했습니다.
+    플러터를 진행하면서 새로운 경험을 하게 되어 많은 것을 배웠습니다.
   `,
   company: "Medility",
   status: ProductStatus.LIVE,
@@ -33,7 +63,7 @@ export const realclass: Product = {
     프로젝트의 기본 뼈대를 잡고, 컨벤션을 잡고 코드 리뷰를 진행하며, 여러명의 프론트엔드 개발자가 협업해가며 즐겁게 진행했습니다.
     그동안 제대로 하지 못했던, 프론트엔드 개발자 사이의 협업에 대한 경험을 제대로 해보는 중입니다.
     한편으로는, Next.js를 좀더 깊게 사용하며 SSR / SSG에 대해서도 이해하기 시작했습니다.
-    최근에는 redux를 제거하고 swr 및 recoil로 옮겨가는 작업을 진행하고 있습니다.
+    마지막에는 redux를 제거하고 swr 및 recoil로 옮겨가는 작업을 진행했습니다.
   `,
   company: "Qualson",
   status: ProductStatus.LIVE,
