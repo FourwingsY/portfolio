@@ -1,6 +1,6 @@
 "use client"
 
-import { parseISO, format } from "date-fns"
+import dayjs from "dayjs"
 import { useEffect, useRef, useState } from "react"
 
 import { useOnceVisible } from "@/lib/hooks/useIntersectionObserver"
@@ -12,20 +12,20 @@ interface Props {
 }
 const Duration: React.FC<Props> = ({ duration }) => {
   const [stringFrom, nullableTo] = duration
-  const from = parseISO(stringFrom)
-  const to = nullableTo ? parseISO(nullableTo) : new Date()
+  const from = dayjs(stringFrom).toDate()
+  const to = nullableTo ? dayjs(nullableTo).toDate() : new Date()
   const element = useRef<HTMLSpanElement>(null)
   const animatingFrom = useAnimatingDate(element, from, new Date())
   const animatingTo = useAnimatingDate(element, to, new Date())
 
   return (
     <S.Duration ref={element}>
-      <S.Year>{format(animatingFrom, "yyyy.")}</S.Year>
-      <S.Month>{format(animatingFrom, "MM")}</S.Month>
+      <S.Year>{dayjs(animatingFrom).format("YYYY.")}</S.Year>
+      <S.Month>{dayjs(animatingFrom).format("MM")}</S.Month>
       <span style={{ display: "inline-block" }}>
         <S.Tilde>-</S.Tilde>
-        <S.Year>{format(animatingTo, "yyyy.")}</S.Year>
-        <S.Month>{format(animatingTo, "MM")}</S.Month>
+        <S.Year>{dayjs(animatingTo).format("YYYY.")}</S.Year>
+        <S.Month>{dayjs(animatingTo).format("MM")}</S.Month>
       </span>
     </S.Duration>
   )

@@ -1,11 +1,11 @@
-import { endOfWeek, startOfDay, subWeeks, formatISO } from "date-fns"
+import dayjs from "dayjs"
 import { NextResponse } from "next/server"
 
 const query = `{
   user(login: "fourwingsy") {
     contributionsCollection(
-      from: "${formatISO(subWeeks(startOfDay(Date.now()), 51))}"
-      to: "${formatISO(endOfWeek(Date.now()))}"
+      from: "${dayjs().subtract(51, 'week').startOf('day').toISOString()}"
+      to: "${dayjs().endOf('week').toISOString()}"
     ) {
       contributionCalendar {
         totalContributions
